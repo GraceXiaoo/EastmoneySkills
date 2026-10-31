@@ -1,12 +1,50 @@
-# 东方财富·妙想金融 Skills
+# EastmoneySkills · 东方财富妙想金融技能库
 
-连接东方财富金融数据与妙想研究能力，让 AI Agent 从金融问题出发，完成数据查询、专项分析和研究报告。
+[![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#能力目录)
+[![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#能力目录)
+[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
 
-本仓库收录 **47 个 Skill，覆盖 10 类能力**：从查行情、搜公告和筛选标的，到股票、基金、债券、企业、行业与期货研究，以及研报底稿复盘和 Choice API 程序化取数。
+**面向 AI Agent 的金融数据查询与专业研究工作流。**
 
-每个 Skill 以 `SKILL.md` 描述使用场景、执行步骤和交付要求，并按需配备脚本、模板与参考资料。你可以按任务选择安装，无需一次加载全部能力。
+以东方财富金融数据、Choice 数据能力与妙想研究服务为基础，提供 **47 个 Skill、10 类业务能力**，覆盖股票、基金、ETF、债券、企业、行业、期货、宏观与政策，以及研报复盘和程序化取数。
 
-**导航：** [从问题选 Skill](#从问题选-skill) · [能力目录](#能力目录) · [安装与使用](#安装与使用) · [服务与依赖](#服务与依赖) · [常见问题](#常见问题) · [版权与使用](#版权与使用)
+从“查一个指标”到“完成一份研究报告”，按任务选择所需能力，通过自然语言调用，并按相应流程交付数据表、分析结论或研究文档。
+
+**快速导航：** [快速开始](#快速开始) · [按任务选择](#从问题选-skill) · [能力目录](#能力目录) · [安装指南](#安装与使用) · [服务与依赖](#服务与依赖) · [常见问题](#常见问题) · [版权与使用](#版权与使用)
+
+## 项目概览
+
+Skill 是一份可复用的任务包：`SKILL.md` 定义使用场景、分析框架、执行步骤和交付要求，配套脚本、参考资料与模板按需提供。
+
+| 能力层次 | 解决的问题 | 典型交付 |
+| --- | --- | --- |
+| 数据与检索 | 查已知标的、找资讯、筛选候选对象 | 数据表、检索结果、筛选列表 |
+| 诊断与研究 | 解释基本面、价格变化、行业驱动与风险 | 专项分析、综合诊断、深度研究 |
+| 报告与复盘 | 将研究过程形成文档，核验和更新已有研报 | Markdown、HTML、Excel、Word 或 PDF |
+
+Skill 负责组织任务；MCP 提供连接到客户端的工具；API/SDK 提供具体服务或数据接口。不同 Skill 使用的连接方式与权限要求不同，详见 [服务与依赖](#服务与依赖)。
+
+## 快速开始
+
+准备支持 Skill 加载的 AI 客户端，以及 Node.js 与 npm，先安装与你的任务相关的能力：
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosis
+```
+
+按安装工具提示选择客户端和安装范围，再阅读对应 Skill 的授权与依赖说明。完成服务连接后，可以直接提问：
+
+```text
+查询贵州茅台最近一期营收与净利润，注明报告期并输出数据表。
+```
+
+想先浏览可安装能力：
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --list
+```
+
+安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。本地能力发现已验证能识别全部 47 个 Skill；具体客户端的加载、MCP 连接及在线执行需在相应环境中验证。
 
 ## 从问题选 Skill
 
@@ -21,11 +59,11 @@
 | 对现有研报提取数据、核验口径或复盘预测 | [研报底稿抽取与复盘](./skills/research-report-review/) |
 | 用 Python 批量、重复获取 Choice 数据 | [Choice API 程序化取数](./skills/choice-quantapi-skill/) |
 
-一般可以沿着 **查数据 → 做分析 → 出报告** 选择能力。已明确任务时，优先使用对应的专项 Skill；只需回答金融问题时，可从 [金融问答](./skills/mx-financial-assistant/) 开始。
+已明确任务时，优先选择专项 Skill；只需综合回答金融问题时，可从 [金融问答](./skills/mx-financial-assistant/) 开始。
 
 ## 能力目录
 
-分类用于阅读导航，各 Skill 目录保持平铺。下表的范围是能力概览；具体市场、标的数量、时间窗口和交付格式以对应 `SKILL.md` 为准。
+所有 Skill 平铺在 `skills/` 中，按业务分类提供导航。具体市场、标的数量、时间窗口和交付格式以各目录的 `SKILL.md` 为准。
 
 | 分类 | 数量 | 主要任务 |
 | --- | ---: | --- |
@@ -180,29 +218,44 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis
 npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
 ```
 
-需要全局安装时，为命令增加 `-g`；具体安装目标按工具提示选择。安装位置和可用范围取决于客户端及安装工具，不代表所有 Agent 都已验证兼容。
+默认使用项目级安装；需要跨项目复用时，增加 `-g` 选择全局安装：
 
-如已将仓库下载到本地，可以在仓库根目录把上述安装源替换为 `.`。
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -g
+```
+
+安装目标按工具提示选择。客户端兼容性取决于其 Skill 加载方式、脚本运行环境及所需工具连接，不能仅凭安装成功判断完整流程可用。
+
+### 本地安装
+
+下载完整仓库后，也可以从本地发现和安装：
+
+```bash
+git clone https://github.com/GraceXiaoo/EastmoneySkills.git
+cd EastmoneySkills
+npx skills add . --list
+npx skills add . --skill stock-diagnosis
+```
 
 也可以按客户端的说明手动安装：将所需 Skill 的完整目录复制到客户端指定的位置，保留 `SKILL.md` 及配套资源，再加载或重启客户端。
 
-### 准备服务后提问
+### 描述你的研究任务
 
 安装 Skill 之后，按对应说明准备服务授权、MCP 或 SDK，再用自然语言提出任务。例如：
 
 ```text
 查询贵州茅台和五粮液最近一期营收与净利润，输出完整数据表。
 分析宁德时代当前的资金面，并注明数据时间。
-为一只指定的场外公募基金生成深度研究一页纸。
+分析易方达蓝筹精选混合（005827），生成场外基金深度研究一页纸。
 比较两次政治局会议的经济政策表述，引用原文来源。
 提取这份研报的图表和数据，核验口径并建立 Excel 底稿。
 ```
 
-建议提供标的名称或代码、分析期间和交付要求。单标的研究 Skill 通常需要一次聚焦一个对象；不同 Skill 的限制以各自说明为准。
+提问时建议说明 **研究对象、时间范围、分析重点和交付形式**。例如：“分析某公司最近一期财报，重点关注利润质量与现金流，输出带来源的 Markdown 点评。”单标的研究应一次聚焦一个对象。
 
 ## 服务与依赖
 
-**安装 Skill 不等于开通数据服务。** 实际运行需要相应的数据权限、服务连接和软件环境。
+实际运行需要相应的数据权限、服务连接和软件环境。Skill 安装与数据服务授权是两个步骤。
 
 | 能力类型 | 运行前需要确认 |
 | --- | --- |
@@ -212,11 +265,11 @@ npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-sea
 | Choice API 程序化取数 | Python、可用的 EMQuantAPI SDK、账号与接口数据权限 |
 | HTML、Excel、Word、PDF 等交付 | 按对应 Skill 安装脚本依赖、文档生成与渲染工具 |
 
-入口可参考 [妙想](https://ai.eastmoney.com/chat)。具体开通方式、环境变量和依赖版本请阅读所选 Skill；本仓库不承诺所有 Skill 共用一个授权方式或一个 API Key。
+服务入口：[东方财富·妙想](https://ai.eastmoney.com/chat)。具体授权流程、环境变量、工具名称和依赖版本请阅读所选 Skill。不同服务的凭据和数据权限可能分别管理。
 
 密钥应保存在本地环境或服务指定的凭据位置，不提交到 GitHub，也不填写在 Issue 中。
 
-仓库不内置可用 API Key。支持扫码授权的 Skill 按内置流程完成授权；要求 `EM_API_KEY` 的脚本需要在运行前设置环境变量。不要将个人密钥写回脚本、示例或参考文档。
+支持扫码授权的 Skill 按内置流程完成授权；要求 `EM_API_KEY` 的脚本需要在运行前设置环境变量。仓库不内置可用密钥，个人密钥不应写回脚本、示例或参考文档。
 
 ## 常见问题
 
@@ -243,22 +296,43 @@ npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-sea
 
 ### README 分类会影响安装吗？
 
-分类是导航方式，不改变 Skill 名称。当前 Skill 目录直接平铺在仓库根部，目录链接与本地安装示例均对应这一结构。
+分类只用于 README 导航。所有 Skill 均位于 `skills/` 下，按目录名独立安装；调整展示分类不会改变安装名称。
 
-## 目录约定与维护
+## 仓库结构
 
-每个目录是一份完整 Skill 包，入口文件名为 `SKILL.md`。脚本、参考资料、模板等配套目录因 Skill 而异。
+```text
+EastmoneySkills/
+├── README.md
+├── .gitignore
+└── skills/
+    ├── mx-finance-data/
+    ├── stock-diagnosis/
+    ├── stock-deep-research/
+    ├── fund-deep-research/
+    └── …
+```
 
-维护时同步更新 Skill 描述、版本、依赖和本 README 的导航。目录重命名或新增、移除能力后，应核对链接与数量。
+每个 Skill 目录包含 `SKILL.md`，并按需提供 `scripts/`、`references/`、`reference/`、`assets/` 或示例文件。安装、复制和更新时保留完整目录，避免遗漏配套资源。
 
-反馈问题时，请提供 Skill 名称、客户端与系统、复现步骤、脱敏错误信息和预期结果。不要上传账号密钥、私域资料或未经许可的数据。
+## 维护与反馈
+
+发现问题或希望补充能力，可以通过 [Issues](https://github.com/GraceXiaoo/EastmoneySkills/issues) 反馈。为便于定位，请提供：
+
+- Skill 名称及使用版本；
+- 客户端、操作系统与相关运行环境；
+- 可复现的任务描述、实际结果和预期结果；
+- 脱敏错误信息或必要截图。
+
+维护变更应同步更新 Skill 描述、版本、依赖和 README 导航，并检查目录链接、能力数量及对应执行流程。反馈与提交中不要包含账号密钥、私域资料或未经许可的数据。
 
 ## 版权与使用
 
-本 README 为本项目原创编写。目录导航、功能表格和安装说明属于通用文档组织方式；本文未复制其他金融 Skill 仓库的品牌文案或专有内容。
-
-各 Skill、配套代码、模板和参考资料的权利归相应权利人所有，使用范围以各目录的许可证、版权声明及适用服务条款为准。当前部分 Skill 标注 `license: proprietary`；公开展示不等于授予开源许可。本 README 不替代许可证，也不额外授予复制、再分发或商业使用的权利。
+各 Skill、配套代码、模板和参考资料的权利归相应权利人所有，使用范围以各目录的许可证、版权声明及适用服务条款为准。当前部分 Skill 标注 `license: proprietary`；本仓库未声明统一的开源许可，公开展示不额外授予复制、再分发或商业使用的权利。
 
 东方财富、妙想、Choice 及其他文中提及的产品名称和商标归各自权利人所有。金融数据、研报、公告及检索材料的访问与使用仍受对应来源的授权条款约束。
 
 研究结果用于信息整理与分析辅助，不构成投资建议；涉及决策时，应核验数据时点、来源和计算口径。
+
+### 文档与工具参考
+
+本 README 的内容结合本仓库实际能力独立编写；信息组织参考了社区 Skill 仓库的概览、快速开始和分类导航实践，包括 [claude-skills](https://github.com/alirezarezvani/claude-skills) 与 [AliceMarket](https://github.com/Wind-Alice/AliceMarket)。安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。这些项目的代码、文案与许可不自动适用于本仓库。
