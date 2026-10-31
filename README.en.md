@@ -115,7 +115,7 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 
 | Skill | Purpose |
 | --- | --- |
-| [Financial data queries · `mx-finance-data`](./skills/mx-finance-data/) | Retrieve structured market, valuation, and financial metrics with Excel and Markdown outputs |
+| [Financial data queries · `mx-finance-data`](./skills/mx-finance-data/) | Query prices, valuations, financials, technical indicators, and capital flows in natural language for A-share, Hong Kong, and US stocks, funds, bonds, indices, and enterprises; supports individual and batch queries, with raw data tables in Excel and display tables in Markdown |
 | [Financial information search · `mx-finance-search`](./skills/mx-finance-search/) | Search announcements, reports, news, and policy for a specified subject |
 | [Macro data queries · `mx-macro-data`](./skills/mx-macro-data/) | Retrieve economic, price, monetary, fiscal, trade, and industry data with CSV output and data notes |
 | [Private knowledge base search · `mx-personal-kb-search`](./skills/mx-personal-kb-search/) | Search Miaoxiang knowledge bases explicitly selected by the user |
