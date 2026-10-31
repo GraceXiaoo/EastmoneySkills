@@ -302,19 +302,6 @@ npx skills add . --skill stock-diagnosis
 
 ## 💬 常见问题
 
-### 相近的研究 Skill 怎么选？
-
-| 需求 | 选择方式 |
-| --- | --- |
-| 快速综合判断股票或基金 | 选择 `stock-diagnosis` 或 `fund-diagnosis` |
-| 只分析技术面、资金面等一个维度 | 选择对应股票专项分析 Skill |
-| 生成公司、场外基金或 ETF 一页纸 | 选择相应的 `*-deep-research` Skill |
-| 通过接口生成首次覆盖、行业或基金报告 | 阅读 `initiation-of-coverage-or-deep-dive`、`industry-research-report` 或 `fund-research` |
-| 提取和核验现有研报 | 选择 `research-report-review` |
-| 根据原研报框架生成新报告 | `sellside-research-refresh-with-excel` 定义此流程，但当前发布包缺少必需 bundle，需先修复 |
-
-相近 Skill 的触发范围可能重叠。明确指定 Skill 或交付形式，有助于客户端选择正确流程。
-
 ### 所有市场和输出格式都支持吗？
 
 不是。部分诊断仅支持 A 股，一页纸研究通常限定单标的，报告形式也可能分别为 Markdown、HTML、Excel、Word 或 PDF。请以各目录的支持范围为准。
