@@ -57,7 +57,7 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 在支持安装技能、执行命令或下载文件的 Agent 中，直接发送：
 
 ```text
-帮我一键安装技能：https://github.com/GraceXiaoo/EastmoneySkills/tree/main
+帮我一键安装技能：https://github.com/GraceXiaoo/EastmoneySkills
 ```
 
 Agent 可根据当前客户端环境协助下载和安装。只需要部分能力时，可补充技能名称，例如 `mx-finance-data` 和 `stock-diagnosis`。
