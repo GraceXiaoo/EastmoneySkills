@@ -74,6 +74,10 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 **当前验证范围：** 本地 Skills CLI 已识别全部 47 个 Skill；Python 脚本已通过语法检查，部分凭据处理已通过离线检查。尚未逐一完成上述客户端的在线数据调用、MCP 连接和报告生成测试。
 
+**文档核验（2026-10-31）：** 中英文目录描述已与各 Skill 的说明对照；140 个 Python 文件通过语法检查；安装参数和 Node.js 要求已与 Skills CLI 官方文档核对。目录功能表示 Skill 定义的工作流，不代表已完成在线验收。当前没有 SkillCheck 验证报告。
+
+**已知发布问题：** `sellside-research-refresh-with-excel` 缺少 `bundle/review`、`bundle/drafting` 和 `bundle_manifest.json`，且 `SKILL.md` 与运行清单的版本不一致；自带 `check_bundle.py` 返回 `BLOCKED`，当前发布包不能完成完整研报复现。GitHub 来源的 CLI 发现检查因克隆网络错误未完成，本地目录发现已通过。
+
 运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
 
 ## 🎯 从问题选 Skill
@@ -117,16 +121,18 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | --- | --- |
 | [金融数据查询 · `mx-finance-data`](./skills/mx-finance-data/) | 查询行情、估值、财务等结构化指标，交付 Excel 与 Markdown |
 | [金融资讯检索 · `mx-finance-search`](./skills/mx-finance-search/) | 按明确对象检索公告、研报、新闻和政策 |
-| [宏观数据查询 · `mx-macro-data`](./skills/mx-macro-data/) | 查询经济、价格、货币、财政、贸易和产业数据 |
+| [宏观数据查询 · `mx-macro-data`](./skills/mx-macro-data/) | 查询经济、价格、货币、财政、贸易和产业数据，返回 CSV 与数据说明 |
 | [私域知识库检索 · `mx-personal-kb-search`](./skills/mx-personal-kb-search/) | 检索用户明确指定的妙想知识库资料 |
 | [金融问答 · `mx-financial-assistant`](./skills/mx-financial-assistant/) | 综合回答金融知识、数据、资讯和分析问题 |
-| [条件筛选 · `mx-stocks-screener`](./skills/mx-stocks-screener/) | 按条件或排序筛选股票、基金、ETF、债券、期货及板块等标的 |
-| [自选管理 · `mx-self-select`](./skills/mx-self-select/) | 查询、新增或删除 Choice 与东方财富 App 自选证券 |
+| [条件筛选 · `mx-stocks-screener`](./skills/mx-stocks-screener/) | 按条件或排序筛选股票、基金、ETF、可转债、国内期货及板块等标的，返回 CSV 与数据说明 |
+| [自选管理 · `mx-self-select`](./skills/mx-self-select/) | 查询 Choice 与东方财富 App 自选；新增、删除仅支持 Choice 的 A 股、港股、美股自选 |
 | [MQL 标准取数 · `mql-query`](./skills/mql-query/) | 查询规范、语法约束、模板复用和 MQL 执行，供研究 Skill 复用 |
 
 ### 股票研究
 
 #### 综合与专项诊断
+
+以下 6 个诊断与专项分析 Skill 均面向沪深京 A 股单票；不应据此推断支持港股、美股或批量分析。
 
 | Skill | 用途 |
 | --- | --- |
@@ -142,7 +148,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | Skill | 用途 |
 | --- | --- |
 | [涨跌分析 · `stock-price-movement-analysis`](./skills/stock-price-movement-analysis/) | 分析 A 股单票最近一个月内明确上涨或下跌的原因 |
-| [异动复盘 · `stock-price-anomaly-analysis`](./skills/stock-price-anomaly-analysis/) | 发现异动标的，围绕事件、资金与证据进行单票复盘 |
+| [异动复盘 · `stock-price-anomaly-analysis`](./skills/stock-price-anomaly-analysis/) | 生成异动涨跌榜或单票复盘，默认 A 股，也定义了港美等市场的流程；实际可用范围取决于数据工具 |
 
 #### 公司报告与比较
 
@@ -162,7 +168,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | [行业板块分析 · `industry-sector-analysis`](./skills/industry-sector-analysis/) | 分析 A 股行业与概念板块的景气度、产业链和驱动因素 |
 | [行业与个股跟踪 · `industry-stock-tracker`](./skills/industry-stock-tracker/) | 生成日报、周报、月报或近况跟踪报告 |
 | [专题研究 · `topic-research-report`](./skills/topic-research-report/) | 研究政策、事件、趋势等跨行业议题 |
-| [市场热点发现 · `stock-market-hotspot-discovery`](./skills/stock-market-hotspot-discovery/) | 发现市场层面的热门资讯、股票和方向 |
+| [市场热点发现 · `stock-market-hotspot-discovery`](./skills/stock-market-hotspot-discovery/) | 发现 A 股市场层面的热门资讯、股票和方向 |
 
 ### 基金与 ETF
 
@@ -182,7 +188,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | [信用债研究 · `credit-bond-deep-research`](./skills/credit-bond-deep-research/) | 分析单只信用债的信用资质、财务、利差与风险 |
 | [可转债研究 · `convertible-bond-deep-research`](./skills/convertible-bond-deep-research/) | 分析估值、债底、条款博弈和正股联动 |
 | [地方政府债研究 · `government-bond-deep-research`](./skills/government-bond-deep-research/) | 分析单只地方政府债的发行、估值、区域财政和债务 |
-| [利率债新券研究 · `primary-bond-deep-research`](./skills/primary-bond-deep-research/) | 分析发行定价、上市流动性与活跃券预期 |
+| [利率债新券研究 · `primary-bond-deep-research`](./skills/primary-bond-deep-research/) | 分析单只利率债新券的发行定价、上市流动性与活跃券预期 |
 | [利率债活跃券研究 · `on-the-run-bond-deep-research`](./skills/on-the-run-bond-deep-research/) | 分析活跃券收益率、资金面、供给和机构行为 |
 | [利差分析 · `credit-spread-deep-research`](./skills/credit-spread-deep-research/) | 分析品种、期限、评级、信用、税收和流动性利差 |
 | [地方化债研究 · `local-government-debt-analysis`](./skills/local-government-debt-analysis/) | 研究单个地区的经济财政、债务负担和化债进展 |
@@ -192,7 +198,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | Skill | 用途 |
 | --- | --- |
 | [宏观资金面研究 · `market-liquidity-deep-research`](./skills/market-liquidity-deep-research/) | 分析央行操作、银行间流动性和跨季资金面 |
-| [政策会议对比 · `meeting-minutes-comparison`](./skills/meeting-minutes-comparison/) | 比较政策会议的表述、维度及政策变化 |
+| [政策会议对比 · `meeting-minutes-comparison`](./skills/meeting-minutes-comparison/) | 检索原文，经用户确认会议与维度后由模型比对，脚本生成 Word 文档 |
 
 ### 企业与风险
 
@@ -214,7 +220,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 | Skill | 用途 |
 | --- | --- |
 | [研报底稿抽取与复盘 · `research-report-review`](./skills/research-report-review/) | 抽取研报表格与图表、核验数据、建立可刷新底稿和复盘预测 |
-| [研报复现 · `sellside-research-refresh-with-excel`](./skills/sellside-research-refresh-with-excel/) | 沿原研报框架，为新标的或新时间生成研报、Excel 底稿和评测结果 |
+| [研报复现 · `sellside-research-refresh-with-excel`](./skills/sellside-research-refresh-with-excel/) | 定义沿原研报框架生成新研报、Excel 底稿和评测结果的流程；当前缺少必需 bundle，完整执行受阻 |
 
 ### 量化工具
 
@@ -293,6 +299,7 @@ npx skills add . --skill stock-diagnosis
 | MQL 与依赖它的研究流程 | 客户端已连接相应 MQL MCP，并提供该任务所需的查询工具与数据权限 |
 | 公告、资讯和研报检索流程 | 已连接 Skill 指定的文本检索服务或 MCP |
 | Choice API 程序化取数 | Python、可用的 EMQuantAPI SDK、账号与接口数据权限 |
+| 研报底稿抽取与研报复现 | 可访问的 `layoutV2` PDF 解析网关、有效 `EM_API_KEY`，并核对部署占位符或 `EM_BASE_URL` 配置；刷新 Excel 中的 `=mql()` 公式还需可用的 Choice Excel 加载项与权限 |
 | HTML、Excel、Word、PDF 等交付 | 按对应 Skill 安装脚本依赖、文档生成与渲染工具 |
 
 官方入口：[妙想 Skills 官网](https://ai.eastmoney.com/skills) · [东方财富·妙想对话](https://ai.eastmoney.com/chat)。具体授权流程、环境变量、工具名称和依赖版本请阅读所选 Skill。不同服务的凭据和数据权限可能分别管理。
@@ -312,7 +319,7 @@ npx skills add . --skill stock-diagnosis
 | 生成公司、场外基金或 ETF 一页纸 | 选择相应的 `*-deep-research` Skill |
 | 通过接口生成首次覆盖、行业或基金报告 | 阅读 `initiation-of-coverage-or-deep-dive`、`industry-research-report` 或 `fund-research` |
 | 提取和核验现有研报 | 选择 `research-report-review` |
-| 根据原研报框架生成新报告 | 选择 `sellside-research-refresh-with-excel` |
+| 根据原研报框架生成新报告 | `sellside-research-refresh-with-excel` 定义此流程，但当前发布包缺少必需 bundle，需先修复 |
 
 相近 Skill 的触发范围可能重叠。明确指定 Skill 或交付形式，有助于客户端选择正确流程。
 
