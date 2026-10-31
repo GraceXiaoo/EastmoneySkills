@@ -32,6 +32,8 @@ This README is available in English. Skill instructions and source materials may
 
 ## 🚀 Quick start
 
+### 1. Download and install with npx
+
 Use an AI client that supports skills, with Node.js **22.20 or later** and npm. Install the capabilities relevant to your task:
 
 ```bash
@@ -52,6 +54,19 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
 These commands use [Skills CLI](https://github.com/vercel-labs/skills). Local discovery has identified all 47 skills. Client loading, MCP connections, and online execution require validation in the target environment.
+
+### 2. Get started with your agent
+
+Send this request to an agent that can install skills, execute commands, or download files:
+
+```text
+Install the skills for me from:
+https://github.com/GraceXiaoo/EastmoneySkills/tree/main
+```
+
+The agent can help download and install skills for your client environment. To install only selected capabilities, include their names, such as `mx-finance-data` and `stock-diagnosis`.
+
+This approach still requires the agent to access the repository. If GitHub or npm is unreachable, ask the agent to install from a previously downloaded complete local directory. Configure data services and authorization as required by the selected skills after installation.
 
 ## 🤖 Supported agents
 
