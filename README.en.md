@@ -93,7 +93,7 @@ Full workflows require a client that can read supporting resources, run the requ
 
 ## 📚 Skill catalog
 
-All skills are stored directly under `skills/`. Categories provide navigation in this README. Supported markets, instrument counts, time windows, and output formats are defined in each skill's `SKILL.md`.
+All skills are stored directly under `skills/`. Categories provide navigation in this README.
 
 | Category | Count | Main tasks |
 | --- | ---: | --- |
