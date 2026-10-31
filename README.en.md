@@ -306,6 +306,10 @@ Running a skill requires the relevant data permissions, service connections, and
 
 Official entry points: [Miaoxiang Skills website](https://ai.eastmoney.com/skills) · [Eastmoney Miaoxiang chat](https://ai.eastmoney.com/chat). Read the selected skill for authorization steps, environment variables, tool names, and dependency versions. Credentials and permissions may be managed separately for different services.
 
+### Get your EM_API_KEY
+
+Visit the [Eastmoney Miaoxiang Skills website](https://ai.eastmoney.com/skills) and follow the page instructions to obtain an API key. Set it as the `EM_API_KEY` environment variable before running scripts that require it.
+
 Keep keys in your local environment or the service's designated credential storage. Do not commit them to GitHub or include them in Issues.
 
 For skills supporting QR authorization, follow the built-in process. Scripts requiring `EM_API_KEY` need that environment variable set before execution. This repository does not include usable keys; do not insert personal keys into scripts, examples, or reference documents.
