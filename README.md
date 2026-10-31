@@ -14,7 +14,6 @@
 
 🌐 **官网：[东方财富·妙想 Skills](https://ai.eastmoney.com/skills)**
 
-**快速导航：** [快速开始](#-快速开始) · [支持的 Agent](#-支持的-agent) · [按任务选择](#-从问题选-skill) · [能力目录](#-能力目录) · [安装指南](#-安装与使用) · [服务与依赖](#-服务与依赖) · [常见问题](#-常见问题) · [版权与使用](#-版权与使用)
 
 ## 🧭 项目概览
 
@@ -87,21 +86,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
 运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
-
-## 🎯 从问题选 Skill
-
-| 你想完成的任务 | 建议从这里开始 |
-| --- | --- |
-| 查询已知公司的行情、估值或财务指标 | [金融数据查询](./skills/mx-finance-data/) |
-| 找公告、研报或某个事件的财经资讯 | [金融资讯检索](./skills/mx-finance-search/) |
-| 按财务、技术或其他条件筛选标的 | [条件筛选](./skills/mx-stocks-screener/) |
-| 快速了解一只 A 股的整体情况 | [股票综合诊断](./skills/stock-diagnosis/) |
-| 系统研究一家上市公司，生成一页纸报告 | [公司深度研究](./skills/stock-deep-research/) |
-| 分析一只基金的收益、风险和持仓 | [基金综合诊断](./skills/fund-diagnosis/)；需要一页纸时选 [基金深度研究](./skills/fund-deep-research/) |
-| 对现有研报提取数据、核验口径或复盘预测 | [研报底稿抽取与复盘](./skills/research-report-review/) |
-| 用 Python 批量、重复获取 Choice 数据 | [Choice API 程序化取数](./skills/choice-quantapi-skill/) |
-
-已明确任务时，优先选择专项 Skill；只需综合回答金融问题时，可从 [金融问答](./skills/mx-financial-assistant/) 开始。
 
 ## 📚 能力目录
 
