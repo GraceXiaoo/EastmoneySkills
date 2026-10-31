@@ -89,7 +89,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 ## 📚 能力目录
 
-所有 Skill 平铺在 `skills/` 中，按业务分类提供导航。具体市场、标的数量、时间窗口和交付格式以各目录的 `SKILL.md` 为准。
+所有 Skill 平铺在 `skills/` 中，按业务分类提供导航。
 
 | 分类 | 数量 | 主要任务 |
 | --- | ---: | --- |
