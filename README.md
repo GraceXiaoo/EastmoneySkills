@@ -50,7 +50,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosi
 npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
-安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。本地能力发现已验证能识别全部 47 个 Skill；具体客户端的加载、MCP 连接及在线执行需在相应环境中验证。
+安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。
 
 ### 2. 一键开始：让 Agent 帮你安装
 
