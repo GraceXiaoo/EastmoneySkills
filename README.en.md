@@ -226,7 +226,7 @@ Enterprise research supports entity due diligence and extends beyond listed equi
 
 The “quantitative API” label follows Choice product terminology. This skill primarily supports programmatic data access and data preparation for strategy research. It does not include a standalone trading or backtesting engine.
 
-## ⚙️ Installation and usage
+## ⚙️ Detailed installation guide
 
 ### Choose the installation scope
 
