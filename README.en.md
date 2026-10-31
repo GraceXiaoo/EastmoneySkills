@@ -1,0 +1,377 @@
+# EastmoneySkills · Eastmoney Miaoxiang Financial Skills
+
+[简体中文](./README.md) · **English**
+
+[![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#-skill-catalog)
+[![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#-skill-catalog)
+[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
+
+**Financial data access and professional research workflows for AI agents.**
+
+Built around Eastmoney financial data, Choice data capabilities, and Miaoxiang research services, this collection provides **47 skills across 10 categories**. It covers equities, funds, ETFs, bonds, enterprises, industries, futures, macroeconomics and policy, research report review, and programmatic data retrieval.
+
+Choose a skill for your task, describe the request in natural language, and produce data tables, analysis, or research documents through the relevant workflow.
+
+🌐 **Official website: [Eastmoney Miaoxiang Skills](https://ai.eastmoney.com/skills)**
+
+**Explore:** [Quick start](#-quick-start) · [Supported agents](#-supported-agents) · [Choose a skill](#-choose-a-skill) · [Catalog](#-skill-catalog) · [Installation](#-installation-and-usage) · [Dependencies](#-services-and-dependencies) · [FAQ](#-faq) · [Rights and usage](#-rights-and-usage)
+
+## 🧭 Overview
+
+A skill is a reusable task package. Its `SKILL.md` defines when to use it, the analytical framework, execution steps, and deliverable requirements. Scripts, references, and templates are included where needed.
+
+| Capability | Tasks | Typical deliverables |
+| --- | --- | --- |
+| Data and retrieval | Look up known instruments, retrieve information, screen candidates | Data tables, search results, screening lists |
+| Analysis and research | Explain fundamentals, price changes, industry drivers, and risks | Focused analysis, comprehensive assessments, detailed research |
+| Reports and review | Document research, verify data, and refresh existing reports | Markdown, HTML, Excel, Word, or PDF |
+
+Skills organize tasks; MCP exposes tools to the client; APIs and SDKs provide the underlying services and data. Connections and permissions vary by skill. See [Services and dependencies](#-services-and-dependencies).
+
+This README is available in English. Skill instructions and source materials may be in Chinese; an English README does not imply that every service or workflow has been tested in English.
+
+## 🚀 Quick start
+
+Use an AI client that supports skills, with Node.js **22.20 or later** and npm. Install the capabilities relevant to your task:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosis
+```
+
+Follow the installer's prompts to select a client and installation scope. Read each skill's authorization and dependency instructions, then connect the required services. For example:
+
+```text
+Retrieve Kweichow Moutai's latest reported revenue and net profit.
+Include the reporting period and return a data table.
+```
+
+To browse available skills first:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --list
+```
+
+These commands use [Skills CLI](https://github.com/vercel-labs/skills). Local discovery has identified all 47 skills. Client loading, MCP connections, and online execution require validation in the target environment.
+
+## 🤖 Supported agents
+
+Skills CLI supports installation to the following clients, according to its [agent support list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). These are installation targets; they have not all been tested with every financial workflow in this repository.
+
+| Agent / client | Installation flag | Setup |
+| --- | --- | --- |
+| Claude Code | `-a claude-code` | Install the full skill and configure required services and MCP |
+| OpenAI Codex | `-a codex` | Install the full skill and configure required services and MCP |
+| Cursor | `-a cursor` | Use a version that supports skills and configure the required tools |
+| OpenClaw | `-a openclaw` | Configure script execution and service connections |
+| Gemini CLI | `-a gemini-cli` | Configure required tools and runtime dependencies |
+| Hermes Agent | `-a hermes-agent` | Configure required tools and runtime dependencies |
+| OpenCode | `-a opencode` | Configure required tools and runtime dependencies |
+| Windsurf | `-a windsurf` | Use a version that supports skills and configure the required tools |
+
+For example, target Claude Code or Codex explicitly:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
+```
+
+**Validation scope:** all 47 skills have been discovered locally by Skills CLI. Python scripts have passed syntax checks, and selected credential-handling paths have passed offline checks. Online data calls, MCP connections, and report generation have not been tested across every client listed above.
+
+Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
+
+## 🎯 Choose a skill
+
+| Your task | Start here |
+| --- | --- |
+| Look up prices, valuation, or financial metrics for a known company | [Financial data queries](./skills/mx-finance-data/) |
+| Find announcements, research reports, or financial news about an event | [Financial information search](./skills/mx-finance-search/) |
+| Screen instruments using financial, technical, or other criteria | [Instrument screening](./skills/mx-stocks-screener/) |
+| Get a quick overall assessment of an A-share stock | [Stock diagnosis](./skills/stock-diagnosis/) |
+| Research a listed company and produce a one-page report | [Company deep research](./skills/stock-deep-research/) |
+| Analyze a fund's returns, risk, and holdings | [Fund diagnosis](./skills/fund-diagnosis/) or [Fund deep research](./skills/fund-deep-research/) for a one-page report |
+| Extract report data, verify definitions, or review forecasts | [Research report review](./skills/research-report-review/) |
+| Retrieve Choice data repeatedly or in batches with Python | [Choice API data retrieval](./skills/choice-quantapi-skill/) |
+
+Choose a specialized skill when your task is clear. For broader financial questions, start with the [Financial assistant](./skills/mx-financial-assistant/).
+
+## 📚 Skill catalog
+
+All skills are stored directly under `skills/`. Categories provide navigation in this README. Supported markets, instrument counts, time windows, and output formats are defined in each skill's `SKILL.md`.
+
+| Category | Count | Main tasks |
+| --- | ---: | --- |
+| 🧰 [Core financial tools](#core-financial-tools) | 8 | Data, information search, Q&A, screening, and watchlists |
+| 📈 [Equity research](#equity-research) | 12 | Diagnosis, focused analysis, price attribution, and company reports |
+| 🔎 [Industries and market themes](#industries-and-market-themes) | 6 | Industries, sectors, thematic research, monitoring, and trending topics |
+| 📊 [Funds and ETFs](#funds-and-etfs) | 6 | Fund analysis, deep research, manager research, and holdings pressure |
+| 📑 [Bond research](#bond-research) | 7 | Individual bonds, spreads, and regional debt resolution |
+| 🌐 [Markets and policy](#markets-and-policy) | 2 | Macro liquidity and policy meeting comparisons |
+| 🛡️ [Enterprises and risk](#enterprises-and-risk) | 2 | Entity research, risk, and news monitoring |
+| ⚖️ [Futures research](#futures-research) | 1 | Individual futures contract research |
+| 📝 [Research report workflows](#research-report-workflows) | 2 | Working papers, forecast review, and report reconstruction |
+| 💻 [Quantitative tools](#quantitative-tools) | 1 | Choice API selection and programmatic data retrieval |
+| **Total** | **47** | |
+
+### Core financial tools
+
+Queries retrieve data for known instruments; screening finds instruments that match criteria; watchlist tools manage your own lists. MQL provides reusable data retrieval for research workflows.
+
+| Skill | Purpose |
+| --- | --- |
+| [Financial data queries · `mx-finance-data`](./skills/mx-finance-data/) | Retrieve structured market, valuation, and financial metrics with Excel and Markdown outputs |
+| [Financial information search · `mx-finance-search`](./skills/mx-finance-search/) | Search announcements, reports, news, and policy for a specified subject |
+| [Macro data queries · `mx-macro-data`](./skills/mx-macro-data/) | Retrieve economic, price, monetary, fiscal, trade, and industry data |
+| [Private knowledge base search · `mx-personal-kb-search`](./skills/mx-personal-kb-search/) | Search Miaoxiang knowledge bases explicitly selected by the user |
+| [Financial assistant · `mx-financial-assistant`](./skills/mx-financial-assistant/) | Answer financial knowledge, data, information, and analysis questions |
+| [Instrument screening · `mx-stocks-screener`](./skills/mx-stocks-screener/) | Screen or rank stocks, funds, ETFs, bonds, futures, sectors, and other supported instruments |
+| [Watchlist management · `mx-self-select`](./skills/mx-self-select/) | View, add, or remove securities in Choice and Eastmoney App watchlists |
+| [Standard MQL queries · `mql-query`](./skills/mql-query/) | Provide query conventions, syntax constraints, templates, and MQL execution for research skills |
+
+### Equity research
+
+#### Comprehensive and focused analysis
+
+| Skill | Purpose |
+| --- | --- |
+| [Stock diagnosis · `stock-diagnosis`](./skills/stock-diagnosis/) | Provide an overall assessment of a single A-share stock |
+| [Fundamental analysis · `stock-fundamental-analysis`](./skills/stock-fundamental-analysis/) | Analyze financial quality, earnings growth, operations, and valuation |
+| [Technical analysis · `stock-technical-analysis`](./skills/stock-technical-analysis/) | Analyze trends, price and volume, candlesticks, indicators, support, and resistance |
+| [Capital flow analysis · `stock-capital-analysis`](./skills/stock-capital-analysis/) | Analyze fund flows, trading activity, and shareholding dynamics |
+| [News analysis · `stock-news-analysis`](./skills/stock-news-analysis/) | Assess potential effects of announcements, news, policy, and events |
+| [Institutional views · `stock-institutional-opinion`](./skills/stock-institutional-opinion/) | Summarize ratings, targets, forecasts, and institutional consensus or disagreement |
+
+#### Price moves and unusual activity
+
+| Skill | Purpose |
+| --- | --- |
+| [Price movement analysis · `stock-price-movement-analysis`](./skills/stock-price-movement-analysis/) | Explain a specified rise or fall in a single A-share stock within the past month |
+| [Price anomaly review · `stock-price-anomaly-analysis`](./skills/stock-price-anomaly-analysis/) | Identify unusual activity and review a single stock using events, flows, and supporting evidence |
+
+#### Company reports and comparisons
+
+| Skill | Purpose |
+| --- | --- |
+| [Company deep research · `stock-deep-research`](./skills/stock-deep-research/) | Produce detailed listed-company research and a one-page report |
+| [Initiation or deep-dive report · `initiation-of-coverage-or-deep-dive`](./skills/initiation-of-coverage-or-deep-dive/) | Generate an initiation-of-coverage or company deep-dive report through a service API |
+| [Earnings review · `stock-earnings-review`](./skills/stock-earnings-review/) | Analyze quarterly, half-year, and annual reports and earnings performance |
+| [Comparable company analysis · `comparable-company-analysis`](./skills/comparable-company-analysis/) | Compare A-share peers' operations, financials, and valuation in an Excel report |
+
+### Industries and market themes
+
+| Skill | Purpose |
+| --- | --- |
+| [Industry deep research · `industry-deep-research`](./skills/industry-deep-research/) | Research industries, market themes, and industry-related equity indices |
+| [Industry research report · `industry-research-report`](./skills/industry-research-report/) | Generate a report for a specified industry through a service API |
+| [Industry and sector analysis · `industry-sector-analysis`](./skills/industry-sector-analysis/) | Analyze A-share industries and thematic sectors, business conditions, value chains, and drivers |
+| [Industry and stock tracking · `industry-stock-tracker`](./skills/industry-stock-tracker/) | Generate daily, weekly, monthly, or recent-development reports |
+| [Thematic research · `topic-research-report`](./skills/topic-research-report/) | Research cross-industry policy, events, and trends |
+| [Market hotspot discovery · `stock-market-hotspot-discovery`](./skills/stock-market-hotspot-discovery/) | Discover trending market news, stocks, and themes |
+
+### Funds and ETFs
+
+| Skill | Purpose |
+| --- | --- |
+| [Fund diagnosis · `fund-diagnosis`](./skills/fund-diagnosis/) | Assess a single public fund's returns, risk, and considerations for holders |
+| [Fund research report · `fund-research`](./skills/fund-research/) | Generate a detailed fund report and Markdown working papers through a service API |
+| [Fund deep research · `fund-deep-research`](./skills/fund-deep-research/) | Produce detailed research and a one-page report for a single non-ETF public fund traded off-exchange |
+| [Fund manager research · `fund-manager-research`](./skills/fund-manager-research/) | Research a single manager's career, investment style, and performance |
+| [ETF deep research · `etf-deep-research`](./skills/etf-deep-research/) | Analyze a single ETF's size, liquidity, performance, risk, and holdings |
+| [Top holdings pressure insight · `top-holdings-pressure-insight`](./skills/top-holdings-pressure-insight/) | Assess potential buying and selling pressure in major fund holdings across short and long horizons |
+
+### Bond research
+
+| Skill | Purpose |
+| --- | --- |
+| [Credit bond research · `credit-bond-deep-research`](./skills/credit-bond-deep-research/) | Analyze a single credit bond's creditworthiness, financials, spreads, and risks |
+| [Convertible bond research · `convertible-bond-deep-research`](./skills/convertible-bond-deep-research/) | Analyze valuation, bond floor, contractual terms, and underlying-stock linkage |
+| [Local government bond research · `government-bond-deep-research`](./skills/government-bond-deep-research/) | Analyze issuance, valuation, regional finances, and debt for a single local government bond |
+| [New government and policy bank bond research · `primary-bond-deep-research`](./skills/primary-bond-deep-research/) | Analyze issuance pricing, post-listing liquidity, and prospects for becoming a benchmark bond |
+| [On-the-run bond research · `on-the-run-bond-deep-research`](./skills/on-the-run-bond-deep-research/) | Analyze benchmark bond yields, liquidity, supply, and institutional activity |
+| [Spread analysis · `credit-spread-deep-research`](./skills/credit-spread-deep-research/) | Analyze spreads by instrument, tenor, rating, credit, taxation, and liquidity |
+| [Local government debt analysis · `local-government-debt-analysis`](./skills/local-government-debt-analysis/) | Research a region's economy, public finances, debt burden, and debt resolution progress |
+
+### Markets and policy
+
+| Skill | Purpose |
+| --- | --- |
+| [Macro liquidity research · `market-liquidity-deep-research`](./skills/market-liquidity-deep-research/) | Analyze central bank operations, interbank liquidity, and quarter-end funding conditions |
+| [Policy meeting comparison · `meeting-minutes-comparison`](./skills/meeting-minutes-comparison/) | Compare policy meeting language, analytical dimensions, and policy changes |
+
+### Enterprises and risk
+
+Enterprise research supports entity due diligence and extends beyond listed equities.
+
+| Skill | Purpose |
+| --- | --- |
+| [Enterprise deep research · `enterprise-deep-research`](./skills/enterprise-deep-research/) | Analyze governance, operations, financials, debt servicing, credit, and legal risks |
+| [Enterprise alert monitoring · `enterprise-alert-monitoring`](./skills/enterprise-alert-monitoring/) | Track public sentiment, key events, related entities, and risk propagation |
+
+### Futures research
+
+| Skill | Purpose |
+| --- | --- |
+| [Futures contract research · `futures-deep-research`](./skills/futures-deep-research/) | Analyze volume, open interest, basis, term structure, inventory, and supply and demand for a single contract |
+
+### Research report workflows
+
+| Skill | Purpose |
+| --- | --- |
+| [Research report review · `research-report-review`](./skills/research-report-review/) | Extract tables and charts, verify data, build refreshable working papers, and review forecasts |
+| [Research report reconstruction · `sellside-research-refresh-with-excel`](./skills/sellside-research-refresh-with-excel/) | Follow an existing report's framework to generate a report, Excel working papers, and evaluation results for a new subject or period |
+
+### Quantitative tools
+
+| Skill | Purpose |
+| --- | --- |
+| [Choice API data retrieval · `choice-quantapi-skill`](./skills/choice-quantapi-skill/) | Find EMQuantAPI documentation, select endpoints, and generate Python data retrieval code |
+
+The “quantitative API” label follows Choice product terminology. This skill primarily supports programmatic data access and data preparation for strategy research. It does not include a standalone trading or backtesting engine.
+
+## ⚙️ Installation and usage
+
+### Choose the installation scope
+
+The following commands use [Skills CLI](https://github.com/vercel-labs/skills), requiring Node.js 22.20 or later and npm. The first `npx` invocation may prompt you to download the tool.
+
+List available skills:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --list
+```
+
+Install one skill in the current project:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis
+```
+
+Install several skills together:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
+```
+
+Installation defaults to project scope. Add `-g` for global reuse across projects:
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -g
+```
+
+Select installation targets when prompted. Full workflow compatibility depends on the client's skill loading, script runtime, and tool connections; successful installation alone does not verify execution.
+
+### Install from a local checkout
+
+```bash
+git clone https://github.com/GraceXiaoo/EastmoneySkills.git
+cd EastmoneySkills
+npx skills add . --list
+npx skills add . --skill stock-diagnosis
+```
+
+For manual installation, follow your client's instructions and copy the complete skill directory to the required location. Keep `SKILL.md` and all supporting resources together, then reload or restart the client.
+
+### Describe your research task
+
+After installation, configure authorization, MCP, or the SDK as required by the skill. Example requests:
+
+```text
+Retrieve the latest reported revenue and net profit for Kweichow Moutai
+and Wuliangye. Return a complete data table.
+
+Analyze current capital flows for CATL and state the data timestamp.
+
+Analyze E Fund Blue Chip Selected Mixed (005827) and produce a one-page
+deep research report for this off-exchange fund.
+
+Compare the economic policy language of two Politburo meetings,
+with citations to the original sources.
+
+Extract the charts and data from this research report, verify the
+definitions, and build Excel working papers.
+```
+
+Specify the **subject, time range, analytical focus, and deliverable**. For example: “Review this company's latest financial report, focusing on earnings quality and cash flow, and return a Markdown commentary with sources.” For single-instrument research, focus on one instrument per request.
+
+## 🔑 Services and dependencies
+
+Running a skill requires the relevant data permissions, service connections, and software environment. Installing a skill and authorizing its data services are separate steps.
+
+| Capability | Requirements to confirm |
+| --- | --- |
+| Miaoxiang API queries, diagnosis, and reports | Service access and authentication following the skill's instructions; some workflows use `EM_API_KEY` |
+| MQL and dependent research workflows | Connected MQL MCP, required query tools, and data permissions |
+| Announcements, news, and report search | The text retrieval service or MCP specified by the skill |
+| Choice API data retrieval | Python, a working EMQuantAPI SDK, an account, and endpoint data permissions |
+| HTML, Excel, Word, and PDF outputs | Script dependencies and document generation or rendering tools specified by the skill |
+
+Official entry points: [Miaoxiang Skills website](https://ai.eastmoney.com/skills) · [Eastmoney Miaoxiang chat](https://ai.eastmoney.com/chat). Read the selected skill for authorization steps, environment variables, tool names, and dependency versions. Credentials and permissions may be managed separately for different services.
+
+Keep keys in your local environment or the service's designated credential storage. Do not commit them to GitHub or include them in Issues.
+
+For skills supporting QR authorization, follow the built-in process. Scripts requiring `EM_API_KEY` need that environment variable set before execution. This repository does not include usable keys; do not insert personal keys into scripts, examples, or reference documents.
+
+## 💬 FAQ
+
+### How do I choose between similar research skills?
+
+| Need | Selection |
+| --- | --- |
+| Quick overall stock or fund assessment | `stock-diagnosis` or `fund-diagnosis` |
+| One analytical dimension, such as technicals or capital flows | The corresponding specialized equity analysis skill |
+| A one-page company, off-exchange fund, or ETF report | The relevant `*-deep-research` skill |
+| An API-generated initiation, industry, or fund report | `initiation-of-coverage-or-deep-dive`, `industry-research-report`, or `fund-research` |
+| Extract and verify an existing report | `research-report-review` |
+| Generate a new report using an existing report's framework | `sellside-research-refresh-with-excel` |
+
+Trigger scopes may overlap. Specify the skill or output format to help the client select the intended workflow.
+
+### Are all markets and output formats supported?
+
+No. Some diagnosis skills support only A-shares; one-page research typically covers a single instrument. Output formats vary between Markdown, HTML, Excel, Word, and PDF. Check each skill's supported scope.
+
+### Why does an installed skill fail to run?
+
+Check service authorization, visible MCP tools, data permissions, and script dependencies first. Copying only `SKILL.md` may omit required scripts and templates; install the complete directory.
+
+### Do README categories affect installation?
+
+Categories are for navigation. Every skill is under `skills/` and installs by its directory name. Changing the display category does not change the installation name.
+
+## 🗂️ Repository structure
+
+```text
+EastmoneySkills/
+├── README.md
+├── README.en.md
+└── skills/
+    ├── mx-finance-data/
+    ├── stock-diagnosis/
+    ├── stock-deep-research/
+    ├── fund-deep-research/
+    └── …
+```
+
+Each skill contains `SKILL.md` and may include `scripts/`, `references/`, `reference/`, `assets/`, or example files. Preserve the complete directory when installing, copying, or updating.
+
+## 🤝 Maintenance and feedback
+
+Report problems or request capabilities through [Issues](https://github.com/GraceXiaoo/EastmoneySkills/issues). Include:
+
+- Skill name and version.
+- Client, operating system, and relevant runtime details.
+- A reproducible task description, actual result, and expected result.
+- Redacted errors or necessary screenshots.
+
+Maintenance changes should update skill descriptions, versions, dependencies, and README navigation, and check directory links, counts, and affected workflows. Keep credentials, private materials, and unauthorized data out of feedback and contributions.
+
+## 📄 Rights and usage
+
+Rights to skills, supporting code, templates, and references belong to their respective rights holders. Usage is governed by the licenses, copyright notices, and applicable service terms in each directory. Some skills currently declare `license: proprietary`. This repository does not declare a single open-source license; public availability does not grant additional rights to copy, redistribute, or use materials commercially.
+
+Eastmoney, Miaoxiang, Choice, and other product names and trademarks belong to their respective owners. Access to and use of financial data, research reports, announcements, and retrieved materials remain subject to the source providers' authorization terms.
+
+Research outputs assist information organization and analysis and do not constitute investment advice. Verify data timestamps, sources, and calculation definitions before making decisions.
+
+### Documentation and tool references
+
+This README was independently written around the capabilities in this repository. Its organization draws on community practices for overviews, quick starts, and category navigation, including [claude-skills](https://github.com/alirezarezvani/claude-skills) and [AliceMarket](https://github.com/Wind-Alice/AliceMarket). Installation examples use [Skills CLI](https://github.com/vercel-labs/skills). Those projects' code, wording, and licenses do not automatically apply to this repository.
