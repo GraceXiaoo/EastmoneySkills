@@ -10,7 +10,7 @@
 
 从“查一个指标”到“完成一份研究报告”，按任务选择所需能力，通过自然语言调用，并按相应流程交付数据表、分析结论或研究文档。
 
-**快速导航：** [快速开始](#-快速开始) · [按任务选择](#-从问题选-skill) · [能力目录](#-能力目录) · [安装指南](#-安装与使用) · [服务与依赖](#-服务与依赖) · [常见问题](#-常见问题) · [版权与使用](#-版权与使用)
+**快速导航：** [快速开始](#-快速开始) · [支持的 Agent](#-支持的-agent) · [按任务选择](#-从问题选-skill) · [能力目录](#-能力目录) · [安装指南](#-安装与使用) · [服务与依赖](#-服务与依赖) · [常见问题](#-常见问题) · [版权与使用](#-版权与使用)
 
 ## 🧭 项目概览
 
@@ -26,7 +26,7 @@ Skill 负责组织任务；MCP 提供连接到客户端的工具；API/SDK 提�
 
 ## 🚀 快速开始
 
-准备支持 Skill 加载的 AI 客户端，以及 Node.js 与 npm，先安装与你的任务相关的能力：
+准备支持 Skill 加载的 AI 客户端，以及 Node.js 22.20 或更高版本与 npm，先安装与你的任务相关的能力：
 
 ```bash
 npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosis
@@ -45,6 +45,32 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
 安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。本地能力发现已验证能识别全部 47 个 Skill；具体客户端的加载、MCP 连接及在线执行需在相应环境中验证。
+
+## 🤖 支持的 Agent
+
+可通过 Skills CLI 向以下客户端定向安装。表格依据安装工具的 [Agent 支持清单](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)，表示安装工具支持的目标，不等于本仓库已在每个客户端完成全部金融流程测试。
+
+| Agent / 客户端 | 安装参数 | 接入方式 |
+| --- | --- | --- |
+| Claude Code | `-a claude-code` | 安装完整 Skill，并按需配置服务与 MCP |
+| OpenAI Codex | `-a codex` | 安装完整 Skill，并按需配置服务与 MCP |
+| Cursor | `-a cursor` | 安装到支持 Skill 的客户端版本，并配置所需工具 |
+| OpenClaw | `-a openclaw` | 安装完整 Skill，并配置脚本执行环境和服务连接 |
+| Gemini CLI | `-a gemini-cli` | 安装完整 Skill，并配置所需工具与运行环境 |
+| Hermes Agent | `-a hermes-agent` | 安装完整 Skill，并配置所需工具与运行环境 |
+| OpenCode | `-a opencode` | 安装完整 Skill，并配置所需工具与运行环境 |
+| Windsurf | `-a windsurf` | 安装到支持 Skill 的客户端版本，并配置所需工具 |
+
+例如，指定安装到 Claude Code 或 Codex：
+
+```bash
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
+```
+
+**当前验证范围：** 本地 Skills CLI 已识别全部 47 个 Skill；Python 脚本已通过语法检查，部分凭据处理已通过离线检查。尚未逐一完成上述客户端的在线数据调用、MCP 连接和报告生成测试。
+
+运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
 
 ## 🎯 从问题选 Skill
 
@@ -198,7 +224,7 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 
 ### 选择安装范围
 
-以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `GraceXiaoo/EastmoneySkills`。
+以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 22.20 或更高版本与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `GraceXiaoo/EastmoneySkills`。
 
 列出可安装的 Skill：
 
