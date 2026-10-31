@@ -2,7 +2,7 @@
 
 [![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#-能力目录)
 [![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#-能力目录)
-[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
 
 **面向 AI Agent 的金融数据查询与专业研究工作流。**
 
