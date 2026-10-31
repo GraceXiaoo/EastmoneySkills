@@ -111,7 +111,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 | Skill | 用途 |
 | --- | --- |
-| [金融数据查询 · `mx-finance-data`](./skills/mx-finance-data/) | 查询行情、估值、财务等金融结构化指标，交付 Excel 与 Markdown |
+| [金融数据查询 · `mx-finance-data`](./skills/mx-finance-data/) | 用自然语言查询 A 股、港股、美股、基金、债券、指数及企业等对象的行情、估值、财务、技术指标与资金流向；支持单标的及多标的批量查询，输出 Excel 原始数据表与 Markdown 展示表 |
 | [金融资讯检索 · `mx-finance-search`](./skills/mx-finance-search/) | 按明确对象检索公告、研报、新闻和政策 |
 | [宏观数据查询 · `mx-macro-data`](./skills/mx-macro-data/) | 查询经济、价格、货币、财政、贸易和产业数据等宏观数据，返回 CSV 与数据说明 |
 | [私域知识库检索 · `mx-personal-kb-search`](./skills/mx-personal-kb-search/) | 检索用户明确指定的妙想知识库资料 |
