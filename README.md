@@ -160,24 +160,24 @@
 
 ### 选择安装范围
 
-以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `GraceXiaoo/miaoxiang-skills`。
+以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `GraceXiaoo/EastmoneySkills`。
 
 列出可安装的 Skill：
 
 ```bash
-npx skills add GraceXiaoo/miaoxiang-skills --list
+npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
 安装一个 Skill 到当前项目：
 
 ```bash
-npx skills add GraceXiaoo/miaoxiang-skills --skill stock-diagnosis
+npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis
 ```
 
 一次选择多个 Skill：
 
 ```bash
-npx skills add GraceXiaoo/miaoxiang-skills --skill mx-finance-data mx-finance-search stock-diagnosis
+npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
 ```
 
 需要全局安装时，为命令增加 `-g`；具体安装目标按工具提示选择。安装位置和可用范围取决于客户端及安装工具，不代表所有 Agent 都已验证兼容。
