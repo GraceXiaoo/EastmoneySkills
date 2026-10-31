@@ -61,7 +61,7 @@ Send this request to an agent that can install skills, execute commands, or down
 
 ```text
 Install the skills for me from:
-https://github.com/GraceXiaoo/EastmoneySkills/tree/main
+https://github.com/GraceXiaoo/EastmoneySkills
 ```
 
 The agent can help download and install skills for your client environment. To install only selected capabilities, include their names, such as `mx-finance-data` and `stock-diagnosis`.
