@@ -353,7 +353,7 @@ Maintenance changes should update skill descriptions, versions, dependencies, an
 
 ## 📄 Rights and usage
 
-Rights to skills, supporting code, templates, and references belong to their respective rights holders. Usage is governed by the licenses, copyright notices, and applicable service terms in each directory. Some skills currently declare `license: proprietary`. This repository does not declare a single open-source license; public availability does not grant additional rights to copy, redistribute, or use materials commercially.
+Copyright in this repository's contents belongs to the respective rights holders. Installation and use are subject to each skill's license terms and the applicable service terms. Copying, redistribution, or commercial use beyond those permissions requires prior authorization from the rights holder.
 
 Eastmoney, Miaoxiang, Choice, and other product names and trademarks belong to their respective owners. Access to and use of financial data, research reports, announcements, and retrieved materials remain subject to the source providers' authorization terms.
 
