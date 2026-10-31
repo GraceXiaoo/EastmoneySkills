@@ -348,7 +348,3 @@ EastmoneySkills/
 东方财富、妙想、Choice 及其他文中提及的产品名称和商标归各自权利人所有。金融数据、研报、公告及检索材料的访问与使用仍受对应来源的授权条款约束。
 
 研究结果用于信息整理与分析辅助，不构成投资建议；涉及决策时，应核验数据时点、来源和计算口径。
-
-### 文档与工具参考
-
-本 README 的内容结合本仓库实际能力独立编写；信息组织参考了社区 Skill 仓库的概览、快速开始和分类导航实践，包括 [claude-skills](https://github.com/alirezarezvani/claude-skills) 与 [AliceMarket](https://github.com/Wind-Alice/AliceMarket)。安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。这些项目的代码、文案与许可不自动适用于本仓库。
