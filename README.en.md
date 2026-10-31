@@ -14,7 +14,6 @@ Choose a skill for your task, describe the request in natural language, and prod
 
 🌐 **Official website: [Eastmoney Miaoxiang Skills](https://ai.eastmoney.com/skills)**
 
-**Explore:** [Quick start](#-quick-start) · [Supported agents](#-supported-agents) · [Choose a skill](#-choose-a-skill) · [Catalog](#-skill-catalog) · [Installation](#-installation-and-usage) · [Dependencies](#-services-and-dependencies) · [FAQ](#-faq) · [Rights and usage](#-rights-and-usage)
 
 ## 🧭 Overview
 
@@ -91,21 +90,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
 Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
-
-## 🎯 Choose a skill
-
-| Your task | Start here |
-| --- | --- |
-| Look up prices, valuation, or financial metrics for a known company | [Financial data queries](./skills/mx-finance-data/) |
-| Find announcements, research reports, or financial news about an event | [Financial information search](./skills/mx-finance-search/) |
-| Screen instruments using financial, technical, or other criteria | [Instrument screening](./skills/mx-stocks-screener/) |
-| Get a quick overall assessment of an A-share stock | [Stock diagnosis](./skills/stock-diagnosis/) |
-| Research a listed company and produce a one-page report | [Company deep research](./skills/stock-deep-research/) |
-| Analyze a fund's returns, risk, and holdings | [Fund diagnosis](./skills/fund-diagnosis/) or [Fund deep research](./skills/fund-deep-research/) for a one-page report |
-| Extract report data, verify definitions, or review forecasts | [Research report review](./skills/research-report-review/) |
-| Retrieve Choice data repeatedly or in batches with Python | [Choice API data retrieval](./skills/choice-quantapi-skill/) |
-
-Choose a specialized skill when your task is clear. For broader financial questions, start with the [Financial assistant](./skills/mx-financial-assistant/).
 
 ## 📚 Skill catalog
 
