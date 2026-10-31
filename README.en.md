@@ -358,7 +358,3 @@ Rights to skills, supporting code, templates, and references belong to their res
 Eastmoney, Miaoxiang, Choice, and other product names and trademarks belong to their respective owners. Access to and use of financial data, research reports, announcements, and retrieved materials remain subject to the source providers' authorization terms.
 
 Research outputs assist information organization and analysis and do not constitute investment advice. Verify data timestamps, sources, and calculation definitions before making decisions.
-
-### Documentation and tool references
-
-This README was independently written around the capabilities in this repository. Its organization draws on community practices for overviews, quick starts, and category navigation, including [claude-skills](https://github.com/alirezarezvani/claude-skills) and [AliceMarket](https://github.com/Wind-Alice/AliceMarket). Installation examples use [Skills CLI](https://github.com/vercel-labs/skills). Those projects' code, wording, and licenses do not automatically apply to this repository.
