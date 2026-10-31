@@ -10,6 +10,8 @@
 
 从“查一个指标”到“完成一份研究报告”，按任务选择所需能力，通过自然语言调用，并按相应流程交付数据表、分析结论或研究文档。
 
+🌐 **官网：[东方财富·妙想 Skills](https://ai.eastmoney.com/skills)**
+
 **快速导航：** [快速开始](#-快速开始) · [支持的 Agent](#-支持的-agent) · [按任务选择](#-从问题选-skill) · [能力目录](#-能力目录) · [安装指南](#-安装与使用) · [服务与依赖](#-服务与依赖) · [常见问题](#-常见问题) · [版权与使用](#-版权与使用)
 
 ## 🧭 项目概览
@@ -291,7 +293,7 @@ npx skills add . --skill stock-diagnosis
 | Choice API 程序化取数 | Python、可用的 EMQuantAPI SDK、账号与接口数据权限 |
 | HTML、Excel、Word、PDF 等交付 | 按对应 Skill 安装脚本依赖、文档生成与渲染工具 |
 
-服务入口：[东方财富·妙想](https://ai.eastmoney.com/chat)。具体授权流程、环境变量、工具名称和依赖版本请阅读所选 Skill。不同服务的凭据和数据权限可能分别管理。
+官方入口：[妙想 Skills 官网](https://ai.eastmoney.com/skills) · [东方财富·妙想对话](https://ai.eastmoney.com/chat)。具体授权流程、环境变量、工具名称和依赖版本请阅读所选 Skill。不同服务的凭据和数据权限可能分别管理。
 
 密钥应保存在本地环境或服务指定的凭据位置，不提交到 GitHub，也不填写在 Issue 中。
 
