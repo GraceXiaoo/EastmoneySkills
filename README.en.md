@@ -90,10 +90,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
 npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
-**Validation scope:** all 47 skills have been discovered locally by Skills CLI. Python scripts have passed syntax checks, and selected credential-handling paths have passed offline checks. Online data calls, MCP connections, and report generation have not been tested across every client listed above.
-
-**Documentation review (2026-10-31):** both catalogs were checked against the individual skill instructions; 140 Python files passed syntax checks; installation flags and the Node.js requirement were checked against official Skills CLI documentation. Catalog entries describe workflows defined by the skills, rather than completed online acceptance tests. No SkillCheck validation report is currently available.
-
 **Known release issue:** `sellside-research-refresh-with-excel` is missing `bundle/review`, `bundle/drafting`, and `bundle_manifest.json`, and its skill and runtime manifest versions differ. Its built-in `check_bundle.py` returns `BLOCKED`; the current package cannot complete the full reconstruction workflow. CLI discovery from GitHub could not be completed because cloning failed with a network error; local directory discovery passed.
 
 Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
