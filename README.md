@@ -222,7 +222,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 这里的“量化 API”沿用 Choice 产品名称。该 Skill 主要服务于程序化数据获取及策略研究的数据准备，本身不提供独立的交易或回测引擎。
 
-## ⚙️ 安装与使用
+## ⚙️ 详细安装流程
 
 ### 选择安装范围
 
