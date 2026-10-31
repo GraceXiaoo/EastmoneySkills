@@ -77,6 +77,10 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 **Validation scope:** all 47 skills have been discovered locally by Skills CLI. Python scripts have passed syntax checks, and selected credential-handling paths have passed offline checks. Online data calls, MCP connections, and report generation have not been tested across every client listed above.
 
+**Documentation review (2026-10-31):** both catalogs were checked against the individual skill instructions; 140 Python files passed syntax checks; installation flags and the Node.js requirement were checked against official Skills CLI documentation. Catalog entries describe workflows defined by the skills, rather than completed online acceptance tests. No SkillCheck validation report is currently available.
+
+**Known release issue:** `sellside-research-refresh-with-excel` is missing `bundle/review`, `bundle/drafting`, and `bundle_manifest.json`, and its skill and runtime manifest versions differ. Its built-in `check_bundle.py` returns `BLOCKED`; the current package cannot complete the full reconstruction workflow. CLI discovery from GitHub could not be completed because cloning failed with a network error; local directory discovery passed.
+
 Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
 
 ## 🎯 Choose a skill
@@ -120,16 +124,18 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 | --- | --- |
 | [Financial data queries · `mx-finance-data`](./skills/mx-finance-data/) | Retrieve structured market, valuation, and financial metrics with Excel and Markdown outputs |
 | [Financial information search · `mx-finance-search`](./skills/mx-finance-search/) | Search announcements, reports, news, and policy for a specified subject |
-| [Macro data queries · `mx-macro-data`](./skills/mx-macro-data/) | Retrieve economic, price, monetary, fiscal, trade, and industry data |
+| [Macro data queries · `mx-macro-data`](./skills/mx-macro-data/) | Retrieve economic, price, monetary, fiscal, trade, and industry data with CSV output and data notes |
 | [Private knowledge base search · `mx-personal-kb-search`](./skills/mx-personal-kb-search/) | Search Miaoxiang knowledge bases explicitly selected by the user |
 | [Financial assistant · `mx-financial-assistant`](./skills/mx-financial-assistant/) | Answer financial knowledge, data, information, and analysis questions |
-| [Instrument screening · `mx-stocks-screener`](./skills/mx-stocks-screener/) | Screen or rank stocks, funds, ETFs, bonds, futures, sectors, and other supported instruments |
-| [Watchlist management · `mx-self-select`](./skills/mx-self-select/) | View, add, or remove securities in Choice and Eastmoney App watchlists |
+| [Instrument screening · `mx-stocks-screener`](./skills/mx-stocks-screener/) | Screen or rank stocks, funds, ETFs, convertible bonds, domestic futures, sectors, and other supported instruments, with CSV output and data notes |
+| [Watchlist management · `mx-self-select`](./skills/mx-self-select/) | Query Choice and Eastmoney App watchlists; adding and removing securities is supported only for A-share, Hong Kong, and US stocks in Choice watchlists |
 | [Standard MQL queries · `mql-query`](./skills/mql-query/) | Provide query conventions, syntax constraints, templates, and MQL execution for research skills |
 
 ### Equity research
 
 #### Comprehensive and focused analysis
+
+The following six skills target a single Shanghai, Shenzhen, or Beijing A-share stock. Their scope does not imply support for Hong Kong or US stocks or batch analysis.
 
 | Skill | Purpose |
 | --- | --- |
@@ -145,7 +151,7 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 | Skill | Purpose |
 | --- | --- |
 | [Price movement analysis · `stock-price-movement-analysis`](./skills/stock-price-movement-analysis/) | Explain a specified rise or fall in a single A-share stock within the past month |
-| [Price anomaly review · `stock-price-anomaly-analysis`](./skills/stock-price-anomaly-analysis/) | Identify unusual activity and review a single stock using events, flows, and supporting evidence |
+| [Price anomaly review · `stock-price-anomaly-analysis`](./skills/stock-price-anomaly-analysis/) | Produce price-move rankings or a single-stock review; defaults to A-shares and defines workflows for Hong Kong, US, and other markets, subject to available data tools |
 
 #### Company reports and comparisons
 
@@ -165,7 +171,7 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 | [Industry and sector analysis · `industry-sector-analysis`](./skills/industry-sector-analysis/) | Analyze A-share industries and thematic sectors, business conditions, value chains, and drivers |
 | [Industry and stock tracking · `industry-stock-tracker`](./skills/industry-stock-tracker/) | Generate daily, weekly, monthly, or recent-development reports |
 | [Thematic research · `topic-research-report`](./skills/topic-research-report/) | Research cross-industry policy, events, and trends |
-| [Market hotspot discovery · `stock-market-hotspot-discovery`](./skills/stock-market-hotspot-discovery/) | Discover trending market news, stocks, and themes |
+| [Market hotspot discovery · `stock-market-hotspot-discovery`](./skills/stock-market-hotspot-discovery/) | Discover trending A-share market news, stocks, and themes |
 
 ### Funds and ETFs
 
@@ -185,7 +191,7 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 | [Credit bond research · `credit-bond-deep-research`](./skills/credit-bond-deep-research/) | Analyze a single credit bond's creditworthiness, financials, spreads, and risks |
 | [Convertible bond research · `convertible-bond-deep-research`](./skills/convertible-bond-deep-research/) | Analyze valuation, bond floor, contractual terms, and underlying-stock linkage |
 | [Local government bond research · `government-bond-deep-research`](./skills/government-bond-deep-research/) | Analyze issuance, valuation, regional finances, and debt for a single local government bond |
-| [New government and policy bank bond research · `primary-bond-deep-research`](./skills/primary-bond-deep-research/) | Analyze issuance pricing, post-listing liquidity, and prospects for becoming a benchmark bond |
+| [New interest-rate bond research · `primary-bond-deep-research`](./skills/primary-bond-deep-research/) | Analyze a single newly issued interest-rate bond's pricing, post-listing liquidity, and prospects for becoming a benchmark bond |
 | [On-the-run bond research · `on-the-run-bond-deep-research`](./skills/on-the-run-bond-deep-research/) | Analyze benchmark bond yields, liquidity, supply, and institutional activity |
 | [Spread analysis · `credit-spread-deep-research`](./skills/credit-spread-deep-research/) | Analyze spreads by instrument, tenor, rating, credit, taxation, and liquidity |
 | [Local government debt analysis · `local-government-debt-analysis`](./skills/local-government-debt-analysis/) | Research a region's economy, public finances, debt burden, and debt resolution progress |
@@ -195,7 +201,7 @@ Queries retrieve data for known instruments; screening finds instruments that ma
 | Skill | Purpose |
 | --- | --- |
 | [Macro liquidity research · `market-liquidity-deep-research`](./skills/market-liquidity-deep-research/) | Analyze central bank operations, interbank liquidity, and quarter-end funding conditions |
-| [Policy meeting comparison · `meeting-minutes-comparison`](./skills/meeting-minutes-comparison/) | Compare policy meeting language, analytical dimensions, and policy changes |
+| [Policy meeting comparison · `meeting-minutes-comparison`](./skills/meeting-minutes-comparison/) | Retrieve source text, obtain user confirmation of meetings and dimensions, compare them with the model, and generate a Word document using the script |
 
 ### Enterprises and risk
 
@@ -217,7 +223,7 @@ Enterprise research supports entity due diligence and extends beyond listed equi
 | Skill | Purpose |
 | --- | --- |
 | [Research report review · `research-report-review`](./skills/research-report-review/) | Extract tables and charts, verify data, build refreshable working papers, and review forecasts |
-| [Research report reconstruction · `sellside-research-refresh-with-excel`](./skills/sellside-research-refresh-with-excel/) | Follow an existing report's framework to generate a report, Excel working papers, and evaluation results for a new subject or period |
+| [Research report reconstruction · `sellside-research-refresh-with-excel`](./skills/sellside-research-refresh-with-excel/) | Defines a workflow for generating a new report, Excel working papers, and evaluation results using an existing framework; full execution is currently blocked by missing required bundles |
 
 ### Quantitative tools
 
@@ -302,6 +308,7 @@ Running a skill requires the relevant data permissions, service connections, and
 | MQL and dependent research workflows | Connected MQL MCP, required query tools, and data permissions |
 | Announcements, news, and report search | The text retrieval service or MCP specified by the skill |
 | Choice API data retrieval | Python, a working EMQuantAPI SDK, an account, and endpoint data permissions |
+| Research report review and reconstruction | An accessible `layoutV2` PDF parsing gateway and valid `EM_API_KEY`; verify deployment placeholders or `EM_BASE_URL` configuration. Refreshing `=mql()` formulas in Excel also requires a working Choice Excel add-in and permissions |
 | HTML, Excel, Word, and PDF outputs | Script dependencies and document generation or rendering tools specified by the skill |
 
 Official entry points: [Miaoxiang Skills website](https://ai.eastmoney.com/skills) · [Eastmoney Miaoxiang chat](https://ai.eastmoney.com/chat). Read the selected skill for authorization steps, environment variables, tool names, and dependency versions. Credentials and permissions may be managed separately for different services.
@@ -321,7 +328,7 @@ For skills supporting QR authorization, follow the built-in process. Scripts req
 | A one-page company, off-exchange fund, or ETF report | The relevant `*-deep-research` skill |
 | An API-generated initiation, industry, or fund report | `initiation-of-coverage-or-deep-dive`, `industry-research-report`, or `fund-research` |
 | Extract and verify an existing report | `research-report-review` |
-| Generate a new report using an existing report's framework | `sellside-research-refresh-with-excel` |
+| Generate a new report using an existing report's framework | Defined by `sellside-research-refresh-with-excel`, but the current package requires its missing bundles to be restored first |
 
 Trigger scopes may overlap. Specify the skill or output format to help the client select the intended workflow.
 
