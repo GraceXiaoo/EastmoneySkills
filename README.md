@@ -1,5 +1,7 @@
 # EastmoneySkills · 东方财富妙想金融技能库
 
+**简体中文** · [English](./README.en.md)
+
 [![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#-能力目录)
 [![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#-能力目录)
 [![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
@@ -331,7 +333,7 @@ npx skills add . --skill stock-diagnosis
 ```text
 EastmoneySkills/
 ├── README.md
-├── .gitignore
+├── README.en.md
 └── skills/
     ├── mx-finance-data/
     ├── stock-diagnosis/
