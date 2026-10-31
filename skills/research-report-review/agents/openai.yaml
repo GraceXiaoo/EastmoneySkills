@@ -1,0 +1,4 @@
+interface:
+  display_name: "研报底稿抽取"
+  short_description: "抽取研报表格、图表截图与指标，生成可核验的 Excel 底稿"
+  default_prompt: "使用 $research-report-review 完整抽取这篇研报的表格、图表截图和指标，生成可核验的 Excel 底稿。"

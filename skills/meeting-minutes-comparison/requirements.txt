@@ -1,0 +1,5 @@
+# generate_policy_document.py（文档生成 HTTP 流水线）
+requests>=2.31
+urllib3>=2.0
+# read_docx.py
+python-docx>=1.1

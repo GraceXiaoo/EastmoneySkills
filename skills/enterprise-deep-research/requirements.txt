@@ -1,0 +1,1 @@
+# enterprise-deep-research local fallback currently uses only the Python standard library.

@@ -1,0 +1,2374 @@
+[
+  {
+    "name": "是否绿色债(AI用)",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\AI研究员搜索\\AI研究员搜索|457922590417606",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "BOND_NAME",
+        "column_name_cn": "债券全称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SFDFZFZ",
+        "column_name_cn": "是否地方政府债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFFYJRJGZ",
+        "column_name_cn": "是否非银金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFKCZ",
+        "column_name_cn": "是否科创债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFYHJRJGZ",
+        "column_name_cn": "是否银行金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFCTZ_DCKJ",
+        "column_name_cn": "是否城投债(东财口径)(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFLSZ",
+        "column_name_cn": "是否绿色债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "AI研究员搜索，逐只调用",
+    "reportId": "457922590417606"
+  },
+  {
+    "name": "债券标签",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\债券标签\\债券标签|457922590417606",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "PROVINCE_CODE_JHDLS",
+        "column_name_cn": "省市代码(计划单列市）",
+        "type": "string"
+      },
+      {
+        "column_name": "PROVINCE_JHDLS",
+        "column_name_cn": "省市(计划单列市）",
+        "type": "string"
+      },
+      {
+        "column_name": "SFCX",
+        "column_name_cn": "是否存续",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFDFZFZ",
+        "column_name_cn": "是否地方政府债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFFYJRJGZ",
+        "column_name_cn": "是否非银金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFKCZ",
+        "column_name_cn": "是否科创债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFYHJRJGZ",
+        "column_name_cn": "是否银行金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFCTZ_DCKJ",
+        "column_name_cn": "是否城投债(东财口径)(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFLSZ",
+        "column_name_cn": "是否绿色债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "逐只SetCodes调用，一次多只仅返回第一只",
+    "reportId": "457922590417606"
+  },
+  {
+    "name": "到期城投债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\到期城投债\\到期城投债|770476112283445",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "ACTUAL_CTRL",
+        "column_name_cn": "实际控制人",
+        "type": "string"
+      },
+      {
+        "column_name": "ADMIN_LEVEL",
+        "column_name_cn": "行政级别",
+        "type": "string"
+      },
+      {
+        "column_name": "AREA",
+        "column_name_cn": "所属地区",
+        "type": "string"
+      },
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "COUPON_INCOME",
+        "column_name_cn": "持有期累计票息收入（每百元）",
+        "type": "double"
+      },
+      {
+        "column_name": "COUP_RETURN_RATE",
+        "column_name_cn": "持有期年化回报率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE_ISSUE",
+        "column_name_cn": "票面利率(发行参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE_ISSUE",
+        "column_name_cn": "票面利率(发行参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "实际到期日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人全称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_PRICE",
+        "column_name_cn": "发行价",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_AGENCY",
+        "column_name_cn": "发行时主体评级机构",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_EXPIRE",
+        "column_name_cn": "到期时主体评级",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_INIT",
+        "column_name_cn": "发行时主体评级",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_SPREAD",
+        "column_name_cn": "发行时信用利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_START_DATE",
+        "column_name_cn": "发行起始日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "LAST_NB_SPREAD",
+        "column_name_cn": "最终利差(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "LAST_NB_SPREAD",
+        "column_name_cn": "最终利差(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "LAST_VALFULL",
+        "column_name_cn": "最终估价全价",
+        "type": "double"
+      },
+      {
+        "column_name": "LAST_YIELD",
+        "column_name_cn": "到期/终止前最后一个交易日估值收益率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_SPREAD",
+        "column_name_cn": "最高值信用利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD",
+        "column_name_cn": "存续期间估值收益率最高值",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD_DATE",
+        "column_name_cn": "最高值日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "MIN_SPREAD",
+        "column_name_cn": "最低值信用利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "MIN_YIELD",
+        "column_name_cn": "存续期间估值收益率最低值",
+        "type": "double"
+      },
+      {
+        "column_name": "MIN_YIELD_DATE",
+        "column_name_cn": "最低值日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "PAY_DESC",
+        "column_name_cn": "付息日说明",
+        "type": "string"
+      },
+      {
+        "column_name": "RATING_CHANGE",
+        "column_name_cn": "存续期间主体评级变动",
+        "type": "string"
+      },
+      {
+        "column_name": "REDEEM_TYPE",
+        "column_name_cn": "兑付方式",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_TERMSOPTION",
+        "column_name_cn": "特殊条款",
+        "type": "string"
+      },
+      {
+        "column_name": "TOTAL_RETURN",
+        "column_name_cn": "持有期总回报",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可调用，字段可唯一绑定；原「字段重复」结论作废",
+    "reportId": "770476112283445"
+  },
+  {
+    "name": "城投债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\到期城投债\\城投债财务部分|556585164769088",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "string"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率",
+        "type": "double"
+      },
+      {
+        "column_name": "DXFZ",
+        "column_name_cn": "带息债务",
+        "type": "double"
+      },
+      {
+        "column_name": "EBITZTFNEW",
+        "column_name_cn": "EBITDA(正推)",
+        "type": "double"
+      },
+      {
+        "column_name": "END_COLLA_BALANCE",
+        "column_name_cn": "担保金额合计",
+        "type": "double"
+      },
+      {
+        "column_name": "GUARANTEE_NETASSET_RATIO",
+        "column_name_cn": "担保金额占净资产比例",
+        "type": "double"
+      },
+      {
+        "column_name": "MONETARYFUNDS",
+        "column_name_cn": "货币资金",
+        "type": "double"
+      },
+      {
+        "column_name": "NETCASH_OPERATE",
+        "column_name_cn": "经营活动产生的现金流量净额",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "QM_BALANCE",
+        "column_name_cn": "受限货币资金",
+        "type": "double"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "TOTAL_ASSETS",
+        "column_name_cn": "总资产",
+        "type": "double"
+      },
+      {
+        "column_name": "TOTAL_LIABILITIES",
+        "column_name_cn": "总负债",
+        "type": "double"
+      },
+      {
+        "column_name": "TYPE_CODE",
+        "column_name_cn": "报表类型",
+        "type": "double"
+      },
+      {
+        "column_name": "YYZB",
+        "column_name_cn": "营运资本",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 加载列中文名为「发行人」",
+    "reportId": "556585164769088"
+  },
+  {
+    "name": "近期所属地区化债进度",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\到期城投债\\存续期内所属地区化债进度|645935680656235",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string",
+        "desc": "来自到期城投债接口AREA_CODE字段"
+      },
+      {
+        "column_name": "END_DATE",
+        "column_name_cn": "截止日期",
+        "type": "datetime",
+        "desc": "来自到期城投债接口EXPIRE_DATE字段",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "IS_NEW",
+        "column_name_cn": "是否最新",
+        "type": "string",
+        "desc": "默认为1"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "DEFUSE_DEBT_OUTLOOK",
+        "column_name_cn": "近期所属地区化债展望",
+        "type": "string"
+      },
+      {
+        "column_name": "DEFUSE_DEBT_PROCESS",
+        "column_name_cn": "近期所属地区化债进度",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "可用；必须带 {截止日期}，地区需本地 FILTER_ROWS 收窄",
+    "reportId": "645935680656235"
+  },
+  {
+    "name": "城投平台基本资料表",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\城投债复用线上接口\\城投平台基本资料表\\城投平台基本资料表|823827806486891",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "ADMINISTRATIVE_LEVEL",
+        "column_name_cn": "行政级别",
+        "type": "string"
+      },
+      {
+        "column_name": "AREA",
+        "column_name_cn": "所属地区",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDIT_RATING",
+        "column_name_cn": "发行人评级",
+        "type": "string"
+      },
+      {
+        "column_name": "CURRENT_AMT",
+        "column_name_cn": "政府补助收入(元)",
+        "type": "double"
+      },
+      {
+        "column_name": "ESTDATE",
+        "column_name_cn": "成立日期",
+        "type": "string"
+      },
+      {
+        "column_name": "GOVSNPRO_RATIO",
+        "column_name_cn": "政府补助收入占利润比(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "IS_MARKET",
+        "column_name_cn": "是否市场化声明",
+        "type": "string"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "ORG_NAME",
+        "column_name_cn": "公司名称",
+        "type": "string"
+      },
+      {
+        "column_name": "RELATED_PARTY_NAME",
+        "column_name_cn": "实际控制人",
+        "type": "string"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "SJKZRKGCTBL",
+        "column_name_cn": "实际控制人控股穿透比例(%)",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_ISLISTED",
+        "column_name_cn": "是否上市",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "STD=False，SetReportFilter传公司代码(ORG_CODE)，返回多期需取最新",
+    "reportId": "823827806486891"
+  },
+  {
+    "name": "中债估价收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\存续城投债\\估值与市场信号_债券利差|061066940812509",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [
+      {
+        "column_name": "TRADE_DATE",
+        "column_name_cn": "基准日期",
+        "type": "datetime",
+        "desc": "系统日期对应的日期(根据案例2获取)",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "TYPE",
+        "column_name_cn": "明细口径",
+        "type": "string",
+        "desc": "默认01",
+        "enumtype": "可选项如下： 01城投债(东财口径) 02城投债(YY口径)"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "GJSYLSHQSS",
+        "column_name_cn": "上清所估价收益率",
+        "type": "double",
+        "desc": "单位：%"
+      },
+      {
+        "column_name": "GJSYLZZZSYXGS",
+        "column_name_cn": "中证估价收益率",
+        "type": "double",
+        "desc": "单位：%"
+      },
+      {
+        "column_name": "MARGIN",
+        "column_name_cn": "债券利差",
+        "type": "double",
+        "desc": "单位：BP"
+      },
+      {
+        "column_name": "MARGIN_BASE_CTZ",
+        "column_name_cn": "超额利差(BP)",
+        "type": "double",
+        "desc": "单位：BP"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "VALYTM",
+        "column_name_cn": "中债估价收益率",
+        "type": "double",
+        "desc": "单位：%"
+      }
+    ],
+    "availability": "BROKEN",
+    "availability_note": "加载列「基准日期」类型 detime 无效，元数据损坏，调用即失败",
+    "reportId": "061066940812509"
+  },
+  {
+    "name": "城投债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\存续城投债\\城投债财务部分|556585164769088",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "string"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率",
+        "type": "double"
+      },
+      {
+        "column_name": "DXFZ",
+        "column_name_cn": "带息债务",
+        "type": "double"
+      },
+      {
+        "column_name": "EBITZTFNEW",
+        "column_name_cn": "EBITDA(正推)",
+        "type": "double"
+      },
+      {
+        "column_name": "END_COLLA_BALANCE",
+        "column_name_cn": "担保金额合计",
+        "type": "double"
+      },
+      {
+        "column_name": "GUARANTEE_NETASSET_RATIO",
+        "column_name_cn": "担保金额占净资产比例",
+        "type": "double"
+      },
+      {
+        "column_name": "MONETARYFUNDS",
+        "column_name_cn": "货币资金",
+        "type": "double"
+      },
+      {
+        "column_name": "NETCASH_OPERATE",
+        "column_name_cn": "经营活动产生的现金流量净额",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "QM_BALANCE",
+        "column_name_cn": "受限货币资金",
+        "type": "double"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "TOTAL_ASSETS",
+        "column_name_cn": "总资产",
+        "type": "double"
+      },
+      {
+        "column_name": "TOTAL_LIABILITIES",
+        "column_name_cn": "总负债",
+        "type": "double"
+      },
+      {
+        "column_name": "TYPE_CODE",
+        "column_name_cn": "报表类型",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 加载列中文名为「发行人」",
+    "reportId": "556585164769088"
+  },
+  {
+    "name": "存续城投债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\存续城投债\\存续城投债|077542525591078",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "ADMIN_LEVEL",
+        "column_name_cn": "行政级别",
+        "type": "string"
+      },
+      {
+        "column_name": "AREA",
+        "column_name_cn": "所属地区",
+        "type": "string"
+      },
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "所属地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_BALANCE",
+        "column_name_cn": "债券余额(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_RATING",
+        "column_name_cn": "最新债项评级",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_RATING_FWD",
+        "column_name_cn": "债项评级展望",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDIT_TOTAL",
+        "column_name_cn": "银行授信总额",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDIT_UNUSED",
+        "column_name_cn": "未使用额度",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人全称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING",
+        "column_name_cn": "最新主体评级",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_FWD",
+        "column_name_cn": "主体评级展望",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "NS_DEBT",
+        "column_name_cn": "存续非标债务",
+        "type": "double"
+      },
+      {
+        "column_name": "NS_DEBT_RATIO",
+        "column_name_cn": "非标债务/有息负债总额*100",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人代码",
+        "type": "string"
+      },
+      {
+        "column_name": "ORG_CODE_FXR",
+        "column_name_cn": "发行人代码(带后缀)",
+        "type": "string"
+      },
+      {
+        "column_name": "PLATFORM_STATUS",
+        "column_name_cn": "城投地位",
+        "type": "string"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SYQX_YEAR",
+        "column_name_cn": "剩余期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "TOP_SHAREHOLDER",
+        "column_name_cn": "发行人第一大股东",
+        "type": "string"
+      },
+      {
+        "column_name": "YIELD_ZZ",
+        "column_name_cn": "估价收益率(中债)(行权/到期)(%)",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "跳过字段：估价收益率(中债)(行权/到期)(%)、剩余期限(年)",
+    "reportId": "077542525591078"
+  },
+  {
+    "name": "近期所属地区化债进度",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\城投债\\存续城投债\\近期所属地区化债进度|645935680656235",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string",
+        "desc": "来自存续城投债接口AREA_CODE字段"
+      },
+      {
+        "column_name": "END_DATE",
+        "column_name_cn": "截止日期",
+        "type": "datetime",
+        "desc": "系统日期",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "IS_NEW",
+        "column_name_cn": "是否最新",
+        "type": "string",
+        "desc": "默认为1"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "DEFUSE_DEBT_OUTLOOK",
+        "column_name_cn": "近期所属地区化债展望",
+        "type": "string"
+      },
+      {
+        "column_name": "DEFUSE_DEBT_PROCESS",
+        "column_name_cn": "近期所属地区化债进度",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "可用；必须带 {截止日期}，地区需本地 FILTER_ROWS 收窄",
+    "reportId": "645935680656235"
+  },
+  {
+    "name": "估值收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\科创债\\存续科创债\\AI一页纸存续科创债|339799887788335",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "AVG_AMOUNT_20D",
+        "column_name_cn": "近20日日均成交额（万元）",
+        "type": "double"
+      },
+      {
+        "column_name": "AVG_TURN_20D",
+        "column_name_cn": "近20日换手率（%）",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_BALANCE",
+        "column_name_cn": "当前余额(元)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_RATING_BXZJG",
+        "column_name_cn": "最新债项评级（国内除中债资信）",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDITUNUSED",
+        "column_name_cn": "最新未使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDIT_INHANCE_WAY",
+        "column_name_cn": "增信方式",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDIT_SPREAD",
+        "column_name_cn": "信用利差",
+        "type": "double"
+      },
+      {
+        "column_name": "CYZLC",
+        "column_name_cn": "产业债利差",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期)",
+        "type": "double"
+      },
+      {
+        "column_name": "EMINDUSTRY2021_I",
+        "column_name_cn": "所属东财行业(2021)一级",
+        "type": "string"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "GUARANTOR",
+        "column_name_cn": "担保人",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUERRATEFWD",
+        "column_name_cn": "债项最新评级展望（国内除中债资信）",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_CODE",
+        "column_name_cn": " 发行人代码 ",
+        "type": " string "
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_BXZJG",
+        "column_name_cn": "最新主体评级（国内除中债资信）",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_SPREAD",
+        "column_name_cn": "发行利差",
+        "type": "double"
+      },
+      {
+        "column_name": "KBKCZLC",
+        "column_name_cn": "可比科创债利差",
+        "type": "double"
+      },
+      {
+        "column_name": "PATENTFBNUM",
+        "column_name_cn": "专利数量",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_TERMSOPTION",
+        "column_name_cn": "特殊条款-选择权条款",
+        "type": "string"
+      },
+      {
+        "column_name": "SYQXDFRN_YEAR",
+        "column_name_cn": "剩余期限(行情用,年)",
+        "type": "double"
+      },
+      {
+        "column_name": "TECH_FIELD",
+        "column_name_cn": "科创领域",
+        "type": "string"
+      },
+      {
+        "column_name": "TECH_TITLE",
+        "column_name_cn": "科创称号",
+        "type": "string"
+      },
+      {
+        "column_name": "VALUE_DATE",
+        "column_name_cn": "起息日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "YIELD",
+        "column_name_cn": "估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "ZSNR",
+        "column_name_cn": "指数纳入",
+        "type": "string"
+      },
+      {
+        "column_name": "ZZHIDENRATE",
+        "column_name_cn": "中债隐含债项评级",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "存续科创债基础信息",
+    "reportId": "339799887788335"
+  },
+  {
+    "name": "估值收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\绿色债\\存续绿色债\\AI一页纸存续绿色债|487408955865830",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "AVG_AMOUNT_20D",
+        "column_name_cn": "近20日日均成交额（万元）",
+        "type": "double"
+      },
+      {
+        "column_name": "AVG_TURN_20D",
+        "column_name_cn": "近20日换手率（%）",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_BALANCE",
+        "column_name_cn": "当前余额(元)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_RATING_BXZJG",
+        "column_name_cn": "最新债项评级-国内机构除中债资信",
+        "type": "string"
+      },
+      {
+        "column_name": "CALIBER",
+        "column_name_cn": "绿债口径",
+        "type": "string"
+      },
+      {
+        "column_name": "CERT_DATE",
+        "column_name_cn": "认证日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "CREDITUNUSED",
+        "column_name_cn": "最新未使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDIT_INHANCE_WAY",
+        "column_name_cn": "增信方式",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDIT_SPREAD",
+        "column_name_cn": "信用利差",
+        "type": "double"
+      },
+      {
+        "column_name": "CYZLC",
+        "column_name_cn": "产业债利差",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期)",
+        "type": "double"
+      },
+      {
+        "column_name": "EMINDUSTRY2021_I",
+        "column_name_cn": "所属东财行业(2021)一级",
+        "type": "string"
+      },
+      {
+        "column_name": "ENV_BEN",
+        "column_name_cn": "绿债环境效益",
+        "type": "string"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "FUND_FIELDS",
+        "column_name_cn": "募投领域",
+        "type": "string"
+      },
+      {
+        "column_name": "FUND_FIELDS_FL",
+        "column_name_cn": "募投领域一级细分",
+        "type": "string"
+      },
+      {
+        "column_name": "FUND_FIELDS_SL",
+        "column_name_cn": "募投领域二级细分",
+        "type": "string"
+      },
+      {
+        "column_name": "GRADE",
+        "column_name_cn": "绿债等级",
+        "type": "string"
+      },
+      {
+        "column_name": "GREENBONDCA",
+        "column_name_cn": "绿色债券认证机构",
+        "type": "string"
+      },
+      {
+        "column_name": "GUARANTOR",
+        "column_name_cn": "担保人",
+        "type": "string"
+      },
+      {
+        "column_name": "HOOK_TAR",
+        "column_name_cn": "挂钩目标",
+        "type": "string"
+      },
+      {
+        "column_name": "IFZOGTFL",
+        "column_name_cn": "是否符合中欧《共同分类目录》",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUERRATEFWD",
+        "column_name_cn": "债项最新评级展望-国内机构除中债资信",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_CODE",
+        "column_name_cn": "发行人代码",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_RATING_BXZJG",
+        "column_name_cn": "最新主体评级-国内机构除中债资信",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_SPREAD",
+        "column_name_cn": "发行利差",
+        "type": "double"
+      },
+      {
+        "column_name": "KBKCZLC",
+        "column_name_cn": "可比绿色债利差",
+        "type": "double"
+      },
+      {
+        "column_name": "PUN_MEC",
+        "column_name_cn": "惩罚机制",
+        "type": "string"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_TERMSOPTION",
+        "column_name_cn": "特殊条款-选择权条款",
+        "type": "string"
+      },
+      {
+        "column_name": "SYQXDFRN_YEAR",
+        "column_name_cn": "剩余期限(行情用,年)",
+        "type": "double"
+      },
+      {
+        "column_name": "VALUE_DATE",
+        "column_name_cn": "起息日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "YIELD",
+        "column_name_cn": "估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "ZSNR",
+        "column_name_cn": "指数纳入",
+        "type": "string"
+      },
+      {
+        "column_name": "ZZHIDENRATE",
+        "column_name_cn": "中债隐含债项评级",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "存续绿色债基础信息",
+    "reportId": "487408955865830"
+  },
+  {
+    "name": "AI一页纸_到期银行债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\银行金融机构债\\到期银行金融机构债\\AI一页纸_到期银行债财务部分|869534090566691",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日",
+        "type": "datetime",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日",
+        "type": "datetime",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "POST_BLDKBBL",
+        "column_name_cn": "不良贷款拨备覆盖率（到期前）",
+        "type": "double"
+      },
+      {
+        "column_name": "POST_HXYJBCZL",
+        "column_name_cn": "核心一级资本充足率（到期前）",
+        "type": "double"
+      },
+      {
+        "column_name": "POST_NETMARPUB",
+        "column_name_cn": "净息差（到期前）",
+        "type": "double"
+      },
+      {
+        "column_name": "POST_NONPERLOAN",
+        "column_name_cn": "不良贷款率（到期前）",
+        "type": "double"
+      },
+      {
+        "column_name": "PRE_BLDKBBL",
+        "column_name_cn": "不良贷款拨备覆盖率（发行时）",
+        "type": "double"
+      },
+      {
+        "column_name": "PRE_HXYJBCZL",
+        "column_name_cn": "核心一级资本充足率（发行时）",
+        "type": "double"
+      },
+      {
+        "column_name": "PRE_NETMARPUB",
+        "column_name_cn": "净息差（发行时）",
+        "type": "double"
+      },
+      {
+        "column_name": "PRE_NONPERLOAN",
+        "column_name_cn": "不良贷款率（发行时）",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter=公司代码+发行日+到期日",
+    "reportId": "869534090566691"
+  },
+  {
+    "name": "AI一页纸_存续银行债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\银行金融机构债\\存续银行金融机构债\\AI一页纸_存续银行债财务部分|872852055351144",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "BLDKBBL",
+        "column_name_cn": "不良贷款拨备覆盖率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "CAPADEQUACY",
+        "column_name_cn": "资本充足率(2013)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "CRRATIO",
+        "column_name_cn": "成本收入比(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_GUNANZHUZHANBI",
+        "column_name_cn": "关注类占比(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "DKBBL",
+        "column_name_cn": "贷款拨备率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "HXYJBCZL",
+        "column_name_cn": "核心一级资本充足率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "JWDZJL",
+        "column_name_cn": "净稳定资金比例(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "LDXFGL",
+        "column_name_cn": "流动性覆盖率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "NETMARPUB",
+        "column_name_cn": "净息差(计算值)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "NONPERLOAN",
+        "column_name_cn": "不良贷款率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "OVERDUELOAN_THREEY",
+        "column_name_cn": "逾期贷款_1年以上3年以内",
+        "type": "double"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ROEPJ",
+        "column_name_cn": "ROE",
+        "type": "double"
+      },
+      {
+        "column_name": "SUMASSET",
+        "column_name_cn": "总资产",
+        "type": "double"
+      },
+      {
+        "column_name": "T1CAPADEQUACY",
+        "column_name_cn": "一级资本充足率(2013)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "TOTALDEPOSITS",
+        "column_name_cn": "存款总额",
+        "type": "double"
+      },
+      {
+        "column_name": "TOTALLOAN",
+        "column_name_cn": "贷款总额",
+        "type": "double"
+      },
+      {
+        "column_name": "ZZCJLL",
+        "column_name_cn": "总资产净利率ROA",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "STD=False，SetReportFilter传公司代码(ORG_CODE)单参数",
+    "reportId": "872852055351144"
+  },
+  {
+    "name": "估值收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\银行金融机构债\\存续银行金融机构债\\AI一页纸存续银行金融机构债|172514974433160",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "BANKCD_AMT",
+        "column_name_cn": "同业存单余额",
+        "type": "double"
+      },
+      {
+        "column_name": "BONDPERIOD",
+        "column_name_cn": "发行期限",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDITSUM",
+        "column_name_cn": "最新授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDITUNUSED",
+        "column_name_cn": "最新未使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDITUSED",
+        "column_name_cn": "已使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_GYCGBLCT",
+        "column_name_cn": "国有持股比例(穿透)",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_TOMRTYYEAR2",
+        "column_name_cn": "剩余期限(行情用，年)",
+        "type": "double"
+      },
+      {
+        "column_name": "EMINDUSTRY2021_III",
+        "column_name_cn": "所属东财行业(2021)三级",
+        "type": "string"
+      },
+      {
+        "column_name": "EM_BOND_THIRD",
+        "column_name_cn": "东财债券三级分类(2021)",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUERRATES_GN1",
+        "column_name_cn": "主体评级_国内评级机构(除中债资信))",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_CODE",
+        "column_name_cn": "发行人代码\u0000",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "IS_SYSIMPORTANT",
+        "column_name_cn": "是否系统重要银行",
+        "type": "string"
+      },
+      {
+        "column_name": "NEWRATE_REFETENCE",
+        "column_name_cn": "票面利率(当期参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "NEW_CB_REFSPREAD",
+        "column_name_cn": "最新与国开利差",
+        "type": "double"
+      },
+      {
+        "column_name": "PERCENT_1Y_BP",
+        "column_name_cn": "所处近1年分位",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SFTLACZ",
+        "column_name_cn": "是否TLAC债",
+        "type": "string"
+      },
+      {
+        "column_name": "SJKZR",
+        "column_name_cn": "实际控制人",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_ISLISTED",
+        "column_name_cn": "是否上市公司",
+        "type": "string"
+      },
+      {
+        "column_name": "TLX_B_REFSPREAD",
+        "column_name_cn": "同类型非银机构同类债券估值利差均值",
+        "type": "double"
+      },
+      {
+        "column_name": "TOP1_HOLDER",
+        "column_name_cn": "第一大股东",
+        "type": "string"
+      },
+      {
+        "column_name": "YIELD",
+        "column_name_cn": "估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "ZDRZXPJZW_GN1",
+        "column_name_cn": "债项评级展望_国内评级机构(除中债资信))",
+        "type": "string"
+      },
+      {
+        "column_name": "ZDRZXPJ_GN1",
+        "column_name_cn": "债项评级_国内评级机构(除中债资信))",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "存续银行债基础信息，避免引用含\u0000的发行人代码",
+    "reportId": "172514974433160"
+  },
+  {
+    "name": "估值收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\非银金融机构债\\存续非银金融机构债\\AI一页纸_存续非银金融机构债_基础信息|516727124777846",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "BONDPERIOD",
+        "column_name_cn": "发行期限(年)",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": " string "
+      },
+      {
+        "column_name": "CONTROLLERCATEGORY",
+        "column_name_cn": "实际控制人类型",
+        "type": "string"
+      },
+      {
+        "column_name": "CREDITSUM",
+        "column_name_cn": "最新授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDITUNUSED",
+        "column_name_cn": "最新未使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "CREDITUSED",
+        "column_name_cn": "已使用授信额度",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_TOMRTYYEAR2",
+        "column_name_cn": "剩余期限(年)",
+        "type": "double"
+      },
+      {
+        "column_name": "EMINDUSTRY2021_III",
+        "column_name_cn": "所属东财行业(2021)三级",
+        "type": " string "
+      },
+      {
+        "column_name": "EM_BOND_THIRD",
+        "column_name_cn": "东财债券三级分类(2021)",
+        "type": "string"
+      },
+      {
+        "column_name": "FXR_YIELD_MAX",
+        "column_name_cn": "同一发行人存量债券估值最大值",
+        "type": "double",
+        "desc": "前端拼接实现【同一发行人存量债券估值分布】，格式：[最小值-最大值]"
+      },
+      {
+        "column_name": "FXR_YIELD_MIN",
+        "column_name_cn": "同一发行人存量债券估值最小值",
+        "type": "double",
+        "desc": "前端拼接实现【同一发行人存量债券估值分布】，格式：[最小值-最大值]"
+      },
+      {
+        "column_name": "ISSUERRATES_GN1",
+        "column_name_cn": "主体评级_国内评级机构(除中债资信))",
+        "type": " string "
+      },
+      {
+        "column_name": "ISSUER_CONTROLLER",
+        "column_name_cn": "实际控制人",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_CODE",
+        "column_name_cn": "发行人代码",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_INNER_CODE",
+        "column_name_cn": "发行人内码",
+        "type": "string",
+        "desc": "用于【AI一页纸_存续非银金融机构_融资与发行】的传参"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": " string "
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "NEWRATE_REFETENCE",
+        "column_name_cn": "票面利率(当期参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "NEW_CB_REFSPREAD",
+        "column_name_cn": "最新与国开利差",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_NAME_ABBR",
+        "column_name_cn": "发行人简称",
+        "type": " string "
+      },
+      {
+        "column_name": "PERCENT_1Y_BP",
+        "column_name_cn": "所处近1年分位",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": " string "
+      },
+      {
+        "column_name": "TLX_CB_REFSPREAD",
+        "column_name_cn": "同类型非银机构同类债券估值利差均值",
+        "type": "double"
+      },
+      {
+        "column_name": "YIELD",
+        "column_name_cn": "估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "ZDRZXPJZW_GN1",
+        "column_name_cn": "债项评级展望_国内评级机构(除中债资信))",
+        "type": " string "
+      },
+      {
+        "column_name": "ZDRZXPJ_GN1",
+        "column_name_cn": "债项评级_国内评级机构(除中债资信))",
+        "type": " string "
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "存续非银基础信息",
+    "reportId": "516727124777846"
+  },
+  {
+    "name": "估值收益率",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\成交估值\\中证估值\\债券F9_中证估值(可转债)",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [
+      {
+        "column_name": "EndDate",
+        "column_name_cn": "截止日期",
+        "type": "datetime",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "StartDate",
+        "column_name_cn": "开始日期",
+        "type": "datetime",
+        "format": "yyyy-MM-dd"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "ACCRUAL_INTEREST",
+        "column_name_cn": "应计利息",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_FLOOR_CONVEXITY",
+        "column_name_cn": "债底凸性",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_FLOOR_FULL",
+        "column_name_cn": "债底全价",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_FLOOR_MD",
+        "column_name_cn": "债底修正久期",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_FLOOR_NET",
+        "column_name_cn": "债底净价",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_FLOOR_YIELD",
+        "column_name_cn": "债底收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_PREMIUM_RATIO",
+        "column_name_cn": "纯债溢价率",
+        "type": "double"
+      },
+      {
+        "column_name": "IMPLIED_RATING",
+        "column_name_cn": "隐含评级",
+        "type": "string"
+      },
+      {
+        "column_name": "OPTION_VALUE",
+        "column_name_cn": "期权价值",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码(带后缀)",
+        "type": "string"
+      },
+      {
+        "column_name": "TRANSFER_PREMIUM_RATIO",
+        "column_name_cn": "转股溢价率",
+        "type": "double"
+      },
+      {
+        "column_name": "VALUE_DATE",
+        "column_name_cn": "估值日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "VALUE_PRICE",
+        "column_name_cn": "估价价格",
+        "type": "double"
+      },
+      {
+        "column_name": "VALUE_YIELD",
+        "column_name_cn": "估值收益率",
+        "type": "double"
+      }
+    ],
+    "availability": "SKIP",
+    "availability_note": "可转债估值报表，非本skill范围"
+  },
+  {
+    "name": "AI一页纸到期绿色债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\绿色债\\到期绿色债\\AI一页纸到期绿色债|115626454629710",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "AVG_DEAL_AMOUNT",
+        "column_name_cn": "日均成交额（万元）",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_BALANCE",
+        "column_name_cn": "当前余额(元)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期)",
+        "type": "double"
+      },
+      {
+        "column_name": "ENV_BEN",
+        "column_name_cn": "绿债环境效益",
+        "type": "string"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISDEFAULT",
+        "column_name_cn": "是否实际违约",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "LISTING_YIELD",
+        "column_name_cn": "上市首日收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD",
+        "column_name_cn": "存续期最高收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "MIN_YIELD",
+        "column_name_cn": "存续期最低收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SYQXDFRN_YEAR",
+        "column_name_cn": "剩余期限(行情用,年)",
+        "type": "double"
+      },
+      {
+        "column_name": "VALUE_DATE",
+        "column_name_cn": "起息日期",
+        "type": "datetime"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "",
+    "reportId": "115626454629710"
+  },
+  {
+    "name": "AI一页纸到期科创债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\科创债\\到期科创债\\AI一页纸到期科创债|930008147975023",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期)",
+        "type": "double"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "LISTING_YIELD",
+        "column_name_cn": "上市首日收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD",
+        "column_name_cn": "存续期最高收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "MIN_YIELD",
+        "column_name_cn": "存续期最低收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SYQXDFRN_YEAR",
+        "column_name_cn": "剩余期限(行情用,年)",
+        "type": "double"
+      },
+      {
+        "column_name": "TECH_TITLE",
+        "column_name_cn": "科创称号",
+        "type": "string"
+      },
+      {
+        "column_name": "VALUE_DATE",
+        "column_name_cn": "起息日期",
+        "type": "datetime"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "",
+    "reportId": "930008147975023"
+  },
+  {
+    "name": "AI一页纸到期银行金融机构债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\银行金融机构债\\到期银行金融机构债\\AI一页纸到期银行金融机构债|930522266378689",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "ACTUAL_DATE",
+        "column_name_cn": "到期日(实际)",
+        "type": "datetime"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "COUPON_INCOME",
+        "column_name_cn": "持有期累计票息收入（每百元）",
+        "type": "double"
+      },
+      {
+        "column_name": "COUP_RETURN_RATE",
+        "column_name_cn": "持有期年化回报率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "LAST_VALFULL",
+        "column_name_cn": "最终估价全价",
+        "type": "double"
+      },
+      {
+        "column_name": "NEWRATE_REFETENCE",
+        "column_name_cn": "票面利率(当期参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "NEW_CB_YIELD",
+        "column_name_cn": "最新同期限国开债收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "24字段，含评级/增信/违约类型",
+    "reportId": "930522266378689"
+  },
+  {
+    "name": "AI一页纸_到期非银金融机构债_基础信息",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\非银金融机构债\\到期非银金融机构债\\AI一页纸_到期非银金融机构债_基础信息|087160458814034",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "ACTUAL_DATE",
+        "column_name_cn": "到期日(实际)",
+        "type": "datetime"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "COUPON_INCOME",
+        "column_name_cn": "持有期累计票息收入（每百元）",
+        "type": "double"
+      },
+      {
+        "column_name": "COUP_RETURN_RATE",
+        "column_name_cn": "持有期年化回报率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_DATE",
+        "column_name_cn": "发行日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人名称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "LAST_VALFULL",
+        "column_name_cn": "最终估价全价",
+        "type": "double"
+      },
+      {
+        "column_name": "NEWRATE_REFETENCE",
+        "column_name_cn": "票面利率(当期参考)(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "可用；须传到期券",
+    "reportId": "087160458814034"
+  },
+  {
+    "name": "AI一页纸_到期绿色债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\绿色债\\到期绿色债\\AI一页纸_到期绿色债财务部分|871388107529439",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "ISSUE_DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率-发行前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_NETCASH_OPERATE",
+        "column_name_cn": "经营现金流-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_NETPROFIT",
+        "column_name_cn": "净利润-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_OPERATE_INCOME",
+        "column_name_cn": "营收-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_TOTAL_ASSETS",
+        "column_name_cn": "总资产-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期",
+        "type": "datetime"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 加载列中文名为「发行人」+发行日+到期日",
+    "reportId": "871388107529439"
+  },
+  {
+    "name": "AI一页纸到期科创债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\科创债\\到期科创债\\AI一页纸到期科创债财务部分|871388107529439",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "到期日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "ISSUE_DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率-发行前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_DEBT_ASSET_RATIO",
+        "column_name_cn": "资产负债率-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_NETCASH_OPERATE",
+        "column_name_cn": "经营现金流-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_NETPROFIT",
+        "column_name_cn": "净利润-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_OPERATE_INCOME",
+        "column_name_cn": "营收-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "MATURE_TOTAL_ASSETS",
+        "column_name_cn": "总资产-到期前",
+        "type": "double"
+      },
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "公司代码",
+        "type": "string"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期",
+        "type": "datetime"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 加载列中文名为「发行人」+发行日+到期日",
+    "reportId": "871388107529439"
+  },
+  {
+    "name": "AI一页纸存续科创债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\科创债\\存续科创债\\AI一页纸存续科创债财务部分|503474644730190",
+    "reportId": "503474644730190",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name_cn": "资产负债率"
+      },
+      {
+        "column_name_cn": "营业总收入"
+      },
+      {
+        "column_name_cn": "营业收入同比增长率"
+      },
+      {
+        "column_name_cn": "净利润"
+      },
+      {
+        "column_name_cn": "净利润同比增长率"
+      },
+      {
+        "column_name_cn": "经营活动产生的现金流量净额"
+      },
+      {
+        "column_name_cn": "研发支出"
+      },
+      {
+        "column_name_cn": "研发强度"
+      },
+      {
+        "column_name_cn": "ROE"
+      },
+      {
+        "column_name_cn": "总资产"
+      },
+      {
+        "column_name_cn": "速动比率"
+      },
+      {
+        "column_name_cn": "利息保障倍数"
+      },
+      {
+        "column_name_cn": "货币资金/短期债务"
+      },
+      {
+        "column_name_cn": "报告期"
+      },
+      {
+        "column_name_cn": "公司代码"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 中文名「发行人」"
+  },
+  {
+    "name": "AI一页纸_存续绿色债财务部分",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\绿色债\\存续绿色债\\AI一页纸_存续绿色债财务部分|503474644730190",
+    "reportId": "503474644730190",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "ORG_CODE",
+        "column_name_cn": "发行人",
+        "type": "string"
+      }
+    ],
+    "fields": [
+      {
+        "column_name_cn": "资产负债率"
+      },
+      {
+        "column_name_cn": "营业总收入"
+      },
+      {
+        "column_name_cn": "净利润"
+      },
+      {
+        "column_name_cn": "经营活动产生的现金流量净额"
+      },
+      {
+        "column_name_cn": "ROE"
+      },
+      {
+        "column_name_cn": "总资产"
+      },
+      {
+        "column_name_cn": "速动比率"
+      },
+      {
+        "column_name_cn": "报告期"
+      },
+      {
+        "column_name_cn": "公司代码"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "实测可用；filter 中文名「发行人」"
+  },
+  {
+    "name": "AI一页纸_到期银行金融机构债_信用评级变动",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\银行金融机构债\\到期银行金融机构债\\AI一页纸_到期银行金融机构债_信用评级变动|977367229404407",
+    "reportId": "977367229404407",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码"
+      },
+      {
+        "column_name": "RATING_DATE",
+        "column_name_cn": "评级日期"
+      },
+      {
+        "column_name": "ISSURERCWAY",
+        "column_name_cn": "评级变动方向"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "可用"
+  },
+  {
+    "name": "AI一页纸_到期非银金融机构债_信用评级变动",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\非银金融机构债\\到期非银金融机构债\\AI一页纸_到期非银金融机构债_信用评级变动|977367229404407",
+    "reportId": "977367229404407",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码"
+      },
+      {
+        "column_name": "RATING_DATE",
+        "column_name_cn": "评级日期"
+      },
+      {
+        "column_name": "ISSURERCWAY",
+        "column_name_cn": "评级变动方向"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "可用"
+  }
+]

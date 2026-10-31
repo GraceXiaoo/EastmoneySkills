@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "task_id": "sellside-research-refresh-with-excel20-implementation",
+  "target_version": "3.0.4",
+  "implementation_status": "CONFIRMED",
+  "implementation_completed_at": "2026-10-03T13:40:56+08:00",
+  "architecture": "vendored_monolith",
+  "revisions": [
+    {
+      "revision": "2026-10-13 依赖同步·模型 B 统一",
+      "reason": "上游 research-report-review（2026-10-12 放宽妙想服务端路径门禁与普查表锚点硬约束）与 periodic-report-drafting 逻辑变化后，宿主按新逻辑同步",
+      "applied": [
+        "契约文档统一为 vendor 自包含单体（模型 B）：dependency_inventory.json 改 vendored_bundle/copied:true；review_dll_contract.md、orchestration_contract.md、drafting_handoff.md 去 Skill 工具加载语义、改 bundle/* 路径",
+        "缝合层不重述 review 内部妙想路径禁令；TABLE_BLOCKED/锚点语义对齐'整表无成功指标才 TABLE_BLOCKED、部分成功留 PARTIAL/SUCCESS 锚点'",
+        "已重跑 scripts/build_bundle.py 重新 vendor bundle/review、bundle/drafting 并刷新 bundle_manifest.json"
+      ],
+      "status": "CONFIRMED",
+      "vendor_evidence": {
+        "built_at": "2026-10-14T06:23:59+00:00",
+        "output": "D:\\git\\build\\sellside-research-refresh-with-excel20",
+        "sources_commit": "1e9100be3c400a16576f7d1ba034a6a6831eca2e",
+        "check_bundle": "PASS"
+      }
+    },
+    {
+      "revision": "2026-10-14 交付来源门禁与触发器治理（P0+P1+P2）",
+      "reason": "阶段 4 出现宿主绕过 drafting 引擎手写交付，assemble_delivery 原门禁只验自洽不验来源；按 Local/Plan/研报复现HTML优化.md 第六节方案落地机器门禁与触发器治理",
+      "applied": [
+        "P0: prepare_drafting_handoff.py finalize 生成 generator 绑定与 engine_receipt（workflow_state 指纹+状态、MD/HTML 哈希、source-md-sha256 meta），HTML meta 指纹与 MD 哈希不一致即拒绝产出 handoff",
+        "P0: assemble_delivery.py 新增 stage-4 来源门禁（generator/engine_receipt/workflow_state 三态/MD+HTML 哈希/meta/首行声明与残留标记文本断言），任一失败 manifest=FAIL、stage5=FAILED(STAGE4_BYPASSED)、退出码 1",
+        "P0/P2: COMPLETE_WITH_UNVERIFIED_LAYOUT 合法降级自动追加『版式未渲染审计』限制，不假填视觉 PASS；版本号统一由 SKILL.md frontmatter 单一真源解析（assemble_delivery 与 prepare_drafting_handoff 同步）",
+        "P1: 新增 scripts/check_bundle.py 首跑 bundle 自检（bundle 存在性+manifest 指纹全量比对+SKILL.md §4 文本+版本三对齐），缺失即 BLOCKED，禁止运行时现场重建",
+        "P1: checkpoint_resume_protocol.md 增加阶段 4 强制独立续跑硬规则；SKILL.md §0/§4/§5 同步门禁条目；end_to_end_delivery.md、drafting_handoff.md 更新新契约"
+      ],
+      "status": "CONFIRMED"
+    }
+  ],
+  "implementation_stages": [
+    {
+      "id": "A",
+      "name": "基线盘点与契约冻结",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T11:45:15+08:00",
+      "completed_at": "2026-10-03T11:48:42+08:00",
+      "confirmed_at": "2026-10-03T11:49:54+08:00",
+      "amended_at": "2026-10-03T12:49:49+08:00",
+      "amendment_reason": "阶段D补齐工作簿构建器动态依赖并细化阶段3输出回执契约",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel\\SKILL.md",
+          "sha256": "b18d66ebf5a3ce68985898d0d37db729e19149131623118de0f4b5bc99256048",
+          "size_bytes": 22461
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报底稿skill\\research-report-review\\SKILL.md",
+          "sha256": "13d430e0347691e2047aa863e5b97437099d2595946afb439e02b6249497dcf4",
+          "size_bytes": 26691
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报仿写skill\\periodic-report-drafting\\SKILL.md",
+          "sha256": "fd254a935479f88338cd8002fff9b4345e6a7f13200c9bcc1c9e109188146e82",
+          "size_bytes": 21784
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\orchestration_contract.md",
+          "sha256": "7306a40def20e5e4ee35a39addf54ef0c5bed91ff76d762c1acdc09b11313ff9",
+          "size_bytes": 6934
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\orchestration_contract.schema.json",
+          "sha256": "98d17d996b0ac532be91e21cb0d296d00649b2f981a5ed0c5ef6c19d9ea6d22f",
+          "size_bytes": 3879
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\dependency_inventory.json",
+          "sha256": "9816188cec0bdbfa40bb35b4be619e525731e186e9ac161c8966a1cd52160bb5",
+          "size_bytes": 4191
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\checkpoint_resume_protocol.md",
+          "sha256": "fcb90e2686c0a46e2b567406ef5f3347b3011e953205028025fbd337f59662bc",
+          "size_bytes": 1857
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance Python syntax check",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "Pylance diagnostics",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "python -m unittest tests/test_orchestration_contract.py -v",
+          "status": "PASS",
+          "tests_run": 5,
+          "receipt_path": null
+        }
+      ],
+      "limitations": [
+        "阶段B至F尚未实现",
+        "当前包不得作为完整skill发布"
+      ],
+      "next_action": "下一次从阶段B开始；阶段B当前仍为PENDING"
+    },
+    {
+      "id": "B",
+      "name": "原始底稿交接与框架提取",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T11:51:07+08:00",
+      "completed_at": "2026-10-03T11:56:48+08:00",
+      "confirmed_at": "2026-10-03T11:58:23+08:00",
+      "amended_at": "2026-10-03T12:35:09+08:00",
+      "amendment_reason": "阶段C接入时补齐已确认stage-1 handoff生成和校验能力，并重新执行阶段A至C回归测试",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\orchestration_contract.md",
+          "sha256": "297f5dc92cdc060e6220148b1a0e15de3bdf27b71cf304a05034636e7d98d966",
+          "size_bytes": 6782
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报底稿skill\\research-report-review\\SKILL.md",
+          "sha256": "13d430e0347691e2047aa863e5b97437099d2595946afb439e02b6249497dcf4",
+          "size_bytes": 26691
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报底稿skill\\research-report-review\\reference\\workbook_spec.md",
+          "sha256": "1b332f2361ef019c3be10fc7e09e89f3743cbb28cb17486565d1573b0ed77c92",
+          "size_bytes": 28778
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报底稿skill\\research-report-review\\scripts\\build_workbook.py",
+          "sha256": "ba357af5bb5474ba40fc1462016d7407e0fef57ee468b841aa0330fa2a103a27",
+          "size_bytes": 86176
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\metric_framework_extraction.md",
+          "sha256": "2b9c242e165c53b93c94270664678f449a8e504d3c604989db85941dd2602e5f",
+          "size_bytes": 3618
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\metric_framework.schema.json",
+          "sha256": "20dbeb60e03608bd18ad526eb8dbbeec9676742ff313eb1a6837197493616839",
+          "size_bytes": 2706
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\extract_metric_framework.py",
+          "sha256": "6351edec5416b183c5aafe95a19317783b3fefddeca22f65f542101f0d32f476",
+          "size_bytes": 30435
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\tests\\test_metric_framework_extraction.py",
+          "sha256": "498320d29b09d4f4ad953c28e29f2a80d869a14fe784023666f247a9704ab86a",
+          "size_bytes": 17614
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\A_原始底稿.xlsx",
+          "sha256": "d74d2d8bef34717f3626db7ec3bdac565b3ce796d48a2c1f9c590f1d7f3a54c3",
+          "size_bytes": 12599
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\A_底稿评测报告.md",
+          "sha256": "9517d978b90820c45b6db147d098651d2ffcc4cabc855580c99d488c9e8a1a2a",
+          "size_bytes": 53
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\stage-0-handoff.json",
+          "sha256": "7ac5f6c3ff02dc5d278b7e1cc9922309e0c68652df401b08cdc0ffd6d6ef29b0",
+          "size_bytes": 1283
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\metric_framework.json",
+          "sha256": "3a9e646e61ae387254764bb99ba9bba5caa68f0ad39843dee27d6c11f499d4a0",
+          "size_bytes": 16392
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\framework_extracted.md",
+          "sha256": "928e01605037c2ad62fb8c57c8010480f512ffdd8a01e59a01287fa402dda476",
+          "size_bytes": 590
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\stage-1-handoff.json",
+          "sha256": "d22b5152166b39b672159fee63e7dcfc0e4f451eda6496a4405e95a7fbd6d16f",
+          "size_bytes": 1957
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance diagnostics for extractor and tests",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "python -m unittest stage A and B suites",
+          "status": "PASS",
+          "tests_run": 13,
+          "receipt_path": null
+        },
+        {
+          "name": "extract_metric_framework.py sample CLI",
+          "status": "PASS",
+          "metrics_extracted": 11,
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\metric_framework.json"
+        },
+        {
+          "name": "metric_framework.schema.json parse",
+          "status": "PASS",
+          "receipt_path": null
+        }
+      ],
+      "limitations": [
+        "阶段C至F尚未实现",
+        "当前包不得作为完整skill发布"
+      ],
+      "next_action": "下一次从阶段C开始；阶段C当前仍为PENDING"
+    },
+    {
+      "id": "C",
+      "name": "实体、期间和资讯适配",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T12:28:21+08:00",
+      "completed_at": "2026-10-03T12:35:09+08:00",
+      "confirmed_at": "2026-10-03T12:37:28+08:00",
+      "amended_at": "2026-10-03T12:38:34+08:00",
+      "amendment_reason": "用户确认后将stage-2 handoff同步固化为CONFIRMED",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\metric_framework_extraction.md",
+          "sha256": "2b9c242e165c53b93c94270664678f449a8e504d3c604989db85941dd2602e5f",
+          "size_bytes": 3618
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\metric_framework.schema.json",
+          "sha256": "20dbeb60e03608bd18ad526eb8dbbeec9676742ff313eb1a6837197493616839",
+          "size_bytes": 2706
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\metric_framework.json",
+          "sha256": "3a9e646e61ae387254764bb99ba9bba5caa68f0ad39843dee27d6c11f499d4a0",
+          "size_bytes": 16392
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\stage-1-handoff.json",
+          "sha256": "d22b5152166b39b672159fee63e7dcfc0e4f451eda6496a4405e95a7fbd6d16f",
+          "size_bytes": 1957
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\entity_period_mapping.md",
+          "sha256": "11b7ab368d32ac57819ecb3729f617f8dc75893b74fdd53195050a4e1d95f652",
+          "size_bytes": 3737
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\target_adaptation.schema.json",
+          "sha256": "94fd424049ab1d1bf699611b777b2489fce196716f9bcbe0850dae49c7a72da6",
+          "size_bytes": 2614
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\adapt_target_framework.py",
+          "sha256": "c24fe6a092ef3fd18858581375540cdbd26aca13d2f8fa5e20bcc1f77d9bca4c",
+          "size_bytes": 27453
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\tests\\test_target_adaptation.py",
+          "sha256": "ff03dd1e670bcf7991c736c78a3f0de28f584629171a9bae2e84e1f04136442d",
+          "size_bytes": 13204
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\adaptation_request.json",
+          "sha256": "d7071b1b06dc728b6f0deb45a41e235e2ee67a82db57bb8fdfe5e65acb193b97",
+          "size_bytes": 1426
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\entity_mapping.json",
+          "sha256": "ec3b3a10f6ce9e949a7db883f98e4d80d4c59fbdcb433e45577eeda997bd21b2",
+          "size_bytes": 1217
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\period_mapping.json",
+          "sha256": "9a775f50139650785c8203bd118d9d30885f3f49b4055b40f7f0588fcecd0dbe",
+          "size_bytes": 625
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\coverage_requirements.json",
+          "sha256": "0c48dea397740ea3c754df0ff57bf9cc1eaf58b5f3fb15870196f7810d855575",
+          "size_bytes": 6435
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\target_table_mapping.json",
+          "sha256": "b02399014ed6c00ddc31aa62cf7444fadde1f4ec7e1685e0a5cb258c66224a25",
+          "size_bytes": 2811
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\information_rows.json",
+          "sha256": "7f830b9aa66822430814e23f8fd4f79dd28f83e62632b1286498b4da8a235734",
+          "size_bytes": 423
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\stage-2-handoff.json",
+          "sha256": "06145078decd535da7aedc9c7d1fe9b0d1813622aff4dc8bbf2a7d129667fd3e",
+          "size_bytes": 3863
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance diagnostics for stage B and C scripts and tests",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "python -m unittest stage A through C suites",
+          "status": "PASS",
+          "tests_run": 28,
+          "receipt_path": null
+        },
+        {
+          "name": "adapt_target_framework.py sample CLI",
+          "status": "PASS",
+          "coverage_requirements": 11,
+          "blockers": 0,
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-c-sample\\output\\stage-2-handoff.json"
+        },
+        {
+          "name": "stage C JSON parse",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "git diff --check for implementation files",
+          "status": "PASS",
+          "receipt_path": null
+        }
+      ],
+      "limitations": [
+        "阶段D至F尚未实现",
+        "当前包不得作为完整skill发布"
+      ],
+      "next_action": "阶段C已确认；下一次可从仍为PENDING的阶段D开始"
+    },
+    {
+      "id": "D",
+      "name": "新标的底稿生成",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T12:38:34+08:00",
+      "completed_at": "2026-10-03T12:49:49+08:00",
+      "confirmed_at": "2026-10-03T12:51:10+08:00",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel\\scripts\\build_writing_workbook.py",
+          "sha256": "1b759333b2625992232e0425f590e6584179605332080e7298497ca7be1fed8c",
+          "size_bytes": 47070
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\stage2\\stage-2-handoff.json",
+          "sha256": "63e8d5b44d810f719654555f681a8f102c2b7e60da743924da909ffd80bb4d94",
+          "size_bytes": 2376
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\target_data_evidence.json",
+          "sha256": "37f436a10bba16b3bfdadd6ed6f652f39b31c0258e63cd0cbb93e80f78517736",
+          "size_bytes": 12686
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\target_workbook_generation.md",
+          "sha256": "3ddee6d408d42e8a8c517bba982355d134f3eccf9b5f229638ee45853e18a8a6",
+          "size_bytes": 2131
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\build_writing_workbook.py",
+          "sha256": "1b759333b2625992232e0425f590e6584179605332080e7298497ca7be1fed8c",
+          "size_bytes": 47070
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\reproduction_contract.py",
+          "sha256": "5423169f7065940a94ba9ed4994bd750ef8fe2e63dc1c7f6786298b1dc65e992",
+          "size_bytes": 17825
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\validate_mql_workbook_coverage.py",
+          "sha256": "5e9c6bda7ed3410f7f5ff4426d77445c46718fa15c3ce65e76102e3e7a2617a0",
+          "size_bytes": 22211
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\validate_reference_metric_coverage.py",
+          "sha256": "e4921a676da09e2b52cc6d3baa691aa94c3ac15dbcac39f0df87eb4ebfc1416e",
+          "size_bytes": 6889
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\validate_report_citations.py",
+          "sha256": "75defee8b1f6286d253ffadd04e1a57e10d397b1eab09e12c457de52afd8de19",
+          "size_bytes": 3413
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\build_target_workbook.py",
+          "sha256": "8865fa89bb9d4d4913db3ae016b5a4e0bf6203ea4f9d39f4eb9559b383de8bcb",
+          "size_bytes": 13244
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\validate_target_workbook.py",
+          "sha256": "4dfa5ae1c16dbe121235b05f6f05267382b5a87e36b76eeab6287b92b9ffbace",
+          "size_bytes": 4500
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\tests\\test_target_workbook.py",
+          "sha256": "d66561fc6b433f47e2e74672d016eed17e532ae59d89e61db42ea1a06d3411ca",
+          "size_bytes": 15241
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\B_新标的底稿.xlsx",
+          "sha256": "8805fbd6424cc98dd3dcd2e96740ab0b03ec2871cb387baa955836c325bcb068",
+          "size_bytes": 14764
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\mql_audit.json",
+          "sha256": "ec3d45362920156e277e6785e6b0a52989457b7b2911e398f5d64ca4ba24a062",
+          "size_bytes": 3201
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\mql_coverage_receipt.json",
+          "sha256": "258dafa4f4df5ec486501468160a2b746a5905abf842f1dae8e0eed3095bb9a2",
+          "size_bytes": 627
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\reference_coverage_receipt.json",
+          "sha256": "78dd198e2295cdd74ce51694ff90fb61109440442fc2343cc22f2243cb045272",
+          "size_bytes": 799
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\workbook_structure_receipt.json",
+          "sha256": "93da34002f094e66b04673cd98129e4fef58d06158b3dabaa2dd61af55010f5c",
+          "size_bytes": 517
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\stage-3-handoff.json",
+          "sha256": "dfb6cf0751a89425230b330f47084881583e2ffd6fbfa7f684f62d6b08f3f535",
+          "size_bytes": 4119
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance diagnostics for stage D scripts and tests",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "python -m unittest stage A through D suites",
+          "status": "PASS",
+          "tests_run": 34,
+          "receipt_path": null
+        },
+        {
+          "name": "real MQL controlled sample",
+          "status": "PASS",
+          "coverage_requirements": 2,
+          "blockers": 0,
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\stage-3-handoff.json"
+        },
+        {
+          "name": "MQL workbook coverage",
+          "status": "PASS",
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\mql_coverage_receipt.json"
+        },
+        {
+          "name": "reference metric coverage",
+          "status": "PASS",
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\reference_coverage_receipt.json"
+        },
+        {
+          "name": "target workbook structure and lineage",
+          "status": "PASS",
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\workbook_structure_receipt.json"
+        }
+      ],
+      "limitations": [
+        "真实MQL受控样例仅覆盖贵州茅台2025年度营业收入与营业总收入",
+        "阶段E至F尚未实现",
+        "当前包不得作为完整skill发布"
+      ],
+      "next_action": "阶段D已确认；下一次可从仍为PENDING的阶段E开始"
+    },
+    {
+      "id": "E",
+      "name": "仿写skill文件交接",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T13:10:44+08:00",
+      "completed_at": "2026-10-03T13:25:26+08:00",
+      "confirmed_at": "2026-10-03T13:32:41+08:00",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\stage-3-handoff.json",
+          "sha256": "dfb6cf0751a89425230b330f47084881583e2ffd6fbfa7f684f62d6b08f3f535",
+          "size_bytes": 4119
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\PDF\\20260803-野村东方国际证券-中际旭创-300308.SZ-维持增持评级.pdf",
+          "sha256": "f217f4b800081dd15a0bfc1f3d7d1c3ecb2417501025a3a1118c4801bd76bf30",
+          "size_bytes": 378189
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\B_新标的底稿.xlsx",
+          "sha256": "8805fbd6424cc98dd3dcd2e96740ab0b03ec2871cb387baa955836c325bcb068",
+          "size_bytes": 14764
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\prepare_drafting_handoff.py",
+          "sha256": "5e10287f95a9160cdee9d9037560ae1ba59c0aed67229548ad850403532d2de7",
+          "size_bytes": 12758
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\tests\\test_drafting_handoff.py",
+          "sha256": "61d433b2a327cf2b4db3cec2acef91f3fe5b5cd056475346fc32c28bce594859",
+          "size_bytes": 6674
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\drafting_handoff.md",
+          "sha256": "1621247d735d24ed4f24f421a75b2243b73cb3ea8a727a3b6ccce105d3197442",
+          "size_bytes": 2419
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\stage-4-request.json",
+          "sha256": "f7fb8ca6b64a9ce726a7d48e92ebe1bda2c7847dc24acd698bf43d6858948938",
+          "size_bytes": 3004
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\environment-receipt.json",
+          "sha256": "915dc7add1f0fa5a65566c99df5e215ff68c901cb427bcf75b2b9362a0cd2d75",
+          "size_bytes": 732
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\workbook-probe-receipt.json",
+          "sha256": "600454f5a6dd80dd3341c247125f86fce1537e66271afed6fc5011a3d2a10a3b",
+          "size_bytes": 815
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\excel-index.json",
+          "sha256": "6af28d65eabb1606c94c0ee6bc4c3c60217bfb64028ce69fad046e51d4e9e27a",
+          "size_bytes": 21571
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\reference-contract.json",
+          "sha256": "c93bff553aa3a25d3a1fd68b8e46ceaec2c7f183e3f14840299faaf7dd5a36e0",
+          "size_bytes": 1583
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\data-map.json",
+          "sha256": "505518be990406bd89e20145db6903361abf228391cb3bd339a55678d632154f",
+          "size_bytes": 1379
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\workflow.json",
+          "sha256": "ab5ae3216fe6bf06293e68fee51def2b6f1dd909432c4809a22d8b9136b36e3d",
+          "size_bytes": 535
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\delivery\\贵州茅台-2025年收入事实核验.md",
+          "sha256": "e271036c8ab7088ad43d126faeccd1771dd38a80c1b2d62751262f60f15a6680",
+          "size_bytes": 841
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\delivery\\贵州茅台-2025年收入事实核验.html",
+          "sha256": "ee06154c2952762bfa439c54e623461c73fa5be3546d9e4a95b2e1ff6091e4c8",
+          "size_bytes": 3929
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\workflow_state.json",
+          "sha256": "d694e379ef88292d6721a650ce3e2814a6a91189954416a8ca59e3c6e3ed3c22",
+          "size_bytes": 911
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\delivery-notes.json",
+          "sha256": "864e9bab8a1a500a333f3f981606c078955aeddc6e2c7e5cf66c3b1966774ad7",
+          "size_bytes": 169
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\output\\stage-4-handoff.json",
+          "sha256": "33d758ec8213c23d38a7362048b903e0c7e91983b48f76bf8a977cbe68cb3cc1",
+          "size_bytes": 5268
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance diagnostics for stage E script and tests",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "official workbook_probe core sheets",
+          "status": "PASS",
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\excel-index.json"
+        },
+        {
+          "name": "periodic-report-drafting check-only and generation",
+          "status": "PASS",
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\work\\workflow_state.json"
+        },
+        {
+          "name": "integrated browser HTML load and object visibility",
+          "status": "PASS",
+          "tables_visible": 1,
+          "receipt_path": null
+        },
+        {
+          "name": "python -m unittest stage A through E suites",
+          "status": "PASS",
+          "tests_run": 38,
+          "receipt_path": null
+        }
+      ],
+      "limitations": [
+        "05_溯源总表、15_查数底稿、16_参考表展示中的公式没有缓存值，官方probe标记为CONFIRM_REQUIRED",
+        "仿写workflow状态为NEEDS_VISUAL_REVIEW；已验证浏览器加载与表格可见，但未伪造完整打印和逐对象视觉验收",
+        "受控样例仅使用阶段D已验证的两项2025年收入事实，不生成预测、评级或目标价",
+        "阶段F尚未实现",
+        "当前包不得作为完整skill发布"
+      ],
+      "next_action": "阶段E已确认；下一次可从仍为PENDING的阶段F开始"
+    },
+    {
+      "id": "F",
+      "name": "端到端编排与交付验收",
+      "status": "CONFIRMED",
+      "started_at": "2026-10-03T13:34:27+08:00",
+      "completed_at": "2026-10-03T13:37:26+08:00",
+      "confirmed_at": "2026-10-03T13:40:56+08:00",
+      "inputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\stage-0-handoff.json",
+          "sha256": "7ac5f6c3ff02dc5d278b7e1cc9922309e0c68652df401b08cdc0ffd6d6ef29b0",
+          "size_bytes": 1283
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-b-sample\\stage-1-handoff.json",
+          "sha256": "d22b5152166b39b672159fee63e7dcfc0e4f451eda6496a4405e95a7fbd6d16f",
+          "size_bytes": 1957
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\stage2\\stage-2-handoff.json",
+          "sha256": "63e8d5b44d810f719654555f681a8f102c2b7e60da743924da909ffd80bb4d94",
+          "size_bytes": 2376
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\stage-3-handoff.json",
+          "sha256": "dfb6cf0751a89425230b330f47084881583e2ffd6fbfa7f684f62d6b08f3f535",
+          "size_bytes": 4119
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-e-sample\\output\\stage-4-handoff.json",
+          "sha256": "33d758ec8213c23d38a7362048b903e0c7e91983b48f76bf8a977cbe68cb3cc1",
+          "size_bytes": 5268
+        }
+      ],
+      "outputs": [
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\scripts\\assemble_delivery.py",
+          "sha256": "7473e5c3877875c8b224765c28ae43d7a29632c2a2dac4b025bc9fef7d24764b",
+          "size_bytes": 13339
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\tests\\test_end_to_end_delivery.py",
+          "sha256": "c3b1732322bbe2ceffc58371b82bd417a537a08a0380b5ba72d264e586e466fc",
+          "size_bytes": 8796
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\reference\\end_to_end_delivery.md",
+          "sha256": "3e599cc0918bba64cb0912852231826fc8d2b991abace2cb44f474001b092183",
+          "size_bytes": 2321
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-f-sample\\output\\delivery-manifest.json",
+          "sha256": "4128c9abb8c846fa0d6476d64c8cb7f9cdb6945296ce8c710a40429fdd7a53df",
+          "size_bytes": 5671
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-f-sample\\output\\final-delivery-list.md",
+          "sha256": "d8f2e928922d8e3f25105e739d5582f6de6b79c6547244010b85ec599f3a97b5",
+          "size_bytes": 1340
+        },
+        {
+          "path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-f-sample\\output\\stage-5-handoff.json",
+          "sha256": "3b7a264b668e16b98977c905e37e23802f1fcede2b2b3efa7917baf3bb7933c4",
+          "size_bytes": 4782
+        }
+      ],
+      "validation": [
+        {
+          "name": "Pylance diagnostics for stage F script and tests",
+          "status": "PASS",
+          "receipt_path": null
+        },
+        {
+          "name": "strict end-to-end success and resume scenarios",
+          "status": "PASS",
+          "tests_run": 7,
+          "receipt_path": null
+        },
+        {
+          "name": "controlled delivery manifest completeness",
+          "status": "PASS",
+          "deliveries": 5,
+          "receipt_path": "C:\\git\\github\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-f-sample\\output\\delivery-manifest.json"
+        },
+        {
+          "name": "python -m unittest stage A through F suites",
+          "status": "PASS",
+          "tests_run": 45,
+          "receipt_path": null
+        }
+      ],
+      "limitations": [
+        "阶段F受控样例汇总了不同阶段的已确认夹具，不代表同一任务的一次真实端到端执行；严格同任务链路已由自动化测试验证",
+        "受控样例只覆盖贵州茅台2025年度营业收入与营业总收入",
+        "仿写workflow仍为NEEDS_VISUAL_REVIEW，未伪造完整打印和逐对象视觉验收",
+        "用户最终确认前不得把2.0标记为正式完成"
+      ],
+      "next_action": "阶段F已确认；研报复现2.0实现完成"
+    }
+  ]
+}

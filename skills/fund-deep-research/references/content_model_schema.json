@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "fund": {"code": "", "name": "", "as_of": ""},
+  "sections": [
+    {
+      "section_id": "section-001",
+      "number": "1",
+      "title": "",
+      "order": 1,
+      "fact_card": {
+        "facts": [],
+        "time_changes": [],
+        "relative_positions": [],
+        "conflicts": [],
+        "drivers": [],
+        "risks": [],
+        "watch_items": [],
+        "data_limits": []
+      },
+      "blocks": [],
+      "subsections": [
+        {
+          "subsection_id": "subsection-001",
+          "number": "1.1",
+          "title": "",
+          "order": 1,
+          "blocks": [
+            {
+              "block_id": "block-001",
+              "type": "paragraph|chart|table|metric_cards|risk_note",
+              "text": "",
+              "source_ids": ["数据表-001"],
+              "layout": {"keep_together": true, "page_break_before": false},
+              "chart": {
+                "chart_id": "chart-001",
+                "question": "",
+                "type": "",
+                "unit": "",
+                "as_of": "",
+                "width": 0,
+                "height": 0,
+                "extreme_value_policy": "",
+                "label_policy": "",
+                "caption": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

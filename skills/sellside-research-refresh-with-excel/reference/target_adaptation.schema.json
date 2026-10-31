@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "target_adaptation.schema.json",
+  "title": "Stage 2 Target Adaptation Bundle",
+  "description": "阶段 2 目标适配与取数计划的产物集合。字段与 adapt_target_framework.py 的实际输出一致；各产物单独落盘为 entity_mapping.json / period_mapping.json / coverage_requirements.json / target_table_mapping.json / information_rows.json。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "entity_mapping",
+    "period_mapping",
+    "coverage_requirements",
+    "target_table_mapping",
+    "information_rows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "entity_mapping": {
+      "type": "object",
+      "required": ["mappings"],
+      "properties": {
+        "mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["entity_id", "role", "action"],
+            "properties": {
+              "entity_id": {"type": "string"},
+              "name": {"type": "string"},
+              "role": {"type": "string"},
+              "action": {"type": "string"},
+              "target_entity_id": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "period_mapping": {
+      "type": "object",
+      "required": ["mappings"],
+      "properties": {
+        "mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_period": {"type": "string"},
+              "target_period": {"type": "string"},
+              "method": {"type": "string"},
+              "semantics_preserved": {"type": "boolean"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "coverage_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["coverage_id", "disposition"],
+        "properties": {
+          "coverage_id": {"type": "string"},
+          "framework_id": {"type": "string"},
+          "target_entity_id": {"type": "string"},
+          "source_periods": {"type": "array", "items": {"type": "string"}},
+          "target_periods": {"type": "array", "items": {"type": "string"}},
+          "indicator_path_hint": {"type": "string"},
+          "disposition": {
+            "type": "string",
+            "enum": ["planned_mql", "not_applicable"]
+          },
+          "reason": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "target_table_mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["object_id", "action"],
+        "properties": {
+          "object_id": {"type": "string"},
+          "source_title": {"type": "string"},
+          "target_title": {"type": "string"},
+          "action": {
+            "type": "string",
+            "enum": ["adapt", "preserve", "omit_with_reason"]
+          },
+          "coverage_ids": {"type": "array", "items": {"type": "string"}},
+          "reason": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "information_rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {"type": "string"},
+          "title": {"type": "string"},
+          "publish_date": {"type": "string"},
+          "source_url": {"type": "string"},
+          "dedup_key": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

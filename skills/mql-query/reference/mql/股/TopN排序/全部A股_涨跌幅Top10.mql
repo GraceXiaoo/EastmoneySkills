@@ -1,0 +1,17 @@
+// @pattern   板块池 + 截面指标排序截取 TopN（返回明细行）
+// @block     CrossSectionBlock
+// @replace   板块fullPath ← searchSector | 排序指标path ← searchIndicator | 排序方向"DESC"/"ASC" | Head/Tail/Slice 截取量
+// @must      GetSectors 用花括号包 fullPath、单反斜杠；数值过滤先读指标 unit（如涨跌幅单位 %，写 20 而非 0.2）
+// @verified  2026-09-14 ok=true（扫描 5562 只，输出 10 行，4462ms）；2026-10-02 复测带注释 ok=true
+// @note      路径/板块必须用本次 Search_Context 结果替换，勿照抄历史值(G2)；注释可原样提交
+
+CrossSectionBlock(#1, {EM_CODE});                      // ✅ 截面用 CrossSectionBlock
+GetSectors({板块\沪深京股票\市场类\全部A股});          // ✅ 花括号包 fullPath，路径单反斜杠
+// ❌ GetSectors("全部A股|001071");  → 禁止 publishCode/publishName 写法，必须花括号包 fullPath
+{证券简称}: {Choice指标\股票\沪深京股票指标\基本资料\证券资料\股票简称}();  // ✅ 无参指标也带()
+{涨跌幅}: {Choice指标\股票\沪深京股票指标\行情指标\日行情\涨跌幅}();
+Sort({涨跌幅}, "DESC");                                // ✅ 排序键是列名，不能是 {EM_CODE}
+// ❌ Sort({EM_CODE}, "DESC");  → EM_CODE 是结构轴，不能作排序键
+Head(10);                                              // ✅ 过滤/排序后截取；一个 Block 最多一条截取语句
+// ❌ 在 TimeSeriesBlock(含 EM_DATE) 上 Head/Sort  → 时序结果禁止排序截取
+OutputBlock();                                         // ✅ 写了只返回本 Block

@@ -1,0 +1,34 @@
+// @pattern   报表明细行 + 本地过滤 + MergeBlock 横向补指标列
+// @block     ReportBlock(#1) → CrossSectionBlock(#2 补指标) → MergeBlock(#3)
+// @replace   报表path ← searchIndicator(type=报表) | REPORT_FIELD 返回列中文名 | 过滤条件 | 右侧补充指标
+// @must      SetReportFilter 只用 reportFilterColumns 加载列；REPORT_FIELD 只读 reportFields 中文名；MergeOn 只 AND 连 ==，右键唯一
+// @verified  2026-09-14 ok=true（报表 4 行→过滤 2 行→Merge 2/2，1127ms）；2026-10-02 复测带注释 ok=true
+// @note      报表候选元数据正常但远端可能预检失败（如"报表名称不能为空"），换同次检索的其它报表候选；注释可原样提交
+
+ReportBlock(#1, {Choice报表\报表指标\服务端\妙想服务\量化查数\A股\F9\股东及机构持股\限售股解禁时间表\沪深F9_基础资料_限售股解禁时间});
+// ✅ reportStandardCodeSupported=true 才写 SetCodes/GetSectors；=false 时禁止写范围
+SetCodes(["600519.SH"]);
+// ✅ 本报表无 reportFilterColumns，不写 SetReportFilter，过滤放本地 FILTER_ROWS
+// ❌ SetReportFilter({证券简称}=="贵州茅台");  → SetReportFilter 只认加载列(reportFilterColumns)，返回列不能用于远端过滤
+{证券代码}: REPORT_FIELD("证券代码");                  // ✅ REPORT_FIELD 只用返回列中文名(reportFields)
+// ❌ REPORT_FIELD("SECURITY_CODE");  → 不能用物理字段名；且"证券代码"可能命中多列需用精确名
+{可流通日期}: REPORT_FIELD("可流通日期");
+{本期流通数量}: REPORT_FIELD("本期流通数量");
+FILTER_ROWS({可流通日期} >= "2008-01-01");            // ✅ 本地行过滤，用已用 : 输出的列
+Sort({可流通日期}, "ASC");
+
+CrossSectionBlock(#2, {EM_CODE});                     // ✅ 补普通指标另建 Block，不能在 ReportBlock 内调指标
+// ❌ 在 ReportBlock 里 {简称}: {...指标}();  → ReportBlock 不取普通指标，只能 REPORT_FIELD
+SetCodes(["600519.SH"]);
+{证券简称}: {Choice指标\股票\沪深京股票指标\基本资料\证券资料\股票简称}();
+{前收盘价}: {Choice指标\股票\沪深京股票指标\行情指标\日行情\前收盘价}();
+
+MergeBlock(#3, #1, #2);
+MergeOn(#1.{证券代码} == #2.{EM_CODE});               // ✅ 只 AND 连 ==；右侧键必须唯一
+// ❌ MergeOn(LIKE(#1.{证券代码}, #2.{EM_CODE}));  → 禁止 OR/范围/模糊；右侧重复键使整个 Merge 失败
+{证券代码}: #1.{证券代码};                            // ✅ Merge 不自动输出业务字段，每个展示列都用 : 显式声明
+{可流通日期}: #1.{可流通日期};
+{本期流通数量}: #1.{本期流通数量};
+{证券简称}: #2.{证券简称};
+{前收盘价}: #2.{前收盘价};
+OutputBlock();

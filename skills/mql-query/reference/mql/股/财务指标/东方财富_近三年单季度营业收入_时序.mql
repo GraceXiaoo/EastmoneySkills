@@ -1,0 +1,19 @@
+// @pattern   连续财务报告期时序（单季度营业收入，需要 EM_DATE 轴的财务时序长表）
+// @block     TimeSeriesBlock + 财务报告期 SetWindow(周期=季)
+// @replace   代码 ← searchEntity | 窗口起止 ← timeRecognition | 单季度指标path(_s 后缀) ← searchIndicator
+// @must      财务报告期时序：time_series、_s 结尾、前缀 Choice指标\序列函数\；SetWindow 用"季"且不写{市场类型}；"单季度.营业收入"是各季独立发生额，不得替换成累计营业收入
+// @verified  2026-09-18 ok=true（12 个季度，report_count=0）
+// @note      财务口径核对：累计/单季度、行业财务口径、合并/母公司、调整前后、单位；路径/日期须本次确认(G2)；注释可原样提交
+
+TimeSeriesBlock(#1, {EM_DATE}, {EM_CODE});             // ✅ _s 报告期序列用 TimeSeriesBlock
+// ❌ 用普通时序日/周/月窗口  → _s 序列只用"季"/"年"
+SetCodes(["300059.SZ"]);
+SetWindow(
+    {开始时间} = "2023-09-18",
+    {结束时间} = "2026-09-18",
+    {周期} = "季"                                       // ✅ 财务报告期序列不写 {市场类型}
+);
+// ❌ 用 ReportBlock 冒充时序结果  → 报表无 EM_DATE 轴，不能用时序函数；需 EM_DATE 必须选 time_series 指标
+{营业收入}: {Choice指标\序列函数\股票\沪深京股票指标\财务报表(全周期)\证券公司\利润表(单季度)\单季度.营业收入|100000000056264_s}();
+// ❌ 把累计营业收入替换为单季度值  → 累计≠单季度，需单季度独立发生额必须检索明确的单季度指标
+OutputBlock();

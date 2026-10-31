@@ -1,0 +1,2173 @@
+{
+  "verified_at": "2026-09-30",
+  "runtime_version": "2.6.0",
+  "reference_required_version": "2.6.0",
+  "scope": "数据获取与字段绑定核验；不是全模块报告生成验收，不含资讯检索验收",
+  "current_blockers": [
+    {
+      "key": "finance_summary",
+      "status": "metadata_conflict",
+      "reason": "DATE_TYPE_CH与DATE_TYPE_NEW同名；保留主路径，finance_chart仅补已验证图表字段。"
+    },
+    {
+      "key": "curve_fullmarket",
+      "status": "failed",
+      "execution_id": "f42dc28f-447c-422f-a4a3-71a808c8ebfc",
+      "reason": "剩余期限元数据声明字符串但实际返回非字符串；不可删期限后宣称拟合完成。"
+    },
+    {
+      "key": "curve_fit_and_monitor",
+      "status": "not_business_verified",
+      "reason": "拟合上游市场补点失败，多点Term/Yield绑定未验证；发行人行情监控与宏观背景尚缺完整来源。"
+    },
+    {
+      "key": "region_compare",
+      "status": "failed",
+      "execution_id": "d3571076-2ab4-4f7f-841e-412ba4ac0b96",
+      "reason": "江苏320000、2025-12-01，上游报表服务请求失败。"
+    },
+    {
+      "key": "urban_margin",
+      "status": "failed",
+      "execution_id": "61af33fc-e81c-45e4-aaf5-5e5eb4428542",
+      "reason": "已找到指定函数及含开始/结束日期的候选，按真实字段类型执行仍返回参数异常。"
+    },
+    {
+      "key": "urban_issuer_spread",
+      "status": "metadata_conflict",
+      "reason": "EndDate和TDATE均绑定为截止日期；StartDate/EndDate是查询范围，TDATE为存续债自身截止口径，不能合并或默认相等。"
+    },
+    {
+      "key": "solvency_statistics",
+      "status": "failed_or_incomplete",
+      "execution_id": "36dae5f4-90d0-4417-9611-731d74674c37",
+      "reason": "到期年份字段日期格式错误；两列诊断结果缺发行序列和日期，未验证六类债券排除。389252051487338候选要求发行人内码，未确认映射和排除条件，不能用ORG_CODE猜填。"
+    },
+    {
+      "key": "sci_tech_property_and_rd",
+      "status": "metadata_missing",
+      "reason": "RPT_ENT_RD_EXP_EMP、产权数量/年度/商标分布未取得可用元数据；现有专利、研发费用、员工及称号模板仅为子集。"
+    },
+    {
+      "key": "issuance_credit_entity",
+      "status": "field_missing",
+      "reason": "已验证发行一览12列，信用主体尚未确认，不能以发行人名称冒充。"
+    }
+  ],
+  "esg_common_date_check": {"date":"2024-12-31","rows":53,"unique":20,"conflicting_keys":[]},
+  "latest_template_checks": [
+    {
+      "key": "basic_noid_cn",
+      "tested_at": "2026-09-30",
+      "execution_id": "b4704b03-6547-484d-b730-7b5b315908d5",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\智能发行人\\工商信息\\工商信息});\nSetReportFilter(({公司代码} == \"10002264\"));\n{第一大竞争对手}: REPORT_FIELD(\"第一大竞争对手\");\n{成立日期}: REPORT_FIELD(\"成立日期\");\n{行业}: REPORT_FIELD(\"行业\");\n{是否属于城投平台}: REPORT_FIELD(\"是否属于城投平台\");\n{是否上市公司}: REPORT_FIELD(\"是否上市公司\");\n{集团主公司名称}: REPORT_FIELD(\"集团主公司名称\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司代码带后缀}: REPORT_FIELD(\"公司代码带后缀\");\n{企业性质(全部)}: REPORT_FIELD(\"企业性质(全部)\");\n{公司名称}: REPORT_FIELD(\"公司名称\");\n{公司简介}: REPORT_FIELD(\"公司简介\");\n{省份}: REPORT_FIELD(\"省份\");\n{注册地址}: REPORT_FIELD(\"注册地址\");\n{注册资本(万元)}: REPORT_FIELD(\"注册资本(万元)\");\n{经营范围}: REPORT_FIELD(\"经营范围\");\n{实际控制人}: REPORT_FIELD(\"实际控制人\");\n{统一社会信用代码}: REPORT_FIELD(\"统一社会信用代码\");\n{发行股票}: REPORT_FIELD(\"发行股票\");\n{第一大股东(持股比例)}: REPORT_FIELD(\"第一大股东(持股比例)\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "第一大竞争对手",
+          "成立日期",
+          "行业",
+          "是否属于城投平台",
+          "是否上市公司",
+          "集团主公司名称",
+          "公司代码",
+          "公司代码带后缀",
+          "企业性质(全部)",
+          "公司名称",
+          "公司简介",
+          "省份",
+          "注册地址",
+          "注册资本(万元)",
+          "经营范围",
+          "实际控制人",
+          "统一社会信用代码",
+          "发行股票",
+          "第一大股东(持股比例)"
+        ]
+      ]
+    },
+    {
+      "key": "finance_chart",
+      "tested_at": "2026-09-30",
+      "execution_id": "a9e103ef-e7a0-4f15-94b6-6fd8d634f7aa",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\对接API\\F10_财务分析_主要财务指标|594237169895505});\nSetCodes([\"601717.SH\"]);\nSetReportFilter(({报告期} >= \"2020-01-01\") AND ({报告期} <= \"2026-09-30\"));\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{证券代码(带后缀)}: REPORT_FIELD(\"证券代码(带后缀)\");\n{机构类型}: REPORT_FIELD(\"机构类型\");\n{币种}: REPORT_FIELD(\"币种\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{报告期标签}: REPORT_FIELD(\"报告期标签\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{营业总收入}: REPORT_FIELD(\"营业总收入\");\n{营业总收入同比增长}: REPORT_FIELD(\"营业总收入同比增长\");\n{归属净利润}: REPORT_FIELD(\"归属净利润\");\n{归属净利润同比增长}: REPORT_FIELD(\"归属净利润同比增长\");\n{资产负债率}: REPORT_FIELD(\"资产负债率\");\n{净资产收益率(加权)}: REPORT_FIELD(\"净资产收益率(加权)\");\n{每股经营现金流}: REPORT_FIELD(\"每股经营现金流\");\nOutputBlock();",
+      "row_count": 26,
+      "columns": [
+        [
+          "公司代码",
+          "证券代码(带后缀)",
+          "机构类型",
+          "币种",
+          "报告期",
+          "报告期标签",
+          "报告期类型",
+          "营业总收入",
+          "营业总收入同比增长",
+          "归属净利润",
+          "归属净利润同比增长",
+          "资产负债率",
+          "净资产收益率(加权)",
+          "每股经营现金流"
+        ]
+      ],
+      "annual_dates": [
+        "2020-12-31",
+        "2021-12-31",
+        "2022-12-31",
+        "2023-12-31",
+        "2024-12-31",
+        "2025-12-31"
+      ],
+      "yoy_check": [
+        {
+          "year": "2021-12-31",
+          "revenue_yoy": 10.460773628843235,
+          "profit_yoy": 57.18728712564474
+        },
+        {
+          "year": "2022-12-31",
+          "revenue_yoy": 9.386984485201943,
+          "profit_yoy": 30.313883742103155
+        },
+        {
+          "year": "2023-12-31",
+          "revenue_yoy": 13.668784468276286,
+          "profit_yoy": 28.985802058981847
+        },
+        {
+          "year": "2024-12-31",
+          "revenue_yoy": 1.7263853528162176,
+          "profit_yoy": 20.15519173499072
+        },
+        {
+          "year": "2025-12-31",
+          "revenue_yoy": 11.694594662632607,
+          "profit_yoy": 9.140089976672506
+        }
+      ],
+      "note": "图表字段通过；每股经营现金流不等于总经营现金流。"
+    },
+    {
+      "key": "esg_level1",
+      "tested_at": "2026-09-30",
+      "execution_id": "c0eb9e40-bf42-4746-86ec-3676866bb8a2",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\API专题报表函数\\A股\\F9\\ESG\\ESG-明细弹窗接口|545851408591004});\nSetCodes([\"601717.SH\"]);\nSetReportFilter({更新日期} <= \"2026-09-30\");\n{证券代码带后缀}: REPORT_FIELD(\"证券代码带后缀\");\n{所属子项中文}: REPORT_FIELD(\"所属子项中文\");\n{一级指标名称}: REPORT_FIELD(\"一级指标名称\");\n{一级指标得分}: REPORT_FIELD(\"一级指标得分\");\n{更新日期}: REPORT_FIELD(\"更新日期\");\nOutputBlock();",
+      "row_count": 676,
+      "columns": [
+        [
+          "证券代码带后缀",
+          "所属子项中文",
+          "一级指标名称",
+          "一级指标得分",
+          "更新日期"
+        ]
+      ],
+      "dedup_check": {
+        "date": "2026-04-30",
+        "rows": 16,
+        "unique": 16
+      }
+    },
+    {
+      "key": "curve_samples",
+      "tested_at": "2026-09-30",
+      "execution_id": "1f35a389-e444-453b-8e01-f585b4edc5d4",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\样本券对应关系\\发行人曲线_样本券|873037266287012});\nSetReportFilter(({原始发行人代码} == \"10002264.FXR\") AND ({定价日} == \"2026-09-18\"));\n{样本券类型}: REPORT_FIELD(\"样本券类型\");\n{样本券代码}: REPORT_FIELD(\"样本券代码\");\nOutputBlock();",
+      "row_count": 19,
+      "columns": [
+        [
+          "样本券类型",
+          "样本券代码"
+        ]
+      ]
+    },
+    {
+      "key": "curve_valuation",
+      "tested_at": "2026-09-30",
+      "execution_id": "653276f6-74ff-42e1-9fa6-aed0e4055c1b",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\条件筛选-债券列表\\发行人曲线_相似债_估值|025324135305196});\nSetCodes([\"212580001.IB\", \"212580002.IB\", \"212580003.IB\", \"212580051.IB\", \"212680044.IB\", \"222580002.IB\", \"222680002.IB\", \"2228038.IB\", \"242400016.IB\", \"242400018.IB\", \"242400029.IB\", \"242580022.IB\", \"242680007.IB\", \"2521024.IB\", \"2621003.IB\", \"2621004.IB\", \"2621005.IB\", \"2621006.IB\", \"332580023.IB\"]);\nSetReportFilter(({交易日期} == \"2026-09-18\") AND ({通用类型1} == \"2,2,1,1,1,1,1,1,1,2,1,1,1,2,2,2,2,2,2\"));\n{债券代码}: REPORT_FIELD(\"债券代码\");\n{样本类型编码}: REPORT_FIELD(\"样本类型编码\");\n{样本类型}: REPORT_FIELD(\"样本类型\");\n{定价日}: REPORT_FIELD(\"定价日\");\n{剩余期限(中债)}: REPORT_FIELD(\"剩余期限(中债)\");\n{中债估值(推荐)}: REPORT_FIELD(\"中债估值(推荐)\");\n{债券简称}: REPORT_FIELD(\"债券简称\");\n{债项评级}: REPORT_FIELD(\"债项评级\");\n{东财债券分类}: REPORT_FIELD(\"东财债券分类\");\n{东财债券分类编码}: REPORT_FIELD(\"东财债券分类编码\");\n{到期日}: REPORT_FIELD(\"到期日\");\n{发行日}: REPORT_FIELD(\"发行日\");\n{发行规模}: REPORT_FIELD(\"发行规模\");\n{债券余额}: REPORT_FIELD(\"债券余额\");\n{上一日成交收益率}: REPORT_FIELD(\"上一日成交收益率\");\n{募集方式}: REPORT_FIELD(\"募集方式\");\n{YY评级}: REPORT_FIELD(\"YY评级\");\n{YY行业}: REPORT_FIELD(\"YY行业\");\n{票面利率}: REPORT_FIELD(\"票面利率\");\nOutputBlock();",
+      "row_count": 19,
+      "columns": [
+        [
+          "债券代码",
+          "样本类型编码",
+          "样本类型",
+          "定价日",
+          "剩余期限(中债)",
+          "中债估值(推荐)",
+          "债券简称",
+          "债项评级",
+          "东财债券分类",
+          "东财债券分类编码",
+          "到期日",
+          "发行日",
+          "发行规模",
+          "债券余额",
+          "上一日成交收益率",
+          "募集方式",
+          "YY评级",
+          "YY行业",
+          "票面利率"
+        ]
+      ],
+      "sample_type_mismatches": 0,
+      "note": "逐券类型对齐；部分期限/收益率为空，不虚构拟合点。"
+    },
+    {
+      "key": "credit_full",
+      "tested_at": "2026-09-30",
+      "execution_id": "50731cc0-432e-4bfa-aab0-9724c414a3e3",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\信用分析\\信用分析|088883350557610});\nSetReportFilter(({公司代码} == \"10127465\") AND ({截止日期} == \"2026-09-30\"));\n{银行授信总额度}: REPORT_FIELD(\"银行授信总额度（亿元）\");\n{银行授信已使用额度}: REPORT_FIELD(\"银行授信已使用额度（亿元）\");\n{前十大授信银行}: REPORT_FIELD(\"前十大授信银行\");\n{授信机构数量}: REPORT_FIELD(\"授信机构数量\");\n{货币资金短期债务}: REPORT_FIELD(\"货币资金/短期债务\u0000\");\n{当前逾期本息}: REPORT_FIELD(\"当前逾期本息（万元）\");\n{对外担保余额占总资产比例}: REPORT_FIELD(\"对外担保余额占总资产比例\");\n{对外担保余额占净资产比例}: REPORT_FIELD(\"对外担保余额占净资产比例\");\n{变动方向}: REPORT_FIELD(\"变动方向\");\n{评级展望}: REPORT_FIELD(\"评级展望\");\n{最新主体评级}: REPORT_FIELD(\"最新主体评级\");\n{经营活动现金流净额带息债务}: REPORT_FIELD(\"经营活动产生的现金流量净额/带息债务\");\n{经营活动现金流净额流动负债}: REPORT_FIELD(\"经营活动产生的现金流量净额/流动负债\");\n{最新实质违约债券}: REPORT_FIELD(\"最新实质违约债券\");\n{展期债券只数}: REPORT_FIELD(\"展期债券只数\");\n{实质违约债券只数}: REPORT_FIELD(\"实质违约债券只数\");\n{前十大对外担保对象}: REPORT_FIELD(\"前十大对外担保对象\");\n{未使用授信额度有息债务}: REPORT_FIELD(\"未使用的授信额度/有息债务\");\n{报告期}: REPORT_FIELD(\"报告期\");\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "银行授信总额度",
+          "银行授信已使用额度",
+          "前十大授信银行",
+          "授信机构数量",
+          "货币资金短期债务",
+          "当前逾期本息",
+          "对外担保余额占总资产比例",
+          "对外担保余额占净资产比例",
+          "变动方向",
+          "评级展望",
+          "最新主体评级",
+          "经营活动现金流净额带息债务",
+          "经营活动现金流净额流动负债",
+          "最新实质违约债券",
+          "展期债券只数",
+          "实质违约债券只数",
+          "前十大对外担保对象",
+          "未使用授信额度有息债务",
+          "报告期"
+        ]
+      ]
+    },
+    {
+      "key": "issuance_fixed",
+      "tested_at": "2026-09-30",
+      "execution_id": "8b00c9dc-fcc2-42f5-b667-bf528d841b5e",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\债券\\企业F9\\发行一览\\发行债券|RPT_CUSTOM_BOND_BS_SAMEISSUER});\nSetReportFilter(({发行人代码} == \"10002264\") AND ({集团系} == \"0\") AND ({跨市场去重排序} == 1) AND ({到期日期} >= \"2026-09-30\") AND ({债券类型} <> \"同业存单\"));\n{债券代码}: REPORT_FIELD(\"债券代码带后缀\");\n{债券简称}: REPORT_FIELD(\"债券简称\");\n{债券类型}: REPORT_FIELD(\"证券类别\");\n{债券余额}: REPORT_FIELD(\"当前余额(亿)\");\n{币种}: REPORT_FIELD(\"币种\");\n{发行日期}: REPORT_FIELD(\"发行日期\");\n{到期日期}: REPORT_FIELD(\"到期日期\");\n{剩余期限}: REPORT_FIELD(\"剩余期限\");\n{最新债项评级}: REPORT_FIELD(\"债券评级\");\n{最新主体评级}: REPORT_FIELD(\"主体评级\");\n{票面利率}: REPORT_FIELD(\"票面利率(发行参考利率)\");\n{所属集团}: REPORT_FIELD(\"所属集团\");\nOutputBlock();",
+      "row_count": 58,
+      "columns": [
+        [
+          "债券代码",
+          "债券简称",
+          "债券类型",
+          "债券余额",
+          "币种",
+          "发行日期",
+          "到期日期",
+          "剩余期限",
+          "最新债项评级",
+          "最新主体评级",
+          "票面利率",
+          "所属集团"
+        ]
+      ],
+      "note": "12列成功；信用主体未确认，模块字段并非全覆盖。"
+    },
+    {
+      "key": "sci_tech_profile",
+      "tested_at": "2026-09-30",
+      "execution_id": "aee364fc-684b-4954-960a-095ee9adf203",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\表头\\企业F9_机构基本信息|148758350698551});\nSetReportFilter({公司代码} == \"10000069733\");\n{行业}: REPORT_FIELD(\"行业\");\n{省份}: REPORT_FIELD(\"省份\");\n{科创称号}: REPORT_FIELD(\"科创称号\");\n{科创领域}: REPORT_FIELD(\"科创领域\");\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "行业",
+          "省份",
+          "科创称号",
+          "科创领域"
+        ]
+      ]
+    },
+    {
+      "key": "solvency_key",
+      "tested_at": "2026-09-30",
+      "execution_id": "362a957a-eca4-4b02-be1e-c50aed393072",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\财务关键指标\\企业一页纸-财务关键指标|RPT_CUSTOM_AIONEPAPER_FINANCE});\nSetReportFilter(({发行人} == \"10002264\"));\n{现金比率}: REPORT_FIELD(\"现金比率\");\n{流动比率}: REPORT_FIELD(\"流动比率\");\n{资产负债率}: REPORT_FIELD(\"资产负债率\");\n{EBITDA(正推)}: REPORT_FIELD(\"EBITDA(正推)\");\n{利息保障倍数}: REPORT_FIELD(\"利息保障倍数\");\n{净利润}: REPORT_FIELD(\"净利润\");\n{现金利息保障倍数}: REPORT_FIELD(\"现金利息保障倍数\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{速动比率}: REPORT_FIELD(\"速动比率\");\n{总资产}: REPORT_FIELD(\"总资产\");\n{流动负债}: REPORT_FIELD(\"流动负债\");\n{非流动负债}: REPORT_FIELD(\"非流动负债\");\n{营运资本}: REPORT_FIELD(\"营运资本\");\n\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "现金比率",
+          "流动比率",
+          "资产负债率",
+          "EBITDA(正推)",
+          "利息保障倍数",
+          "净利润",
+          "现金利息保障倍数",
+          "公司代码",
+          "报告期日期",
+          "速动比率",
+          "总资产",
+          "流动负债",
+          "非流动负债",
+          "营运资本"
+        ]
+      ]
+    },
+    {
+      "key": "solvency_debt",
+      "tested_at": "2026-09-30",
+      "execution_id": "4eeeddad-c563-41c4-8409-2fac399e7c38",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\负债结构\\企业一页纸-负债结构|RPT_CUSTOM_AIONEPAPER_DEBT});\nSetReportFilter(({发行人} == \"10002264\"));\n{应付账款}: REPORT_FIELD(\"应付账款\");\n{应付债券}: REPORT_FIELD(\"应付债券\");\n{应付票据}: REPORT_FIELD(\"应付票据\");\n{长期借款}: REPORT_FIELD(\"长期借款\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{其他流动负债}: REPORT_FIELD(\"其他流动负债\");\n{其他负债}: REPORT_FIELD(\"其他负债\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{短期借款}: REPORT_FIELD(\"短期借款\");\n{报表类型}: REPORT_FIELD(\"报表类型\");\n\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "应付账款",
+          "应付债券",
+          "应付票据",
+          "长期借款",
+          "公司代码",
+          "其他流动负债",
+          "其他负债",
+          "报告期日期",
+          "短期借款",
+          "报表类型"
+        ]
+      ]
+    },
+    {
+      "key": "esg_scope",
+      "tested_at": "2026-09-30",
+      "execution_id": "c66b2e3a-0674-4d2c-b083-17bb57074366",
+      "ok": true,
+      "mql": "CrossSectionBlock(#1, {EM_CODE});\nSetCodes([\"10000069733.FXR\"]);\n{ESG评分}: {Choice指标\\发行人\\企业全部指标\\评级分析\\ESG评级\\中诚信绿金ESG评分|100000000046321}({截止日期} = \"2026-09-30\", {ESG} = \"总体\");\nOutputBlock();\n",
+      "row_count": 1,
+      "columns": [
+        [
+          "EM_CODE",
+          "ESG评分"
+        ]
+      ]
+    },
+    {
+      "key": "esg_scope_stock",
+      "tested_at": "2026-09-30",
+      "execution_id": "6cab727a-98e7-4002-ad56-19796583f10e",
+      "ok": true,
+      "mql": "CrossSectionBlock(#1, {EM_CODE});\nSetCodes([\"601717.SH\"]);\n{ESG评分}: {Choice指标\\股票\\沪深京股票指标\\ESG\\中诚信绿金ESG评分|100000000046321}({截止日期} = \"2026-09-30\", {ESG} = \"总体\");\nOutputBlock();\n",
+      "row_count": 1,
+      "columns": [
+        [
+          "EM_CODE",
+          "ESG评分"
+        ]
+      ]
+    },
+    {
+      "key": "esg_detail_fixed",
+      "tested_at": "2026-09-30",
+      "execution_id": "81989d6e-8deb-4831-b0c1-6e40dd39dd7e",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\API专题报表函数\\A股\\F9\\ESG\\ESG-个股|RPT_ESG_STOCK_CODE});\nSetCodes([\"601717.SH\"]);\nSetReportFilter(({指数机构名称} == \"中诚信绿金\") AND ({所属行业} == \"申万三级行业(2021)\") AND ({更新日期} <= \"2026-09-30\"));\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{指数机构名称}: REPORT_FIELD(\"指数机构名称\");\n{ESG评级}: REPORT_FIELD(\"ESG评级\");\n{行业内esg评级中位数}: REPORT_FIELD(\"行业内esg评级中位数\");\n{ESG评分}: REPORT_FIELD(\"ESG评分\");\n{行业内esg评分平均值}: REPORT_FIELD(\"行业内esg评分平均值\");\n{行业内esg评分中位数}: REPORT_FIELD(\"行业内esg评分中位数\");\n{行业ESG评分排名}: REPORT_FIELD(\"行业ESG评分排名\");\n{esg总分}: REPORT_FIELD(\"esg总分\");\n{所属行业名称}: REPORT_FIELD(\"所属行业名称\");\n{行业总数}: REPORT_FIELD(\"行业总数\");\n{更新日期}: REPORT_FIELD(\"更新日期\");\nSort({更新日期}, \"DESC\");\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "公司代码",
+          "指数机构名称",
+          "ESG评级",
+          "行业内esg评级中位数",
+          "ESG评分",
+          "行业内esg评分平均值",
+          "行业内esg评分中位数",
+          "行业ESG评分排名",
+          "esg总分",
+          "所属行业名称",
+          "行业总数",
+          "更新日期"
+        ]
+      ]
+    },
+    {
+      "key": "judicial_dishonest_0",
+      "tested_at": "2026-09-30",
+      "execution_id": "3c91f4f4-94e6-42a6-a851-967d686a6ca5",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\失信被执行人汇总|081751076337787});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"0\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"失信被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "0",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_dishonest_1",
+      "tested_at": "2026-09-30",
+      "execution_id": "321e3b47-eec4-4f35-bd95-ed7224430f92",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\失信被执行人汇总|081751076337787});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"1\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"失信被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "1",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_executed_main_0",
+      "tested_at": "2026-09-30",
+      "execution_id": "bb2a905f-9c28-44cd-a121-2760e6ca49e5",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\被执行人汇总|006194229816016});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"0\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "0",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_executed_main_1",
+      "tested_at": "2026-09-30",
+      "execution_id": "f118c886-59d9-43f3-8711-0be7b1719e68",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\被执行人汇总|006194229816016});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"1\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "1",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_executed_backup_0",
+      "tested_at": "2026-09-30",
+      "execution_id": "d63584bf-4bbb-4061-8199-9304c1a3cd6c",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\被执行人\\被执行人汇总|024220940284594});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"0\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "0",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_executed_backup_1",
+      "tested_at": "2026-09-30",
+      "execution_id": "50a606b4-98bf-436c-89f9-72319d0ec6b5",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\被执行人\\被执行人汇总|024220940284594});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"1\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行标的}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的}: REPORT_FIELD(\"历史执行标的（万元）\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行标的",
+          "历史执行标的"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "1",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_restricted_0",
+      "tested_at": "2026-09-30",
+      "execution_id": "97de2c54-5fcf-48fc-be28-40fed26dbdc2",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\限制高消费汇总|868338831875985});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"0\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"限消令对象\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "0",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_restricted_1",
+      "tested_at": "2026-09-30",
+      "execution_id": "df4daa47-452b-4e54-b4de-a4b40efb0174",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\限制高消费汇总|868338831875985});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"1\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"限消令对象\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "1",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_termination_0",
+      "tested_at": "2026-09-30",
+      "execution_id": "be74f2f3-a072-4002-9235-edd1d4783da1",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\终本案件汇总|349894282139442});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"0\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行总金额}: REPORT_FIELD(\"当前执行总金额（万元）\");\n{历史执行总金额}: REPORT_FIELD(\"历史执行总金额（万元）\");\n{当前未履行总金额}: REPORT_FIELD(\"当前未履行总金额（万元）\");\n{历史未履行总金额}: REPORT_FIELD(\"历史未履行总金额（万元）\");\n{当前未履行比例}: REPORT_FIELD(\"当前未履行比例(%)\");\n{历史未履行比例}: REPORT_FIELD(\"历史未履行比例(%)\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行总金额",
+          "历史执行总金额",
+          "当前未履行总金额",
+          "历史未履行总金额",
+          "当前未履行比例",
+          "历史未履行比例"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "0",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    },
+    {
+      "key": "judicial_termination_1",
+      "tested_at": "2026-09-30",
+      "execution_id": "59c2ab85-cce8-4a1f-9207-1126453e85cb",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9(发行人+工商企业)\\企业一页纸\\司法风险汇总信息\\终本案件汇总|349894282139442});\nSetReportFilter(({公司代码} == \"10005596\") AND ({是否历史信息} == \"1\") AND IN({关系类型}, [\"1\", \"2\", \"3\", \"4\"]));\n{关系类型}: REPORT_FIELD(\"关系类型\");\n{对象}: REPORT_FIELD(\"被执行人\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{当前执行总金额}: REPORT_FIELD(\"当前执行总金额（万元）\");\n{历史执行总金额}: REPORT_FIELD(\"历史执行总金额（万元）\");\n{当前未履行总金额}: REPORT_FIELD(\"当前未履行总金额（万元）\");\n{历史未履行总金额}: REPORT_FIELD(\"历史未履行总金额（万元）\");\n{当前未履行比例}: REPORT_FIELD(\"当前未履行比例(%)\");\n{历史未履行比例}: REPORT_FIELD(\"历史未履行比例(%)\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "关系类型",
+          "对象",
+          "当前案件数",
+          "历史案件数",
+          "当前执行总金额",
+          "历史执行总金额",
+          "当前未履行总金额",
+          "历史未履行总金额",
+          "当前未履行比例",
+          "历史未履行比例"
+        ]
+      ],
+      "org_code": "10005596",
+      "is_history": "1",
+      "requested_relation_types": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "returned_relation_types": [
+        "1",
+        "3",
+        "4"
+      ],
+      "note": "TYPE=2未返回，不补零，不将请求覆盖四类等同于四类均有记录。"
+    }
+  ],
+  "fixed_template_checks": [
+    {
+      "key": "issuance_fixed",
+      "tested_at": "2026-09-30",
+      "org_code": "10002264",
+      "ok": true,
+      "row_count": 58,
+      "columns": ["债券代码", "债券简称", "债券类型", "债券余额", "币种", "发行日期", "到期日期", "剩余期限", "最新债项评级", "最新主体评级", "票面利率", "所属集团"]
+    },
+    {
+      "key": "shareholder_main",
+      "tested_at": "2026-09-30",
+      "org_code": "10002602",
+      "end_date": "2026-06-30",
+      "ok": true,
+      "row_count": 11,
+      "columns": ["股东名称", "持有数量(股)", "持有比例(%)", "股东是否为发行人"]
+    },
+    {
+      "key": "credit_full",
+      "tested_at": "2026-09-30",
+      "org_code": "10002264",
+      "end_date": "2026-09-30",
+      "ok": true,
+      "row_count": 1,
+      "column_count": 19,
+      "note": "信用分析主路径要求公司代码和截止日期；货币资金/短期债务字段保留 Runtime 返回的 NUL 后缀。"
+    },
+    {
+      "key": "solvency_statistics",
+      "tested_at": "2026-09-30",
+      "org_code": "10002264.FXR",
+      "start_date": "2024-09-30",
+      "end_date": "2027-09-30",
+      "ok": true,
+      "row_count": 13,
+      "columns": ["偿债总额", "偿债只数"],
+      "note": "当前字段不足以构造发行与到期金额双序列，不能将偿债总额改名为发行额或到期额。"
+    },
+    {
+      "key": "sci_tech_profile",
+      "tested_at": "2026-09-30",
+      "org_code": "10000069733",
+      "ok": true,
+      "row_count": 1,
+      "columns": ["行业", "省份", "科创称号", "科创领域"]
+    },
+    {
+      "key": "judicial_dishonest",
+      "tested_at": "2026-09-30",
+      "org_code": "10005596",
+      "is_history": "0",
+      "ok": true,
+      "row_count": 3,
+      "relation_types": ["1", "2", "3", "4"]
+    },
+    {
+      "key": "judicial_executed_main",
+      "tested_at": "2026-09-30",
+      "org_code": "10005596",
+      "is_history": "0",
+      "ok": false,
+      "failure_stage": "plan",
+      "failure_reason": "被执行人汇总主路径报表服务请求失败"
+    },
+    {
+      "key": "judicial_executed_backup",
+      "tested_at": "2026-09-30",
+      "org_code": "10005596",
+      "is_history": "0",
+      "ok": true,
+      "row_count": 3,
+      "relation_types": ["1", "2", "3", "4"]
+    },
+    {
+      "key": "judicial_restricted",
+      "tested_at": "2026-09-30",
+      "org_code": "10005596",
+      "is_history": "0",
+      "ok": true,
+      "row_count": 3,
+      "relation_types": ["1", "2", "3", "4"]
+    },
+    {
+      "key": "judicial_termination",
+      "tested_at": "2026-09-30",
+      "org_code": "10005596",
+      "is_history": "0",
+      "ok": true,
+      "row_count": 3,
+      "relation_types": ["1", "2", "3", "4"]
+    }
+  ],
+  "queries": [
+    {
+      "key": "org_info_all",
+      "module": "企业类型",
+      "execution_id": "477e28dd-efff-4bab-8a6e-a93525c8cd08",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\表头\\企业F9_机构基本信息});\nSetReportFilter(({公司代码} == \"10002602\") OR ({公司代码} == \"10002264\") OR ({公司代码} == \"10083304\") OR ({公司代码} == \"10000069733\") OR ({公司代码} == \"10010954\"));\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司名称}: REPORT_FIELD(\"公司名称\");\n{概念标签代码}: REPORT_FIELD(\"概念标签代码\");\n{概念标签名称}: REPORT_FIELD(\"概念标签名称\");\n{最新发行债券(境内)}: REPORT_FIELD(\"最新发行债券(境内)\");\n{最新股票代码(A股)}: REPORT_FIELD(\"最新股票代码(A股)\");\n{是否属于城投平台}: REPORT_FIELD(\"是否属于城投平台\");\n{科创称号}: REPORT_FIELD(\"科创称号\");\n{省份编码}: REPORT_FIELD(\"省份编码\");\n{省份}: REPORT_FIELD(\"省份\");\n{合合机构ID}: REPORT_FIELD(\"合合机构ID\");\n\nOutputBlock();",
+      "row_count": 5,
+      "columns": [
+        [
+          "公司代码",
+          "公司名称",
+          "概念标签代码",
+          "概念标签名称",
+          "最新发行债券(境内)",
+          "最新股票代码(A股)",
+          "是否属于城投平台",
+          "科创称号",
+          "省份编码",
+          "省份",
+          "合合机构ID"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10000069733",
+            "公司名称": "合肥芯碁微电子装备股份有限公司",
+            "合合机构ID": "d6ee8fb4-1720-4d4e-b96d-c0cfdfc0c9f4",
+            "是否属于城投平台": null,
+            "最新发行债券(境内)": null,
+            "最新股票代码(A股)": "688630.SH",
+            "概念标签代码": "0010010001002002,0030020002,0030020006",
+            "概念标签名称": "港股中资股主板,国家级专精特新小巨人,独角兽企业",
+            "省份": "安徽省",
+            "省份编码": "340000",
+            "科创称号": "国家企业技术中心"
+          },
+          {
+            "公司代码": "10002264",
+            "公司名称": "中国民生银行股份有限公司",
+            "合合机构ID": "a757e79c-1817-466c-be31-3241393ed443",
+            "是否属于城投平台": "否",
+            "最新发行债券(境内)": "212680044.IB",
+            "最新股票代码(A股)": "600016.SH",
+            "概念标签代码": "0010010001002002,0010010001003002,0030010001003001,0030040001",
+            "概念标签名称": "港股中资股主板,美股中资股,股份制银行总行,上市公司联营合营企业",
+            "省份": "北京市",
+            "省份编码": "110000",
+            "科创称号": null
+          },
+          {
+            "公司代码": "10002602",
+            "公司名称": "贵州茅台酒股份有限公司",
+            "合合机构ID": "518b125f-7f56-4ede-93d1-20e4748d1af8",
+            "是否属于城投平台": null,
+            "最新发行债券(境内)": null,
+            "最新股票代码(A股)": "600519.SH",
+            "概念标签代码": "0030020004",
+            "概念标签名称": "国家技术发明奖",
+            "省份": "贵州省",
+            "省份编码": "520000",
+            "科创称号": "国家技术发明奖"
+          },
+          {
+            "公司代码": "10010954",
+            "公司名称": "中国石油天然气集团有限公司",
+            "合合机构ID": "c953fc2d-55fc-4239-910e-ae6e41b3648d",
+            "是否属于城投平台": "否",
+            "最新发行债券(境内)": "102584676.IB",
+            "最新股票代码(A股)": null,
+            "概念标签代码": "0030020005",
+            "概念标签名称": "国家科技进步奖",
+            "省份": "北京市",
+            "省份编码": "110000",
+            "科创称号": "国家企业技术中心"
+          },
+          {
+            "公司代码": "10083304",
+            "公司名称": "淮安市城市资产经营有限公司",
+            "合合机构ID": "a3e61a62-d9c2-44cb-bd0a-55859162d444",
+            "是否属于城投平台": "是",
+            "最新发行债券(境内)": "032680293.IB",
+            "最新股票代码(A股)": null,
+            "概念标签代码": "0030050001",
+            "概念标签名称": "城投企业",
+            "省份": "江苏省",
+            "省份编码": "320000",
+            "科创称号": null
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "esg_scope",
+      "module": "企业类型",
+      "execution_id": "504f392a-d633-402f-b30c-e092694868a8",
+      "ok": true,
+      "mql": "CrossSectionBlock(#1, {EM_CODE});\nSetCodes([\"600519.SH\"]);\n{ESG评分}: {Choice指标\\股票\\沪深京股票指标\\ESG\\中诚信绿金ESG评分|100000000046321}({截止日期} = \"2026-09-20\", {ESG} = \"总体\");\nOutputBlock();\nCrossSectionBlock(#2, {EM_CODE});\nSetCodes([\"10002602.FXR\"]);\n{ESG评分}: {Choice指标\\发行人\\企业全部指标\\评级分析\\ESG评级\\中诚信绿金ESG评分|100000000046321}({截止日期} = \"2026-09-20\", {ESG} = \"总体\");\nOutputBlock();\n",
+      "row_count": 2,
+      "columns": [
+        [
+          "EM_CODE",
+          "ESG评分"
+        ],
+        [
+          "EM_CODE",
+          "ESG评分"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "EM_CODE": "600519.SH",
+            "ESG评分": 76.68
+          }
+        ],
+        [
+          {
+            "EM_CODE": "10002602.FXR",
+            "ESG评分": 76.68
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "urban_filter",
+      "module": "企业类型",
+      "execution_id": "9ebcfaa9-473f-435f-9801-d362fac08b78",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\信用债发行企业一页纸专项数据\\发行人发行债券类型|RPT_CUSTOM_BOND_BS_SAMEISSUERFILTER});\nSetReportFilter(({信用主体代码} == \"10083304\") AND ({筛选类型编码} == \"1\") AND ({是否剔除同业存单} == \"1\") AND ({到期日期} >= \"2026-09-20\"));\n{筛选内容}: REPORT_FIELD(\"筛选内容\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n\nOutputBlock();",
+      "row_count": 2,
+      "columns": [
+        [
+          "筛选内容",
+          "公司代码"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10083304",
+            "筛选内容": "私募公司债"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "issuer_filter",
+      "module": "企业类型",
+      "execution_id": "69e107fe-c77e-49f2-b789-ade03c0090af",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\信用债发行企业一页纸专项数据\\发行人发行债券类型|RPT_CUSTOM_BOND_BS_SAMEISSUERFILTER});\nSetReportFilter(({发行人代码} == \"10010954\") AND ({集团系} == \"0\") AND ({筛选类型编码} == \"1\") AND ({是否剔除同业存单} == \"1\") AND ({到期日期} > \"2026-09-20\"));\n{筛选内容}: REPORT_FIELD(\"筛选内容\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "筛选内容",
+          "公司代码"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10010954",
+            "筛选内容": "海外债"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "basic_noid_cn",
+      "module": "基本情况",
+      "execution_id": "dd897070-0e91-4e77-a71b-dd0795c23f60",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\智能发行人\\工商信息\\工商信息});\nSetReportFilter(({公司代码} == \"10002264\"));\n{第一大竞争对手}: REPORT_FIELD(\"第一大竞争对手\");\n{成立日期}: REPORT_FIELD(\"成立日期\");\n{行业}: REPORT_FIELD(\"行业\");\n{是否属于城投平台}: REPORT_FIELD(\"是否属于城投平台\");\n{是否上市公司}: REPORT_FIELD(\"是否上市公司\");\n{集团主公司名称}: REPORT_FIELD(\"集团主公司名称\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司代码带后缀}: REPORT_FIELD(\"公司代码带后缀\");\n{企业性质(全部)}: REPORT_FIELD(\"企业性质(全部)\");\n{公司名称}: REPORT_FIELD(\"公司名称\");\n{公司简介}: REPORT_FIELD(\"公司简介\");\n{省份}: REPORT_FIELD(\"省份\");\n{注册地址}: REPORT_FIELD(\"注册地址\");\n{注册资本(万元)}: REPORT_FIELD(\"注册资本(万元)\");\n{经营范围}: REPORT_FIELD(\"经营范围\");\n{实际控制人}: REPORT_FIELD(\"实际控制人\");\n{统一社会信用代码}: REPORT_FIELD(\"统一社会信用代码\");\n{发行股票}: REPORT_FIELD(\"发行股票\");\n{第一大股东(持股比例)}: REPORT_FIELD(\"第一大股东(持股比例)\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "第一大竞争对手",
+          "成立日期",
+          "行业",
+          "是否属于城投平台",
+          "是否上市公司",
+          "集团主公司名称",
+          "公司代码",
+          "公司代码带后缀",
+          "企业性质(全部)",
+          "公司名称",
+          "公司简介",
+          "省份",
+          "注册地址",
+          "注册资本(万元)",
+          "经营范围",
+          "实际控制人",
+          "统一社会信用代码",
+          "发行股票",
+          "第一大股东(持股比例)"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "企业性质(全部)": "其他企业",
+            "公司代码": "10002264",
+            "公司代码带后缀": "10002264.FXR",
+            "公司名称": "中国民生银行股份有限公司",
+            "公司简介": "    中国民生银行股份有限公司于1996年在北京正式成立,是中国第一家主要由民营企业发起设立的全国性股份制商业银行。本行经有关监管机构批准后,经营下列各项商业银行业务:吸收公众存款;发放短期、中期和长期贷款;办理国内外结算;办理票据承兑与贴现、发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券、金融债券;从事同业拆借;买卖、代理买卖外汇:从事结汇、售汇业务;从事银行卡业务;提供信用证服务及担保;代理收付款项;提供保管箱服务;经国务院银行业监督管理机构批准的其它业务;保险兼业代理业务;证券投资基金销售、证券投资基金托管。(市场主体依法自主选择经营项目,开展经营活动;保险兼业代理业务、证券投资基金销售、证券投资基金托管以及依法须经批准的项目,经相关部门批准后依批准的内容开展经营活动;不得从事国家和本市产业政策禁止和限制类项目的经营活动)。",
+            "发行股票": "民生优1(360037.SH),民生银行(01988.HK),民生银行(600016.SH),民生银行(CGMBF.F),民生银行(ADR)(CMAKY.F)",
+            "实际控制人": "无",
+            "成立日期": "1996-02-07",
+            "是否上市公司": "是",
+            "是否属于城投平台": "否",
+            "注册地址": "中国北京市西城区复兴门内大街2号",
+            "注册资本(万元)": 4378241.8502,
+            "省份": "北京市",
+            "第一大竞争对手": "中国建设银行股份有限公司",
+            "第一大股东(持股比例)": "香港中央结算(代理人)有限公司(18.93%)",
+            "经营范围": "吸收公众存款;发放短期、中期和长期贷款;办理国内外结算;办理票据承兑与贴现、发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券、金融债券;从事同业拆借;买卖、代理买卖外汇;从事结汇、售汇业务;从事银行卡业务;提供信用证服务及担保;代理收付款项;提供保管箱服务;经国务院银行业监督管理机构批准的其他业务;保险兼业代理业务;证券投资基金销售、证券投资基金托管。(市场主体依法自主选择经营项目,开展经营活动;保险兼业代理业务、证券投资基金销售、证券投资基金托管以及依法须经批准的项目,经相关部门批准后依批准的内容开展经营活动;不得从事国家和本市产业政策禁止和限制类项目的经营活动。)",
+            "统一社会信用代码": "91110000100018988F",
+            "行业": "金融业-货币金融服务-货币银行服务-商业银行服务",
+            "集团主公司名称": "中国民生银行股份有限公司"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "shareholder",
+      "module": "股东情况",
+      "execution_id": "834f7105-3a56-416c-b6d3-71e7c3473de2",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\股东股权\\增减持股东\\股东股权|RPT_CUSTOM_ORG_SHAREHOLDER_EQUITY});\nSetReportFilter(({公司代码} == \"10002264\") AND ({截止日期} == \"2026-09-20\"));\n{减持大股东名称}: REPORT_FIELD(\"减持大股东名称\");\n{增持大股东名称}: REPORT_FIELD(\"增持大股东名称\");\n{减持比例}: REPORT_FIELD(\"减持比例\");\n{增持比例}: REPORT_FIELD(\"增持比例\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{实际控制人}: REPORT_FIELD(\"实际控制人\");\n{第一大股东名称(持股比例)}: REPORT_FIELD(\"第一大股东名称(持股比例)\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\股东股权\\增减持股东\\股东股权|RPT_CUSTOM_ORG_SHAREHOLDER_EQUITY"
+          }
+        },
+        "message": "报表接口返回失败：columns字段不合法：HOLDER_RATIO_ DOWN",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "shareholder_partial",
+      "module": "股东情况",
+      "execution_id": "7a149058-a1d3-46ad-bcf6-44e72feef9f2",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\股东股权\\增减持股东\\股东股权|RPT_CUSTOM_ORG_SHAREHOLDER_EQUITY});\nSetReportFilter(({公司代码} == \"10002264\") AND ({截止日期} == \"2026-09-20\"));\n{减持大股东名称}: REPORT_FIELD(\"减持大股东名称\");\n{增持大股东名称}: REPORT_FIELD(\"增持大股东名称\");\n{增持比例}: REPORT_FIELD(\"增持比例\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{实际控制人}: REPORT_FIELD(\"实际控制人\");\n{第一大股东名称(持股比例)}: REPORT_FIELD(\"第一大股东名称(持股比例)\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "减持大股东名称",
+          "增持大股东名称",
+          "增持比例",
+          "公司代码",
+          "报告期",
+          "实际控制人",
+          "第一大股东名称(持股比例)"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10002264",
+            "减持大股东名称": "同方国信投资控股有限公司,香港中央结算有限公司",
+            "增持大股东名称": "中国长城资产管理股份有限公司,戴思元",
+            "增持比例": "3.66,2.36",
+            "实际控制人": "无",
+            "报告期": "2026-06-30",
+            "第一大股东名称(持股比例)": "香港中央结算(代理人)有限公司(18.93%)"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "shareholder_main",
+      "module": "股东情况",
+      "execution_id": "43738f3e-c784-404c-8219-a60ceaceac25",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\股东股权\\股东明细\\股东明细\\主要股东|789604172179402});\nSetReportFilter({发行人代码} == \"10002602\" AND {截止日期} == \"2026-06-30\");\n{股东名称}: REPORT_FIELD(\"股东名称\");\n{持有数量/金额}: REPORT_FIELD(\"持有数量/金额\");\n{持有比例(%)}: REPORT_FIELD(\"持有比例(%)\");\n{股东是否为发行人}: REPORT_FIELD(\"股东是否为发行人\");\nSort({持有比例(%)}, \"DESC\");\nHead(15);\nOutputBlock();",
+      "row_count": 11,
+      "columns": [
+        [
+          "股东名称",
+          "持有数量/金额",
+          "持有比例(%)",
+          "股东是否为发行人"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "股东名称": "合计",
+            "持有数量/金额": 845293363,
+            "持有比例(%)": 67.63,
+            "股东是否为发行人": null
+          },
+          {
+            "股东名称": "中国贵州茅台酒厂(集团)有限责任公司",
+            "持有数量/金额": 681282935,
+            "持有比例(%)": 54.5,
+            "股东是否为发行人": "1"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "related_noid",
+      "module": "股东情况",
+      "execution_id": "41bc4c1c-35f0-4296-b341-e24b4220c576",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\关联交易\\沪深F9_重大事项_关联交易});\nSetReportFilter(({公司代码} == \"10002264\") AND ({公告日期} >= \"2025-09-20\") AND ({公告日期} <= \"2026-09-20\"));\n{公告日期}: REPORT_FIELD(\"公告日期\");\n{关联方}: REPORT_FIELD(\"关联方\");\n{关联交易类型}: REPORT_FIELD(\"关联交易类型\");\n{关联关系}: REPORT_FIELD(\"关联关系\");\n{是否存在控制关系}: REPORT_FIELD(\"是否存在控制关系\");\n{交易金额}: REPORT_FIELD(\"交易金额\");\n{币种}: REPORT_FIELD(\"币种\");\n{交易简介}: REPORT_FIELD(\"交易简介\");\n\nOutputBlock();",
+      "row_count": 2,
+      "columns": [
+        [
+          "公告日期",
+          "关联方",
+          "关联交易类型",
+          "关联关系",
+          "是否存在控制关系",
+          "交易金额",
+          "币种",
+          "交易简介"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "交易简介": "为进一步增加本行对上海松江民生村镇银行的持股比例,本行与健特生命签订《股份转让协议》,以4,545万元交易金额受让健特生命持有的上海松江民生村镇银行1500万股、占比10%股份。本次交易的资金来源为本行自有资金。",
+            "交易金额": 4545,
+            "公告日期": "2026-05-09",
+            "关联交易类型": "其他交易",
+            "关联关系": "其它关联关系",
+            "关联方": "上海健特生命科技有限公司",
+            "币种": "人民币",
+            "是否存在控制关系": "否"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "industry_fixed",
+      "module": "所处行业",
+      "execution_id": "f6b587e2-fac1-4db4-bfb5-81ab18f5a1ec",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\智能发行人\\工商信息\\工商信息});\nSetReportFilter(({公司代码} == \"10002602\"));\n{行业}: REPORT_FIELD(\"行业\");\n{省份}: REPORT_FIELD(\"省份\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "行业",
+          "省份"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "省份": "贵州省",
+            "行业": "制造业-酒、饮料和精制茶制造业-酒的制造-白酒制造"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "operation_noid",
+      "module": "经营状况",
+      "execution_id": "2e05515c-f498-4ba0-9522-bbf4f46207f8",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\主营构成\\主营构成_沪深});\nSetReportFilter(({机构代码} == \"10002602\") AND ({分布类型} == \"2\") AND ({报告日期} >= \"2023-01-01\") AND ({报告日期} <= \"2026-09-20\"));\n{实际披露项目名称}: REPORT_FIELD(\"实际披露项目名称\");\n{分布类型编码}: REPORT_FIELD(\"分布类型编码\");\n{币种(英文)}: REPORT_FIELD(\"币种(英文)\");\n{币种(中文)}: REPORT_FIELD(\"币种(中文)\");\n{本期毛利率}: REPORT_FIELD(\"本期毛利率\");\n{是否最新报告期}: REPORT_FIELD(\"是否最新报告期\");\n{本期主营业务成本}: REPORT_FIELD(\"本期主营业务成本\");\n{本期主营业务收入}: REPORT_FIELD(\"本期主营业务收入\");\n{本期主营业务利润}: REPORT_FIELD(\"本期主营业务利润\");\n{占主营业务成本比例}: REPORT_FIELD(\"占主营业务成本比例\");\n{占主营业务收入比例}: REPORT_FIELD(\"占主营业务收入比例\");\n{占主营业务利润比例}: REPORT_FIELD(\"占主营业务利润比例\");\n{计算方式代码}: REPORT_FIELD(\"计算方式代码\");\n{计算方式类型}: REPORT_FIELD(\"计算方式类型\");\n{机构代码}: REPORT_FIELD(\"机构代码\");\n{机构名称}: REPORT_FIELD(\"机构名称\");\n{报告期编码}: REPORT_FIELD(\"报告期编码\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{报告年度}: REPORT_FIELD(\"报告年度\");\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{证券内码}: REPORT_FIELD(\"证券内码\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{项目编码}: REPORT_FIELD(\"项目编码\");\n{标准披露项目名称}: REPORT_FIELD(\"标准披露项目名称\");\n{分布类型}: REPORT_FIELD(\"分布类型\");\n\nOutputBlock();",
+      "row_count": 0,
+      "columns": [
+        [
+          "实际披露项目名称",
+          "分布类型编码",
+          "币种(英文)",
+          "币种(中文)",
+          "本期毛利率",
+          "是否最新报告期",
+          "本期主营业务成本",
+          "本期主营业务收入",
+          "本期主营业务利润",
+          "占主营业务成本比例",
+          "占主营业务收入比例",
+          "占主营业务利润比例",
+          "计算方式代码",
+          "计算方式类型",
+          "机构代码",
+          "机构名称",
+          "报告期编码",
+          "报告日期",
+          "报告期类型",
+          "报告年度",
+          "证券代码",
+          "证券内码",
+          "证券简称",
+          "项目编码",
+          "标准披露项目名称",
+          "分布类型"
+        ]
+      ],
+      "sample": [
+        []
+      ],
+      "error": null
+    },
+    {
+      "key": "operation_product_fixed",
+      "module": "经营状况",
+      "execution_id": "7f49211a-2f7b-4b6b-812a-e3d50547f94b",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\主营构成\\主营构成_沪深});\nSetReportFilter(({机构代码} == \"10002602\") AND ({分布类型} == \"产品\") AND ({报告日期} >= \"2023-01-01\") AND ({报告日期} <= \"2026-09-20\"));\n{实际披露项目名称}: REPORT_FIELD(\"实际披露项目名称\");\n{分布类型编码}: REPORT_FIELD(\"分布类型编码\");\n{币种(英文)}: REPORT_FIELD(\"币种(英文)\");\n{币种(中文)}: REPORT_FIELD(\"币种(中文)\");\n{本期毛利率}: REPORT_FIELD(\"本期毛利率\");\n{是否最新报告期}: REPORT_FIELD(\"是否最新报告期\");\n{本期主营业务成本}: REPORT_FIELD(\"本期主营业务成本\");\n{本期主营业务收入}: REPORT_FIELD(\"本期主营业务收入\");\n{本期主营业务利润}: REPORT_FIELD(\"本期主营业务利润\");\n{占主营业务成本比例}: REPORT_FIELD(\"占主营业务成本比例\");\n{占主营业务收入比例}: REPORT_FIELD(\"占主营业务收入比例\");\n{占主营业务利润比例}: REPORT_FIELD(\"占主营业务利润比例\");\n{计算方式代码}: REPORT_FIELD(\"计算方式代码\");\n{计算方式类型}: REPORT_FIELD(\"计算方式类型\");\n{机构代码}: REPORT_FIELD(\"机构代码\");\n{机构名称}: REPORT_FIELD(\"机构名称\");\n{报告期编码}: REPORT_FIELD(\"报告期编码\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{报告年度}: REPORT_FIELD(\"报告年度\");\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{证券内码}: REPORT_FIELD(\"证券内码\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{项目编码}: REPORT_FIELD(\"项目编码\");\n{标准披露项目名称}: REPORT_FIELD(\"标准披露项目名称\");\n{分布类型}: REPORT_FIELD(\"分布类型\");\n\nOutputBlock();",
+      "row_count": 118,
+      "columns": [
+        [
+          "实际披露项目名称",
+          "分布类型编码",
+          "币种(英文)",
+          "币种(中文)",
+          "本期毛利率",
+          "是否最新报告期",
+          "本期主营业务成本",
+          "本期主营业务收入",
+          "本期主营业务利润",
+          "占主营业务成本比例",
+          "占主营业务收入比例",
+          "占主营业务利润比例",
+          "计算方式代码",
+          "计算方式类型",
+          "机构代码",
+          "机构名称",
+          "报告期编码",
+          "报告日期",
+          "报告期类型",
+          "报告年度",
+          "证券代码",
+          "证券内码",
+          "证券简称",
+          "项目编码",
+          "标准披露项目名称",
+          "分布类型"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "分布类型": "产品",
+            "分布类型编码": "2",
+            "占主营业务利润比例": null,
+            "占主营业务成本比例": null,
+            "占主营业务收入比例": 85.632890762333,
+            "实际披露项目名称": "茅台酒",
+            "币种(中文)": "人民币",
+            "币种(英文)": "CNY",
+            "报告年度": "2023",
+            "报告日期": "2023-03-31",
+            "报告期类型": "一季报",
+            "报告期编码": "1",
+            "是否最新报告期": "0",
+            "本期主营业务利润": null,
+            "本期主营业务成本": null,
+            "本期主营业务收入": 33721634500,
+            "本期毛利率": null,
+            "机构代码": "10002602",
+            "机构名称": "贵州茅台酒股份有限公司",
+            "标准披露项目名称": "茅台酒",
+            "计算方式代码": "0",
+            "计算方式类型": "普通报表",
+            "证券代码": "600519",
+            "证券内码": "1000002162",
+            "证券简称": "贵州茅台",
+            "项目编码": "000001"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "operation_region_fixed",
+      "module": "经营状况",
+      "execution_id": "0e0108ff-facf-4394-ac25-e880a549e791",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\主营构成\\主营构成_沪深});\nSetReportFilter(({机构代码} == \"10002602\") AND ({分布类型} == \"地区\") AND ({报告日期} >= \"2023-01-01\") AND ({报告日期} <= \"2026-09-20\"));\n{实际披露项目名称}: REPORT_FIELD(\"实际披露项目名称\");\n{分布类型编码}: REPORT_FIELD(\"分布类型编码\");\n{币种(英文)}: REPORT_FIELD(\"币种(英文)\");\n{币种(中文)}: REPORT_FIELD(\"币种(中文)\");\n{本期毛利率}: REPORT_FIELD(\"本期毛利率\");\n{是否最新报告期}: REPORT_FIELD(\"是否最新报告期\");\n{本期主营业务成本}: REPORT_FIELD(\"本期主营业务成本\");\n{本期主营业务收入}: REPORT_FIELD(\"本期主营业务收入\");\n{本期主营业务利润}: REPORT_FIELD(\"本期主营业务利润\");\n{占主营业务成本比例}: REPORT_FIELD(\"占主营业务成本比例\");\n{占主营业务收入比例}: REPORT_FIELD(\"占主营业务收入比例\");\n{占主营业务利润比例}: REPORT_FIELD(\"占主营业务利润比例\");\n{计算方式代码}: REPORT_FIELD(\"计算方式代码\");\n{计算方式类型}: REPORT_FIELD(\"计算方式类型\");\n{机构代码}: REPORT_FIELD(\"机构代码\");\n{机构名称}: REPORT_FIELD(\"机构名称\");\n{报告期编码}: REPORT_FIELD(\"报告期编码\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{报告年度}: REPORT_FIELD(\"报告年度\");\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{证券内码}: REPORT_FIELD(\"证券内码\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{项目编码}: REPORT_FIELD(\"项目编码\");\n{标准披露项目名称}: REPORT_FIELD(\"标准披露项目名称\");\n{分布类型}: REPORT_FIELD(\"分布类型\");\n\nOutputBlock();",
+      "row_count": 112,
+      "columns": [
+        [
+          "实际披露项目名称",
+          "分布类型编码",
+          "币种(英文)",
+          "币种(中文)",
+          "本期毛利率",
+          "是否最新报告期",
+          "本期主营业务成本",
+          "本期主营业务收入",
+          "本期主营业务利润",
+          "占主营业务成本比例",
+          "占主营业务收入比例",
+          "占主营业务利润比例",
+          "计算方式代码",
+          "计算方式类型",
+          "机构代码",
+          "机构名称",
+          "报告期编码",
+          "报告日期",
+          "报告期类型",
+          "报告年度",
+          "证券代码",
+          "证券内码",
+          "证券简称",
+          "项目编码",
+          "标准披露项目名称",
+          "分布类型"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "分布类型": "地区",
+            "分布类型编码": "3",
+            "占主营业务利润比例": null,
+            "占主营业务成本比例": null,
+            "占主营业务收入比例": 96.69434817787,
+            "实际披露项目名称": "国内",
+            "币种(中文)": "人民币",
+            "币种(英文)": "CNY",
+            "报告年度": "2023",
+            "报告日期": "2023-03-31",
+            "报告期类型": "一季报",
+            "报告期编码": "1",
+            "是否最新报告期": "0",
+            "本期主营业务利润": null,
+            "本期主营业务成本": null,
+            "本期主营业务收入": 38077559200,
+            "本期毛利率": null,
+            "机构代码": "10002602",
+            "机构名称": "贵州茅台酒股份有限公司",
+            "标准披露项目名称": "中国大陆",
+            "计算方式代码": "0",
+            "计算方式类型": "普通报表",
+            "证券代码": "600519",
+            "证券内码": "1000002162",
+            "证券简称": "贵州茅台",
+            "项目编码": "000001"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "operation_other_entity_chart",
+      "module": "经营状况",
+      "execution_id": "d057cebf-7438-4b8c-9583-6038ddda2c69",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\主营构成\\主营构成-其他企业|RPT_ORGF9_FN_MAINOPBUSINESS});\nSetReportFilter(({机构代码} == \"10426109\") AND ({分布类型} == \"产品\") AND ({是否最新报告期} == \"1\") AND ({计算方式代码} == \"0\"));\n{实际披露项目名称}: REPORT_FIELD(\"实际披露项目名称\");\n{分布类型}: REPORT_FIELD(\"分布类型\");\n{币种}: REPORT_FIELD(\"币种\");\n{币种中文}: REPORT_FIELD(\"币种中文\");\n{本期主营业务收入}: REPORT_FIELD(\"本期主营业务收入\");\n{本期主营业务成本}: REPORT_FIELD(\"本期主营业务成本\");\n{占主营业务收入比例}: REPORT_FIELD(\"占主营业务收入比例\");\n{是否最新报告期}: REPORT_FIELD(\"是否最新报告期\");\n{计算方式代码}: REPORT_FIELD(\"计算方式代码\");\n{计算方式类型}: REPORT_FIELD(\"计算方式类型\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{报告年度}: REPORT_FIELD(\"报告年度\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{项目编码}: REPORT_FIELD(\"项目编码\");\nFILTER_ROWS({项目编码} <> \"999\");\nOutputBlock();",
+      "row_count": 3,
+      "columns": [
+        [
+          "实际披露项目名称", "分布类型", "币种", "币种中文",
+          "本期主营业务收入", "本期主营业务成本", "占主营业务收入比例",
+          "是否最新报告期", "计算方式代码", "计算方式类型", "报告日期",
+          "报告年度", "报告期类型", "项目编码"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "实际披露项目名称": "创新业务及其他",
+            "本期主营业务收入": 544366000,
+            "本期主营业务成本": null,
+            "占主营业务收入比例": 0.750556213574,
+            "币种中文": "人民币",
+            "报告日期": "2020-06-30",
+            "计算方式代码": "0",
+            "项目编码": "003"
+          },
+          {
+            "实际披露项目名称": "数字支付与商家服务",
+            "本期主营业务收入": 26011490000,
+            "本期主营业务成本": null,
+            "占主营业务收入比例": 35.863895694849,
+            "币种中文": "人民币",
+            "报告日期": "2020-06-30",
+            "计算方式代码": "0",
+            "项目编码": "001"
+          },
+          {
+            "实际披露项目名称": "数字金融科技平台",
+            "本期主营业务收入": 45972489000,
+            "本期主营业务成本": null,
+            "占主营业务收入比例": 63.385548091577,
+            "币种中文": "人民币",
+            "报告日期": "2020-06-30",
+            "计算方式代码": "0",
+            "项目编码": "002"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "esg_summary",
+      "module": "ESG分析",
+      "execution_id": "d925ffea-fc3a-4abf-9c7e-546fca0dcefc",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\API专题报表函数\\A股\\F9\\ESG\\ESG-评分评级汇总|RPT_ESG_RATINGSUM});\nSetCodes([\"600519.SH\"]);\n{A股排名}: REPORT_FIELD(\"A股排名\");\n{A股排行/总量}: REPORT_FIELD(\"A股排行/总量\");\n{行业均分}: REPORT_FIELD(\"行业均分\");\n{行业排名}: REPORT_FIELD(\"行业排名\");\n{行业排行/总量}: REPORT_FIELD(\"行业排行/总量\");\n{评级机构名称}: REPORT_FIELD(\"评级机构名称\");\n{ESG总评级}: REPORT_FIELD(\"ESG总评级\");\n{ESG总评分}: REPORT_FIELD(\"ESG总评分\");\n{环境(E)评分}: REPORT_FIELD(\"环境(E)评分\");\n{治理(G)评分}: REPORT_FIELD(\"治理(G)评分\");\n{所属行业代码}: REPORT_FIELD(\"所属行业代码\");\n{所属行业名称}: REPORT_FIELD(\"所属行业名称\");\n{所属行业}: REPORT_FIELD(\"所属行业\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司全称}: REPORT_FIELD(\"公司全称\");\n{证券代码带后缀}: REPORT_FIELD(\"证券代码带后缀\");\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{社会(S)评分}: REPORT_FIELD(\"社会(S)评分\");\n{最新评级日期}: REPORT_FIELD(\"最新评级日期\");\nFILTER_ROWS(({评级机构名称} == \"中诚信绿金\") AND ({最新评级日期} <= \"2026-09-20\"));\nOutputBlock();",
+      "row_count": 0,
+      "columns": [
+        [
+          "A股排名",
+          "A股排行/总量",
+          "行业均分",
+          "行业排名",
+          "行业排行/总量",
+          "评级机构名称",
+          "ESG总评级",
+          "ESG总评分",
+          "环境(E)评分",
+          "治理(G)评分",
+          "所属行业代码",
+          "所属行业名称",
+          "所属行业",
+          "公司代码",
+          "公司全称",
+          "证券代码带后缀",
+          "证券代码",
+          "证券简称",
+          "社会(S)评分",
+          "最新评级日期"
+        ]
+      ],
+      "sample": [
+        []
+      ],
+      "error": null
+    },
+    {
+      "key": "esg_detail_fixed",
+      "module": "ESG分析",
+      "execution_id": "8cf4eec1-95fd-4417-9898-6b8ccba16953",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\API专题报表函数\\A股\\F9\\ESG\\ESG-个股|RPT_ESG_STOCK_CODE});\nSetCodes([\"600519.SH\"]);\nSetReportFilter(({指数机构名称} == \"中诚信绿金\") AND ({所属行业} == \"申万三级行业(2021)\") AND ({更新日期} <= \"2026-09-20\"));\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{指数机构名称}: REPORT_FIELD(\"指数机构名称\");\n{ESG评级}: REPORT_FIELD(\"ESG评级\");\n{行业内esg评级中位数}: REPORT_FIELD(\"行业内esg评级中位数\");\n{ESG评分}: REPORT_FIELD(\"ESG评分\");\n{行业内esg评分平均值}: REPORT_FIELD(\"行业内esg评分平均值\");\n{行业内esg评分中位数}: REPORT_FIELD(\"行业内esg评分中位数\");\n{行业ESG评分排名}: REPORT_FIELD(\"行业ESG评分排名\");\n{esg总分}: REPORT_FIELD(\"esg总分\");\n{所属行业名称}: REPORT_FIELD(\"所属行业名称\");\n{行业总数}: REPORT_FIELD(\"行业总数\");\n{更新日期}: REPORT_FIELD(\"更新日期\");\nSort({更新日期}, \"DESC\");\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "公司代码",
+          "指数机构名称",
+          "ESG评级",
+          "行业内esg评级中位数",
+          "ESG评分",
+          "行业内esg评分平均值",
+          "行业内esg评分中位数",
+          "行业ESG评分排名",
+          "esg总分",
+          "所属行业名称",
+          "行业总数",
+          "更新日期"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "ESG评分": 76.68,
+            "ESG评级": "AA",
+            "esg总分": 100,
+            "公司代码": "10002602",
+            "所属行业名称": "白酒Ⅲ",
+            "指数机构名称": "中诚信绿金",
+            "更新日期": "2024-12-31",
+            "行业ESG评分排名": 1,
+            "行业内esg评分中位数": 67.545,
+            "行业内esg评分平均值": 64.9925,
+            "行业内esg评级中位数": "AA⁻",
+            "行业总数": 20
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "financial",
+      "module": "财务状况及债券发行人财务",
+      "execution_id": "9bf05219-c793-4b9a-a6ec-cd87d763f2f4",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\财务摘要(报告期)\\财务摘要-其他企业|RPT_CUSTOM_ORGF9_FIN_SUMMARY});\nSetReportFilter(({公司代码} == \"10002264\") AND ({报告期} >= \"2023-01-01\") AND ({报告期} <= \"2026-09-20\"));\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{资产总计}: REPORT_FIELD(\"资产总计\");\n{负债合计}: REPORT_FIELD(\"负债合计\");\n{营业总收入}: REPORT_FIELD(\"营业总收入\");\n{归属于母公司股东的净利润}: REPORT_FIELD(\"归属于母公司股东的净利润\");\n{经营活动产生的现金流量净额}: REPORT_FIELD(\"经营活动产生的现金流量净额\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "REPORT_METADATA_INVALID",
+        "details": {
+          "conflict": {
+            "left": {
+              "collection": "return",
+              "cql_name": "合并类型",
+              "request_name": "DATE_TYPE_CH",
+              "type": "string"
+            },
+            "right": {
+              "collection": "return",
+              "cql_name": "合并类型",
+              "request_name": "DATE_TYPE_NEW",
+              "type": "string"
+            },
+            "type": "duplicate_cql_name"
+          },
+          "failure_kind": "invalid_metadata",
+          "metadata_rule": "duplicate_column_name",
+          "operation": "report_metadata_validation",
+          "operation_label": "报表元数据校验",
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\财务摘要(报告期)\\财务摘要-其他企业|RPT_CUSTOM_ORGF9_FIN_SUMMARY"
+          }
+        },
+        "message": "Invalid report metadata: Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\财务摘要(报告期)\\财务摘要-其他企业|RPT_CUSTOM_ORGF9_FIN_SUMMARY: report fields contains duplicate CQL name: 合并类型",
+        "stage": "metadata"
+      }
+    },
+    {
+      "key": "finance_metrics",
+      "module": "财务状况及债券发行人财务",
+      "execution_id": "95cb62db-061b-4bf8-8d8c-3f4b005bedc6",
+      "ok": true,
+      "mql": "CrossSectionBlock(#1, {EM_CODE});\nSetCodes([\"10002264.FXR\"]);\n{资产总计}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\商业银行\\资产负债表\\资产\\资产总计|100000000010127}({报告期} = \"2025-12-31\", {报告类型} = \"合并报表\");\n{负债合计}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\商业银行\\资产负债表\\负债\\负债合计|100000000011173}({报告期} = \"2025-12-31\", {报告类型} = \"合并报表\");\n{净利润}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\商业银行\\利润表\\净利润|100000000011098}({报告期} = \"2025-12-31\", {报告类型} = \"合并报表\");\n{营业总收入}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\一般企业\\利润表\\营业总收入|100000000010015}({报告期} = \"2025-12-31\", {报告类型} = \"合并报表\");\n{经营现金净流量}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\一般企业\\现金流量表\\经营活动产生的现金流量\\经营活动产生的现金流量净额|100000000009247}({报告期} = \"2025-12-31\", {报告类型} = \"合并报表\");\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "EM_CODE",
+          "资产总计",
+          "负债合计",
+          "净利润",
+          "营业总收入",
+          "经营现金净流量"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "EM_CODE": "10002264.FXR",
+            "净利润": 30582000000,
+            "经营现金净流量": -157476000000,
+            "营业总收入": 142865000000,
+            "负债合计": 7129370000000,
+            "资产总计": 7832567000000
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "credit_noid",
+      "module": "信用分析",
+      "execution_id": "7356d050-a3ae-4bd7-b13b-c46a844a04d1",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\智能发行人\\信用分析\\信用分析});\nSetReportFilter(({公司代码} == \"10002264\"));\n{银行授信总额度}: REPORT_FIELD(\"银行授信总额度\");\n{银行授信已使用额度}: REPORT_FIELD(\"银行授信已使用额度\");\n{变动方向}: REPORT_FIELD(\"变动方向\");\n{最新担保余额}: REPORT_FIELD(\"最新担保余额\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司代码(带后缀)}: REPORT_FIELD(\"公司代码(带后缀)\");\n{最新主体评级}: REPORT_FIELD(\"最新主体评级\");\n{评级展望}: REPORT_FIELD(\"评级展望\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "银行授信总额度",
+          "银行授信已使用额度",
+          "变动方向",
+          "最新担保余额",
+          "公司代码",
+          "公司代码(带后缀)",
+          "最新主体评级",
+          "评级展望"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10002264",
+            "公司代码(带后缀)": "10002264.FXR",
+            "变动方向": "维持",
+            "最新主体评级": "AAA",
+            "最新担保余额": null,
+            "评级展望": "稳定",
+            "银行授信已使用额度": null,
+            "银行授信总额度": null
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "issuance_fixed",
+      "module": "发行概述",
+      "execution_id": "660edcef-79ad-4f70-b670-a9cf49ab333e",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\债券\\企业F9\\发行一览\\发行债券|RPT_CUSTOM_BOND_BS_SAMEISSUER});\nSetReportFilter(({发行人代码} == \"10010954\") AND ({集团系} == \"0\") AND ({跨市场去重排序} == 1) AND ({到期日期} > \"2026-09-20\") AND ({债券类型} <> \"同业存单\"));\n{债券代码带后缀}: REPORT_FIELD(\"债券代码带后缀\");\n{债券简称}: REPORT_FIELD(\"债券简称\");\n{证券类别}: REPORT_FIELD(\"证券类别\");\n{当前余额(亿)}: REPORT_FIELD(\"当前余额(亿)\");\n{币种}: REPORT_FIELD(\"币种\");\n{发行日期}: REPORT_FIELD(\"发行日期\");\n{到期日期}: REPORT_FIELD(\"到期日期\");\n{剩余期限}: REPORT_FIELD(\"剩余期限\");\n{债券评级}: REPORT_FIELD(\"债券评级\");\n{主体评级}: REPORT_FIELD(\"主体评级\");\n{票面利率(当期)}: REPORT_FIELD(\"票面利率(当期)\");\n{所属集团}: REPORT_FIELD(\"所属集团\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "REPORT_METADATA_INVALID",
+        "details": {
+          "conflict": {
+            "left": {
+              "collection": "return",
+              "cql_name": "发行人代码",
+              "request_name": "ISSUE_CODE",
+              "type": "string"
+            },
+            "right": {
+              "collection": "return",
+              "cql_name": "发行人代码",
+              "request_name": "ISSUE_NAME",
+              "type": "string"
+            },
+            "type": "duplicate_cql_name"
+          },
+          "failure_kind": "invalid_metadata",
+          "metadata_rule": "duplicate_column_name",
+          "operation": "report_metadata_validation",
+          "operation_label": "报表元数据校验",
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\债券\\企业F9\\发行一览\\发行债券|RPT_CUSTOM_BOND_BS_SAMEISSUER"
+          }
+        },
+        "message": "Invalid report metadata: Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\债券\\企业F9\\发行一览\\发行债券|RPT_CUSTOM_BOND_BS_SAMEISSUER: report fields contains duplicate CQL name: 发行人代码",
+        "stage": "metadata"
+      }
+    },
+    {
+      "key": "curve_types",
+      "module": "定价分析（债券发行人）",
+      "execution_id": "5080fbeb-bdeb-469f-ad39-c647c6b458c8",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\条件筛选-债券类型下拉框\\条件筛选-债券类型下拉框|RPT_BOND_ISSUERCURVE_LIKEBOND});\nSetCodes([\"10010954.FXR\"]);\nSetReportFilter(({到期日} >= \"2026-09-18\") AND ({样本类型编码} == \"1\"));\n{东财债券分类2021}: REPORT_FIELD(\"东财债券分类2021\");\n{东财债券分类编码2021}: REPORT_FIELD(\"东财债券分类编码2021\");\n\nOutputBlock();",
+      "row_count": 6,
+      "columns": [
+        [
+          "东财债券分类2021",
+          "东财债券分类编码2021"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "东财债券分类2021": "中期票据",
+            "东财债券分类编码2021": "620004004001"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "curve_samples",
+      "module": "定价分析（债券发行人）",
+      "execution_id": "64ca94e6-7beb-4023-8d61-405391d18ff9",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\样本券对应关系\\发行人曲线_样本券|RPT_CUSTOM_BOND_ISSUERCURVE_LIKEBOND});\nSetCodes([\"10010954.FXR\"]);\nSetReportFilter(({原始发行人代码} == \"10010954.FXR\") AND ({定价日} == \"2026-09-18\"));\n{样本券类型}: REPORT_FIELD(\"样本券类型\");\n{样本券代码}: REPORT_FIELD(\"样本券代码\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\样本券对应关系\\发行人曲线_样本券|RPT_CUSTOM_BOND_ISSUERCURVE_LIKEBOND"
+          }
+        },
+        "message": "报表接口返回失败：报表数据量预检失败：日期格式异常",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "curve_fullmarket",
+      "module": "定价分析（债券发行人）",
+      "execution_id": "8f7a2897-4939-4273-9469-0248430eaeb9",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\发行人曲线\\全市场明细(页面不展示但需要调用将其结果作为入参)\\发行人曲线_全市场明细|RPT_BOND_ISSUERCURVE_FULLMARKET});\nSetReportFilter(({定价日} == \"2026-09-18\"));\n{剩余期限}: REPORT_FIELD(\"剩余期限\");\n{定价日}: REPORT_FIELD(\"定价日\");\n{样本类型编码}: REPORT_FIELD(\"样本类型编码\");\n{平均收益率}: REPORT_FIELD(\"平均收益率\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "message": "报表字段返回值不是字符串：剩余期限",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "region_compare",
+      "module": "定价分析（城投）",
+      "execution_id": "c0ef9bd5-d8a5-4dc8-b8fc-4f77524cb5e5",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\城投企业一页纸专项数据\\区域对比\\区域对比|RPT_CUSTOM_DEBTREMOVE_REGION_COMPARE});\nSetReportFilter(({地区编码} == \"320000\") AND ({截止日期} == \"2025-12-01\"));\n{地区编码}: REPORT_FIELD(\"地区编码\");\n{指标名称}: REPORT_FIELD(\"指标名称\");\n{指标类型}: REPORT_FIELD(\"指标类型\");\n{指标值}: REPORT_FIELD(\"指标值\");\n{全省排名}: REPORT_FIELD(\"全省排名\");\n{全国排名}: REPORT_FIELD(\"全国排名\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\城投企业一页纸专项数据\\区域对比\\区域对比|RPT_CUSTOM_DEBTREMOVE_REGION_COMPARE"
+          }
+        },
+        "message": "报表接口返回失败：报表数据量预检失败：报表服务请求失败",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "urban_issuer_spread",
+      "module": "定价分析（城投）",
+      "execution_id": "6874022c-5d3f-445c-9c12-c6ad122d71aa",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\城投企业一页纸专项数据\\利差分析\\发行人利差|RPT_BOND_ISMARGIN_ORGM});\nSetCodes([\"10083304.FXR\"]);\nSetReportFilter(({开始日期} == \"2025-09-20\") AND ({截止日期} == \"2026-09-20\"));\n{主体利差}: REPORT_FIELD(\"主体利差\");\n{债券代码}: REPORT_FIELD(\"债券代码\");\n{交易日期}: REPORT_FIELD(\"交易日期\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "REPORT_METADATA_INVALID",
+        "details": {
+          "conflict": {
+            "left": {
+              "collection": "load",
+              "cql_name": "截止日期",
+              "format": "yyyy-MM-dd",
+              "request_name": "EndDate",
+              "type": "datetime"
+            },
+            "right": {
+              "collection": "load",
+              "cql_name": "截止日期",
+              "format": "yyyy-MM-dd",
+              "request_name": "TDATE",
+              "type": "datetime"
+            },
+            "type": "duplicate_cql_name"
+          },
+          "failure_kind": "invalid_metadata",
+          "metadata_rule": "duplicate_column_name",
+          "operation": "report_metadata_validation",
+          "operation_label": "报表元数据校验",
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\城投企业一页纸专项数据\\利差分析\\发行人利差|RPT_BOND_ISMARGIN_ORGM"
+          }
+        },
+        "message": "Invalid report metadata: Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\城投企业一页纸专项数据\\利差分析\\发行人利差|RPT_BOND_ISMARGIN_ORGM: report filter columns contains duplicate CQL name: 截止日期",
+        "stage": "metadata"
+      }
+    },
+    {
+      "key": "patents",
+      "module": "科创能力",
+      "execution_id": "bfbab848-fbf9-4e12-a670-f87996091ca1",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\A股F9\\公司一页纸\\公司研发实力\\公司一页纸_上市公司专利信息|RPT_PUBLIC_PAPER_PATENTTOTAL});\nSetCodes([\"688630.SH\"]);\nSetReportFilter(({系统日期} == \"2026-09-20\"));\n{板块}: REPORT_FIELD(\"板块\");\n{衍生证券代码}: REPORT_FIELD(\"衍生证券代码\");\n{报告期末累计拥有外观设计专利数量}: REPORT_FIELD(\"报告期末累计拥有外观设计专利数量\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{报告期末累计拥有国际专利数量}: REPORT_FIELD(\"报告期末累计拥有国际专利数量\");\n{报告期末累计拥有发明专利数量}: REPORT_FIELD(\"报告期末累计拥有发明专利数量\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{公司简称}: REPORT_FIELD(\"公司简称\");\n{系统日期}: REPORT_FIELD(\"系统日期\");\n{报告期末累计拥有专利合计数量}: REPORT_FIELD(\"报告期末累计拥有专利合计数量\");\n{报告期末累计拥有实用新型专利数量}: REPORT_FIELD(\"报告期末累计拥有实用新型专利数量\");\n\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "板块",
+          "衍生证券代码",
+          "报告期末累计拥有外观设计专利数量",
+          "截止日期",
+          "报告期末累计拥有国际专利数量",
+          "报告期末累计拥有发明专利数量",
+          "公司代码",
+          "公司简称",
+          "系统日期",
+          "报告期末累计拥有专利合计数量",
+          "报告期末累计拥有实用新型专利数量"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10000069733",
+            "公司简称": "芯碁微装",
+            "截止日期": "2026-06-30",
+            "报告期末累计拥有专利合计数量": 251,
+            "报告期末累计拥有发明专利数量": 101,
+            "报告期末累计拥有国际专利数量": null,
+            "报告期末累计拥有外观设计专利数量": 13,
+            "报告期末累计拥有实用新型专利数量": 137,
+            "板块": "科创板",
+            "系统日期": "2026-09-20",
+            "衍生证券代码": "688630.SH"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "rd_noid",
+      "module": "科创能力",
+      "execution_id": "8ebe45aa-7216-4a48-932c-9ad9d17ba2d1",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\A股F9\\公司一页纸\\公司研发实力\\沪深F9_财务附注_研发支出});\nSetCodes([\"688630.SH\"]);\nSetReportFilter(({报告期} >= \"2023-01-01\") AND ({报告期} <= \"2026-09-20\"));\n{项目金额}: REPORT_FIELD(\"项目金额\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{报告期类型}: REPORT_FIELD(\"报告期类型\");\n{报告期类型编码}: REPORT_FIELD(\"报告期类型编码\");\n{报告年度}: REPORT_FIELD(\"报告年度\");\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{项目编码}: REPORT_FIELD(\"项目编码\");\n{转换后科目名称}: REPORT_FIELD(\"转换后科目名称\");\n{报表类型}: REPORT_FIELD(\"报表类型\");\n{报表类型编码}: REPORT_FIELD(\"报表类型编码\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\A股F9\\公司一页纸\\公司研发实力\\沪深F9_财务附注_研发支出"
+          }
+        },
+        "message": "报表接口返回失败：报表数据量预检失败：报表名称不能为空",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "rd_metric",
+      "module": "科创能力",
+      "execution_id": "5d85ae47-e2f3-4428-9c22-e62f49eb8fe0",
+      "ok": true,
+      "mql": "CrossSectionBlock(#1, {EM_CODE});\nSetCodes([\"10000069733.FXR\"]);\n{研发费用}: {Choice指标\\发行人\\企业全部指标\\财务与分析\\财务数据(大陆准则,标准)\\一般企业\\利润表\\研发费用|100000000009850}({报告期} = \"2025-12-31\", {报表类型} = \"合并报表\");\nOutputBlock();",
+      "row_count": 1,
+      "columns": [
+        [
+          "EM_CODE",
+          "研发费用"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "EM_CODE": "10000069733.FXR",
+            "研发费用": 131233915.07
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "staff",
+      "module": "科创能力",
+      "execution_id": "b38104aa-9c0a-45d3-ad84-a3b4aeae411c",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\A股F9\\公司基本资料\\员工构成\\沪深F9_基础资料_员工构成|RPT_HSF9_BASIC_STAFFCOMPOSITION});\nSetCodes([\"688630.SH\"]);\nSetReportFilter(({报告期} >= \"2023-01-01\") AND ({报告期} <= \"2026-09-20\"));\n{证券代码(带后缀)}: REPORT_FIELD(\"证券代码(带后缀)\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{研发人员}: REPORT_FIELD(\"研发人员\");\n{职工总数}: REPORT_FIELD(\"职工总数\");\n\nOutputBlock();",
+      "row_count": 7,
+      "columns": [
+        [
+          "证券代码(带后缀)",
+          "报告期",
+          "研发人员",
+          "职工总数"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "报告期": "2026-06-30",
+            "研发人员": 323,
+            "职工总数": null,
+            "证券代码(带后缀)": "688630.SH"
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "solvency_key",
+      "module": "偿债分析",
+      "execution_id": "4aa6443d-7ca5-4b03-85b2-5f5ebfae7bb2",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\财务关键指标\\企业一页纸-财务关键指标|RPT_CUSTOM_AIONEPAPER_FINANCE});\nSetReportFilter(({发行人} == \"10010954\"));\n{现金比率}: REPORT_FIELD(\"现金比率\");\n{流动比率}: REPORT_FIELD(\"流动比率\");\n{资产负债率}: REPORT_FIELD(\"资产负债率\");\n{EBITDA(正推)}: REPORT_FIELD(\"EBITDA(正推)\");\n{利息保障倍数}: REPORT_FIELD(\"利息保障倍数\");\n{净利润}: REPORT_FIELD(\"净利润\");\n{现金利息保障倍数}: REPORT_FIELD(\"现金利息保障倍数\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{速动比率}: REPORT_FIELD(\"速动比率\");\n{总资产}: REPORT_FIELD(\"总资产\");\n{流动负债}: REPORT_FIELD(\"流动负债\");\n{非流动负债}: REPORT_FIELD(\"非流动负债\");\n{营运资本}: REPORT_FIELD(\"营运资本\");\n\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "现金比率",
+          "流动比率",
+          "资产负债率",
+          "EBITDA(正推)",
+          "利息保障倍数",
+          "净利润",
+          "现金利息保障倍数",
+          "公司代码",
+          "报告期日期",
+          "速动比率",
+          "总资产",
+          "流动负债",
+          "非流动负债",
+          "营运资本"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "EBITDA(正推)": 160469670000,
+            "公司代码": "10010954",
+            "净利润": 115298390000,
+            "利息保障倍数": null,
+            "总资产": 4651239900000,
+            "报告期日期": "2026-06-30",
+            "流动比率": 1.256774018146,
+            "流动负债": 1354522870000,
+            "现金利息保障倍数": null,
+            "现金比率": 0.339140947838,
+            "营运资本": 347806280000,
+            "资产负债率": 38.830836483,
+            "速动比率": 1.085273311037,
+            "非流动负债": 451592490000
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "solvency_debt",
+      "module": "偿债分析",
+      "execution_id": "18b2778e-644f-4247-8b98-6a48041eb72e",
+      "ok": true,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\负债结构\\企业一页纸-负债结构|RPT_CUSTOM_AIONEPAPER_DEBT});\nSetReportFilter(({发行人} == \"10010954\"));\n{应付账款}: REPORT_FIELD(\"应付账款\");\n{应付债券}: REPORT_FIELD(\"应付债券\");\n{应付票据}: REPORT_FIELD(\"应付票据\");\n{长期借款}: REPORT_FIELD(\"长期借款\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{其他流动负债}: REPORT_FIELD(\"其他流动负债\");\n{其他负债}: REPORT_FIELD(\"其他负债\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{短期借款}: REPORT_FIELD(\"短期借款\");\n{报表类型}: REPORT_FIELD(\"报表类型\");\n\nOutputBlock();",
+      "row_count": 4,
+      "columns": [
+        [
+          "应付账款",
+          "应付债券",
+          "应付票据",
+          "长期借款",
+          "公司代码",
+          "其他流动负债",
+          "其他负债",
+          "报告期日期",
+          "短期借款",
+          "报表类型"
+        ]
+      ],
+      "sample": [
+        [
+          {
+            "公司代码": "10010954",
+            "其他流动负债": 65986370000,
+            "其他负债": 1203301300000,
+            "应付债券": 59140730000,
+            "应付票据": 0,
+            "应付账款": 359469020000,
+            "报告期日期": "2026-06-30",
+            "报表类型": 1,
+            "短期借款": 96981540000,
+            "长期借款": 21236400000
+          }
+        ]
+      ],
+      "error": null
+    },
+    {
+      "key": "solvency_statistics",
+      "module": "偿债分析",
+      "execution_id": "958cff69-0349-41f8-a1ab-cb72c5f52bef",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\细分场景\\企业分析\\企业融资偿债情况\\偿债统计\\企业融资偿债情况偿债统计|RPT_CUSTOM_BOND_ISSUEEND_IS_C});\nSetReportFilter(({实体代码} == \"10002264.FXR\") AND ({起始日期} == \"2024-09-20\") AND ({截止日期} == \"2027-09-20\") AND ({周期} == 4) AND ({发行日期类型} == \"2\"));\n{偿债总额}: REPORT_FIELD(\"偿债总额\");\n{到期年份}: REPORT_FIELD(\"到期年份\");\n{偿债只数}: REPORT_FIELD(\"偿债只数\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "message": "报表字段返回值日期格式无效：到期年份",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "RPT_CUSTOM_JUDICIAL_EXECUTIONSINFO_SUM",
+      "module": "司法风险",
+      "execution_id": "1ccd2530-b21e-4259-9c0d-c871b3b47e4d",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\失信被执行人\\失信被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTIONSINFO_SUM});\nSetReportFilter(({公司代码} == \"10002264\") AND (({关系类型} == \"1\") OR ({关系类型} == \"2\") OR ({关系类型} == \"3\") OR ({关系类型} == \"4\")) AND ({是否历史信息} == \"0\"));\n{当前执行标的（万元）}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的（万元）}: REPORT_FIELD(\"历史执行标的（万元）\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{失信被执行人代码}: REPORT_FIELD(\"失信被执行人代码\");\n{失信被执行人}: REPORT_FIELD(\"失信被执行人\");\n{关系类型}: REPORT_FIELD(\"关系类型\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\失信被执行人\\失信被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTIONSINFO_SUM"
+          }
+        },
+        "message": "报表接口返回失败：columns字段不合法：AMOUNT _SUM",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM",
+      "module": "司法风险",
+      "execution_id": "b72aa245-2fc2-4b43-8bbd-b51f08de476d",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\被执行人\\被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM});\nSetReportFilter(({公司代码} == \"10002264\") AND (({关系类型} == \"1\") OR ({关系类型} == \"2\") OR ({关系类型} == \"3\") OR ({关系类型} == \"4\")) AND ({是否历史信息} == \"0\"));\n{当前执行标的（万元）}: REPORT_FIELD(\"当前执行标的（万元）\");\n{历史执行标的（万元）}: REPORT_FIELD(\"历史执行标的（万元）\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{被执行人代码}: REPORT_FIELD(\"被执行人代码\");\n{被执行人}: REPORT_FIELD(\"被执行人\");\n{关系类型}: REPORT_FIELD(\"关系类型\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\被执行人\\被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM"
+          }
+        },
+        "message": "报表接口返回失败：columns字段不合法：AMOUNT _SUM",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "RPT_CUSTOM_JUDICIAL_TERMINATIONCASE_SUM",
+      "module": "司法风险",
+      "execution_id": "662e01bf-9a01-4788-9cfe-d0c77af4380e",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\终本案件\\终本案件汇总|RPT_CUSTOM_JUDICIAL_TERMINATIONCASE_SUM});\nSetReportFilter(({公司代码} == \"10002264\") AND (({关系类型} == \"1\") OR ({关系类型} == \"2\") OR ({关系类型} == \"3\") OR ({关系类型} == \"4\")) AND ({是否历史信息} == \"0\"));\n{当前执行总金额（万元）}: REPORT_FIELD(\"当前执行总金额（万元）\");\n{历史执行总金额（万元）}: REPORT_FIELD(\"历史执行总金额（万元）\");\n{当前未履行总金额（万元）}: REPORT_FIELD(\"当前未履行总金额（万元）\");\n{历史未履行总金额（万元）}: REPORT_FIELD(\"历史未履行总金额（万元）\");\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{历史案件数}: REPORT_FIELD(\"历史案件数\");\n{被执行人代码}: REPORT_FIELD(\"被执行人代码\");\n{被执行人}: REPORT_FIELD(\"被执行人\");\n{当前未履行比例(%)}: REPORT_FIELD(\"当前未履行比例(%)\");\n{历史未履行比例(%)}: REPORT_FIELD(\"历史未履行比例(%)\");\n{关系类型}: REPORT_FIELD(\"关系类型\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\企业一页纸\\司法风险汇总信息\\终本案件\\终本案件汇总|RPT_CUSTOM_JUDICIAL_TERMINATIONCASE_SUM"
+          }
+        },
+        "message": "报表接口返回失败：columns字段不合法：AMOUNT_SUM_ HISTORY",
+        "stage": "fetch"
+      }
+    },
+    {
+      "key": "judicial_counts",
+      "module": "司法风险",
+      "execution_id": "d39e7338-d108-43ca-add6-257c16e54e7e",
+      "ok": false,
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\企业F9\\司法风险数据\\被执行人\\被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM});\nSetReportFilter((({关系类型} == \"1\") OR ({关系类型} == \"2\") OR ({关系类型} == \"3\") OR ({关系类型} == \"4\")) AND ({公司代码} == \"10002264\") AND ({是否历史信息} == \"0\"));\n{当前案件数}: REPORT_FIELD(\"当前案件数\");\n{被执行人代码}: REPORT_FIELD(\"被执行人代码\");\n{被执行人}: REPORT_FIELD(\"被执行人\");\n{关系类型}: REPORT_FIELD(\"关系类型\");\n\nOutputBlock();",
+      "row_count": null,
+      "error": {
+        "code": "CQL_FETCH_ERROR",
+        "details": {
+          "failure_kind": "remote_rejected",
+          "operation": "report_data_fetch",
+          "operation_label": "报表数据查询",
+          "service_status": -1,
+          "subject": {
+            "kind": "report",
+            "path": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\司法风险数据\\被执行人\\被执行人汇总|RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM"
+          }
+        },
+        "message": "报表接口返回失败：报表数据量预检失败：TYPE列不存在",
+        "stage": "fetch"
+      }
+    }
+  ],
+  "unresolved_metadata": [
+    "RPT_ENT_RD_EXP_EMP",
+    "企业产权-数量统计",
+    "企业产权-年度变化图",
+    "企业产权-商标分布图"
+  ],
+  "rest_checks": [
+    {
+      "report": "RPT_CUSTOM_AIONEPAPER_FINANCE",
+      "org_code": "10010954",
+      "rows": 4,
+      "status": "ok"
+    },
+    {
+      "report": "RPT_CUSTOM_AIONEPAPER_DEBT",
+      "org_code": "10010954",
+      "rows": 4,
+      "status": "ok"
+    },
+    {
+      "report": "RPT_HSF9_FN_MAINOPBUSINESS_NORMAL",
+      "org_code": "10002602",
+      "window": [
+        "2023-01-01",
+        "2026-09-20"
+      ],
+      "type": "产品",
+      "rows": 118,
+      "status": "ok"
+    },
+    {
+      "report": "RPT_CUSTOM_ORG_CREDITANALYSIS",
+      "org_code": "10002264",
+      "as_of": "2026-09-20",
+      "rows": 1,
+      "status": "ok"
+    }
+  ],
+  "fallback_validation": {
+    "validation_type": "同业务 MQL 回退路径验证",
+    "tested_at": "2026-09-24",
+    "entity": {
+      "name": "中创智领(郑州)工业技术集团股份有限公司",
+      "org_code": "10127465",
+      "issuer_code": "10127465.FXR",
+      "stock_code": "601717.SH",
+      "合合机构ID": "e284ae2f-e6da-4a6e-8b1e-506e02769a97"
+    },
+    "datasets": [
+      {
+        "module": "ESG分析",
+        "primary": "RPT_ESG_IS_SECUINDU;RPT_ESG_IS_DETAILS",
+        "mql_fallback": "Choice报表\\报表指标\\Choice金融终端\\API专题报表函数\\A股\\F9\\ESG\\ESG-明细弹窗接口|RPT_DETAILS_WID",
+        "status": "ok",
+        "row_count": 676,
+        "latest_detail_date": "2026-04-30",
+        "fields": ["所属子项中文", "一级指标名称", "一级指标得分", "更新日期"],
+        "note": "汇总候选 RPT_ESG_STOCK_CODE 返回中诚信绿金评分 66.71、评级 A，日期为 2024-12-31；汇总与明细日期不一致时必须先按共同日期复核，不能直接混用。"
+      },
+      {
+        "module": "财务状况",
+        "primary": "RPT_CUSTOM_ORGF9_FIN_SUMMARY",
+        "mql_fallback": "Choice报表\\报表指标\\服务端\\妙想服务\\API查数\\基本面\\F10_财务分析_主要财务指标|RPT_F10_FINANCE_MAINFINADATA",
+        "status": "ok",
+        "row_count": "多期",
+        "fields": ["报告期", "报告期标签", "报告期类型", "营业总收入", "归属净利润", "经营活动产生的现金流量净额", "资产负债率", "净资产收益率（加权）"],
+        "note": "财务摘要主路径因 DATE_TYPE_CH 与 DATE_TYPE_NEW 元数据重名失败；回退路径可返回 2021-2026 年季度、半年度和年度数据。"
+      },
+      {
+        "module": "信用分析",
+        "primary": "RPT_CUSTOM_ORG_CREDITANALYSIS",
+        "mql_fallback": "Choice报表\\报表指标\\Choice金融终端\\企业F9\\智能发行人\\信用分析\\信用分析|RPT_ORG_COMBFINCREDIT",
+        "status": "ok",
+        "row_count": 1,
+        "fields": ["最新主体评级", "评级展望", "变动方向", "最新担保余额", "银行授信总额度", "银行授信已使用额度"],
+        "note": "主函数未被 MQL 元数据召回；回退路径按公司代码过滤成功，最新担保余额为 4028595900。"
+      },
+      {
+        "module": "司法风险",
+        "primary": ["RPT_CUSTOM_JUDICIAL_EXECUTIONSINFO_SUM", "RPT_CUSTOM_JUDICIAL_EXECUTEDPERSONS_SUM", "RPT_CUSTOM_ENT_JUDICIAL_SUM_RESTRICTEDCONSUMER", "RPT_CUSTOM_JUDICIAL_TERMINATIONCASE_SUM"],
+        "mql_fallback": ["RPT_CUSTOM_ENT_EXECUTIONSINFO", "RPT_CUSTOM_ENT_EXECUTEDPERSONS", "RPT_CUSTOM_JUDICIAL_RESTRICTEDCONSUMER", "RPT_CUSTOM_ENT_TERMINATIONCASE"],
+        "status": "partial",
+        "results": {
+          "RPT_CUSTOM_ENT_EXECUTEDPERSONS": {
+            "status": "ok",
+            "rows_by_scope": {
+              "本公司当前": 0,
+              "本公司历史": 12,
+              "主要股东历史": 3,
+              "参股控股子公司当前": 1,
+              "参股控股子公司历史": 22
+            }
+          },
+          "RPT_CUSTOM_ENT_EXECUTIONSINFO": {"status": "ok", "rows": 0},
+          "RPT_CUSTOM_ENT_TERMINATIONCASE": {"status": "ok", "rows": 0},
+          "RPT_CUSTOM_JUDICIAL_RESTRICTEDCONSUMER": {"status": "failed", "note": "当前运行时提示未找到报表配置，不能按空结果处理。"}
+        },
+        "note": "关系类型需要分别查询 1、2、3、4；汇总候选失败时才使用对应明细候选，明细仍失败后才进入 Python REST。"
+      }
+    ]
+  }
+}

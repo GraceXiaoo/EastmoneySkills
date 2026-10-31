@@ -1,0 +1,18 @@
+// @pattern   按分类字段分组聚合（COUNT/SUM/AVG/PERCENTILE 等）
+// @block     CrossSectionBlock(#1 输出分组键) → GroupBlock(#2 聚合)
+// @replace   板块fullPath ← searchSector | 分组键指标path ← searchIndicator(cross_section) | 聚合函数与被聚合列
+// @must      分组键必须在上游用 : 输出；GroupBlock 保留键自动进结果，禁止再同名输出；COUNT(true) 是唯一标量参数分组函数
+// @verified  2026-09-14 ok=true（5562 只 → 3 组，805ms）；2026-10-02 复测带注释 ok=true
+// @note      只在最终 Block 写 OutputBlock()；上游取数照常但不投影；注释可原样提交
+
+CrossSectionBlock(#1, {EM_CODE});                      // ✅ 上游取分组键
+GetSectors({板块\沪深京股票\市场类\全部A股});
+{上市地点}: {Choice指标\股票\沪深京股票指标\基本资料\证券资料\上市地点}();  // ✅ 分组键必须用 : 输出，下游 GroupBlock 才能引用
+// ❌ {上市地点} = {...}();  → = 是私有列，下游 GroupBlock 读不到，必须用 :
+
+GroupBlock(#2, #1.{上市地点});                         // ✅ GroupBlock 不调用指标、不用 SetParams/SetWindow
+// ❌ GroupBlock(#2, #1.{上市地点}); {简称}: {...}();  → GroupBlock 不取数，不能调用指标
+{股票只数}: COUNT(true);                               // ✅ 保留键{上市地点}自动进结果，不要重写 {上市地点}: {上市地点};
+// ❌ {上市地点}: {上市地点};  → 保留键已自动输出，重复定义同名会报错
+Sort({股票只数}, "DESC");
+OutputBlock();                                         // ✅ 仅 #2 投影，#1 不返回

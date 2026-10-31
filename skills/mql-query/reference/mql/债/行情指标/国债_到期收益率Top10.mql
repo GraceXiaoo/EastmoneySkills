@@ -1,0 +1,17 @@
+// @pattern   债券板块池 + 截面估值指标 + NULL 过滤 + TopN
+// @block     CrossSectionBlock
+// @replace   债券板块fullPath ← searchSector | 估值/收益指标path ← searchIndicator | 排序方向与截取量
+// @must      含到期板块大量已到期券指标为 NULL，排序截前必须 NOT IS_NULL；债券 EM_CODE 是纯数字无后缀，不能 LIKE ".IB" 判市场
+// @verified  2026-09-14 ok=true（5467 只→有值 693 只→输出 10 行，7002ms）；2026-10-02 复测带注释 ok=true
+// @note      市场口径用"交易场所"指标 LIKE 过滤；MQL 无 NOT LIKE，取反写 NOT(LIKE(...) OR LIKE(...))；注释可原样提交
+
+CrossSectionBlock(#1, {EM_CODE});
+GetSectors({板块\债券\东财分类旧(含到期)\国债});        // ✅ 花括号包 fullPath
+{债券简称}: {Choice指标\债券\债券全部指标\基本资料\债券资料\债券简称}();
+{到期收益率}: {Choice指标\债券\债券全部指标\行情指标\风险收益指标\到期收益率}();
+FILTER_ROWS(NOT IS_NULL({到期收益率}));                // ✅ 排 NULL：用 IS_NULL，不用 {列} <> NULL
+// ❌ FILTER_ROWS({到期收益率} <> NULL);  → 与 NULL 比较恒不为 true，过滤无效；必须用 NOT IS_NULL
+// ❌ LIKE({EM_CODE}, ".IB") 判市场  → 债券 EM_CODE 纯数字无后缀，永远 0 命中；判市场用"交易场所"指标
+Sort({到期收益率}, "DESC");
+Head(10);
+OutputBlock();

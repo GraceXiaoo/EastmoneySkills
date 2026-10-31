@@ -1,0 +1,7 @@
+python-docx>=1.1
+reportlab>=5.0
+matplotlib>=3.5
+pypdf>=4.0
+pyecharts>=2.1
+# PDF 由 Word 导出（与 Word 版式一致）时使用；Windows 环境建议安装，缺失则自动回退 reportlab
+pywin32>=306 ; sys_platform == "win32"

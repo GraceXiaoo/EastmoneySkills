@@ -1,0 +1,1357 @@
+{
+  "version": "6.0",
+  "count": 36,
+  "templates": [
+    {
+      "order": 1,
+      "interface": "RPT_ETF_FUND_SHEETPAPER",
+      "title": "RPT_ETF_FUND_SHEETPAPER｜ETF基金_一页纸",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\ETF基金_一页纸|322648999448628",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码(场内后缀)",
+          "parameter": "SECUCODE",
+          "rule": ""
+        }
+      ],
+      "outputs": [
+        "基金代码(无后缀)",
+        "所属ETF投资范畴-板块名称",
+        "基金代码(场内后缀)",
+        "基金内码",
+        "基金简称(场外)",
+        "基金简称(场内)",
+        "基金全称",
+        "基金主代码",
+        "基金经理(现任)",
+        "基金经理代码(现任)",
+        "现任基金经理任职日期",
+        "基金公司简称",
+        "基金公司全称",
+        "基金公司机构代码",
+        "基金成立日",
+        "基金终止日",
+        "最新报告期",
+        "最新净值日期",
+        "是否ETF基金",
+        "是否QDII基金",
+        "是否货币基金",
+        "跟踪指数名称",
+        "跟踪指数代码",
+        "跟踪该指数的标的基金只数",
+        "投资范畴分类-一级代码",
+        "基金状态",
+        "投资范畴分类-二级代码",
+        "投资范畴分类-一级名称",
+        "投资范畴分类-二级名称",
+        "所属ETF投资范畴-板块编码",
+        "最新报告期类型",
+        "东财基金运作方式",
+        "东财投资范畴一级分类",
+        "指数型细分",
+        "是否LOF",
+        "是否发起式基金",
+        "是否ETF联接基金",
+        "关联份额代码",
+        "关联ETF代码",
+        "同类比较-基金类型",
+        "业绩比较基准代码",
+        "比较宽基指数代码",
+        "一页纸专用分类",
+        "投资范畴板块代码",
+        "基金代码(OF后缀)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\ETF基金_一页纸|322648999448628});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\n{基金代码无后缀}: REPORT_FIELD(\"基金代码(无后缀)\");\n{基金代码OF后缀}: REPORT_FIELD(\"基金代码(OF后缀)\");\n{基金简称场外}: REPORT_FIELD(\"基金简称(场外)\");\n{基金经理代码现任}: REPORT_FIELD(\"基金经理代码(现任)\");\n{基金公司机构代码}: REPORT_FIELD(\"基金公司机构代码\");\n{基金成立日}: REPORT_FIELD(\"基金成立日\");\n{最新报告期}: REPORT_FIELD(\"最新报告期\");\n{最新净值日期}: REPORT_FIELD(\"最新净值日期\");\n{是否QDII基金}: REPORT_FIELD(\"是否QDII基金\");\n{是否货币基金}: REPORT_FIELD(\"是否货币基金\");\n{是否发起式基金}: REPORT_FIELD(\"是否发起式基金\");\n{是否ETF联接基金}: REPORT_FIELD(\"是否ETF联接基金\");\n{跟踪指数代码}: REPORT_FIELD(\"跟踪指数代码\");\n{关联ETF代码}: REPORT_FIELD(\"关联ETF代码\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 2,
+      "interface": "RPT_F9_POFD_INFO",
+      "title": "RPT_F9_POFD_INFO｜基金基本信息",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览_基金基本信息|506532833965428",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        }
+      ],
+      "outputs": [
+        "基金代码",
+        "基金代码(带后缀)",
+        "基金简称",
+        "基金状态",
+        "投资类型",
+        "风险等级(公告)",
+        "最新净值日期",
+        "单位净值",
+        "复权单位净值增长率",
+        "万份基金单位收益",
+        "七日年化收益率",
+        "成立日期",
+        "投资风格",
+        "规模日期",
+        "最新规模",
+        "管理人简称",
+        "基金经理",
+        "业绩比较基准",
+        "投资目标"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览_基金基本信息|506532833965428});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{基金代码带后缀}: REPORT_FIELD(\"基金代码(带后缀)\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{基金状态}: REPORT_FIELD(\"基金状态\");\n{单位净值}: REPORT_FIELD(\"单位净值\");\n{最新规模}: REPORT_FIELD(\"最新规模\");\n{管理人简称}: REPORT_FIELD(\"管理人简称\");\n{基金经理}: REPORT_FIELD(\"基金经理\");\n{投资目标}: REPORT_FIELD(\"投资目标\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 3,
+      "interface": "RPT_F9_FM_BASICINFO",
+      "title": "RPT_F9_FM_BASICINFO｜基金经理基本资料",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金经理F9_基本资料|326044246760358",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金经理代码",
+          "parameter": "SECUCODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金经理代码(现任)字段作为入参，如果返回的基金经理代码有多个，需要分多次调用"
+        }
+      ],
+      "outputs": [
+        "人物名称",
+        "人物代码",
+        "基金经理代码",
+        "国籍",
+        "年龄",
+        "性别",
+        "学历",
+        "简历",
+        "获奖次数",
+        "基金经理从业年限",
+        "现任基金数",
+        "历任基金数",
+        "证券从业日期",
+        "现任职公司",
+        "现任职公司简称",
+        "代表基金代码",
+        "代表基金名称",
+        "代表基金规模(亿元)",
+        "代表基金东财分类",
+        "代表基金东财分类代码",
+        "是否在任",
+        "历任基金公司",
+        "历任基金公司数",
+        "跳槽频率",
+        "任职基金总规模 (亿元)",
+        "平均管理费率",
+        "平均托管费率",
+        "平均销售服务费率"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金经理F9_基本资料|326044246760358});\nSetCodes([\"{{MANAGER_CODE}}\"]);\n{人物名称}: REPORT_FIELD(\"人物名称\");\n{基金经理代码}: REPORT_FIELD(\"基金经理代码\");\n{学历}: REPORT_FIELD(\"学历\");\n{简历}: REPORT_FIELD(\"简历\");\n{基金经理从业年限}: REPORT_FIELD(\"基金经理从业年限\");\n{现任基金数}: REPORT_FIELD(\"现任基金数\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 4,
+      "interface": "RPT_FUND_F9_COMPANY",
+      "title": "RPT_FUND_F9_COMPANY｜基金管理公司基本资料",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_基金管理公司_基本资料|745364909128749",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        }
+      ],
+      "outputs": [
+        "机构代码",
+        "基金内码",
+        "基金代码",
+        "公司全称",
+        "公司图片",
+        "公司英文名称",
+        "成立日期",
+        "公司属性",
+        "法定代表人",
+        "注册资本",
+        "电子邮箱",
+        "总经理",
+        "注册地址",
+        "电话号码",
+        "办公地址",
+        "公司介绍",
+        "图片地址",
+        "公司网址"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_基金管理公司_基本资料|745364909128749});\nSetCodes([\"{{FUND_CODE}}\"]);\n{机构代码}: REPORT_FIELD(\"机构代码\");\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{公司全称}: REPORT_FIELD(\"公司全称\");\n{成立日期}: REPORT_FIELD(\"成立日期\");\n{公司属性}: REPORT_FIELD(\"公司属性\");\n{注册资本}: REPORT_FIELD(\"注册资本\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 5,
+      "interface": "RPT_FUND_F9_COMPHOLDER",
+      "title": "RPT_FUND_F9_COMPHOLDER｜基金公司参股股东",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_基金管理公司_参股股东|120814980732968",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        }
+      ],
+      "outputs": [
+        "基金内码",
+        "基金代码",
+        "公司代码",
+        "股东代码",
+        "股东名称",
+        "持股比例",
+        "股东证券代码",
+        "是否上市"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_基金管理公司_参股股东|120814980732968});\nSetCodes([\"{{FUND_CODE}}\"]);\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{公司代码}: REPORT_FIELD(\"公司代码\");\n{股东名称}: REPORT_FIELD(\"股东名称\");\n{持股比例}: REPORT_FIELD(\"持股比例\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 6,
+      "interface": "RPT_FUND_ORGMANGER_SCALE_TITLE",
+      "title": "RPT_FUND_ORGMANGER_SCALE_TITLE｜基金公司管理规模",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览_基金公司_管理规模表头|455106084551043",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金公司代码",
+          "parameter": "ORG_CODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金公司机构代码字段作为入参"
+        }
+      ],
+      "outputs": [
+        "基金公司代码",
+        "机构全称",
+        "交易日",
+        "资产净值合计",
+        "资产净值合计排名",
+        "非货币资产规模合计",
+        "非货币资产规模合计排名",
+        "基金数量合并",
+        "基金数量合并排名"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览_基金公司_管理规模表头|455106084551043});\nSetReportFilter({基金公司代码} == \"{{ORG_CODE}}\");\n{基金公司代码}: REPORT_FIELD(\"基金公司代码\");\n{机构全称}: REPORT_FIELD(\"机构全称\");\n{交易日}: REPORT_FIELD(\"交易日\");\n{资产净值合计}: REPORT_FIELD(\"资产净值合计\");\n{基金数量合并}: REPORT_FIELD(\"基金数量合并\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 7,
+      "interface": "RPT_F9_FUND_ORGPRODUCT",
+      "title": "RPT_F9_FUND_ORGPRODUCT｜基金公司产品结构",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览基金公司-产品结构|201211314314282",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "机构代码",
+          "parameter": "ORG_CODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金公司机构代码字段作为入参"
+        },
+        {
+          "name": "交易日期",
+          "parameter": "TRADE_DATE",
+          "rule": "固定传：系统日期"
+        },
+        {
+          "name": "是否剔除ETF",
+          "parameter": "IS_ETF",
+          "rule": "固定传：1"
+        },
+        {
+          "name": "产品结构类型代码",
+          "parameter": "PRODUCT_TYPE_CODE",
+          "rule": "固定传：2"
+        }
+      ],
+      "outputs": [
+        "机构代码",
+        "交易日期",
+        "产品结构类型代码",
+        "产品结构类型",
+        "基金类型",
+        "产品数量",
+        "规模合计(亿元)",
+        "规模占比(%)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9速览基金公司-产品结构|201211314314282});\nSetReportFilter({机构代码} == \"{{ORG_CODE}}\" AND {交易日期} == \"{{CURRENT_DATE}}\" AND {是否剔除ETF} == \"1\" AND {产品结构类型代码} == \"2\");\n{机构代码}: REPORT_FIELD(\"机构代码\");\n{交易日期}: REPORT_FIELD(\"交易日期\");\n{基金类型}: REPORT_FIELD(\"基金类型\");\n{产品数量}: REPORT_FIELD(\"产品数量\");\n{规模合计}: REPORT_FIELD(\"规模合计(亿元)\");\n{规模占比}: REPORT_FIELD(\"规模占比(%)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 8,
+      "interface": "RPT_INDEXPROFILE_BASIC",
+      "title": "RPT_INDEXPROFILE_BASIC｜指数基本信息",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\指数基本信息|292749174710315",
+      "trigger": "一页纸专用分类=指数型",
+      "inputs": [
+        {
+          "name": "指数代码带后缀",
+          "parameter": "SECUCODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，跟踪指数代码字段作为入参"
+        }
+      ],
+      "outputs": [
+        "指数代码",
+        "指数代码(带后缀)",
+        "指数名称",
+        "指数基期",
+        "发布机构",
+        "计算类型",
+        "成分股数量",
+        "指数简介",
+        "产品跟踪数量",
+        "跟踪数量ETF"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\指数基本信息|292749174710315});\nSetCodes([\"{{INDEX_CODE}}\"]);\n{指数代码}: REPORT_FIELD(\"指数代码\");\n{指数名称}: REPORT_FIELD(\"指数名称\");\n{发布机构}: REPORT_FIELD(\"发布机构\");\n{成分股数量}: REPORT_FIELD(\"成分股数量\");\n{指数简介}: REPORT_FIELD(\"指数简介\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 9,
+      "interface": "RPT_FUND_PAPER_ETF_INFO",
+      "title": "RPT_FUND_PAPER_ETF_INFO｜联接基金ETF概况",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_联接基金ETF概况|932164117137654",
+      "trigger": "是否ETF联接基金=是",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECUCODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值字段作为入参"
+        }
+      ],
+      "outputs": [
+        "基金代码-有后缀",
+        "基金简称",
+        "联接ETF代码",
+        "联接ETF简称",
+        "联接ETF上市日期",
+        "联接ETF最新规模(亿元)",
+        "联接ETF近1月净申购额估算(亿元)",
+        "联接ETF近1月日均成交额(亿元)",
+        "最新报告期",
+        "最新报告期投资ETF比例%",
+        "联接ETF的机构投资者持有占比%"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_联接基金ETF概况|932164117137654});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{联接ETF代码}: REPORT_FIELD(\"联接ETF代码\");\n{联接ETF简称}: REPORT_FIELD(\"联接ETF简称\");\n{联接ETF最新规模}: REPORT_FIELD(\"联接ETF最新规模(亿元)\");\n{联接ETF近1月日均成交额}: REPORT_FIELD(\"联接ETF近1月日均成交额(亿元)\");\n{最新报告期投资ETF比例}: REPORT_FIELD(\"最新报告期投资ETF比例%\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 10,
+      "interface": "RPT_FUND_DAILYNAV_DAILYFRE",
+      "title": "RPT_FUND_DAILYNAV_DAILYFRE｜每日净值区间回报",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9-每日基金净值_区间回报(日频)|925426087730731",
+      "trigger": "always",
+      "inputs": [],
+      "outputs": [],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9-每日基金净值_区间回报(日频)|925426087730731});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter({开始日期} >= \"{{START_DATE_1Y}}\" AND {截止日期} <= \"{{CURRENT_DATE}}\");\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{日期}: REPORT_FIELD(\"日期\");\n{区间回报}: REPORT_FIELD(\"区间回报\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 11,
+      "interface": "RPT_TRACKERRORINDEX",
+      "title": "RPT_TRACKERRORINDEX｜跟踪指数误差",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_跟踪指数误差|060795893142763",
+      "trigger": "一页纸专用分类=指数型",
+      "inputs": [
+        {
+          "name": "证券代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "交易日期",
+          "parameter": "TRADE_DATE",
+          "rule": "入参：<=系统日期，>=系统日期年份-1"
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "交易日期",
+        "跟踪误差(跟踪指数)",
+        "日跟踪偏离度(跟踪指数)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_跟踪指数误差|060795893142763});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter({交易日期} >= \"{{START_DATE_1Y}}\" AND {交易日期} <= \"{{CURRENT_DATE}}\");\n{证券代码带后缀}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{交易日期}: REPORT_FIELD(\"交易日期\");\n{跟踪误差}: REPORT_FIELD(\"跟踪误差(跟踪指数)\");\n{日跟踪偏离度}: REPORT_FIELD(\"日跟踪偏离度(跟踪指数)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 12,
+      "interface": "RPT_FUND_PAPER_RISKRATINGNUM",
+      "title": "RPT_FUND_PAPER_RISKRATINGNUM｜信息比率",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_信息比率|727094297700196",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "交易日期",
+          "parameter": "TRADE_DATE",
+          "rule": "入参：<=系统日期，>=系统日期年份-1"
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "信息比率",
+        "交易日期"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_信息比率|727094297700196});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter({交易日期} >= \"{{START_DATE_1Y}}\" AND {交易日期} <= \"{{CURRENT_DATE}}\");\n{证券代码带后缀}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{交易日期}: REPORT_FIELD(\"交易日期\");\n{信息比率}: REPORT_FIELD(\"信息比率\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 13,
+      "interface": "RPT_FUND_PAPER_MAXFALL",
+      "title": "RPT_FUND_PAPER_MAXFALL｜动态回撤",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金_一页纸_动态回撤|206230912552056",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码带后缀",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "开始日期",
+          "parameter": "EndDate",
+          "rule": "入参：系统日期年份-3"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "TRADE_DATE",
+          "rule": "入参：系统日期"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金简称",
+        "净值日期",
+        "区间回撤"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金_一页纸_动态回撤|206230912552056});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter({开始日期} >= \"{{START_DATE_1Y}}\" AND {截止日期} <= \"{{CURRENT_DATE}}\");\n{基金代码带后缀}: REPORT_FIELD(\"基金代码带后缀\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{区间回撤}: REPORT_FIELD(\"区间回撤\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 14,
+      "interface": "RPT_FUND_PAPER_SUBRED",
+      "title": "RPT_FUND_PAPER_SUBRED｜基金申赎行为",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_场外基金一页纸_基金申赎行为|110570157073583",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "交易日期",
+          "parameter": "TRADE_DATE",
+          "rule": "入参：<=系统日期，>=系统日期年份-1"
+        }
+      ],
+      "outputs": [
+        "基金代码",
+        "基金简称",
+        "交易日期",
+        "7日资金方向",
+        "7日净申购近1年百分位",
+        "30日资金方向",
+        "30日净申购近1年百分位",
+        "90日资金方向",
+        "90日净申购近1年百分位",
+        "当日个人申购占比%",
+        "当日机构申购占比%",
+        "当日个人赎回占比%",
+        "当日机构赎回占比%",
+        "近7日个人申购占比%",
+        "近7日机构申购占比%",
+        "近7日个人赎回占比%",
+        "近7日机构赎回占比%",
+        "近30日个人申购占比%",
+        "近30日机构申购占比%",
+        "近30日个人赎回占比%",
+        "近30日机构赎回占比%",
+        "近90日个人申购占比%",
+        "近90日机构申购占比%",
+        "近90日个人赎回占比%",
+        "近90日机构赎回占比%",
+        "近1年赎回压力百分位",
+        "近1月连续高赎回压力天数(近1年百分位)",
+        "近3年赎回压力百分位",
+        "近1月连续高赎回压力天数(近3年百分位)",
+        "净流入强度%",
+        "近1年净流入强度百分位",
+        "近3年净流入强度百分位",
+        "近30日规模变化率%",
+        "近30日规模变化",
+        "复权单位净值增长率%"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_场外基金一页纸_基金申赎行为|110570157073583});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {交易日期} >= \"{{START_DATE_1Y}}\"\n    AND {交易日期} <= \"{{CURRENT_DATE}}\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{交易日期}: REPORT_FIELD(\"交易日期\");\n{净流入强度}: REPORT_FIELD(\"净流入强度%\");\n{近1年净流入强度百分位}: REPORT_FIELD(\"近1年净流入强度百分位\");\n{近3年净流入强度百分位}: REPORT_FIELD(\"近3年净流入强度百分位\");\n{7日资金方向}: REPORT_FIELD(\"7日资金方向\");\n{30日资金方向}: REPORT_FIELD(\"30日资金方向\");\n{90日资金方向}: REPORT_FIELD(\"90日资金方向\");\n{7日净申购近1年百分位}: REPORT_FIELD(\"7日净申购近1年百分位\");\n{30日净申购近1年百分位}: REPORT_FIELD(\"30日净申购近1年百分位\");\n{90日净申购近1年百分位}: REPORT_FIELD(\"90日净申购近1年百分位\");\n{当日个人申购占比}: REPORT_FIELD(\"当日个人申购占比%\");\n{当日机构申购占比}: REPORT_FIELD(\"当日机构申购占比%\");\n{当日个人赎回占比}: REPORT_FIELD(\"当日个人赎回占比%\");\n{当日机构赎回占比}: REPORT_FIELD(\"当日机构赎回占比%\");\n{近30日个人申购占比}: REPORT_FIELD(\"近30日个人申购占比%\");\n{近30日机构申购占比}: REPORT_FIELD(\"近30日机构申购占比%\");\n{近30日个人赎回占比}: REPORT_FIELD(\"近30日个人赎回占比%\");\n{近30日机构赎回占比}: REPORT_FIELD(\"近30日机构赎回占比%\");\n{近1年赎回压力百分位}: REPORT_FIELD(\"近1年赎回压力百分位\");\n{近3年赎回压力百分位}: REPORT_FIELD(\"近3年赎回压力百分位\");\n{近1月连续高赎回压力天数}: REPORT_FIELD(\"近1月连续高赎回压力天数(近1年百分位)\");\n{近30日规模变化}: REPORT_FIELD(\"近30日规模变化\");\n{近30日规模变化率}: REPORT_FIELD(\"近30日规模变化率%\");\n{复权单位净值增长率}: REPORT_FIELD(\"复权单位净值增长率%\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 15,
+      "interface": "RPT_INDEX_TRACKSCALE",
+      "title": "RPT_INDEX_TRACKSCALE｜指数跟踪标的规模",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\指数F9\\相关基金\\跟踪标的\\指数F9_跟踪标的规模|363723158191196",
+      "trigger": "一页纸专用分类=指数型",
+      "inputs": [
+        {
+          "name": "指数代码带后缀",
+          "parameter": "INDEX_SECUCODE",
+          "rule": "取RPT_ETF_FUND_SHEETPAPER接口，跟踪指数代码字段作为入参"
+        }
+      ],
+      "outputs": [
+        "指数代码带后缀",
+        "年份",
+        "相关基金总规模",
+        "所有指数型基金规模",
+        "规模占比"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\指数F9\\相关基金\\跟踪标的\\指数F9_跟踪标的规模|363723158191196});\nSetCodes([\"{{INDEX_CODE}}\"]);\n{指数代码带后缀}: REPORT_FIELD(\"指数代码带后缀\");\n{年份}: REPORT_FIELD(\"年份\");\n{相关基金总规模}: REPORT_FIELD(\"相关基金总规模\");\n{所有指数型基金规模}: REPORT_FIELD(\"所有指数型基金规模\");\n{规模占比}: REPORT_FIELD(\"规模占比\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 16,
+      "interface": "RPT_FUND_PERTREND_PERNAV",
+      "title": "RPT_FUND_PERTREND_PERNAV｜复权单位净值增长",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9-新版基金速览-复权单位净值增长|813324194604326",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SecuCode",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "起始交易日期",
+          "parameter": "StartDate",
+          "rule": "固定入参：1900-01-01"
+        },
+        {
+          "name": "截止交易日期",
+          "parameter": "EndDate",
+          "rule": "入参：系统日期"
+        },
+        {
+          "name": "是否年化",
+          "parameter": "IsNaau",
+          "rule": "固定入参：2"
+        }
+      ],
+      "outputs": [
+        "证券代码带后缀",
+        "基金名称",
+        "截止日期",
+        "成立日期",
+        "成立年限",
+        "近一周回报",
+        "近一月回报",
+        "近三月回报",
+        "近六月回报",
+        "近一年回报",
+        "近两年回报",
+        "近三年回报",
+        "近五年回报",
+        "今年以来回报",
+        "成立以来回报",
+        "近一周排名",
+        "近一月排名",
+        "近三月排名",
+        "近六月排名",
+        "近一年排名",
+        "近三年排名",
+        "近五年排名",
+        "今年以来排名",
+        "成立以来排名",
+        "基金年化回报",
+        "年化回报排名"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9-新版基金速览-复权单位净值增长|813324194604326});\nSetReportFilter(\n    {证券代码} == \"{{FUND_CODE_OF}}\"\n    AND {起始交易日期} == \"1900-01-01\"\n    AND {截止交易日期} == \"{{CURRENT_DATE}}\"\n    AND {是否年化} == \"2\"\n);\n{证券代码带后缀}: REPORT_FIELD(\"证券代码带后缀\");\n{基金名称}: REPORT_FIELD(\"基金名称\");\n{近一周回报}: REPORT_FIELD(\"近一周回报\");\n{近一月回报}: REPORT_FIELD(\"近一月回报\");\n{近三月回报}: REPORT_FIELD(\"近三月回报\");\n{近六月回报}: REPORT_FIELD(\"近六月回报\");\n{近一年回报}: REPORT_FIELD(\"近一年回报\");\n{今年以来回报}: REPORT_FIELD(\"今年以来回报\");\n{成立以来回报}: REPORT_FIELD(\"成立以来回报\");\n{基金年化回报}: REPORT_FIELD(\"基金年化回报\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 17,
+      "interface": "RPT_FUND_DAILYNAV_YEARLY",
+      "title": "RPT_FUND_DAILYNAV_YEARLY｜年度回报",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9速览-年度回报|325310824414191",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码带后缀",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "END_DATE",
+          "rule": "入参：<=系统日期，>=1900-01-01"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金代码",
+        "基金简称",
+        "宽基指数代码",
+        "宽基指数名称",
+        "基金年度回报",
+        "基准指数简称",
+        "基金指数代码",
+        "基准年度回报",
+        "宽基年度回报",
+        "基金年度回报排名",
+        "截止日期"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9速览-年度回报|325310824414191});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter({截止日期} >= \"1900-01-01\" AND {截止日期} <= \"{{CURRENT_DATE}}\");\n{基金代码带后缀}: REPORT_FIELD(\"基金代码带后缀\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{基金年度回报}: REPORT_FIELD(\"基金年度回报\");\n{基准年度回报}: REPORT_FIELD(\"基准年度回报\");\n{宽基年度回报}: REPORT_FIELD(\"宽基年度回报\");\n{基金年度回报排名}: REPORT_FIELD(\"基金年度回报排名\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 18,
+      "interface": "RPT_FUND_F9_KEYSTOCK",
+      "title": "RPT_FUND_F9_KEYSTOCK｜非QDII重仓持股",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_投资组合分析_重仓持股(非QDII)|812920317033023",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "报告期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "行业编码",
+          "parameter": "INDUSTRY_CODE",
+          "rule": "固定入参：INDUSTRY_CODE = \"2\""
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "报告期",
+        "品种代码",
+        "品种简称",
+        "持股数量",
+        "持股总市值",
+        "持股市值占基金股票投资市值比",
+        "持股市值占基金净值比",
+        "持股占流通股比",
+        "净值占比变动",
+        "所属行业",
+        "行业权重"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_投资组合分析_重仓持股(非QDII)|812920317033023});\nSetCodes([\"{{FUND_CODE}}\"]);\nSetReportFilter({报告期} == \"{{LATEST_REPORT_DATE}}\" AND {行业编码} == \"2\");\n{证券代码带后缀}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{品种代码}: REPORT_FIELD(\"品种代码\");\n{品种简称}: REPORT_FIELD(\"品种简称\");\n{持股数量}: REPORT_FIELD(\"持股数量\");\n{持股总市值}: REPORT_FIELD(\"持股总市值\");\n{持股市值占基金净值比}: REPORT_FIELD(\"持股市值占基金净值比\");\n{所属行业}: REPORT_FIELD(\"所属行业\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 19,
+      "interface": "RPT_FUND_F9_KEYSTOCKQDII",
+      "title": "RPT_FUND_F9_KEYSTOCKQDII｜QDII重仓持股",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_投资组合分析_重仓持股(QDII)|521142075286936",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码(不带后缀)",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "行业编码",
+          "parameter": "INDUSTRY_CODE",
+          "rule": "固定入参：INDUSTRY_CODE = \"2\""
+        },
+        {
+          "name": "报告期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "报表类型代码",
+          "parameter": "REPORT_TYPE_CODE",
+          "rule": "固定入参：REPORT_TYPE_CODE in (\"1\",\"5\",\"3\",\"6\",\"8\")"
+        }
+      ],
+      "outputs": [
+        "证券代码(不带后缀)",
+        "证券简称",
+        "报告期",
+        "品种代码",
+        "品种简称",
+        "持仓数量",
+        "持仓市值",
+        "占股票市值比(%)",
+        "占基金净值比",
+        "净值占比变动(%)",
+        "上市交易所",
+        "所在国家(地区)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_投资组合分析_重仓持股(QDII)|521142075286936});\nSetCodes([\"{{FUND_CODE}}\"]);\nSetReportFilter({报告期} == \"{{LATEST_REPORT_DATE}}\" AND {行业编码} == \"2\" AND IN({报表类型代码}, [\"1\", \"5\", \"3\", \"6\", \"8\"]));\n{证券代码}: REPORT_FIELD(\"证券代码(不带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{品种代码}: REPORT_FIELD(\"品种代码\");\n{品种简称}: REPORT_FIELD(\"品种简称\");\n{持仓数量}: REPORT_FIELD(\"持仓数量\");\n{持仓市值}: REPORT_FIELD(\"持仓市值\");\n{占基金净值比}: REPORT_FIELD(\"占基金净值比\");\n{上市交易所}: REPORT_FIELD(\"上市交易所\");\n{所在国家地区}: REPORT_FIELD(\"所在国家(地区)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 20,
+      "interface": "RPT_FUND_HYFBDSF_DETAILS",
+      "title": "RPT_FUND_HYFBDSF_DETAILS｜非QDII行业分布",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金专题-基金行业分布(第三方)明细|778751654405378",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金带后缀代码",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "行业类型编码",
+          "parameter": "INDUSTRY_TYPE_CODE",
+          "rule": "固定入参：INDUSTRY_TYPE_CODE=\"001\""
+        },
+        {
+          "name": "报告期",
+          "parameter": "REPORT_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "报告类型",
+          "parameter": "REPORT_TYPE_CODE",
+          "rule": "固定入参：REPORT_TYPE_CODE=\"02\""
+        }
+      ],
+      "outputs": [
+        "基金带后缀代码",
+        "基金简称",
+        "报告日期",
+        "行业类型",
+        "行业代码",
+        "行业名称",
+        "行业投资总市值",
+        "行业投资市值占净值比",
+        "净值占比变动",
+        "行业投资市值占股票投资市值比",
+        "股票投资占比变动"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金专题-基金行业分布(第三方)明细|778751654405378});\nSetCodes([\"{{FUND_CODE_MARKET}}\"]);\nSetReportFilter({行业类型编码} == \"001\" AND {报告期} == \"{{LATEST_REPORT_DATE}}\" AND {报告类型编码} == \"02\");\n{基金带后缀代码}: REPORT_FIELD(\"基金带后缀代码\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{报告日期}: REPORT_FIELD(\"报告日期\");\n{行业代码}: REPORT_FIELD(\"行业代码\");\n{行业名称}: REPORT_FIELD(\"行业名称\");\n{行业投资总市值}: REPORT_FIELD(\"行业投资总市值\");\n{行业投资市值占净值比}: REPORT_FIELD(\"行业投资市值占净值比\");\n{行业投资市值占股票投资市值比}: REPORT_FIELD(\"行业投资市值占股票投资市值比\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 21,
+      "interface": "RPT_POFD_F9_INDUSYYQDII",
+      "title": "RPT_POFD_F9_INDUSYYQDII｜QDII行业配置",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_行业配置(QDII)|327857339860560",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "报告期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "传参用报告期类型",
+          "parameter": "PAR_REPORT_TYPE",
+          "rule": "固定入参：PAR_REPORT_TYPE=\"02\""
+        }
+      ],
+      "outputs": [
+        "基金代码",
+        "基金简称",
+        "报告期",
+        "行业名称",
+        "持仓市值",
+        "占基金净值比(%)",
+        "占基金净值比占比变动(%)",
+        "占股票市值比(%)",
+        "占股票市值比占比变动(%)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\基金F9_行业配置(QDII)|327857339860560});\nSetCodes([\"{{FUND_CODE}}\"]);\nSetReportFilter({报告期} == \"{{LATEST_REPORT_DATE}}\" AND {传参用报告期类型} == \"02\");\n{基金代码}: REPORT_FIELD(\"基金代码\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{行业名称}: REPORT_FIELD(\"行业名称\");\n{持仓市值}: REPORT_FIELD(\"持仓市值\");\n{占基金净值比}: REPORT_FIELD(\"占基金净值比(%)\");\n{占股票市值比}: REPORT_FIELD(\"占股票市值比(%)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 22,
+      "interface": "RPT_POFD_PF_STOCKAREA",
+      "title": "RPT_POFD_PF_STOCKAREA｜地区配置",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\股票投资组合-地区配置|128407283733863",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "是否最新",
+          "parameter": "IS_NEW",
+          "rule": "固定入参：IS_NEW=\"1\""
+        }
+      ],
+      "outputs": [
+        "基金代码",
+        "基金名称",
+        "截止日期",
+        "国家(地区)",
+        "持仓市值(百万)",
+        "占基金净值比(%)",
+        "占基金净值比-占比变动(%)",
+        "占股票市值比(%)",
+        "占股票市值比-占比变动(%)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\股票投资组合-地区配置|128407283733863});\nSetCodes([\"{{FUND_CODE}}\"]);\nSetReportFilter({是否最新} == \"1\");\n{基金代码}: REPORT_FIELD(\"证券代码\");\n{基金名称}: REPORT_FIELD(\"证券名称\");\n{截止日期}: REPORT_FIELD(\"期末日期\");\n{国家地区}: REPORT_FIELD(\"国家(地区)\");\n{持仓市值}: REPORT_FIELD(\"持仓市值\");\n{占基金净值比}: REPORT_FIELD(\"占基金净值比\");\n{占股票市值比}: REPORT_FIELD(\"占股票市值比\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 23,
+      "interface": "RPT_FUND_SHARE_NAV",
+      "title": "F9份额与规模（RPT_FUND_SHARE_NAV）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9份额与规模|494383849188350",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码（带后缀）",
+          "parameter": "SECUCODE",
+          "rule": ""
+        },
+        {
+          "name": "变动日期",
+          "parameter": "CHANGE_DATE",
+          "rule": "入参：<=系统日期，>=(RPT_ETF_FUND_SHEETPAPER接口，基金成立日字段值)"
+        }
+      ],
+      "outputs": [
+        "基金代码（带后缀）",
+        "基金简称",
+        "变动日期",
+        "基金份额合并值",
+        "基金规模合并值"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\F9份额与规模|494383849188350});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {变动日期} >= \"{{START_DATE_YTD}}\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码（带后缀）\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{变动日期}: REPORT_FIELD(\"变动日期\");\n{总份额}: REPORT_FIELD(\"总份额\");\n{总资产净值}: REPORT_FIELD(\"总资产净值\");\n{单位净值}: REPORT_FIELD(\"单位净值\");\n{份额变动原因}: REPORT_FIELD(\"份额变动原因\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 24,
+      "interface": "RPT_FUND_HOLDER_STRUCTURE_REPORT",
+      "title": "基金专题_持有人户数及结构(按报告期)（RPT_FUND_HOLDER_STRUCTURE_REPORT）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金专题_持有人户数及结构(按报告期)|048330063822127",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "FUND_CODE_OF",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(带.OF后缀)字段返回值"
+        },
+        {
+          "name": "变动日期",
+          "parameter": "LATEST_REPORT_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期字段返回值"
+        },
+        {
+          "name": "报表类型",
+          "parameter": "REPORT_TYPE",
+          "rule": "固定值：1"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金简称",
+        "变动日期",
+        "报告期名称",
+        "基金持有人户数",
+        "平均每户持有基金份额",
+        "机构投资者持有份额",
+        "机构投资者持有份额占总份额比例",
+        "个人投资者持有份额",
+        "个人投资者持有份额占总份额比例",
+        "基金公司员工持有份额",
+        "基金公司员工持有份额占总分额比例"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金专题_持有人户数及结构(按报告期)|048330063822127});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {变动日期} == \"{{LATEST_REPORT_DATE}}\"\n    AND {报表类型} == \"1\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码带后缀\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{变动日期}: REPORT_FIELD(\"变动日期\");\n{报告期名称}: REPORT_FIELD(\"报告期名称\");\n{基金持有人户数}: REPORT_FIELD(\"基金持有人户数\");\n{平均每户持有基金份额}: REPORT_FIELD(\"平均每户持有基金份额\");\n{机构投资者持有份额}: REPORT_FIELD(\"机构投资者持有份额\");\n{机构持有比例}: REPORT_FIELD(\"机构投资这持有份额占总份额比例\");\n{个人投资者持有份额}: REPORT_FIELD(\"个人投资者持有份额\");\n{个人持有比例}: REPORT_FIELD(\"个人投资者持有份额占总份额比例\");\n{基金公司员工持有份额}: REPORT_FIELD(\"基金公司员工持有份额\");\n{员工持有比例}: REPORT_FIELD(\"基金公司员工持有份额占总分额比例\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 25,
+      "interface": "RPT_SPONSORHOLD",
+      "title": "场外基金一页纸_发起式基金发起资金持有份额变化（RPT_SPONSORHOLD）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_发起式基金发起资金持有份额变化|671088305414051",
+      "trigger": "是否发起式基金=是",
+      "inputs": [
+        {
+          "name": "证券代码(带后缀)",
+          "parameter": "SECURITY_CODE",
+          "rule": ""
+        },
+        {
+          "name": "报告期",
+          "parameter": "REPORT_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "报告期",
+        "持有份额总数(份)_x000D_\n持有份额占基金总份额比例(%)_x000D_\n发起份额占基金总份额比例(%)_x000D_\n是否发生份额拆分/合并",
+        "持有份额占基金总份额比例(%)",
+        "发起份额占基金总份额比例(%)",
+        "是否发生份额拆分/合并"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\场外基金一页纸_发起式基金发起资金持有份额变化|671088305414051});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {报告期} >= \"{{START_DATE_YTD}}\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{持有份额总数}: REPORT_FIELD(\"持有份额总数(份)\");\n{持有份额占基金总份额比例}: REPORT_FIELD(\"持有份额占基金总份额比例(%)\");\n{发起份额占基金总份额比例}: REPORT_FIELD(\"发起份额占基金总份额比例(%)\");\n{是否发生份额拆分合并}: REPORT_FIELD(\"是否发生份额拆分/合并\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 26,
+      "interface": "RPT_FUND_DAILYNAV_DAILYDER",
+      "title": "基金F9-每日基金净值列表（RPT_FUND_DAILYNAV_DAILYDER）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9-每日基金净值列表|944468946506389",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "净值日期",
+          "parameter": "END_DATE",
+          "rule": "入参：<=系统日期，>=系统日期年份-1"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金名称",
+        "净值日期",
+        "七日年化"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9-每日基金净值列表|944468946506389});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {净值日期} >= \"{{START_DATE_30D}}\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码带后缀\");\n{基金名称}: REPORT_FIELD(\"基金名称\");\n{净值日期}: REPORT_FIELD(\"净值日期\");\n{单位净值}: REPORT_FIELD(\"单位净值\");\n{累计单位净值}: REPORT_FIELD(\"累计单位净值\");\n{复权单位净值}: REPORT_FIELD(\"复权单位净值\");\n{复权单位净值增长}: REPORT_FIELD(\"复权单位净值增长\");\n{申购状态}: REPORT_FIELD(\"申购状态\");\n{赎回状态}: REPORT_FIELD(\"赎回状态\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 27,
+      "interface": "RPT_ETF_PAPER_RISKRATING",
+      "title": "基金一页纸_风险收益指标（RPT_ETF_PAPER_RISKRATING）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_风险收益指标|294348054080310",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "Sharpe",
+        "Treynor",
+        "Jensen",
+        "平均收益率(%)",
+        "几何平均收益率(%)",
+        "平均风险收益率(%)",
+        "几何平均风险收益率(%)",
+        "年化收益率(%)",
+        "收益标准差(%)",
+        "年化波动率(%)",
+        "Beta",
+        "可决系数",
+        "非系统风险",
+        "Alpha",
+        "Calmar",
+        "上行捕获率%",
+        "区间胜率"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_风险收益指标|294348054080310});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\n{证券代码}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{开始日期}: REPORT_FIELD(\"开始日期\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{年化收益率}: REPORT_FIELD(\"年化收益率(%)\");\n{年化波动率}: REPORT_FIELD(\"年化波动率(%)\");\n{Sharpe}: REPORT_FIELD(\"Sharpe\");\n{Alpha}: REPORT_FIELD(\"Alpha\");\n{Beta}: REPORT_FIELD(\"Beta\");\n{Calmar}: REPORT_FIELD(\"Calmar\");\n{区间胜率}: REPORT_FIELD(\"区间胜率\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 28,
+      "interface": "RPT_FUND_PERIOD_MAXDRAWDOWN",
+      "title": "基金一页纸_产品区间回撤周期（RPT_FUND_PERIOD_MAXDRAWDOWN）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_产品区间回撤周期|808917732871452",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "开始日期",
+          "parameter": "EndDate",
+          "rule": "入参：系统日期年份-3"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "TRADE_DATE",
+          "rule": "入参：系统日期"
+        },
+        {
+          "name": "计算周期",
+          "parameter": "PERIOD",
+          "rule": "固定入参：PERIOD=\"1\""
+        }
+      ],
+      "outputs": [
+        "证券代码",
+        "开始日期",
+        "截止日期",
+        "计算周期",
+        "区间回撤"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金一页纸_产品区间回撤周期|808917732871452});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {开始日期} >= \"{{START_DATE_YTD}}\"\n    AND {截止日期} <= \"{{CURRENT_DATE}}\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{开始日期}: REPORT_FIELD(\"开始日期\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{计算周期}: REPORT_FIELD(\"计算周期\");\n{区间回撤}: REPORT_FIELD(\"区间回撤\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 29,
+      "interface": "RPT_F9_FUND_ASSETALLOCATE",
+      "title": "基金F9_资产配置（RPT_F9_FUND_ASSETALLOCATE）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_资产配置|672958060379657",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码",
+          "parameter": "SECURITYCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "ENDDATE",
+          "rule": "入参：<=系统日期，>=系统日期年份-1"
+        },
+        {
+          "name": "报告期",
+          "parameter": "STR_YUEFEN",
+          "rule": "固定入参：STR_YUEFEN in (1,5,3,6)"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金简称",
+        "截止日期",
+        "基金资产总值",
+        "基金资产净值",
+        "股票投资市值合计",
+        "优先股市值",
+        "存托凭证",
+        "房地产信托",
+        "权益投资",
+        "固定收益市值合计",
+        "债券投资市值",
+        "资产支持证券市值",
+        "金融衍生品投资",
+        "权证投资市值合计",
+        "远期市值合计",
+        "期权市值合计",
+        "期货市值合计",
+        "指数化投资市值",
+        "积极投资市值",
+        "指数化投资占净值比例",
+        "积极投资占净值比例",
+        "买入返售证券",
+        "买入返售证券占净值比例",
+        "基金投资市值合计",
+        "银行存款",
+        "其他投资市值",
+        "权益市值占净值比例",
+        "股票投资占净值比例",
+        "优先股占净值比例",
+        "存托凭证占净值比例",
+        "房地产信托占净值比例",
+        "固定收益市值占净值比例",
+        "债券市值占净值比例",
+        "资产支持证券市值占净值比例",
+        "金融衍生品投资占净值比例",
+        "权证投资市值占净值比例",
+        "远期投资市值占净值比例",
+        "期权占净值比例",
+        "期货占净值比例",
+        "基金投资市值占净值比例",
+        "银行存款占净值比例",
+        "其他投资占净值比例"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_资产配置|672958060379657});\nSetReportFilter(\n    {基金代码} == \"{{FUND_CODE}}\"\n    AND {报告期} == \"5\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码带后缀\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{基金资产总值}: REPORT_FIELD(\"基金资产总值\");\n{基金资产净值}: REPORT_FIELD(\"基金资产净值\");\n{股票投资市值}: REPORT_FIELD(\"股票投资市值合计\");\n{股票投资占净值比例}: REPORT_FIELD(\"股票投资占净值比例\");\n{债券投资市值}: REPORT_FIELD(\"债券投资市值\");\n{债券市值占净值比例}: REPORT_FIELD(\"债券市值占净值比例\");\n{银行存款}: REPORT_FIELD(\"银行存款\");\n{银行存款占净值比例}: REPORT_FIELD(\"银行存款占净值比例\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 30,
+      "interface": "RPT_FUND_F9_TOPTENBOND",
+      "title": "基金F9_重仓债券（RPT_FUND_F9_TOPTENBOND）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_重仓债券|961779780185181",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "报告期日期",
+          "parameter": "ENDDATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "报告期",
+          "parameter": "STR_YUEFEN",
+          "rule": "固定入参：STR_YUEFEN in (\"1\",\"5\",\"3\",\"6\")"
+        }
+      ],
+      "outputs": [
+        "证券代码带后缀",
+        "证券简称",
+        "报告期日期",
+        "债券代码",
+        "债券名称",
+        "持仓市值",
+        "占净值比例",
+        "占比变动(%)",
+        "债券类型",
+        "是否城投债",
+        "是否永续债",
+        "债券评级",
+        "主体评级"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_重仓债券|961779780185181});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {报告期} == \"5\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码带后缀\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{债券代码}: REPORT_FIELD(\"债券代码带后缀\");\n{债券简称}: REPORT_FIELD(\"债券简称\");\n{持仓市值}: REPORT_FIELD(\"持仓市值\");\n{占净值比例}: REPORT_FIELD(\"占净值比例\");\n{占比变动}: REPORT_FIELD(\"占比变动(%)\");\n{债券评级}: REPORT_FIELD(\"债券评级\");\n{主体评级}: REPORT_FIELD(\"主体评级\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 31,
+      "interface": "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ",
+      "title": "基金F9_券种配置（RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_券种配置|715095099621689",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "报告期日期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "报告期代码",
+          "parameter": "STR_YUEFEN",
+          "rule": "固定入参：STR_YUEFEN in (\"1\",\"5\",\"3\",\"6\")"
+        }
+      ],
+      "outputs": [
+        "基金代码",
+        "基金名称",
+        "截止日期",
+        "报告期",
+        "序号",
+        "债券品种",
+        "公允价值(百万)",
+        "占基金资产净值比例(%)",
+        "占基金资产净值比例相对上期增减(%)",
+        "占债券市值比(%)",
+        "占债券市值比-相对上期增减(%)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9_券种配置|715095099621689});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {报告期代码} == \"5\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码带后缀\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{债券品种}: REPORT_FIELD(\"债券品种\");\n{市值}: REPORT_FIELD(\"市值\");\n{占债券市值比}: REPORT_FIELD(\"占债券市值比(%)\");\n{占基金资产净值比}: REPORT_FIELD(\"占基金资产净值比(%)\");\n{相对上期增减}: REPORT_FIELD(\"相对上期增减(%)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 32,
+      "interface": "RPT_POFD_FUNDINVEST",
+      "title": "基金F9/专题_投资基金明细(非QDII)（RPT_POFD_FUNDINVEST）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9/专题_投资基金明细(非QDII)|245172847436633",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "报告期日期",
+          "parameter": "REPORT_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        },
+        {
+          "name": "报告期类型代码",
+          "parameter": "报告期类型代码",
+          "rule": "固定入参：REPORT_TYPE_CODE in (\"1\",\"5\",\"3\",\"6\")"
+        }
+      ],
+      "outputs": [
+        "基金代码带后缀",
+        "基金简称",
+        "报告期日期",
+        "标的基金代码",
+        "标的基金简称",
+        "持有份额",
+        "持仓市值(元)",
+        "占资产净值比例",
+        "占基金市值比例",
+        "是否属于基金管理人及管理人关联方所管理的基金",
+        "持仓份额变动",
+        "占基金资产净值比变动",
+        "区间涨跌幅",
+        "区间最大回撤幅度",
+        "标的基金总规模",
+        "投资类型",
+        "基金管理人",
+        "占标的基金总规模比",
+        "是否FOF基金",
+        "是否前十位重仓基金"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\基金F9/专题_投资基金明细(非QDII)|245172847436633});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {报告期类型代码} == \"5\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码带后缀\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{报告期日期}: REPORT_FIELD(\"报告期日期\");\n{标的基金代码}: REPORT_FIELD(\"标的基金代码带后缀\");\n{标的基金简称}: REPORT_FIELD(\"标的基金简称\");\n{持有份额}: REPORT_FIELD(\"持有份额\");\n{持仓市值}: REPORT_FIELD(\"持仓市值(元)\");\n{占资产净值比例}: REPORT_FIELD(\"占资产净值比例\");\n{区间涨跌幅}: REPORT_FIELD(\"区间涨跌幅\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 33,
+      "interface": "RPT_FOF_KEYSTOCK_STATISTICS",
+      "title": "FOF重仓持股_上表（RPT_FOF_KEYSTOCK_STATISTICS）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\FOF重仓持股_上表|762136256846444",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        }
+      ],
+      "outputs": [
+        "基金代码(带后缀)",
+        "基金简称",
+        "报告期",
+        "穿透前持股市值",
+        "穿透前股票持仓(%)",
+        "穿透前股票持仓变动(%)",
+        "穿透后持股市值",
+        "穿透后股票持仓(%)",
+        "穿透后股票持仓变动(%)"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\FOF重仓持股_上表|762136256846444});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {截止日期} >= \"{{START_DATE_YTD}}\"\n);\n{基金代码}: REPORT_FIELD(\"基金代码(带后缀)\");\n{基金简称}: REPORT_FIELD(\"基金简称\");\n{管理公司}: REPORT_FIELD(\"管理公司\");\n{投资类型}: REPORT_FIELD(\"投资类型\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{穿透前持股市值}: REPORT_FIELD(\"穿透前持股市值\");\n{穿透前股票持仓}: REPORT_FIELD(\"穿透前股票持仓(%)\");\n{穿透后持股市值}: REPORT_FIELD(\"穿透后持股市值\");\n{穿透后股票持仓}: REPORT_FIELD(\"穿透后股票持仓(%)\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 34,
+      "interface": "RPT_CUSTOM_ETF_SP_SIMILARCOMPARE",
+      "title": "基金F9_相关证券_同类比较（RPT_CUSTOM_ETF_SP_SIMILARCOMPARE）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\同类比较\\基金F9_相关证券_同类比较|RPT_CUSTOM_ETF_SP_SIMILARCOMPARE",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "基金代码(带后缀)",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        },
+        {
+          "name": "周期",
+          "parameter": "STAGE_TYPE",
+          "rule": "固定入参：STAGE_TYPE=\"05\""
+        },
+        {
+          "name": "板块代码",
+          "parameter": "BOARD_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，投资范畴板块代码 字段返回值"
+        },
+        {
+          "name": "剔除非主代码基金",
+          "parameter": "IS_MAIN_CODE",
+          "rule": "固定入参：IS_MAIN_CODE=\"0\""
+        }
+      ],
+      "outputs": [
+        "证券代码(带后缀)",
+        "证券简称",
+        "开始日期",
+        "截止日期",
+        "区间收益率",
+        "Sharpe年化",
+        "区间最大回撤",
+        "波动率年化",
+        "最新规模",
+        "区间收益率-平均值",
+        "Sharpe年化-平均值",
+        "区间最大回撤-平均值",
+        "波动率年化-平均值",
+        "最新规模-平均值",
+        "区间收益率-中位数",
+        "Sharpe年化-中位数",
+        "区间最大回撤-中位数",
+        "波动率年化-中位数",
+        "最新规模-中位数",
+        "区间收益率-排名",
+        "Sharpe年化-排名",
+        "区间最大回撤-排名",
+        "波动率年化-排名",
+        "最新规模-排名"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场内基金一页纸\\同类比较\\基金F9_相关证券_同类比较|RPT_CUSTOM_ETF_SP_SIMILARCOMPARE});\nSetCodes([\"{{FUND_CODE_MARKET}}\"]);\nSetReportFilter(\n    IN({板块代码}, [\"519002001001\", \"519002001002\"])\n    AND {周期} == \"05\"\n    AND {剔除非主代码基金} == \"0\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码(带后缀)\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{区间收益率}: REPORT_FIELD(\"区间收益率\");\n{区间年化收益率}: REPORT_FIELD(\"区间年化收益率\");\n{区间最大回撤}: REPORT_FIELD(\"区间最大回撤\");\n{Sharpe年化}: REPORT_FIELD(\"Sharpe年化\");\n{年化波动率}: REPORT_FIELD(\"年化波动率\");\n{基金规模}: REPORT_FIELD(\"基金规模\");\n{开始日期}: REPORT_FIELD(\"开始日期\");\n{截止日期}: REPORT_FIELD(\"截止日期\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 35,
+      "interface": "RPT_POFD_PF_ANALYSIS",
+      "title": "报告期运作分析和市场展望（RPT_POFD_PF_ANALYSIS）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\报告期运作分析和市场展望|123579238800882",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SECURITY_CODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+        },
+        {
+          "name": "截止日期",
+          "parameter": "END_DATE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+        }
+      ],
+      "outputs": [
+        "证券代码",
+        "截止日期",
+        "基金投资策略和运作分析",
+        "管理人市场展望"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\报告期运作分析和市场展望|123579238800882});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {截止日期} >= \"{{START_DATE_YTD}}\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{截止日期}: REPORT_FIELD(\"截止日期\");\n{基金投资策略和运作分析}: REPORT_FIELD(\"基金投资策略和运作分析\");\n{管理人市场展望}: REPORT_FIELD(\"管理人市场展望\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    },
+    {
+      "order": 36,
+      "interface": "RPT_FUND_PAPER_PERFORMNVG",
+      "title": "业绩表现_超额回报（RPT_FUND_PAPER_PERFORMNVG）",
+      "report_path": "Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\业绩表现_超额回报|031156463975927",
+      "trigger": "always",
+      "inputs": [
+        {
+          "name": "证券代码",
+          "parameter": "SECUCODE",
+          "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+        }
+      ],
+      "outputs": [
+        "证券代码",
+        "基金名称",
+        "比较基准指数代码",
+        "截止日期",
+        "近1周超额回报",
+        "近1月超额回报",
+        "近3月超额回报",
+        "近6月超额回报",
+        "近1年超额回报",
+        "近2年超额回报",
+        "近3年超额回报",
+        "YTD(今年以来)超额回报",
+        "成立以来超额回报"
+      ],
+      "mql": "ReportBlock(#1, {Choice报表\\报表指标\\Choice金融终端\\基金F9\\场外基金一页纸\\业绩表现_超额回报|031156463975927});\nSetCodes([\"{{FUND_CODE_OF}}\"]);\nSetReportFilter(\n    {起始交易日期} >= \"{{START_DATE_1Y}}\"\n    AND {截止交易日期} <= \"{{CURRENT_DATE}}\"\n    AND {是否年化} == \"2\"\n);\n{证券代码}: REPORT_FIELD(\"证券代码\");\n{基金名称}: REPORT_FIELD(\"基金名称\");\n{比较基准指数代码}: REPORT_FIELD(\"比较基准指数代码\");\n{成立年限}: REPORT_FIELD(\"成立年限\");\n{近1周超额回报}: REPORT_FIELD(\"近1周超额回报\");\n{近1月超额回报}: REPORT_FIELD(\"近1月超额回报\");\n{近3月超额回报}: REPORT_FIELD(\"近3月超额回报\");\n{近6月超额回报}: REPORT_FIELD(\"近6月超额回报\");\n{近1年超额回报}: REPORT_FIELD(\"近1年超额回报\");\n{近2年超额回报}: REPORT_FIELD(\"近2年超额回报\");\n{近3年超额回报}: REPORT_FIELD(\"近3年超额回报\");\n{YTD超额回报}: REPORT_FIELD(\"YTD(今年以来)超额回报\");\n{成立以来超额回报}: REPORT_FIELD(\"成立以来超额回报\");",
+      "fallback": "仅当查询执行返回路径、字段或过滤器校验错误时，允许对本接口定向检索元数据一次。"
+    }
+  ]
+}

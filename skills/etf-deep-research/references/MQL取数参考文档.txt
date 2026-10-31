@@ -1,0 +1,56 @@
+ReportBlock(#1, {Choice报表\报表指标\Choice金融终端\基金F9\场内基金一页纸\同类比较\基金F9_相关证券_同类比较|RPT_CUSTOM_ETF_SP_SIMILARCOMPARE});
+SetCodes(["512170.SH"]);
+SetReportFilter(
+    IN({板块代码}, ["519002001001", "519002001002"])
+    AND {周期} == "05"
+    AND {剔除非主代码基金} == "0"
+);
+
+
+{证券代码}: REPORT_FIELD("证券代码(带后缀)");
+{证券简称}: REPORT_FIELD("证券简称");
+{区间收益率}: REPORT_FIELD("区间收益率");
+{区间年化收益率}: REPORT_FIELD("区间年化收益率");
+{区间最大回撤}: REPORT_FIELD("区间最大回撤");
+{Sharpe年化}: REPORT_FIELD("Sharpe年化");
+{年化波动率}: REPORT_FIELD("年化波动率");
+{基金规模}: REPORT_FIELD("基金规模");
+{开始日期}: REPORT_FIELD("开始日期");
+{截止日期}: REPORT_FIELD("截止日期");
+
+
+
+以下mql调用一次，产出取值结果，并给出取值用的mql脚本代码：
+1、RPT_CUSTOM_ETF_ARINFO_SCALE	ETF净申赎份额规模明细	/Choice金融终端/基金F9/场内基金一页纸
+【入参规范】
+开始日期	START_DATE	=2026-9-1
+截止日期	END_DATE	入参：2026-9-23
+周期	FREQUENCY	="3"
+【mql脚本】
+ReportBlock(#1, {Choice报表\报表指标\Choice金融终端\基金F9\场内基金一页纸\ETF净申赎份额规模明细|RPT_CUSTOM_ETF_ARINFO_SCALE});
+GetSectors({板块\基金\基金市场类\ETF基金});
+SetReportFilter(
+    {开始日期} == "2026-09-01"
+    AND {截止日期} == "2026-09-23"
+    AND {周期} == "3 月"
+);
+
+{日期}: REPORT_FIELD("日期");
+{开始日期}: REPORT_FIELD("开始日期");
+{截止日期}: REPORT_FIELD("截止日期");
+{基金数}: REPORT_FIELD("基金数");
+{净申赎份额}: REPORT_FIELD("净申赎份额");
+{沪市净申赎份额}: REPORT_FIELD("沪市净申赎份额");
+{深市净申赎份额}: REPORT_FIELD("深市净申赎份额");
+{估算净申赎规模}: REPORT_FIELD("估算净申赎规模");
+{沪市估算净申赎规模}: REPORT_FIELD("沪市估算净申赎规模");
+{深市估算净申赎规模}: REPORT_FIELD("深市估算净申赎规模");
+OutputBlock();
+
+
+2、RPT_CUSTOM_FUND_DAILYNAV_DAILYFRE	区间回报-非货基	/Choice金融终端/基金F9/场内基金一页纸
+3、RPT_CUSTOM_ETF_ARSTOCK	ETF申购赎回清单成分股	/Choice金融终端/基金F9/场内基金一页纸
+4、RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ	基金F9_券种配置	/Choice金融终端/基金F9/场内基金一页纸
+
+
+接口：

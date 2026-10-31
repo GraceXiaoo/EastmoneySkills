@@ -1,0 +1,8 @@
+{
+  "name": "policy-comparison",
+  "description": "政策会议横向比对（AgentLoop）：MCP 搜索 + HITL 确认 + docx 生成 + 主模型比对，产物落盘 skills/policy-comparison/output/{date}/",
+  "version": "2.0.0",
+  "author": "Mercury",
+  "runtime": "python3",
+  "mode": "agent_loop"
+}

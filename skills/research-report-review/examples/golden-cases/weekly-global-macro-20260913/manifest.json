@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "weekly-global-macro-20260913",
+  "title": "【周览全球】加息已被交易，等待利空出尽——一周全球宏观与资产复盘（9.7-9.11）",
+  "institution": "东方财富证券",
+  "report_date": "2026-09-13",
+  "case_status": "USER_ACCEPTED_GOLDEN",
+  "files": {
+    "source.pdf": {
+      "sha256": "635a74e6c497cf479cec3aec713bdf9d51b2b6d9060db9118423cbc1ed619f5b",
+      "size_bytes": 1433311
+    },
+    "expected.xlsx": {
+      "sha256": "eac876294e920ac2ba8e0bf56dca25e80be189aa831daebf53d7600bc32e99da",
+      "size_bytes": 5939901
+    },
+    "mql_scripts.md": {
+      "sha256": "288f537a6d0b7ee564ed27612c773108158f29c679a5521a68e2a30555d3d070",
+      "size_bytes": 14563
+    }
+  },
+  "expected_workbook": {
+    "sheets": [
+      "00_导读",
+      "10_研报快照",
+      "20_研报底稿",
+      "30_预测框架",
+      "90_执行日志"
+    ],
+    "mql_formula_count": 7,
+    "media_count": 10
+  },
+  "tags": [
+    "宏观周报",
+    "全球指数",
+    "申万一级行业",
+    "国债收益率",
+    "商品",
+    "汇率"
+  ],
+  "reuse_policy": {
+    "exact_pdf": "ALLOW_GOLDEN_EXPORT_WITH_DISCLOSURE",
+    "similar_report": "TEMPLATE_ONLY_REQUERY_REQUIRED"
+  }
+}

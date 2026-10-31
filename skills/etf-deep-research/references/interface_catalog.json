@@ -1,0 +1,1373 @@
+[
+  {
+    "interface": "RPT_ETF_FUND_SHEETPAPER",
+    "chinese_name": "ETF基金_一页纸",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "",
+    "module": "",
+    "chapter": "",
+    "notes": [
+      "条件接口，强制优先执行"
+    ],
+    "input_names": [
+      "基金代码(场内后缀)"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码(场内后缀)",
+        "parameter": "SECUCODE",
+        "rule": ""
+      }
+    ],
+    "outputs": [
+      "基金代码(无后缀)",
+      "所属ETF投资范畴-板块名称",
+      "基金代码(场内后缀)",
+      "基金内码",
+      "基金简称(场外)",
+      "基金简称(场内)",
+      "基金全称",
+      "基金主代码",
+      "基金经理(现任)",
+      "基金经理代码(现任)",
+      "现任基金经理任职日期",
+      "基金公司简称",
+      "基金公司全称",
+      "基金公司机构代码",
+      "基金成立日",
+      "基金终止日",
+      "最新报告期",
+      "最新净值日期",
+      "是否ETF基金",
+      "是否QDII基金",
+      "是否货币基金",
+      "跟踪指数名称",
+      "跟踪指数代码",
+      "跟踪该指数的标的基金只数",
+      "投资范畴分类-一级代码",
+      "基金状态",
+      "投资范畴分类-二级代码",
+      "投资范畴分类-一级名称",
+      "投资范畴分类-二级名称",
+      "所属ETF投资范畴-板块编码",
+      "最新报告期类型",
+      "东财基金运作方式",
+      "东财投资范畴一级分类",
+      "指数型细分",
+      "是否LOF",
+      "是否发起式基金",
+      "是否ETF联接基金",
+      "关联份额代码",
+      "关联ETF代码",
+      "同类比较-基金类型",
+      "业绩比较基准代码",
+      "比较宽基指数代码",
+      "一页纸专用分类",
+      "投资范畴板块代码",
+      "基金代码(OF后缀)"
+    ]
+  },
+  {
+    "interface": "RPT_F9_POFD_INFO",
+    "chinese_name": "F9速览_基金基本信息",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸/F9速览_基金基本信息新增是否ETF字段",
+    "placeholder": "GINFOFUNDB",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "基金代码(带后缀)"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码(带后缀)",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "基金代码",
+      "基金代码(带后缀)",
+      "基金简称",
+      "基金状态",
+      "投资类型",
+      "风险等级(公告)",
+      "最新净值日期",
+      "单位净值",
+      "复权单位净值增长率",
+      "万份基金单位收益",
+      "七日年化收益率",
+      "成立日期",
+      "投资风格",
+      "规模日期",
+      "最新规模",
+      "管理人简称",
+      "基金经理",
+      "业绩比较基准",
+      "投资目标"
+    ]
+  },
+  {
+    "interface": "RPT_F9_FM_BASICINFO",
+    "chinese_name": "基金经理F9_基本资料",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOMGRN",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "基金经理代码"
+    ],
+    "inputs": [
+      {
+        "name": "基金经理代码",
+        "parameter": "SECUCODE",
+        "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金经理代码(现任)字段作为入参，如果返回的基金经理代码有多个，需要分多次调用"
+      }
+    ],
+    "outputs": [
+      "人物名称",
+      "人物代码",
+      "基金经理代码",
+      "国籍",
+      "年龄",
+      "性别",
+      "学历",
+      "简历",
+      "获奖次数",
+      "基金经理从业年限",
+      "现任基金数",
+      "历任基金数",
+      "证券从业日期",
+      "现任职公司",
+      "现任职公司简称",
+      "代表基金代码",
+      "代表基金名称",
+      "代表基金规模(亿元)",
+      "代表基金东财分类",
+      "代表基金东财分类代码",
+      "是否在任",
+      "历任基金公司",
+      "历任基金公司数",
+      "跳槽频率",
+      "任职基金总规模 (亿元)",
+      "平均管理费率",
+      "平均托管费率",
+      "平均销售服务费率"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_F9_COMPANY",
+    "chinese_name": "基金F9_基金管理公司_基本资料",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOCMP",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "基金代码"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "机构代码",
+      "基金内码",
+      "基金代码",
+      "公司全称",
+      "公司图片",
+      "公司英文名称",
+      "成立日期",
+      "公司属性",
+      "法定代表人",
+      "注册资本",
+      "电子邮箱",
+      "总经理",
+      "注册地址",
+      "电话号码",
+      "办公地址",
+      "公司介绍",
+      "图片地址",
+      "公司网址"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_F9_COMPHOLDER",
+    "chinese_name": "基金F9_基金管理公司_参股股东",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOCHL",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "基金代码"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "基金内码",
+      "基金代码",
+      "公司代码",
+      "股东代码",
+      "股东名称",
+      "持股比例",
+      "股东证券代码",
+      "是否上市"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_ORGMANGER_SCALE_TITLE",
+    "chinese_name": "F9速览_基金公司_管理规模表头",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOCSUM",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "基金公司代码"
+    ],
+    "inputs": [
+      {
+        "name": "基金公司代码",
+        "parameter": "ORG_CODE",
+        "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金公司机构代码字段作为入参"
+      }
+    ],
+    "outputs": [
+      "基金公司代码",
+      "机构全称",
+      "交易日",
+      "资产净值合计",
+      "资产净值合计排名",
+      "非货币资产规模合计",
+      "非货币资产规模合计排名",
+      "基金数量合并",
+      "基金数量合并排名"
+    ]
+  },
+  {
+    "interface": "RPT_F9_FUND_ORGPRODUCT",
+    "chinese_name": "F9速览基金公司-产品结构",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOCF",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "机构代码",
+      "交易日期",
+      "是否剔除ETF",
+      "产品结构类型代码"
+    ],
+    "inputs": [
+      {
+        "name": "机构代码",
+        "parameter": "ORG_CODE",
+        "rule": "取RPT_ETF_FUND_SHEETPAPER接口，基金公司机构代码字段作为入参"
+      },
+      {
+        "name": "交易日期",
+        "parameter": "TRADE_DATE",
+        "rule": "固定传：系统日期"
+      },
+      {
+        "name": "是否剔除ETF",
+        "parameter": "IS_ETF",
+        "rule": "固定传：1"
+      },
+      {
+        "name": "产品结构类型代码",
+        "parameter": "PRODUCT_TYPE_CODE",
+        "rule": "固定传：2"
+      }
+    ],
+    "outputs": [
+      "机构代码",
+      "交易日期",
+      "产品结构类型代码",
+      "产品结构类型",
+      "基金类型",
+      "产品数量",
+      "规模合计(亿元)",
+      "规模占比(%)"
+    ]
+  },
+  {
+    "interface": "RPT_INDEXPROFILE_BASIC",
+    "chinese_name": "指数基本信息",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOIDX",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [],
+    "input_names": [
+      "指数代码带后缀"
+    ],
+    "inputs": [
+      {
+        "name": "指数代码带后缀",
+        "parameter": "SECUCODE",
+        "rule": "取RPT_ETF_FUND_SHEETPAPER接口，跟踪指数代码字段作为入参"
+      }
+    ],
+    "outputs": [
+      "指数代码",
+      "指数代码(带后缀)",
+      "指数名称",
+      "指数基期",
+      "发布机构",
+      "计算类型",
+      "成分股数量",
+      "指数简介",
+      "产品跟踪数量",
+      "跟踪数量ETF"
+    ]
+  },
+  {
+    "interface": "RPT_INDEX_TRACKSCALE",
+    "chinese_name": "指数F9_跟踪标的规模",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "GINFOIDXFS",
+    "module": "ETF_INDEX",
+    "chapter": "基金概况",
+    "notes": [
+      "仅RPT_ETF_FUND_SHEETPAPER接口，跟踪该指数的标的基金只数字段>0时，调用此接口"
+    ],
+    "input_names": [
+      "指数代码带后缀"
+    ],
+    "inputs": [
+      {
+        "name": "指数代码带后缀",
+        "parameter": "INDEX_SECUCODE",
+        "rule": "取RPT_ETF_FUND_SHEETPAPER接口，跟踪指数代码字段作为入参"
+      }
+    ],
+    "outputs": [
+      "指数代码带后缀",
+      "年份",
+      "相关基金总规模",
+      "所有指数型基金规模",
+      "规模占比"
+    ]
+  },
+  {
+    "interface": "RPT_F9_FUND_DALIYSCALE_SHARE",
+    "chinese_name": "基金F9_每日规模份额",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQTRAD",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "证券代码带后缀",
+      "截止日期"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码带后缀",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "截止日期",
+        "parameter": "CHANGE_DATE",
+        "rule": "入参：<=系统日期，>=系统日期月份-3"
+      }
+    ],
+    "outputs": [
+      "证券代码带后缀",
+      "基金简称",
+      "截止日期",
+      "公告日期",
+      "流通份额",
+      "流通规模"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_SHARE_NAV",
+    "chinese_name": "F9份额与规模",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQNOTE",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "基金代码（带后缀）",
+      "变动日期"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码（带后缀）",
+        "parameter": "SECUCODE",
+        "rule": ""
+      },
+      {
+        "name": "变动日期",
+        "parameter": "CHANGE_DATE",
+        "rule": "入参：<=系统日期，>=(RPT_ETF_FUND_SHEETPAPER接口，基金成立日字段值)"
+      }
+    ],
+    "outputs": [
+      "基金代码（带后缀）",
+      "基金简称",
+      "变动日期",
+      "基金份额合并值",
+      "基金规模合并值"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_HOLDER_STRUCTURE_REPORT",
+    "chinese_name": "基金专题_持有人户数及结构(按报告期)",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQHDR",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "基金代码",
+      "变动日期",
+      "报表类型"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "变动日期",
+        "parameter": "CHANGE_DATE",
+        "rule": "入参：<=系统日期，>=(RPT_ETF_FUND_SHEETPAPER接口，基金成立日字段值)"
+      },
+      {
+        "name": "报表类型",
+        "parameter": "REPORT_TYPE",
+        "rule": "固定入参：REPORT_TYPE in (\"1\",\"2\")"
+      }
+    ],
+    "outputs": [
+      "基金代码带后缀",
+      "基金简称",
+      "变动日期",
+      "报告期名称",
+      "基金持有人户数",
+      "平均每户持有基金份额",
+      "机构投资者持有份额",
+      "机构投资者持有份额占总份额比例",
+      "个人投资者持有份额",
+      "个人投资者持有份额占总份额比例",
+      "基金公司员工持有份额",
+      "基金公司员工持有份额占总分额比例"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_ETF_FUND_TURNOVER_DETAILS_ABOVE",
+    "chinese_name": "ETF基金市场成交额详情-统计",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸/ETF基金市场成交额详情",
+    "placeholder": "SLQAMVOL",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "截止日期",
+      "基金分类"
+    ],
+    "inputs": [
+      {
+        "name": "截止日期",
+        "parameter": "EndDate",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新净值日期字段返回值"
+      },
+      {
+        "name": "基金分类",
+        "parameter": "TYPE_CODE",
+        "rule": "固定入参：TYPE_CODE IN (\"001001\", \"001002\", \"001003\", \"001004\", \"001005\", \"001006\")"
+      }
+    ],
+    "outputs": [
+      "证券代码（后缀）",
+      "基金简称",
+      "截至日期",
+      "近1日成交额",
+      "近1周成交额",
+      "近1月成交额",
+      "近3月成交额",
+      "近1年成交额",
+      "今年以来成交额",
+      "上市以来成交额",
+      "近1周日均成交额",
+      "近1月日均成交额",
+      "近3月日均成交额",
+      "近1年日均成交额",
+      "今年以来日均成交额",
+      "上市以来日均成交额",
+      "近1日成交量(万手)",
+      "近1周成交量(万手)",
+      "近1月成交量(万手)",
+      "近3月成交量(万手)",
+      "近1年成交量(万手)",
+      "今年以来成交量(万手)",
+      "上市以来成交量(万手)",
+      "近1周日均成交量(万手)",
+      "近1月日均成交量(万手)",
+      "近3月日均成交量(万手)",
+      "近1年日均成交量(万手)",
+      "今年以来日均成交量(万手)",
+      "上市以来日均成交量(万手)"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_ETF_AMOUNTCHG",
+    "chinese_name": "ETF基金市场成交额变化_明细",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQTDEL",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "证券代码(带后缀)",
+      "基金最新交易日",
+      "时序周期编码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码(带后缀)",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "基金最新交易日",
+        "parameter": "END_DATE",
+        "rule": "入参：<=系统日期，>=系统日期月份-3"
+      },
+      {
+        "name": "时序周期编码",
+        "parameter": "STATISTICS_CYCLE_CODE",
+        "rule": "固定传：01"
+      }
+    ],
+    "outputs": [
+      "证券代码(带后缀)",
+      "基金简称",
+      "基金最新交易日",
+      "前收盘价",
+      "开盘价",
+      "收盘价",
+      "均价",
+      "涨跌幅",
+      "振幅",
+      "换手率"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_ARINFO_SCALEDEL",
+    "chinese_name": "ETF净申赎份额规模明细",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQREDMDEL",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "证券代码(带后缀)",
+      "交易日期"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码(带后缀)",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "交易日期",
+        "parameter": "TRADE_DATE",
+        "rule": "入参：<=系统日期，>=系统日期年份-1"
+      }
+    ],
+    "outputs": [
+      "证券代码(带后缀)",
+      "基金简称",
+      "交易日期",
+      "场内流通份额(万份)",
+      "净申赎份额(万份)",
+      "估算净申赎规模(万元)"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_ETF_ARINFO_SCALE",
+    "chinese_name": "ETF净申赎份额规模明细",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "SLQREDMC",
+    "module": "ETF_SCALE",
+    "chapter": "规模、持有人结构与流动性分析",
+    "notes": [],
+    "input_names": [
+      "开始日期",
+      "截止日期",
+      "周期"
+    ],
+    "inputs": [
+      {
+        "name": "开始日期",
+        "parameter": "START_DATE",
+        "rule": "入参：系统日期当月第一天"
+      },
+      {
+        "name": "截止日期",
+        "parameter": "END_DATE",
+        "rule": "入参：系统日期"
+      },
+      {
+        "name": "周期",
+        "parameter": "FREQUENCY",
+        "rule": "固定入参：FREQUENCY=\"3\""
+      }
+    ],
+    "outputs": [
+      "日期",
+      "开始日期",
+      "截止日期",
+      "净申赎份额",
+      "估算净申赎规模"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_FUND_DAILYNAV_DAILYFRE",
+    "chinese_name": "区间回报-非货基",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMRTN",
+    "module": "ETF_PERF",
+    "chapter": "业绩与运作特质",
+    "notes": [],
+    "input_names": [
+      "基金代码",
+      "开始日期",
+      "截止日期"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SecuCode",
+        "rule": ""
+      },
+      {
+        "name": "开始日期",
+        "parameter": "startdate",
+        "rule": "入参：系统日期年份-1"
+      },
+      {
+        "name": "截止日期",
+        "parameter": "enddate",
+        "rule": "入参：系统日期"
+      }
+    ],
+    "outputs": [
+      "基金代码",
+      "日期",
+      "区间回报"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_DAILYNAV_DAILYDER",
+    "chinese_name": "基金F9-每日基金净值列表",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFM7DAY",
+    "module": "ETF_PORTFOLIO",
+    "chapter": "业绩与运作特质（货币型）",
+    "notes": [],
+    "input_names": [
+      "基金代码",
+      "净值日期"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "净值日期",
+        "parameter": "END_DATE",
+        "rule": "入参：<=系统日期，>=系统日期年份-1"
+      }
+    ],
+    "outputs": [
+      "基金代码带后缀",
+      "基金名称",
+      "净值日期",
+      "七日年化"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_PERTREND_PERNAV",
+    "chinese_name": "基金F9-新版基金速览-复权单位净值增长",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMRTNP",
+    "module": "ETF_PERF，ETF_PORTFOLIO",
+    "chapter": "业绩与运作特质、业绩与运作特质（货币型）",
+    "notes": [],
+    "input_names": [
+      "证券代码",
+      "起始交易日期",
+      "截止交易日期",
+      "是否年化"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SecuCode",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+      },
+      {
+        "name": "起始交易日期",
+        "parameter": "StartDate",
+        "rule": "固定入参：1900-01-01"
+      },
+      {
+        "name": "截止交易日期",
+        "parameter": "EndDate",
+        "rule": "入参：系统日期"
+      },
+      {
+        "name": "是否年化",
+        "parameter": "IsNaau",
+        "rule": "固定入参：2"
+      }
+    ],
+    "outputs": [
+      "证券代码带后缀",
+      "基金名称",
+      "截止日期",
+      "成立日期",
+      "成立年限",
+      "近一周回报",
+      "近一月回报",
+      "近三月回报",
+      "近六月回报",
+      "近一年回报",
+      "近两年回报",
+      "近三年回报",
+      "近五年回报",
+      "今年以来回报",
+      "成立以来回报",
+      "近一周排名",
+      "近一月排名",
+      "近三月排名",
+      "近六月排名",
+      "近一年排名",
+      "近三年排名",
+      "近五年排名",
+      "今年以来排名",
+      "成立以来排名",
+      "基金年化回报",
+      "年化回报排名"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_DAILYNAV_YEARLY",
+    "chinese_name": "基金F9速览-年度回报",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMRTNY",
+    "module": "ETF_PERF，ETF_PORTFOLIO",
+    "chapter": "业绩与运作特质、业绩与运作特质（货币型）",
+    "notes": [],
+    "input_names": [
+      "基金代码带后缀",
+      "截止日期"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码带后缀",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+      },
+      {
+        "name": "截止日期",
+        "parameter": "END_DATE",
+        "rule": "入参：<=系统日期，>=1900-01-01"
+      }
+    ],
+    "outputs": [
+      "基金代码带后缀",
+      "基金代码",
+      "基金简称",
+      "宽基指数代码",
+      "宽基指数名称",
+      "基金年度回报",
+      "基准指数简称",
+      "基金指数代码",
+      "基准年度回报",
+      "宽基年度回报",
+      "基金年度回报排名",
+      "截止日期"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_INDEXTRACKDEV",
+    "chinese_name": "ETF基金综合屏_日跟踪偏离度",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMBISD",
+    "module": "ETF_PERF",
+    "chapter": "业绩与运作特质",
+    "notes": [],
+    "input_names": [
+      "证券代码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(OF后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "证券代码",
+      "交易日期",
+      "日跟踪偏离度"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_RISK_ANNUTRACKERROR",
+    "chinese_name": "ETF基金综合屏_年化跟踪误差",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMBISY",
+    "module": "ETF_PERF",
+    "chapter": "业绩与运作特质",
+    "notes": [],
+    "input_names": [
+      "证券代码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "证券代码",
+      "交易日期",
+      "年化跟踪误差"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_IPOV_PREMDISCRATEM",
+    "chinese_name": "ETF基金综合屏_溢折率分析",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFMPD",
+    "module": "ETF_PERF",
+    "chapter": "业绩与运作特质",
+    "notes": [],
+    "input_names": [
+      "证券代码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "证券代码",
+      "交易日期",
+      "IOPV溢折率",
+      "平均溢折率",
+      "一倍标准差",
+      "二倍标准差"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_PAPER_RISKRATING",
+    "chinese_name": "基金一页纸_风险收益指标",
+    "path_hint": "/Choice金融终端/基金F9/场外基金一页纸",
+    "placeholder": "RNRMTS",
+    "module": "ETF_PEER",
+    "chapter": "风险收益特征",
+    "notes": [],
+    "input_names": [
+      "证券代码(带后缀)"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码(带后缀)",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "证券代码(带后缀)",
+      "证券简称",
+      "Sharpe",
+      "Treynor",
+      "Jensen",
+      "平均收益率(%)",
+      "几何平均收益率(%)",
+      "平均风险收益率(%)",
+      "几何平均风险收益率(%)",
+      "年化收益率(%)",
+      "收益标准差(%)",
+      "年化波动率(%)",
+      "Beta",
+      "可决系数",
+      "非系统风险",
+      "Alpha"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_ETF_ARSTOCK",
+    "chinese_name": "ETF申购赎回清单成分股",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLPCF",
+    "module": "ETF_OUTLOOK_STOCK，ETF_OUTLOOK_BOND，ETF_OUTLOOK_FORI",
+    "chapter": "投资组合分析（股票型）、投资组合分析（债券型）、投资组合分析（跨境型）",
+    "notes": [
+      "调用前提：RPT_ETF_FUND_SHEETPAPER接口，是否货币基金=0，调用本接口"
+    ],
+    "input_names": [
+      "基金代码带后缀"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码带后缀",
+        "parameter": "FUNDCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      }
+    ],
+    "outputs": [
+      "基金代码带后缀",
+      "交易日期",
+      "股票简称(中文)",
+      "股票代码带后缀",
+      "股票数量",
+      "估算权重-日频%",
+      "现金替代标志",
+      "固定替代金额（元，人民币）",
+      "现金替代溢价比例"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_F9_KEYSTOCK",
+    "chinese_name": "基金F9_投资组合分析_重仓持股(非QDII)",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLHVS",
+    "module": "ETF_OUTLOOK_STOCK",
+    "chapter": "投资组合分析（股票型）",
+    "notes": [],
+    "input_names": [
+      "证券代码",
+      "报告期",
+      "行业编码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "报告期",
+        "parameter": "END_DATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "行业编码",
+        "parameter": "INDUSTRY_CODE",
+        "rule": "固定入参：INDUSTRY_CODE = \"2\""
+      }
+    ],
+    "outputs": [
+      "证券代码(带后缀)",
+      "证券简称",
+      "报告期",
+      "品种代码",
+      "品种简称",
+      "持股数量",
+      "持股总市值",
+      "持股市值占基金股票投资市值比",
+      "持股市值占基金净值比",
+      "持股占流通股比",
+      "净值占比变动",
+      "所属行业",
+      "行业权重"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_F9_KEYSTOCKQDII",
+    "chinese_name": "基金F9_投资组合分析_重仓持股(QDII)",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLHVSQD",
+    "module": "ETF_OUTLOOK_FORI",
+    "chapter": "投资组合分析（跨境型）",
+    "notes": [],
+    "input_names": [
+      "证券代码(不带后缀)",
+      "行业编码",
+      "报告期",
+      "报表类型代码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码(不带后缀)",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "行业编码",
+        "parameter": "INDUSTRY_CODE",
+        "rule": "固定入参：INDUSTRY_CODE = \"2\""
+      },
+      {
+        "name": "报告期",
+        "parameter": "END_DATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "报表类型代码",
+        "parameter": "REPORT_TYPE_CODE",
+        "rule": "固定入参：REPORT_TYPE_CODE in (\"1\",\"5\",\"3\",\"6\",\"8\")"
+      }
+    ],
+    "outputs": [
+      "证券代码(不带后缀)",
+      "证券简称",
+      "报告期",
+      "品种代码",
+      "品种简称",
+      "持仓数量",
+      "持仓市值",
+      "占股票市值比(%)",
+      "占基金净值比",
+      "净值占比变动(%)",
+      "上市交易所",
+      "所在国家(地区)"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_HYFBDSF_DETAILS",
+    "chinese_name": "基金专题-基金行业分布(第三方)明细",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLIDST",
+    "module": "ETF_OUTLOOK_STOCK",
+    "chapter": "投资组合分析（股票型）",
+    "notes": [],
+    "input_names": [
+      "基金带后缀代码",
+      "行业类型编码",
+      "报告期",
+      "报告类型"
+    ],
+    "inputs": [
+      {
+        "name": "基金带后缀代码",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "行业类型编码",
+        "parameter": "INDUSTRY_TYPE_CODE",
+        "rule": "固定入参：INDUSTRY_TYPE_CODE=\"001\""
+      },
+      {
+        "name": "报告期",
+        "parameter": "REPORT_DATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "报告类型",
+        "parameter": "REPORT_TYPE_CODE",
+        "rule": "固定入参：REPORT_TYPE_CODE=\"02\""
+      }
+    ],
+    "outputs": [
+      "基金带后缀代码",
+      "基金简称",
+      "报告日期",
+      "行业类型",
+      "行业代码",
+      "行业名称",
+      "行业投资总市值",
+      "行业投资市值占净值比",
+      "净值占比变动",
+      "行业投资市值占股票投资市值比",
+      "股票投资占比变动"
+    ]
+  },
+  {
+    "interface": "RPT_POFD_F9_INDUSYYQDII",
+    "chinese_name": "基金F9_行业配置(QDII)",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLIDSTQD",
+    "module": "ETF_OUTLOOK_FORI",
+    "chapter": "投资组合分析（跨境型）",
+    "notes": [],
+    "input_names": [
+      "基金代码",
+      "报告期",
+      "传参用报告期类型"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "报告期",
+        "parameter": "END_DATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "传参用报告期类型",
+        "parameter": "PAR_REPORT_TYPE",
+        "rule": "固定入参：PAR_REPORT_TYPE=\"02\""
+      }
+    ],
+    "outputs": [
+      "基金代码",
+      "基金简称",
+      "报告期",
+      "行业名称",
+      "持仓市值",
+      "占基金净值比(%)",
+      "占基金净值比占比变动(%)",
+      "占股票市值比(%)",
+      "占股票市值比占比变动(%)"
+    ]
+  },
+  {
+    "interface": "RPT_POFD_PF_STOCKAREA",
+    "chinese_name": "股票投资组合-地区配置",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLAREA",
+    "module": "ETF_OUTLOOK_FORI",
+    "chapter": "投资组合分析（跨境型）",
+    "notes": [],
+    "input_names": [
+      "基金代码",
+      "是否最新"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "是否最新",
+        "parameter": "IS_NEW",
+        "rule": "固定入参：IS_NEW=\"1\""
+      }
+    ],
+    "outputs": [
+      "基金代码",
+      "基金名称",
+      "截止日期",
+      "国家(地区)",
+      "持仓市值(百万)",
+      "占基金净值比(%)",
+      "占基金净值比-占比变动(%)",
+      "占股票市值比(%)",
+      "占股票市值比-占比变动(%)"
+    ]
+  },
+  {
+    "interface": "RPT_FUND_F9_TOPTENBOND",
+    "chinese_name": "基金F9_重仓债券",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLHVB",
+    "module": "ETF_OUTLOOK_BOND",
+    "chapter": "投资组合分析（债券型）",
+    "notes": [],
+    "input_names": [
+      "证券代码",
+      "报告期日期",
+      "报告期"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "报告期日期",
+        "parameter": "ENDDATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "报告期",
+        "parameter": "STR_YUEFEN",
+        "rule": "固定入参：STR_YUEFEN in (\"1\",\"5\",\"3\",\"6\")"
+      }
+    ],
+    "outputs": [
+      "证券代码带后缀",
+      "证券简称",
+      "报告期日期",
+      "债券代码",
+      "债券名称",
+      "持仓市值",
+      "占净值比例",
+      "占比变动(%)",
+      "债券类型",
+      "是否城投债",
+      "是否永续债",
+      "债券评级",
+      "主体评级"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ",
+    "chinese_name": "基金F9_券种配置",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸",
+    "placeholder": "PFLBTY",
+    "module": "ETF_OUTLOOK_BOND",
+    "chapter": "投资组合分析（债券型）",
+    "notes": [],
+    "input_names": [
+      "证券代码",
+      "报告期日期",
+      "报告期代码"
+    ],
+    "inputs": [
+      {
+        "name": "证券代码",
+        "parameter": "SECURITY_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(无后缀) 字段返回值"
+      },
+      {
+        "name": "报告期日期",
+        "parameter": "END_DATE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，最新报告期 字段返回值"
+      },
+      {
+        "name": "报告期代码",
+        "parameter": "STR_YUEFEN",
+        "rule": "固定入参：STR_YUEFEN in (\"1\",\"5\",\"3\",\"6\")"
+      }
+    ],
+    "outputs": [
+      "基金代码",
+      "基金名称",
+      "截止日期",
+      "报告期",
+      "序号",
+      "债券品种",
+      "公允价值(百万)",
+      "占基金资产净值比例(%)",
+      "占基金资产净值比例相对上期增减(%)",
+      "占债券市值比(%)",
+      "占债券市值比-相对上期增减(%)"
+    ]
+  },
+  {
+    "interface": "RPT_ETF_FUND_DURATION",
+    "chinese_name": "ETF基金_久期分布",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页",
+    "placeholder": "PFLDUR",
+    "module": "ETF_OUTLOOK_BOND",
+    "chapter": "投资组合分析（债券型）",
+    "notes": [],
+    "input_names": [
+      "基金代码带后缀",
+      "截止交易日期"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码带后缀",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "截止交易日期",
+        "parameter": "EndDate",
+        "rule": "入参：系统日期"
+      }
+    ],
+    "outputs": [
+      "基金代码带后缀",
+      "基金代码",
+      "基金简称",
+      "截止日期",
+      "净值日期",
+      "久期分布",
+      "久期市值占比",
+      "久期默认排序"
+    ]
+  },
+  {
+    "interface": "RPT_CUSTOM_ETF_SP_SIMILARCOMPARE",
+    "chinese_name": "基金F9_相关证券_同类比较",
+    "path_hint": "/Choice金融终端/基金F9/场内基金一页纸/同类比较",
+    "placeholder": "CMPR",
+    "module": "ETF_COMP",
+    "chapter": "同类型ETF比较",
+    "notes": [],
+    "input_names": [
+      "基金代码(带后缀)",
+      "周期",
+      "板块代码",
+      "剔除非主代码基金"
+    ],
+    "inputs": [
+      {
+        "name": "基金代码(带后缀)",
+        "parameter": "SECUCODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，基金代码(场内后缀) 字段返回值"
+      },
+      {
+        "name": "周期",
+        "parameter": "STAGE_TYPE",
+        "rule": "固定入参：STAGE_TYPE=\"05\""
+      },
+      {
+        "name": "板块代码",
+        "parameter": "ETF_BOARD_CODE",
+        "rule": "入参：RPT_ETF_FUND_SHEETPAPER接口，所属ETF投资范畴-板块编码 字段返回值"
+      },
+      {
+        "name": "剔除非主代码基金",
+        "parameter": "IS_MAIN_CODE",
+        "rule": "固定入参：IS_MAIN_CODE=\"0\""
+      }
+    ],
+    "outputs": [
+      "证券代码(带后缀)",
+      "证券简称",
+      "开始日期",
+      "截止日期",
+      "区间收益率",
+      "Sharpe年化",
+      "区间最大回撤",
+      "波动率年化",
+      "最新规模",
+      "区间收益率-平均值",
+      "Sharpe年化-平均值",
+      "区间最大回撤-平均值",
+      "波动率年化-平均值",
+      "最新规模-平均值",
+      "区间收益率-中位数",
+      "Sharpe年化-中位数",
+      "区间最大回撤-中位数",
+      "波动率年化-中位数",
+      "最新规模-中位数",
+      "区间收益率-排名",
+      "Sharpe年化-排名",
+      "区间最大回撤-排名",
+      "波动率年化-排名",
+      "最新规模-排名",
+      "通过 `mx-ds-mcp` ，`mx_finance_search_news`完成文本材料检索：",
+      "（1）调用妙想搜索接口：http://llm-platform-cid.bdeastmoney.net/llm-platform-search-api/search/modelV2 （2）Post： { \"query\": \"【基金代码+基金简称】的投资价值与市场讨论\", \"size\": 10, \"timeSupSize\": 3, \"timeReRankFlag\": true, \"decomposedSize\": 3, \"decomposedFlag\": false, \"inputStartDate\":\"2026-06-06 00:00:00\", \"inputEndDate\":\"2026-07-06 23:59:59\" } \"query\"、\"inputStartDate\"、\"inputEndDate\"会根据基金简称和系统日期动态调整，其余字段保持不变。\"query\"格式为“基金代码+基金简称‘的投资价值与市场讨论’”；\"inputEndDate\"为CURRENT_DATE的年月日+‘23:59:59’；\"inputStartDate\"为CURRENT_DATE的年月日减去30天+‘00:00:00’ （3）chunk汇总 得到搜索结果后，按时间降序（从新到旧）将全部chunk分段拼接起来，如 “chunk_content1。 chunk_content2。 …” ，以此作为NEWS （4）触发规则为每日盘后（23:00）触发一次"
+    ]
+  }
+]

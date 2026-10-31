@@ -1,0 +1,7 @@
+interface:
+  display_name: "重仓股潜在买卖压力透视"
+  short_description: "通过MQL获取基金重仓股四张压力榜并生成透视报告"
+  brand_color: "#8B1E2D"
+  default_prompt: "使用 $top-holdings-pressure-insight 通过MQL获取四张重仓股潜在买卖压力榜并生成透视报告。"
+policy:
+  allow_implicit_invocation: true

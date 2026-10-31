@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "target_identity": {
+    "entity_id": "600519.SH",
+    "entity_name": "贵州茅台",
+    "security_code": "600519.SH"
+  },
+  "writing_payload": {
+    "workbook_meta": {
+      "subject": "贵州茅台",
+      "security_code": "600519.SH",
+      "report_type": "阶段D受控样例",
+      "report_date": "2026-10-03",
+      "data_cutoff": "2025-12-31",
+      "currency": "人民币",
+      "forecast_period": "不适用",
+      "deliverables": "阶段D新标的底稿",
+      "note": "本样例仅验证真实MQL证据进入新标的底稿，不代表完整投资报告。"
+    },
+    "scope": "stage_d_controlled_sample",
+    "category_applicability": {
+      "financial_statement": {
+        "status": "required"
+      }
+    },
+    "reference_objects": {
+      "tables": [
+        {
+          "table_id": "revenue-table",
+          "page": 1,
+          "source_order": 1,
+          "title": "收入表",
+          "headers": [
+            "科目",
+            "2025A"
+          ],
+          "header_levels": [],
+          "row_sequence": [
+            {
+              "source_row_id": "revenue-table:row:1",
+              "label": "营业收入"
+            },
+            {
+              "source_row_id": "revenue-table:row:2",
+              "label": "营业总收入"
+            }
+          ],
+          "required_periods": [
+            "2025A"
+          ],
+          "unit": "亿元",
+          "footnotes": [
+            "营业收入与营业总收入并列呈现，以保留贵州茅台并表金融子公司的口径差异。"
+          ]
+        }
+      ]
+    },
+    "reference_display_tables": [
+      {
+        "object_id": "revenue-table",
+        "title": "收入表",
+        "source_page_index": 1,
+        "source_order": 1,
+        "headers": [
+          "科目",
+          "2025A"
+        ],
+        "rows": [
+          {
+            "source_row_id": "revenue-table:row:1",
+            "label": "营业收入",
+            "cells": [
+              {
+                "block_key": "revenue-query",
+                "returned_field": "营业收入",
+                "result_row": 1,
+                "scale_factor": 1e-08
+              }
+            ]
+          },
+          {
+            "source_row_id": "revenue-table:row:2",
+            "label": "营业总收入",
+            "cells": [
+              {
+                "block_key": "revenue-query",
+                "returned_field": "营业总收入",
+                "result_row": 1,
+                "scale_factor": 1e-08
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coverage_requirements": [
+      {
+        "coverage_id": "cov-600519-revenue-2025",
+        "workbook_row_id": "cov-600519-revenue-2025",
+        "object_id": "revenue-table",
+        "source_row_ids": [
+          "revenue-table:row:1"
+        ],
+        "item": "营业收入",
+        "category": "financial_statement",
+        "data_kind": "structured",
+        "disposition": "mql_returned",
+        "block_key": "revenue-query",
+        "returned_field": "营业收入",
+        "source_unit": "元",
+        "target_unit": "亿元",
+        "scale_factor": 1e-08,
+        "conversion_formula": "=原始值*1E-8",
+        "presentation_range": "16_参考表展示",
+        "report_location": "正文1.1 表1"
+      },
+      {
+        "coverage_id": "cov-600519-total-revenue-2025",
+        "workbook_row_id": "cov-600519-total-revenue-2025",
+        "object_id": "revenue-table",
+        "source_row_ids": [
+          "revenue-table:row:2"
+        ],
+        "item": "营业总收入",
+        "category": "financial_statement",
+        "data_kind": "structured",
+        "disposition": "mql_returned",
+        "block_key": "revenue-query",
+        "returned_field": "营业总收入",
+        "source_unit": "元",
+        "target_unit": "亿元",
+        "scale_factor": 1e-08,
+        "conversion_formula": "=原始值*1E-8",
+        "presentation_range": "16_参考表展示",
+        "report_location": "正文1.1 表1"
+      }
+    ],
+    "mql_execution_records": [
+      {
+        "tool_execution": {
+          "tool_call_id": "00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01",
+          "request": {
+            "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\A股\\F9\\财务数据(新准则)\\财务摘要(单季度)_新\\沪深F9_财务摘要单季度(新)|031846323240629});\nSetCodes([\"600519.SH\"]);\nSetReportFilter({报告期} == \"2025-12-31\" AND {报表合并类型编码} == 1);\n{证券代码}: REPORT_FIELD(\"证券代码带后缀\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{营业收入}: REPORT_FIELD(\"营业收入\");\n{营业总收入}: REPORT_FIELD(\"营业总收入\");\nSort({证券代码}, \"ASC\", {报告期}, \"ASC\");\nOutputBlock();"
+          },
+          "response": {
+            "fetch_summary": {
+              "data_point_count": 0,
+              "metric_count": 0,
+              "metrics": [],
+              "report_count": 1,
+              "report_row_count": 1,
+              "reports": [
+                {
+                  "fetch_duration_ms": 115,
+                  "report": "沪深F9_财务摘要单季度(新)",
+                  "report_path": "Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\A股\\F9\\财务数据(新准则)\\财务摘要(单季度)_新\\沪深F9_财务摘要单季度(新)|031846323240629",
+                  "row_count": 1
+                }
+              ]
+            },
+            "ok": true,
+            "result": {
+              "blocks": [
+                {
+                  "blockId": 1,
+                  "column_schema": [
+                    {
+                      "hidden_key": false,
+                      "name": "证券代码",
+                      "type": "String"
+                    },
+                    {
+                      "hidden_key": false,
+                      "name": "证券简称",
+                      "type": "String"
+                    },
+                    {
+                      "hidden_key": false,
+                      "name": "报告期",
+                      "type": "Date"
+                    },
+                    {
+                      "hidden_key": false,
+                      "name": "营业收入",
+                      "type": "Number"
+                    },
+                    {
+                      "hidden_key": false,
+                      "name": "营业总收入",
+                      "type": "Number"
+                    }
+                  ],
+                  "columns": [
+                    "证券代码",
+                    "证券简称",
+                    "报告期",
+                    "营业收入",
+                    "营业总收入"
+                  ],
+                  "rows": [
+                    {
+                      "报告期": "2025-12-31",
+                      "营业总收入": 41150282256.03,
+                      "营业收入": 40384394858.93,
+                      "证券代码": "600519.SH",
+                      "证券简称": "贵州茅台"
+                    }
+                  ],
+                  "total": 1
+                }
+              ],
+              "type": "blocks"
+            },
+            "traceparent": "00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01",
+            "mql": "ReportBlock(#1, {Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\A股\\F9\\财务数据(新准则)\\财务摘要(单季度)_新\\沪深F9_财务摘要单季度(新)|031846323240629});\nSetCodes([\"600519.SH\"]);\nSetReportFilter({报告期} == \"2025-12-31\" AND {报表合并类型编码} == 1);\n{证券代码}: REPORT_FIELD(\"证券代码带后缀\");\n{证券简称}: REPORT_FIELD(\"证券简称\");\n{报告期}: REPORT_FIELD(\"报告期\");\n{营业收入}: REPORT_FIELD(\"营业收入\");\n{营业总收入}: REPORT_FIELD(\"营业总收入\");\nSort({证券代码}, \"ASC\", {报告期}, \"ASC\");\nOutputBlock();"
+          }
+        },
+        "result_as_of": "2025-12-31",
+        "plan": {
+          "table_id": "revenue-query",
+          "coverage_ids": [
+            "cov-600519-revenue-2025",
+            "cov-600519-total-revenue-2025"
+          ],
+          "returned_fields": {
+            "cov-600519-revenue-2025": "营业收入",
+            "cov-600519-total-revenue-2025": "营业总收入"
+          },
+          "source_object_ids": [
+            "revenue-table"
+          ],
+          "report_contract": {
+            "period_field": "报告期",
+            "sort_direction": "ASC",
+            "sort_keys": [
+              {
+                "field": "证券代码",
+                "direction": "ASC"
+              },
+              {
+                "field": "报告期",
+                "direction": "ASC"
+              }
+            ],
+            "unique_key_fields": [
+              "证券代码",
+              "报告期"
+            ]
+          }
+        },
+        "excel": {
+          "source_page": "1",
+          "source_page_index": 1,
+          "source_order": 1,
+          "source_figure_name": "收入表",
+          "target_table_name": "收入表",
+          "layout_class": "financial",
+          "mql_orientation": 1,
+          "mql_formula_cols": 5,
+          "mql_formula_rows": 2,
+          "refresh_rows": 6,
+          "refresh_columns": 2,
+          "refresh_shape_evidence": "result_matrix"
+        }
+      }
+    ],
+    "fact_rows": [
+      {
+        "evidence_id": "cov-600519-revenue-2025",
+        "source_id": 1,
+        "metric_id": "revenue-annual-consolidated",
+        "item": "营业收入",
+        "source": "Choice 金融查数",
+        "data_date": "2025-12-31",
+        "raw_value": 40384394858.93,
+        "source_unit": "元",
+        "period_semantics": "2025A",
+        "value_semantics": "年度实际",
+        "normalization_factor": 1e-08,
+        "normalized_value": 403.8439485893,
+        "display_unit": "亿元",
+        "caliber": "报表合并类型编码=1",
+        "raw_locator": "traceparent 00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01 #1",
+        "report_location": "正文1.1 表1",
+        "source_type": "Choice 金融查数",
+        "block_key": "revenue-query",
+        "execution_id": "00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01",
+        "returned_field": "营业收入",
+        "coverage_status": "已返回",
+        "coverage_id": "cov-600519-revenue-2025",
+        "acquired_at": "2026-10-03"
+      },
+      {
+        "evidence_id": "cov-600519-total-revenue-2025",
+        "source_id": 1,
+        "metric_id": "total-revenue-annual-consolidated",
+        "item": "营业总收入",
+        "source": "Choice 金融查数",
+        "data_date": "2025-12-31",
+        "raw_value": 41150282256.03,
+        "source_unit": "元",
+        "period_semantics": "2025A",
+        "value_semantics": "年度实际",
+        "normalization_factor": 1e-08,
+        "normalized_value": 411.5028225603,
+        "display_unit": "亿元",
+        "caliber": "报表合并类型编码=1",
+        "raw_locator": "traceparent 00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01 #1",
+        "report_location": "正文1.1 表1",
+        "source_type": "Choice 金融查数",
+        "block_key": "revenue-query",
+        "execution_id": "00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01",
+        "returned_field": "营业总收入",
+        "coverage_status": "已返回",
+        "coverage_id": "cov-600519-total-revenue-2025",
+        "acquired_at": "2026-10-03"
+      }
+    ],
+    "forecast_rows": [],
+    "information_rows": [],
+    "report_mapping_rows": [
+      {
+        "report_location": "正文1.1 表1",
+        "evidence_ids": [
+          "cov-600519-revenue-2025",
+          "cov-600519-total-revenue-2025"
+        ],
+        "use_content": "贵州茅台2025年度收入双口径",
+        "status": "已登记"
+      }
+    ],
+    "source_registry": [
+      {
+        "source_id": 1,
+        "origin": "mql",
+        "provider": "Choice 金融查数",
+        "record_id": "00-6af66e7e1cec4d3faf654d93c5aa3bd5-runtime1f991de52fd942b9-01",
+        "evidence_ids": [
+          "cov-600519-revenue-2025",
+          "cov-600519-total-revenue-2025"
+        ]
+      }
+    ]
+  }
+}

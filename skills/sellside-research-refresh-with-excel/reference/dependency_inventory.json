@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-10-03T11:45:15+08:00",
+  "target": {
+    "name": "sellside-research-refresh-with-excel20",
+    "version": "3.0.2"
+  },
+  "architecture": "vendored_monolith",
+  "note": "review 与 drafting 整目录 vendor 进 bundle/review、bundle/drafting（由 scripts/build_bundle.py 编译生成）；运行时不再用 Skill 工具加载外部子 skill。",
+  "external_skills": [
+    {
+      "name": "research-report-review",
+      "integration": "vendored_bundle",
+      "copied": true,
+      "bundle_path": "bundle/review",
+      "entry": "生成研报底稿",
+      "outputs": [
+        "{标的}_研报底稿抽取.xlsx（宿主按后缀 *_研报底稿抽取.xlsx 通配校验，旧名 A_原始底稿.xlsx 亦兼容）",
+        "{标的}_研报底稿核验报告.md 或 {标的}_底稿评测报告.md（宿主按 *_研报底稿核验报告.md / *_底稿评测报告.md 通配校验，旧名 A_底稿评测报告.md 亦兼容）"
+      ]
+    },
+    {
+      "name": "periodic-report-drafting",
+      "integration": "vendored_bundle",
+      "copied": true,
+      "bundle_path": "bundle/drafting",
+      "entry": "完整流程",
+      "outputs": [
+        "B_新研报.md",
+        "B_新研报.html",
+        "delivery-notes.json"
+      ]
+    }
+  ],
+  "source_baseline": {
+    "name": "sellside-research-refresh-with-excel",
+    "copy_mode": "dependency_closure",
+    "scripts": [
+      {
+        "path": "scripts/build_writing_workbook.py",
+        "reason": "生成新标的证据底稿",
+        "local_imports": [
+          "scripts/reproduction_contract.py"
+        ],
+        "third_party": [
+          "openpyxl"
+        ]
+      },
+      {
+        "path": "scripts/reproduction_contract.py",
+        "reason": "工作簿输入、参考绑定和执行证据契约",
+        "local_imports": [],
+        "third_party": []
+      },
+      {
+        "path": "scripts/validate_report_citations.py",
+        "reason": "build_writing_workbook.py运行时校验来源引用的动态依赖",
+        "local_imports": [],
+        "third_party": []
+      },
+      {
+        "path": "scripts/validate_mql_workbook_coverage.py",
+        "reason": "校验MQL锚点与工作簿覆盖",
+        "local_imports": [],
+        "third_party": [
+          "openpyxl"
+        ]
+      },
+      {
+        "path": "scripts/validate_reference_metric_coverage.py",
+        "reason": "校验参考指标到目标底稿的覆盖",
+        "local_imports": [],
+        "third_party": []
+      },
+      {
+        "path": "scripts/financial_indicator_cache.py",
+        "reason": "复用财务指标路径缓存",
+        "local_imports": [],
+        "third_party": []
+      },
+      {
+        "path": "scripts/mql_context_index.py",
+        "reason": "索引大型MQL上下文",
+        "local_imports": [],
+        "third_party": []
+      },
+      {
+        "path": "scripts/service_guard.py",
+        "reason": "外部服务状态、重试和熔断",
+        "local_imports": [],
+        "third_party": []
+      }
+    ],
+    "references": [
+      "reference/execution_efficiency.md",
+      "reference/framework_template.md",
+      "reference/assumption_matrix.md",
+      "reference/adaptation_matrix.md",
+      "reference/data_evidence_protocol.md",
+      "reference/workbook_spec.md",
+      "reference/workbook_input_schema.md",
+      "reference/report_scope_contract.md",
+      "reference/market_mql_routing.md",
+      "reference/mql_workpaper_sheet.md",
+      "reference/forecast_valuation_template.md",
+      "reference/mql_path_reuse.md",
+      "reference/metric_and_content_quality.md",
+      "reference/reference_metric_coverage.md",
+      "reference/mql_templates/a_share_financial_timeseries.md",
+      "reference/a_share_financial_timeseries_core.json",
+      "reference/financial_indicator_seed.json"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "研报复现skill/sellside-research-refresh-with-excel/scripts/validate_writing_package.py",
+      "fact": "1.0自包含发布文件清单"
+    },
+    {
+      "path": "研报复现skill/sellside-research-refresh-with-excel/scripts/build_writing_workbook.py",
+      "fact": "直接导入reproduction_contract并依赖openpyxl"
+    },
+    {
+      "path": "研报底稿skill/research-report-review/reference/workbook_spec.md",
+      "fact": "原始底稿五个核心Sheet及21_EDB_NNN扩展Sheet"
+    },
+    {
+      "path": "研报仿写skill/periodic-report-drafting/SKILL.md",
+      "fact": "输入Excel/PDF，输出MD/HTML，不读取或调用其他skill"
+    }
+  ]
+}

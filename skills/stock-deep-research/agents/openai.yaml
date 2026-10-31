@@ -1,0 +1,4 @@
+interface:
+  display_name: Company One-Page Report
+  short_description: 生成沪深京或港股上市公司的中文 9 章节一页纸研究报告。
+  default_prompt: 生成指定公司的公司一页纸研究报告，用 mx_finance_search 分 3 批并发取全 11 个章节文字描述场景（每批 3–4 个，禁止逐个串行；落盘 raw 后由 news_api.py 归一化）；F9 表格与图表数据先查「报表路径固化表」（python scripts/mql_api.py --list）命中即零检索直取，整段 MQL 用 python scripts/mql_api.py --script 批次N --code <SECUCODE> 一次成型生成（Block 编号连续、加载列参数顺序固定，禁止手写 Block；8.1 一致预测表须按固定 10 行指标行取齐、一行都不得少），未命中才走完整 MQL 检索；章节 1 催化事件时间表另调事件库 mx_api_invoke（apiId=newsEventSearch 已发生 / apiId=futureEventSearch 未来）；交付自包含 HTML（含 hover+click 资讯溯源）；正文止于第 9 章与页脚，禁止追加「数据缺口与口径声明」等任何交付后记；交付时会话回复正文直接输出报告正文 Markdown（章节 1-9 与各表，由 python scripts/render_markdown.py 从同一份 data.json 生成，与 HTML 同源同值）+ 1 行文件指引，禁止输出执行过程、校验结果、数据缺口与口径说明。

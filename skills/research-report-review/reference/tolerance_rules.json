@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "note": "容差分级唯一真源。tolerance_rules.md 仅引用本文件，不得重复阈值。每个 metric_type 只声明一种单位，分级为有序、无重叠、无未覆盖（末级开放）。",
+  "grades": {
+    "EXACT": {"order": 1, "label": "✅精确一致", "status": "PASS", "attribution": "精确吻合"},
+    "TOLERANCE": {"order": 2, "label": "≈口径容差", "status": "PASS", "attribution": "口径差异（必须标注实际匹配口径）"},
+    "DRIFT": {"order": 3, "label": "⚠️时点漂移", "status": "CONDITIONAL", "attribution": "时点漂移/一致预期滚动（必须标注截止日期与方向）"},
+    "SIGNIFICANT": {"order": 4, "label": "✗显著偏差", "status": "FAIL", "attribution": "需调查，不得以扩大容差替代调查"}
+  },
+  "metric_types": {
+    "MONEY": {
+      "unit": "absolute",
+      "unit_label": "报告单位",
+      "normalize": "none",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0.005},
+        {"grade": "TOLERANCE", "max": 0.05},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "PRICE": {
+      "unit": "absolute",
+      "unit_label": "报告单位",
+      "normalize": "none",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0.005},
+        {"grade": "TOLERANCE", "max": 0.05},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "RATIO_PERCENT": {
+      "unit": "percentage_point",
+      "unit_label": "百分点(pp)",
+      "normalize": "fraction_to_percent",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0.005},
+        {"grade": "TOLERANCE", "max": 0.05},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "MULTIPLE": {
+      "unit": "relative_percent",
+      "unit_label": "相对百分比(%)",
+      "normalize": "none",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0.1},
+        {"grade": "TOLERANCE", "max": 0.5},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "SHARE": {
+      "unit": "relative_percent",
+      "unit_label": "相对百分比(%)",
+      "normalize": "none",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0},
+        {"grade": "TOLERANCE", "max": 1},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "COUNT": {
+      "unit": "absolute",
+      "unit_label": "个/项",
+      "normalize": "none",
+      "report_rounding_places": 0,
+      "ladder": [
+        {"grade": "EXACT", "max": 0},
+        {"grade": "TOLERANCE", "max": 1},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    },
+    "CONSENSUS": {
+      "unit": "relative_percent",
+      "unit_label": "相对百分比(%)",
+      "normalize": "none",
+      "report_rounding_places": 2,
+      "ladder": [
+        {"grade": "EXACT", "max": 0.1},
+        {"grade": "TOLERANCE", "max": 1},
+        {"grade": "DRIFT", "max": 5, "requires": ["direction_consistent"]},
+        {"grade": "SIGNIFICANT", "open": true}
+      ]
+    }
+  }
+}

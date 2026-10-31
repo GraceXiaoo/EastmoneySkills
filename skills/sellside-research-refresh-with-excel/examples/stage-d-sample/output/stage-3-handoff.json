@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "task_id": "stage-d-sample",
+  "stage": 3,
+  "status": "CONFIRMED",
+  "producer": {
+    "skill": "sellside-research-refresh-with-excel20",
+    "version": "2.0.0",
+    "mode": "新标的底稿生成"
+  },
+  "inputs": [
+    {
+      "path": "d:/git/csskill/研报复现skill/sellside-research-refresh-with-excel20/examples/stage-b-sample/metric_framework.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size_bytes": 1,
+      "media_type": "application/json"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "d:/git/csskill/研报复现skill/sellside-research-refresh-with-excel20/examples/stage-d-sample/output/B_新标的底稿.xlsx",
+      "sha256": "ede2e65034aae9139f0c4e97508def411550582d9aadedf72a37bdd039a9803b",
+      "size_bytes": 6919,
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    }
+  ],
+  "validation": [
+    {"name": "workbook structure", "status": "PASS"},
+    {"name": "target framework coverage", "status": "PASS"}
+  ],
+  "limitations": [],
+  "error": null
+}

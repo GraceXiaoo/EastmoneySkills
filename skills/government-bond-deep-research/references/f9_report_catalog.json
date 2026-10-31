@@ -1,0 +1,565 @@
+[
+  {
+    "name": "债券标签",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\债券标签\\债券标签",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "PROVINCE_CODE_JHDLS",
+        "column_name_cn": "省市代码(计划单列市）",
+        "type": "string"
+      },
+      {
+        "column_name": "PROVINCE_JHDLS",
+        "column_name_cn": "省市(计划单列市）",
+        "type": "string"
+      },
+      {
+        "column_name": "SFCX",
+        "column_name_cn": "是否存续",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFDFZFZ",
+        "column_name_cn": "是否地方政府债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFFYJRJGZ",
+        "column_name_cn": "是否非银金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFKCZ",
+        "column_name_cn": "是否科创债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "SFYHJRJGZ",
+        "column_name_cn": "是否银行金融机构债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFCTZ_DCKJ",
+        "column_name_cn": "是否城投债(东财口径)(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      },
+      {
+        "column_name": "STR_SFLSZ",
+        "column_name_cn": "是否绿色债(AI用)",
+        "type": "string",
+        "desc": "是；否"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "逐只SetCodes调用，一次多只仅返回第一只"
+  },
+  {
+    "name": "到期地方债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\地方债\\到期地方债\\到期地方债",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "ANNUALIZED_RETURN",
+        "column_name_cn": "持有期年化回报率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "AREA_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "BID_HIGH",
+        "column_name_cn": "投标上限(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "BID_LOW",
+        "column_name_cn": "投标下限(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "BID_METHOD",
+        "column_name_cn": "招标方式",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NATURE",
+        "column_name_cn": "性质",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_TYPE",
+        "column_name_cn": "债券类型",
+        "type": "string"
+      },
+      {
+        "column_name": "COUPON_INCOME",
+        "column_name_cn": "持有期累计票息收入（每百元）",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE_ISSUE",
+        "column_name_cn": "票面利率(发行参考)",
+        "type": "double"
+      },
+      {
+        "column_name": "ERR_EXPIRE",
+        "column_name_cn": "到期日超额存款准备金率",
+        "type": "double"
+      },
+      {
+        "column_name": "ERR_ISSUE",
+        "column_name_cn": "发行日超额存款准备金率",
+        "type": "double"
+      },
+      {
+        "column_name": "EST_FULL_PRICE",
+        "column_name_cn": "最终估价全价",
+        "type": "double"
+      },
+      {
+        "column_name": "EXPIRE_DATE",
+        "column_name_cn": "实际到期日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "FULL_MULTIPLE",
+        "column_name_cn": "全场倍数",
+        "type": "double"
+      },
+      {
+        "column_name": "FUND_RAISE_METHOD",
+        "column_name_cn": "募集方式",
+        "type": "string"
+      },
+      {
+        "column_name": "FUND_USE",
+        "column_name_cn": "募集资金用途",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_NAME",
+        "column_name_cn": "发行人全称",
+        "type": "string"
+      },
+      {
+        "column_name": "ISSUE_PRICE",
+        "column_name_cn": "发行价（百元面值）",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_SCALE",
+        "column_name_cn": "发行规模(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "ISSUE_START_DATE",
+        "column_name_cn": "发行起始日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "LAST_YIELD",
+        "column_name_cn": "到期/终止前最后一个交易日估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "LEAD_UNDERWRITER",
+        "column_name_cn": "主承销商类别",
+        "type": "string"
+      },
+      {
+        "column_name": "LISTING_YIELD",
+        "column_name_cn": "上市首日估值收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "LOCAL_AVG",
+        "column_name_cn": "财政部地方债均值(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "LOCAL_AVG_SPREAD",
+        "column_name_cn": "财政部地方债利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "MARGINAL_RATE",
+        "column_name_cn": "边际利率",
+        "type": "double"
+      },
+      {
+        "column_name": "MARGIN_MULTIPLE",
+        "column_name_cn": "边际倍数",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD",
+        "column_name_cn": "存续期间估值收益率最高值",
+        "type": "double"
+      },
+      {
+        "column_name": "MAX_YIELD_DATE",
+        "column_name_cn": "最高值日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "MIN_YIELD",
+        "column_name_cn": "存续期间估值收益率最低值",
+        "type": "double"
+      },
+      {
+        "column_name": "MIN_YIELD_DATE",
+        "column_name_cn": "最低值日期",
+        "type": "datetime"
+      },
+      {
+        "column_name": "MLF_EXPIRE",
+        "column_name_cn": "到期日MLF利率",
+        "type": "double"
+      },
+      {
+        "column_name": "MLF_ISSUE",
+        "column_name_cn": "发行日1年期MLF利率",
+        "type": "double"
+      },
+      {
+        "column_name": "OMO_EXPIRE",
+        "column_name_cn": "到期日OMO利率",
+        "type": "double"
+      },
+      {
+        "column_name": "OMO_ISSUE",
+        "column_name_cn": "发行日OMO利率",
+        "type": "double"
+      },
+      {
+        "column_name": "PROJECT_TYPE",
+        "column_name_cn": "项目类型",
+        "type": "string"
+      },
+      {
+        "column_name": "REDEEM_STATUS",
+        "column_name_cn": "实际兑付情况",
+        "type": "string"
+      },
+      {
+        "column_name": "REPAY_METHOD",
+        "column_name_cn": "还本付息方式",
+        "type": "string"
+      },
+      {
+        "column_name": "RRR_EXPIRE",
+        "column_name_cn": "到期日法定存款准备金率",
+        "type": "double"
+      },
+      {
+        "column_name": "RRR_ISSUE",
+        "column_name_cn": "发行日法定存款准备金率",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "STR_TERMSOPTION",
+        "column_name_cn": "特殊条款",
+        "type": "string"
+      },
+      {
+        "column_name": "SUB_MULTIPLE",
+        "column_name_cn": "认购倍数",
+        "type": "double"
+      },
+      {
+        "column_name": "TENDER_ADDITION",
+        "column_name_cn": "投标加点(BP)",
+        "type": "string"
+      },
+      {
+        "column_name": "TERM_TSY_SPREAD",
+        "column_name_cn": "相同期限国债利差",
+        "type": "double"
+      },
+      {
+        "column_name": "TOTAL_RETURN",
+        "column_name_cn": "持有期总回报",
+        "type": "double"
+      },
+      {
+        "column_name": "TSY_AVG",
+        "column_name_cn": "中债国债均值(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "TSY_AVG_SPREAD",
+        "column_name_cn": "中债国债利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "WIN_RANGE",
+        "column_name_cn": "中标区间",
+        "type": "string"
+      },
+      {
+        "column_name": "WIN_RATE",
+        "column_name_cn": "中标利率",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "跳过字段：发行期限(年)（返回值非数值报错）"
+  },
+  {
+    "name": "地方政府债务余额(亿元)",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\地方债\\到期地方债\\到期地方债区域财政经济数据",
+    "reportStandardCodeSupported": false,
+    "filterColumns": [
+      {
+        "column_name": "LEVEL_CODE",
+        "column_name_cn": "是否本级",
+        "type": "string",
+        "desc": "默认值0"
+      },
+      {
+        "column_name": "REGION_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string",
+        "desc": "来自到期地方债接口AREA_CODE字段"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期",
+        "type": "datetime",
+        "desc": "来自到期地方债接口ISSUE_START_DATE字段,EXPIRE_DATE字段",
+        "format": "yyyy-MM-dd"
+      },
+      {
+        "column_name": "REPORT_TYPE",
+        "column_name_cn": "报告期类型",
+        "type": "string",
+        "desc": "默认值01"
+      }
+    ],
+    "fields": [
+      {
+        "column_name": "BUDGETARY_RECEIPT",
+        "column_name_cn": "一般公共预算收入(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "FUNDED_INCOME",
+        "column_name_cn": "政府基金性收入",
+        "type": "double"
+      },
+      {
+        "column_name": "GDP",
+        "column_name_cn": "GDP(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "GOVERNMENT_DEBT",
+        "column_name_cn": "地方政府债务余额(亿元)",
+        "type": "double"
+      },
+      {
+        "column_name": "LIABILITIES_RATIO",
+        "column_name_cn": "负债率(%)",
+        "type": "double"
+      },
+      {
+        "column_name": "REGION_CODE",
+        "column_name_cn": "地区编码",
+        "type": "string"
+      },
+      {
+        "column_name": "REPORT_DATE",
+        "column_name_cn": "报告期",
+        "type": "datetime"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "STD=False，需SetReportFilter传地区编码/报告期等"
+  },
+  {
+    "name": "存续地方债",
+    "path": "Choice报表\\报表指标\\Choice金融终端\\债券F9\\债券一页纸\\地方债\\存续地方债\\存续地方债",
+    "reportStandardCodeSupported": true,
+    "filterColumns": [],
+    "fields": [
+      {
+        "column_name": "BID_MULTIPLE",
+        "column_name_cn": "最近一次招标倍数",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_EXPIRE",
+        "column_name_cn": "发行期限(年)",
+        "type": "double"
+      },
+      {
+        "column_name": "BOND_NAME_ABBR",
+        "column_name_cn": "债券简称",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_NATURE",
+        "column_name_cn": "性质",
+        "type": "string"
+      },
+      {
+        "column_name": "BOND_TYPE",
+        "column_name_cn": "债券类型",
+        "type": "string"
+      },
+      {
+        "column_name": "CDB_SPREAD",
+        "column_name_cn": "与国开债利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "CLOSE_PRICE",
+        "column_name_cn": "最新净价/全价",
+        "type": "double"
+      },
+      {
+        "column_name": "CN_US_SPREAD",
+        "column_name_cn": "中美10年期利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "CPI",
+        "column_name_cn": "CPI",
+        "type": "double"
+      },
+      {
+        "column_name": "DEC_NEWRATE",
+        "column_name_cn": "票面利率(当期参考)",
+        "type": "double"
+      },
+      {
+        "column_name": "DR007_AVG",
+        "column_name_cn": "DR007近10日均值",
+        "type": "double"
+      },
+      {
+        "column_name": "FUND_USE",
+        "column_name_cn": "募集资金用途",
+        "type": "string"
+      },
+      {
+        "column_name": "GDP",
+        "column_name_cn": "GDP",
+        "type": "double"
+      },
+      {
+        "column_name": "GDP_GROWTH",
+        "column_name_cn": "GDP同比增速",
+        "type": "double"
+      },
+      {
+        "column_name": "MARGINAL_RATE",
+        "column_name_cn": "边际利率",
+        "type": "double"
+      },
+      {
+        "column_name": "MLF_RATE_1Y",
+        "column_name_cn": "1年期MLF利率",
+        "type": "double"
+      },
+      {
+        "column_name": "NEXT_PAY_DATE",
+        "column_name_cn": "下一付息日",
+        "type": "datetime"
+      },
+      {
+        "column_name": "OMO_OPERATION",
+        "column_name_cn": "最近公开市场操作",
+        "type": "string"
+      },
+      {
+        "column_name": "OMO_RATE",
+        "column_name_cn": "最新OMO利率",
+        "type": "double"
+      },
+      {
+        "column_name": "PMI",
+        "column_name_cn": "PMI",
+        "type": "double"
+      },
+      {
+        "column_name": "PROJECT_TYPE",
+        "column_name_cn": "项目类型",
+        "type": "double"
+      },
+      {
+        "column_name": "SECUCODE",
+        "column_name_cn": "债券代码",
+        "type": "string"
+      },
+      {
+        "column_name": "SPREAD_30Y_10Y",
+        "column_name_cn": "30Y-10Y利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "SYQX_YEAR",
+        "column_name_cn": "剩余期限(年)",
+        "type": "double"
+      },
+      {
+        "column_name": "TERM_CDB_YIELD",
+        "column_name_cn": "同期限国开债收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "TERM_TSY_YIELD",
+        "column_name_cn": "同期限国债收益率",
+        "type": "double"
+      },
+      {
+        "column_name": "TSF_GROWTH",
+        "column_name_cn": "社会融资规模存量同比",
+        "type": "double"
+      },
+      {
+        "column_name": "TSY_10Y_1Y_SPREAD",
+        "column_name_cn": "10Y-1Y国债利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "TSY_SPREAD",
+        "column_name_cn": "与国债利差(BP)",
+        "type": "double"
+      },
+      {
+        "column_name": "YIELD",
+        "column_name_cn": "最新估价收益率",
+        "type": "double"
+      }
+    ],
+    "availability": "OK",
+    "availability_note": "跳过字段：发行期限(年)（返回值非数值报错）"
+  }
+]

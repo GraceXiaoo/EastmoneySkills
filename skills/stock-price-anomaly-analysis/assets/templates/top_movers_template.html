@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>异动涨跌幅榜 · {{市场}}{{交易日}}（{{模式：盘后/盘中}}）</title>
+<!--
+  场景一异动涨跌幅榜模板 · stock-price-anomaly-analysis
+  使用说明：
+  1. 复制本模板到输出目录，替换所有 {{...}} 占位符；
+  2. 删除本注释块后交付；
+  3. 配色约定（A股口径）：涨=红(--up:#d92d20)，跌=绿(--ok:#027a48)，请勿调换；
+  4. 本模板为场景一（双榜）专用；单票深度归因请用 post_close / intraday 模板；
+  5. 榜单行按成交金额降序；每行字段：代码、名称、涨跌幅、成交额、换手率、行业/概念、一句话线索；
+  6. 「数据说明」模块必填——仅数据口径标注（来源、数据日期、筛选阈值）；通道审计表只留工作记忆，不进入对话与报告（SKILL.md 2.4 节）；
+  7. 交付前必须确认文件已写入且非空，并调用 present_files 呈现成功。
+-->
+<style>
+  :root{
+    --ink:#12181f; --ink-2:#3d4857; --ink-3:#6b7888;
+    --line:#e3e7ed; --bg:#f5f7fa; --card:#ffffff;
+    --accent:#0f5cff; --accent-soft:#eaf1ff;
+    --up:#d92d20; --up-soft:#fdeceb;      /* 涨：红 */
+    --warn:#b54708; --warn-soft:#fdf3e7;
+    --ok:#027a48;  --ok-soft:#e7f6ef;     /* 跌：绿 */
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.75;font-size:15px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px;}
+  header.hero{background:linear-gradient(135deg,#0b2a5c 0%,#123a7d 55%,#1b4fa0 100%);
+    color:#fff;border-radius:16px;padding:34px 36px;position:relative;overflow:hidden;
+    box-shadow:0 12px 30px rgba(11,42,92,.18);}
+  header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%;}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;
+    background:rgba(255,255,255,.16);padding:4px 12px;border-radius:99px;margin-bottom:14px;}
+  header.hero h1{margin:0 0 8px;font-size:28px;line-height:1.35;font-weight:700;letter-spacing:.5px;}
+  header.hero .sub{font-size:14px;color:#c9dcfb;margin:0;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative;z-index:2;}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    padding:6px 13px;border-radius:8px;font-size:12.5px;color:#eaf1ff;}
+  .chip b{color:#fff;font-weight:600;}
+  section{margin-top:28px;}
+  h2{font-size:19px;margin:0 0 14px;padding-left:12px;position:relative;
+    border-left:4px solid var(--accent);line-height:1.4;}
+  h2 .en{display:block;font-size:11.5px;color:var(--ink-3);letter-spacing:.1em;font-weight:400;margin-top:2px;}
+  h2.h2-up{border-left-color:var(--up);}
+  h2.h2-dn{border-left-color:var(--ok);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#f0f4fa;font-size:12.5px;color:var(--ink-2);font-weight:600;}
+  tbody tr:hover{background:#fafcff;}
+  td.c,th.c{text-align:center;}
+  td.pct{font-weight:700;}
+  td.pct.up{color:var(--up);} td.pct.dn{color:var(--ok);}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:99px;white-space:nowrap;font-weight:600;}
+  .t-up{background:var(--up-soft);color:var(--up);}
+  .t-dn{background:var(--ok-soft);color:var(--ok);}
+  .t-sec{background:var(--accent-soft);color:var(--accent);}
+  .callout{border-radius:12px;padding:16px 18px;margin-top:14px;font-size:14px;}
+  .callout.red{background:var(--up-soft);border-left:4px solid var(--up);}
+  .callout.blue{background:var(--accent-soft);border-left:4px solid var(--accent);}
+  .callout .h{font-weight:700;margin-bottom:4px;}
+  ul{margin:8px 0 0;padding-left:20px;} li{margin-bottom:6px;}
+  .foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);}
+  .note{font-size:12.5px;color:var(--ink-3);margin-top:10px;}
+  @media(max-width:760px){header.hero{padding:26px 22px;}header.hero h1{font-size:22px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ========== 头部：标题 + 口径 chips ========== -->
+<header class="hero">
+  <span class="eyebrow">二级市场 · 场景一 · 异动涨跌幅榜</span>
+  <h1>{{市场}}{{交易日}}异动涨跌幅榜：{{主线一句话概括（如"XX板块集中爆发、YY方向领跌"）}}</h1>
+  <p class="sub">交易日：{{交易日}}　|　{{盘后收盘口径 / 盘中实时口径（时点 HH:MM）}}　|　信息截止：{{信息截止时间}}　|　仅供研究参考，不构成投资建议</p>
+  <div class="meta-row">
+    <span class="chip">筛选口径 <b>涨幅 ≥5% / 跌幅 ≤-5%</b>（实际口径以此为准，若调整须注明）</span>
+    <span class="chip">两榜各 <b>{{N=10}}</b> 只 · 合计 <b>{{2N}}</b></span>
+    <span class="chip">排序 <b>成交金额降序</b></span>
+    <span class="chip">涨幅榜 <b>{{M}} 只</b> / 跌幅榜 <b>{{K}} 只</b>（实际符合口径数量）</span>
+  </div>
+</header>
+
+<!-- ========== 模块一：要点摘要 ========== -->
+<section>
+  <h2>一、要点摘要<span class="en">KEY TAKEAWAYS</span></h2>
+  <div class="card">
+    <ul>
+      <li><b>领涨方向：</b>{{涨幅榜集中的板块/主线 + 代表个股与共同催化（一句话）}}</li>
+      <li><b>领跌方向：</b>{{跌幅榜集中的板块/主线 + 共同压力来源（一句话）}}</li>
+      <li><b>整体特征：</b>{{涨跌家数比/情绪特征/两榜结构（集中 or 分散）}}</li>
+      <li><b>值得深挖：</b>{{1-3 只建议进入场景二复盘的标的及理由}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 模块二：涨幅榜 ========== -->
+<section>
+  <h2 class="h2-up">二、异动涨幅榜<span class="en">TOP GAINERS（涨幅 ≥5%，按成交金额降序）</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr>
+        <th class="c">序</th><th>代码</th><th>名称</th><th class="c">涨跌幅</th>
+        <th class="c">成交额</th><th class="c">换手率</th><th>行业/概念</th><th>一句话异动线索</th>
+      </tr></thead>
+      <tbody>
+        <!-- 按需增删行，保持成交金额降序 -->
+        <tr><td class="c">{{1}}</td><td>{{600XXX}}</td><td><b>{{股票名称}}</b></td><td class="c pct up">{{+x.xx%}}</td><td class="c">{{xx.x亿}}</td><td class="c">{{xx.x%}}</td><td><span class="tag t-sec">{{行业/概念}}</span></td><td>{{一句话线索（含信源类型与日期；无可靠线索标注"待查"）}}</td></tr>
+        <tr><td class="c">{{2}}</td><td>{{600XXX}}</td><td><b>{{股票名称}}</b></td><td class="c pct up">{{+x.xx%}}</td><td class="c">{{xx.x亿}}</td><td class="c">{{xx.x%}}</td><td><span class="tag t-sec">{{行业/概念}}</span></td><td>{{一句话线索}}</td></tr>
+      </tbody>
+    </table>
+    <p class="note">口径：涨幅 ≥{{5%}}、剔除下跌与平盘股票，按成交金额降序；行业/概念为所属板块归类。</p>
+  </div>
+</section>
+
+<!-- ========== 模块三：跌幅榜 ========== -->
+<section>
+  <h2 class="h2-dn">三、异动跌幅榜<span class="en">TOP LOSERS（跌幅 ≤-5%，按成交金额降序）</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr>
+        <th class="c">序</th><th>代码</th><th>名称</th><th class="c">涨跌幅</th>
+        <th class="c">成交额</th><th class="c">换手率</th><th>行业/概念</th><th>一句话异动线索</th>
+      </tr></thead>
+      <tbody>
+        <!-- 按需增删行，保持成交金额降序 -->
+        <tr><td class="c">{{1}}</td><td>{{600XXX}}</td><td><b>{{股票名称}}</b></td><td class="c pct dn">{{-x.xx%}}</td><td class="c">{{xx.x亿}}</td><td class="c">{{xx.x%}}</td><td><span class="tag t-sec">{{行业/概念}}</span></td><td>{{一句话线索（含信源类型与日期；无可靠线索标注"待查"）}}</td></tr>
+        <tr><td class="c">{{2}}</td><td>{{600XXX}}</td><td><b>{{股票名称}}</b></td><td class="c pct dn">{{-x.xx%}}</td><td class="c">{{xx.x亿}}</td><td class="c">{{xx.x%}}</td><td><span class="tag t-sec">{{行业/概念}}</span></td><td>{{一句话线索}}</td></tr>
+      </tbody>
+    </table>
+    <p class="note">口径：跌幅 ≤{{-5%}}、剔除上涨与平盘股票，按成交金额降序。</p>
+  </div>
+</section>
+
+<!-- ========== 模块四：数据说明（仅口径标注，不含通道审计表——审计只留工作记忆） ========== -->
+<section>
+  <h2>四、数据说明<span class="en">DATA NOTES</span></h2>
+  <div class="card">
+    <p style="margin:0;">榜单数据来源：{{MQL（Choice数据）/ 妙想 MCP - 行情数据}}，数据日期 {{XXXX-XX-XX}}，筛选阈值口径 {{涨幅 ≥5% / 跌幅 ≤-5%}}、按成交金额降序、剔除平盘与反向股票；行业/概念为所属板块归类；异动线索为公开资讯/公告的一句话归纳，逐条溯源见报告尾部信源清单。</p>
+  </div>
+</section>
+
+<!-- ========== 尾部 ========== -->
+<div class="foot">
+  主要信源：{{信源清单}}　|　信息截止时间：{{信息截止时间}}　|　本报告为异动线索的初步梳理，单票深度归因请进入场景二复盘　|　仅供研究参考，不构成投资建议
+</div>
+
+</div>
+</body>
+</html>

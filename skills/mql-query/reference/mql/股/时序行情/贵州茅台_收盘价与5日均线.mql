@@ -1,0 +1,21 @@
+// @pattern   时序窗口逐期结果 + 时序函数（MA/DELTA/WINDOW_SUM 等）
+// @block     TimeSeriesBlock
+// @replace   代码 ← searchEntity | 窗口起止 ← timeRecognition | 周期日/周/月/年 | 市场类型(仅用户明确要交易日历时写) | 时序函数与窗口N
+// @must      是否时序只看 indicatorTimeShape=time_series；周期由 SetWindow 统一传入，指标调用里不得再传周期；市场类型不得按代码/上市地点推断
+// @verified  2026-09-14 ok=true（10 个日期位置，5047ms）；2026-10-02 复测带注释 ok=true
+// @note      路径/日期/市场必须用本次结果替换(G2)；MA 自窗口首日即有值（执行器自动预取），无需设预加载周期；注释可原样提交
+
+TimeSeriesBlock(#1, {EM_DATE}, {EM_CODE});             // ✅ time_series 指标才用 TimeSeriesBlock；带{报告期}参数的截面指标≠时序
+// ❌ 把带{交易日期}参数的 cross_section 指标放进 TimeSeriesBlock  → 是否时序只看 indicatorTimeShape，不看参数名
+SetCodes(["600519.SH"]);
+SetWindow(
+    {开始时间} = "2026-09-01",                         // ✅ 日期必须 Date，格式 "YYYY-MM-DD"
+    {结束时间} = "2026-09-14",                         // ❌ 结束早于开始会失败
+    {周期} = "日",                                     // ✅ 普通时序：日/周/月/年；财务报告期序列(_s)只用季/年
+    {市场类型} = "上海证券交易所"                       // ✅ 仅当用户明确要交易日历且本次确认枚举时才写；普通时序可省略走自然日历
+);
+// ❌ 指标调用里再传 {周期}=...  → 周期由 SetWindow 统一传入，调用中重复传会冲突
+{收盘价}: {Choice指标\序列函数\股票\沪深京股票\行情指标\收盘价}();
+{5日均线}: MA({收盘价}, 5);                            // ✅ 滚动函数直接写窗口长度，执行器自动预取窗口前数据
+OutputBlock();                                         // ✅ 时序结果禁止 Sort/Head/Tail/Slice；需截取先下游 GroupBlock 归约
+// ❌ 在本 Block 写 Sort/Head  → 含 EM_DATE 的时序结果禁止排序截取

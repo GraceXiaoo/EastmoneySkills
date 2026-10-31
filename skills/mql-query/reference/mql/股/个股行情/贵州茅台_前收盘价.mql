@@ -1,0 +1,14 @@
+// @pattern   单证券截面行情（指定证券、最新时点、单值指标）
+// @block     CrossSectionBlock
+// @replace   代码 ← searchEntity 确认 | 指标path ← searchIndicator.indicatorPath | 日期参数(用户未提则省略走默认)
+// @must      指标调用必须带()，无参数也写()；输出列用 : ，= 是私有列不输出；路径边界单个反斜杠 \
+// @verified  2026-09-14 ok=true（600519.SH=1285.13，399ms）；2026-10-02 复测带注释执行 ok=true
+// @note      代码/路径/日期必须用本次 Search_Context 结果替换，勿照抄历史值(G2)；注释可原样提交
+
+CrossSectionBlock(#1, {EM_CODE});                      // ✅ 截面用 CrossSectionBlock；带{报告期}参数≠时序，勿用 TimeSeriesBlock
+SetCodes(["600519.SH"]);                               // ✅ 与 GetSectors 二选一，不能同时写
+// ❌ GetSectors("国债|617001");  → 禁止 publishCode 写法，必须花括号包 fullPath，且路径用单反斜杠 \
+{前收盘价}: {Choice指标\股票\沪深京股票指标\行情指标\日行情\前收盘价}();  // ✅ 无参数也带()；: 才进入结果
+// ❌ {前收盘价} = {...}();  → = 定义私有列，不输出；要输出必须用 :
+// ❌ 路径写成 Choice指标\\股票\\...  → JSON 里的 \\ 是转义，MQL 路径只写单个 \
+OutputBlock();                                         // ✅ 写了只返回本 Block；不写则返回全部 Block

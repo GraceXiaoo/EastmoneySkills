@@ -1,0 +1,171 @@
+{
+  "fund_types": [
+    "股债混-非指数",
+    "QDII-非指数",
+    "指数型",
+    "FOF",
+    "另类",
+    "货币型"
+  ],
+  "chapters": {
+    "股债混-非指数": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "风险收益与回撤控制",
+      "资金行为与流动性风险预估",
+      "投资组合分析",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ],
+    "QDII-非指数": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "风险收益与回撤控制",
+      "资金行为与流动性风险预估",
+      "投资组合分析",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ],
+    "指数型": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "风险收益与回撤控制",
+      "资金行为与流动性风险预估",
+      "投资组合分析",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ],
+    "FOF": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "风险收益与回撤控制",
+      "资金行为与流动性风险预估",
+      "投资组合分析",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ],
+    "另类": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "风险收益与回撤控制",
+      "资金行为与流动性风险预估",
+      "投资组合分析",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ],
+    "货币型": [
+      "核心投资逻辑",
+      "基金概况",
+      "规模变化与持有人结构",
+      "业绩表现与收益分析",
+      "资金行为与流动性风险预估",
+      "同类基金比较",
+      "投资价值与市场展望"
+    ]
+  },
+  "chapter_interfaces": {
+    "基金概况": [
+      "RPT_F9_POFD_INFO",
+      "RPT_F9_FM_BASICINFO",
+      "RPT_FUND_F9_COMPANY",
+      "RPT_FUND_F9_COMPHOLDER",
+      "RPT_FUND_ORGMANGER_SCALE_TITLE",
+      "RPT_F9_FUND_ORGPRODUCT"
+    ],
+    "规模变化与持有人结构": [
+      "RPT_FUND_SHARE_NAV",
+      "RPT_FUND_HOLDER_STRUCTURE_REPORT"
+    ],
+    "业绩表现与收益分析": [
+      "RPT_FUND_DAILYNAV_DAILYFRE",
+      "RPT_FUND_PERTREND_PERNAV",
+      "RPT_FUND_DAILYNAV_YEARLY",
+      "RPT_FUND_PAPER_PERFORMNVG",
+      "RPT_FUND_PAPER_RISKRATINGNUM"
+    ],
+    "风险收益与回撤控制": [
+      "RPT_ETF_PAPER_RISKRATING",
+      "RPT_FUND_PAPER_MAXFALL",
+      "RPT_FUND_PERIOD_MAXDRAWDOWN"
+    ],
+    "资金行为与流动性风险预估": [
+      "RPT_FUND_PAPER_SUBRED"
+    ],
+    "同类基金比较": [
+      "RPT_CUSTOM_ETF_SP_SIMILARCOMPARE"
+    ],
+    "投资价值与市场展望": [
+      "RPT_POFD_PF_ANALYSIS"
+    ]
+  },
+  "portfolio_interfaces": {
+    "股债混-非指数": [
+      "RPT_F9_FUND_ASSETALLOCATE",
+      "RPT_FUND_F9_KEYSTOCK",
+      "RPT_FUND_HYFBDSF_DETAILS",
+      "RPT_FUND_F9_TOPTENBOND",
+      "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ"
+    ],
+    "指数型": [
+      "RPT_F9_FUND_ASSETALLOCATE",
+      "RPT_FUND_F9_KEYSTOCK",
+      "RPT_FUND_HYFBDSF_DETAILS",
+      "RPT_FUND_F9_TOPTENBOND",
+      "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ"
+    ],
+    "QDII-非指数": [
+      "RPT_F9_FUND_ASSETALLOCATE",
+      "RPT_FUND_F9_KEYSTOCKQDII",
+      "RPT_POFD_F9_INDUSYYQDII",
+      "RPT_POFD_PF_STOCKAREA",
+      "RPT_FUND_F9_TOPTENBOND",
+      "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ"
+    ],
+    "FOF": [
+      "RPT_F9_FUND_ASSETALLOCATE",
+      "RPT_FUND_F9_KEYSTOCK",
+      "RPT_FUND_HYFBDSF_DETAILS",
+      "RPT_FUND_F9_TOPTENBOND",
+      "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ",
+      "RPT_POFD_FUNDINVEST",
+      "RPT_FOF_KEYSTOCK_STATISTICS"
+    ],
+    "另类": [
+      "RPT_F9_FUND_ASSETALLOCATE",
+      "RPT_FUND_F9_KEYSTOCK",
+      "RPT_FUND_HYFBDSF_DETAILS",
+      "RPT_FUND_F9_TOPTENBOND",
+      "RPT_CUSTOM_FUND_F9_ALLOCATE_JOIN_FUND_F9_TLJJ"
+    ]
+  },
+  "conditional_interfaces": {
+    "是否发起式基金=是": [
+      "RPT_SPONSORHOLD"
+    ],
+    "是否ETF联接基金=是": [
+      "RPT_FUND_PAPER_ETF_INFO"
+    ],
+    "一页纸专用分类=指数型": [
+      "RPT_INDEXPROFILE_BASIC",
+      "RPT_INDEX_TRACKSCALE",
+      "RPT_TRACKERRORINDEX"
+    ]
+  },
+  "hard_rules": {
+    "condition_first": "RPT_ETF_FUND_SHEETPAPER",
+    "etf_redirect": "是否ETF基金=是或一页纸专用分类=ETF时停止，并提示使用平台当前可用的ETF一页纸研究Skill；按能力描述匹配，不依赖固定英文名称",
+    "execute_mode": "一个接口对应一次结构化数据查询；禁止拼接多个ReportBlock",
+    "local_failure": "章节接口失败时继续其他接口并在最终摘要披露",
+    "sponsor_trigger": "第一优先条件接口返回是否发起式基金=是"
+  }
+}

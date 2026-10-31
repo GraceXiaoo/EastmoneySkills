@@ -1,0 +1,17 @@
+{
+  "width": 1600,
+  "height": 780,
+  "background": "#FFFFFF",
+  "palette": ["#58A9C5", "#8AB8DE", "#E8B5A6", "#ADD092", "#BEA0CE", "#D8C47E", "#9CCBC5", "#DCA9C6", "#B3B7BC", "#9FC4AD"],
+  "min_font_size": 34,
+  "max_font_size": 76,
+  "padding": 15,
+  "margin": 28,
+  "seed": 20261015,
+  "growth_factor": 1.22,
+  "max_layout_attempts": 7,
+  "hover_scale": 1.18,
+  "hover_font_weight": 700,
+  "hover_brightness": 0.8,
+  "transition_ms": 160
+}

@@ -1,0 +1,29 @@
+// @pattern   报表明细 → GroupBlock 聚合成唯一键 → MergeBlock 补列
+// @block     ReportBlock(#1) → GroupBlock(#2 唯一化右键) → CrossSectionBlock(#3) → MergeBlock(#4)
+// @replace   报表path | 分组键与聚合列 | 右侧补充指标
+// @must      报表字段先用 : 公开，GroupBlock 才能读；右侧聚合到唯一键再 Merge，避免右键重复；Merge 展示字段全部 : 显式输出
+// @verified  2026-09-14 ok=true（报表 4 行→聚合 1 行→Merge 1/1，1917ms）；2026-10-02 复测带注释 ok=true
+// @note      右侧 Group 保留键只用于 MergeOn，Merge 输出表达式读其 : 聚合列；注释可原样提交
+
+ReportBlock(#1, {Choice报表\报表指标\服务端\妙想服务\量化查数\A股\F9\股东及机构持股\限售股解禁时间表\沪深F9_基础资料_限售股解禁时间});
+SetCodes(["600519.SH"]);
+{证券代码}: REPORT_FIELD("证券代码");                  // ✅ 分组键和聚合列必须先用 : 公开
+{本期流通数量}: REPORT_FIELD("本期流通数量");
+// ❌ 直接 GroupBlock(#2, #1.{证券代码}) 而未用 : 公开  → 上游私有列不可见，GroupBlock 读不到
+
+GroupBlock(#2, #1.{证券代码});                         // ✅ 先把报表行按证券代码聚合为唯一右键
+{解禁记录数}: COUNT(true);
+{累计流通数量}: SUM(#1.{本期流通数量});                // ✅ 分组函数只引用上游输出列
+// ❌ 把报表原始多行直接放 Merge 右侧  → 右键不唯一，整个 MergeBlock 失败
+
+CrossSectionBlock(#3, {EM_CODE});
+SetCodes(["600519.SH"]);
+{证券简称}: {Choice指标\股票\沪深京股票指标\基本资料\证券资料\股票简称}();
+
+MergeBlock(#4, #3, #2);
+MergeOn(#3.{EM_CODE} == #2.{证券代码});               // ✅ 右侧 Group 保留键可作 MergeOn 键
+// ❌ {证券代码}: #2.{证券代码};  → 右侧 Group 仅声明保留的键不能在列表达式读取，只能读 : 聚合输出
+{证券简称}: #3.{证券简称};
+{解禁记录数}: #2.{解禁记录数};
+{累计流通数量}: #2.{累计流通数量};
+OutputBlock();

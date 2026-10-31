@@ -1,0 +1,72 @@
+{
+  "contract_name": "mql_result_artifact_contract",
+  "version": "1.0.0",
+  "authority": "mql_execution_protocol.md §二 运行时输出契约（唯一真源）",
+  "artifact_layers": [
+    {
+      "id": "RAW_RESPONSE",
+      "name": "原响应",
+      "artifacts": ["execute_mql_full_structured_response"],
+      "allowed": [
+        "原样、不做格式转换地落盘或交由工具托管引用",
+        "用于本次本地校验、审计与服务故障证据"
+      ],
+      "forbidden": [
+        "改写为 HTML、Excel 或其它交付文件",
+        "摘录、重排或摘要后冒充原响应"
+      ]
+    },
+    {
+      "id": "BLOCK_MATRIX",
+      "name": "选中 Block 矩阵",
+      "artifacts": ["raw_result"],
+      "allowed": [
+        "取原响应中本次选中 Block 的无损切片，以 JSON 字段保存",
+        "作为 cached_table 与公式覆盖校验的基准"
+      ],
+      "forbidden": [
+        "与 RAW_RESPONSE 混同",
+        "改写为其它格式交付"
+      ]
+    },
+    {
+      "id": "DERIVED_AUDIT",
+      "name": "派生审计结果",
+      "artifacts": ["last_result", "cached_table", "raw_result_summary", "orientation_reason"],
+      "allowed": [
+        "标注为派生视图",
+        "用于本地校验与执行日志审计"
+      ],
+      "forbidden": [
+        "声称等同或替代原响应"
+      ]
+    },
+    {
+      "id": "FORMULA_SPILL",
+      "name": "公式空白溢出区",
+      "artifacts": ["20_研报底稿 锚点"],
+      "allowed": [
+        "只含 =mql() 公式批注与空白矩形"
+      ],
+      "forbidden": [
+        "写入任何数据",
+        "以派生产物替代原始结构化结果"
+      ]
+    }
+  ],
+  "tool_contract": {
+    "source": "mcp_mql_tools.Get_MQL_Reference.globalConstraints",
+    "clause_index": 4,
+    "clause": "Execute_MQL 返回的完整结构化结果不得被客户端改写为 HTML、Excel 或其它文件。",
+    "observed_at": "2026-10-15",
+    "changed_since_evaluation": false
+  },
+  "external_dependency": {
+    "id": "E2",
+    "status": "EXTERNAL_CONTRACT_PENDING",
+    "question": "① 原响应「原样落盘」是否落入契约第 4 条『不得改写为 HTML、Excel 或其它文件』的禁止范围",
+    "owner": "MQL 工具/服务契约维护方",
+    "conservative_policy": "边界明确前只允许原样落盘与本地校验，禁止任何格式改写，且不得声称冲突已解决",
+    "no_hosted_reference_mechanism": true
+  }
+}

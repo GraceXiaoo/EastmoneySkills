@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "formulas": {
+    "无形资产及商誉": {"operands": ["balance_sheet.无形资产", "balance_sheet.商誉"], "expression": "({0}) + ({1})", "display_unit": "百万元"},
+    "其他归母股东权益": {"operands": ["balance_sheet.归属母公司股东权益", "balance_sheet.实收资本(或股本)"], "expression": "({0}) - ({1})", "display_unit": "百万元"},
+    "折旧与摊销": {"operands": ["cash_flow.固定资产和投资性房地产折旧", "cash_flow.无形资产摊销", "cash_flow.长期待摊费用摊销", "cash_flow.使用权资产摊销"], "expression": "({0}) + ({1}) + ({2}) + ({3})", "display_unit": "百万元"},
+    "营运资本变动": {"operands": ["cash_flow.存货的减少", "cash_flow.经营性应收项目的减少", "cash_flow.经营性应付项目的增加"], "expression": "({0}) + ({1}) + ({2})", "display_unit": "百万元"},
+    "减值损失": {"operands": ["income_statement.资产减值损失", "income_statement.信用减值损失"], "expression": "({0}) + ({1})", "display_unit": "百万元"},
+    "营业外收支": {"operands": ["income_statement.营业外收入", "income_statement.营业外支出"], "expression": "({0}) - ({1})", "display_unit": "百万元"},
+    "资产负债率(%)": {"operands": ["balance_sheet.总负债", "balance_sheet.总资产"], "expression": "(({0}) / ({1})) * 100", "operand_display_unit": "百万元", "display_unit": "%"},
+    "资本支出/收入": {"operands": ["cash_flow.购建固定资产无形资产和其他长期资产支付的现金", "income_statement.营业总收入"], "expression": "ABS({0}) / ({1}) * 100", "operand_display_unit": "百万元", "display_unit": "%"},
+    "EBITDA利润率": {"operands": ["income_statement.EBITDA(反推法)", "income_statement.营业总收入"], "expression": "({0}) / ({1}) * 100", "operand_display_unit": "百万元", "display_unit": "%"}
+  },
+  "aliases": {
+    "经营活动现金流": "cash_flow.经营活动产生的现金流量净额",
+    "投资活动现金流": "cash_flow.投资活动产生的现金流量净额",
+    "筹资活动现金流": "cash_flow.筹资活动产生的现金流量净额",
+    "汇率变动影响及其他": "cash_flow.汇率变动对现金及现金等价物的影响",
+    "现金净增加额": "cash_flow.现金及现金等价物净增加额",
+    "资本性支出": "cash_flow.购建固定资产无形资产和其他长期资产支付的现金",
+    "资产处置损益": "income_statement.资产处置收益",
+    "归属母公司净利润": "income_statement.归属于母公司股东的净利润",
+    "净利润(归母)": "income_statement.归属于母公司股东的净利润",
+    "每股净收益(元)": "per_share.每股收益EPS(基本)",
+    "EPS-最新股本摊薄(元)": "per_share.每股收益EPS(最新股本摊薄)",
+    "每股净资产(元)": "per_share.每股净资产BPS",
+    "ROE(摊薄,%)": "financial_ratio.净资产收益率ROE(摊薄)",
+    "净资产收益率(%)": "financial_ratio.净资产收益率ROE(摊薄)",
+    "ROA(%)": "financial_ratio.总资产净利率ROA",
+    "ROIC(%)": "financial_ratio.投入资本回报率ROIC",
+    "销售毛利率(%)": "financial_ratio.销售毛利率",
+    "EBIT Margin(%)": "financial_ratio.息税前利润/营业总收入",
+    "销售净利率(%)": "financial_ratio.销售净利率",
+    "归母净利润率(%)": "financial_ratio.归属于母公司股东的净利润/营业收入",
+    "销售费用率(%)": "financial_ratio.销售费用/营业总收入",
+    "管理费用率(%)": "financial_ratio.管理费用/营业总收入",
+    "财务费用率(%)": "financial_ratio.财务费用/营业总收入",
+    "扣非后净利率(%)": "financial_ratio.扣非后销售净利率",
+    "扣非净利润增速(%)": "financial_ratio.归属母公司股东的净利润同比增长率(扣除非经常性损益)",
+    "营业利润增长率(%)": "financial_ratio.营业利润同比增长率",
+    "现金比率": "financial_ratio.现金比率",
+    "资产负债率(%)": "financial_ratio.资产负债率",
+    "应收账款周转率(次)": "financial_ratio.应收账款周转率",
+    "总资产周转周转率(次)": "financial_ratio.总资产周转率",
+    "存货周转率(次)": "financial_ratio.存货周转率",
+    "净利润现金含量": "financial_ratio.净利润现金含量"
+  },
+  "dispositions": {
+    "应付账款周转率": {
+      "kind": "REPORT_FIELD",
+      "reason": "NO_NATIVE_INDICATOR_REPORT_FIELD_ONLY",
+      "report_path": "Choice报表\\报表指标\\服务端\\妙想服务\\量化查数\\A股\\F9\\财务分析\\营运能力\\沪深F9_财务分析_营运能力|138163911685990",
+      "report_field": "应付账款周转率",
+      "evidence": "模板 04 报表兜底 Block#2（已执行验证子集）"
+    },
+    "正常化市盈率": {
+      "kind": "APPROXIMATE",
+      "reason": "NO_NATIVE_NORMALIZED_EARNINGS_BASIS",
+      "candidate_path": "Choice指标\\股票\\沪深京股票指标\\估值指标\\市盈率PE(TTM,扣除非经常性损益)|100000000022195",
+      "note": "Choice 无「正常化净利润」口径，此为最接近替代，口径不等价，不得作同义命中",
+      "evidence": "模板 05/06 口径别名段"
+    }
+  }
+}

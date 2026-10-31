@@ -1,0 +1,131 @@
+{
+  "file": "D:\\git\\csskill\\研报复现skill\\sellside-research-refresh-with-excel20\\examples\\stage-d-sample\\output\\B_新标的底稿.xlsx",
+  "sha256": "ede2e65034aae9139f0c4e97508def411550582d9aadedf72a37bdd039a9803b",
+  "status": "READABLE",
+  "sheets": [
+    {
+      "sheet": "00_导读",
+      "state": "visible",
+      "part": "xl/worksheets/sheet1.xml",
+      "counts": {
+        "cells": 1
+      },
+      "status": "READABLE",
+      "samples": [
+        {
+          "cell": "A1",
+          "value": "00_导读"
+        }
+      ],
+      "formula_samples": [],
+      "unavailable_samples": [],
+      "error_samples": [],
+      "plugin_anchors": [],
+      "dated_labels": []
+    },
+    {
+      "sheet": "10_研报快照",
+      "state": "visible",
+      "part": "xl/worksheets/sheet2.xml",
+      "counts": {
+        "cells": 5,
+        "numeric_values": 2
+      },
+      "status": "READABLE",
+      "samples": [
+        {
+          "cell": "A1",
+          "value": "营业收入"
+        },
+        {
+          "cell": "B1",
+          "value": "2025A"
+        },
+        {
+          "cell": "C1",
+          "value": 100
+        },
+        {
+          "cell": "D1",
+          "value": "2026F"
+        },
+        {
+          "cell": "E1",
+          "value": 120
+        }
+      ],
+      "formula_samples": [],
+      "unavailable_samples": [],
+      "error_samples": [],
+      "plugin_anchors": [],
+      "dated_labels": []
+    },
+    {
+      "sheet": "20_研报底稿",
+      "state": "visible",
+      "part": "xl/worksheets/sheet3.xml",
+      "counts": {
+        "cells": 1
+      },
+      "status": "READABLE",
+      "samples": [
+        {
+          "cell": "A1",
+          "value": "20_研报底稿"
+        }
+      ],
+      "formula_samples": [],
+      "unavailable_samples": [],
+      "error_samples": [],
+      "plugin_anchors": [],
+      "dated_labels": []
+    },
+    {
+      "sheet": "30_预测框架",
+      "state": "visible",
+      "part": "xl/worksheets/sheet4.xml",
+      "counts": {
+        "cells": 1
+      },
+      "status": "READABLE",
+      "samples": [
+        {
+          "cell": "A1",
+          "value": "30_预测框架"
+        }
+      ],
+      "formula_samples": [],
+      "unavailable_samples": [],
+      "error_samples": [],
+      "plugin_anchors": [],
+      "dated_labels": []
+    },
+    {
+      "sheet": "90_执行日志",
+      "state": "visible",
+      "part": "xl/worksheets/sheet5.xml",
+      "counts": {
+        "cells": 1
+      },
+      "status": "READABLE",
+      "samples": [
+        {
+          "cell": "A1",
+          "value": "90_执行日志"
+        }
+      ],
+      "formula_samples": [],
+      "unavailable_samples": [],
+      "error_samples": [],
+      "plugin_anchors": [],
+      "dated_labels": []
+    }
+  ],
+  "charts": [],
+  "external_links": [],
+  "warnings": [],
+  "cache_notice": "Cached results are snapshots; cache availability does not prove freshness.",
+  "defined_names": [],
+  "media_parts": [],
+  "chart_parts_unassociated": []
+}

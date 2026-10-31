@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source_handoff": {
+    "path": "C:/fixtures/stage-0-handoff.json",
+    "task_id": "stage-b-sample",
+    "producer": {
+      "skill": "research-report-review",
+      "version": "1.6.22",
+      "mode": "生成研报底稿"
+    }
+  },
+  "source_workbook": {
+    "path": "C:/fixtures/A_原始底稿.xlsx",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "sheet_names": ["00_导读", "10_研报快照", "20_研报底稿", "30_预测框架", "90_执行日志"]
+  },
+  "source_assessment": {
+    "path": "C:/fixtures/A_底稿评测报告.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "audience": "投研用户"
+  },
+  "objects": [
+    {
+      "object_id": "tbl-income",
+      "object_type": "TABLE",
+      "title": "主要财务指标",
+      "status": "SUCCESS",
+      "metric_ids": ["m1"]
+    },
+    {
+      "object_id": "tbl-profit",
+      "object_type": "TABLE",
+      "title": "利润表",
+      "status": "SUCCESS",
+      "metric_ids": ["m2"]
+    }
+  ],
+  "metrics": [
+    {
+      "framework_id": "m1",
+      "object_id": "tbl-income",
+      "object_type": "TABLE",
+      "object_title": "主要财务指标",
+      "metric_name": "营业收入",
+      "periods": ["2025A", "2026F"],
+      "frequency": "ANNUAL",
+      "actual_forecast": "ACTUAL",
+      "unit": "亿元",
+      "source_location": "10_研报快照!A1",
+      "status": "SUCCESS",
+      "status_scope": "METRIC",
+      "status_evidence": "execution_log row matched",
+      "indicator_path": "Choice\\财务\\营业收入",
+      "mapping_note": ""
+    },
+    {
+      "framework_id": "m2",
+      "object_id": "tbl-profit",
+      "object_type": "TABLE",
+      "object_title": "利润表",
+      "metric_name": "归母净利润",
+      "periods": ["2026-09-30"],
+      "frequency": "QUARTERLY",
+      "actual_forecast": "ACTUAL",
+      "unit": "亿元",
+      "source_location": "10_研报快照!A10",
+      "status": "NOT_APPLICABLE",
+      "status_scope": "METRIC",
+      "status_evidence": "mapping note explicit",
+      "indicator_path": "",
+      "mapping_note": "目标公司不披露该单季口径"
+    }
+  ],
+  "workpapers": [],
+  "execution_log": [],
+  "coverage": {
+    "objects_total": 2,
+    "metrics_total": 2,
+    "object_types": {"TABLE": 2},
+    "metric_statuses": {"SUCCESS": 1, "NOT_APPLICABLE": 1},
+    "edb_extension_sheets": []
+  },
+  "completeness": {
+    "status": "PASS",
+    "expected_metric_locations": 2,
+    "extracted_metric_locations": 2,
+    "missing_locations": []
+  }
+}

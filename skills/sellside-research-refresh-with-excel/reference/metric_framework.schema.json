@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "metric_framework.schema.json",
+  "title": "Stage 1 Metric Framework",
+  "description": "阶段 1 从已确认的原始研报底稿提取的完整指标框架。字段与 extract_metric_framework.py 的实际输出一致。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_handoff",
+    "source_workbook",
+    "objects",
+    "metrics",
+    "coverage",
+    "completeness"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "source_handoff": {
+      "type": "object",
+      "required": ["path", "task_id", "producer"],
+      "properties": {
+        "path": {"type": "string"},
+        "task_id": {"type": "string"},
+        "producer": {"type": ["object", "string"]}
+      },
+      "additionalProperties": true
+    },
+    "source_workbook": {
+      "type": "object",
+      "required": ["path", "sha256", "sheet_names"],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sheet_names": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "source_assessment": {
+      "type": "object",
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"type": "string"},
+        "audience": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["object_id", "object_type", "title", "status"],
+        "properties": {
+          "object_id": {"type": "string"},
+          "object_type": {"type": "string"},
+          "title": {"type": "string"},
+          "status": {"type": "string"},
+          "metric_ids": {"type": "array", "items": {"type": "string"}},
+          "source_sheet": {"type": "string"},
+          "source_rows": {"type": "array"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "framework_id",
+          "object_id",
+          "object_type",
+          "object_title",
+          "metric_name",
+          "status"
+        ],
+        "properties": {
+          "framework_id": {"type": "string"},
+          "object_id": {"type": "string"},
+          "object_type": {"type": "string"},
+          "object_title": {"type": "string"},
+          "metric_name": {"type": "string"},
+          "periods": {"type": "array", "items": {"type": "string"}},
+          "frequency": {"type": "string"},
+          "actual_forecast": {"type": "string"},
+          "unit": {"type": "string"},
+          "source_location": {"type": "string"},
+          "status": {
+            "type": "string",
+            "enum": ["SUCCESS", "FAILED", "UNMAPPED", "NOT_APPLICABLE"]
+          },
+          "status_scope": {"type": "string", "enum": ["OBJECT", "METRIC"]},
+          "status_evidence": {"type": "string"},
+          "indicator_path": {"type": "string"},
+          "mapping_note": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "workpapers": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": true}
+    },
+    "execution_log": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": true}
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "objects_total": {"type": "integer", "minimum": 0},
+        "metrics_total": {"type": "integer", "minimum": 0},
+        "object_types": {"type": "object"},
+        "metric_statuses": {"type": "object"},
+        "edb_extension_sheets": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "completeness": {
+      "type": "object",
+      "required": ["status", "missing_locations"],
+      "properties": {
+        "status": {"type": "string", "enum": ["PASS", "FAIL"]},
+        "expected_metric_locations": {"type": "integer", "minimum": 0},
+        "extracted_metric_locations": {"type": "integer", "minimum": 0},
+        "missing_locations": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

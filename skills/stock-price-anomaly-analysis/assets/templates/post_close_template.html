@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{股票名称}}（{{股票代码}}）个股异动归因分析 · 盘后复盘</title>
+<!--
+  盘后异动归因报告模板 · stock-price-anomaly-analysis
+  使用说明：
+  1. 复制本模板到输出目录，替换所有 {{...}} 占位符；
+  2. 删除本注释块后交付；
+  3. 配色约定（A股口径）：涨=红(--up:#d92d20)，跌=绿(--ok:#027a48)，请勿调换；
+  4. 各模块顺序与内容要求见 references/report-framework.md 第一节（共九模块）；
+  5. 行内含「按需增删」注释的区块可按数据可得性调整，不可编造数据；
+  6. 图表（若新增）必须紧跟文字解读，禁止交付无解读的裸图。
+-->
+<style>
+  :root{
+    --ink:#12181f; --ink-2:#3d4857; --ink-3:#6b7888;
+    --line:#e3e7ed; --bg:#f5f7fa; --card:#ffffff;
+    --accent:#0f5cff; --accent-soft:#eaf1ff;
+    --up:#d92d20; --up-soft:#fdeceb;      /* 涨：红 */
+    --warn:#b54708; --warn-soft:#fdf3e7;
+    --ok:#027a48;  --ok-soft:#e7f6ef;     /* 跌：绿 */
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.75;font-size:15px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px;}
+  header.hero{background:linear-gradient(135deg,#0b2a5c 0%,#123a7d 55%,#1b4fa0 100%);
+    color:#fff;border-radius:16px;padding:34px 36px;position:relative;overflow:hidden;
+    box-shadow:0 12px 30px rgba(11,42,92,.18);}
+  header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%;}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;
+    background:rgba(255,255,255,.16);padding:4px 12px;border-radius:99px;margin-bottom:14px;}
+  header.hero h1{margin:0 0 8px;font-size:29px;line-height:1.35;font-weight:700;letter-spacing:.5px;}
+  header.hero .sub{font-size:14px;color:#c9dcfb;margin:0;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative;z-index:2;}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    padding:6px 13px;border-radius:8px;font-size:12.5px;color:#eaf1ff;}
+  .chip b{color:#fff;font-weight:600;}
+  section{margin-top:28px;}
+  h2{font-size:19px;margin:0 0 14px;padding-left:12px;position:relative;
+    border-left:4px solid var(--accent);line-height:1.4;}
+  h2 .en{display:block;font-size:11.5px;color:var(--ink-3);letter-spacing:.1em;font-weight:400;margin-top:2px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin-top:14px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .kpi .k{font-size:12px;color:var(--ink-3);}
+  .kpi .v{font-size:23px;font-weight:700;margin-top:2px;letter-spacing:.5px;}
+  .kpi .v.up{color:var(--up);} .kpi .v.dn{color:var(--ok);}
+  .kpi .n{font-size:11.5px;color:var(--ink-3);margin-top:3px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#f0f4fa;font-size:12.5px;color:var(--ink-2);font-weight:600;}
+  tbody tr:hover{background:#fafcff;}
+  td.c,th.c{text-align:center;}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:99px;white-space:nowrap;font-weight:600;}
+  .t-high{background:var(--up-soft);color:var(--up);}
+  .t-mid{background:var(--warn-soft);color:var(--warn);}
+  .t-low{background:var(--ok-soft);color:var(--ok);}
+  .t-a{background:var(--accent-soft);color:var(--accent);}
+  ul{margin:8px 0 0;padding-left:20px;} li{margin-bottom:6px;}
+  .callout{border-radius:12px;padding:16px 18px;margin-top:14px;font-size:14px;}
+  .callout.red{background:var(--up-soft);border-left:4px solid var(--up);}
+  .callout.blue{background:var(--accent-soft);border-left:4px solid var(--accent);}
+  .callout .h{font-weight:700;margin-bottom:4px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:760px){.two{grid-template-columns:1fr;}header.hero{padding:26px 22px;}header.hero h1{font-size:23px;}}
+  .foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);}
+  .src{font-size:12.5px;color:var(--ink-2);} .src li{margin-bottom:4px;}
+  b.hl{color:var(--up);} b.gl{color:var(--ok);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ========== 头部：标题 + 异动区间 + 关键指标 chips ========== -->
+<header class="hero">
+  <span class="eyebrow">二级市场 · 个股异动事后归因</span>
+  <h1>{{股票名称}}（{{股票代码}}）{{异动概括：如"三日涨停归因"或"单日大跌归因"}}：<br>{{核心归因一句话}}</h1>
+  <p class="sub">异动区间：{{起始日期}}—{{结束日期}}　|　信息截止：{{信息截止时间}}　|　仅供研究参考，不构成投资建议</p>
+  <div class="meta-row">
+    <span class="chip">区间累计涨跌幅 <b>{{+/-x.xx%}}</b></span>
+    <span class="chip">涨跌幅偏离值 <b>{{x.xx%}}（若触发交易异常公告则注明）</b></span>
+    <span class="chip">归因等级 <b>{{主题驱动型 / 业绩驱动型 / 板块共振型 / 资金博弈型}}</b></span>
+    <span class="chip">证据置信度 <b>{{高 / 中高 / 中 / 低}}</b></span>
+  </div>
+</header>
+
+<!-- ========== 模块一：结论先行 ========== -->
+<section>
+  <h2>一、结论先行<span class="en">ONE-SENTENCE VERDICT</span></h2>
+  <div class="card">
+    <p style="margin:0 0 10px;">本次异动是<b class="hl">{{「事件A → 传导路径B → 板块/个股映射C」}}</b>驱动的{{行情类型}}，<b>{{是/并非}}</b>由{{被排除的驱动}}所触发。</p>
+    <ul>
+      <li><b>直接催化剂：</b>{{催化剂描述 + 信源渠道与日期}}</li>
+      <li><b>基本面底色：</b>{{最新财报关键数据：营收/净利/现金流增速，验证状态}}</li>
+      <li><b>估值状态：</b>{{PE/PB/市值分位，隐含了什么预期}}</li>
+      <li><b>核心风险：</b>{{最需要跟踪的 1-2 个风险}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 模块二：异动画像 ========== -->
+<section>
+  <h2>二、异动画像<span class="en">PRICE ACTION PROFILE</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>日期</th><th class="c">涨跌幅</th><th>盘面特征</th><th>归因指向</th></tr></thead>
+      <tbody>
+        <!-- 按需增删行：异动区间逐日（或近5日）行情 -->
+        <tr><td>{{日期1}}</td><td class="c">{{+/-x.xx%}}</td><td>{{量价特征}}</td><td>{{归因指向}}</td></tr>
+        <tr><td>{{日期2}}</td><td class="c">{{+/-x.xx%}}</td><td>{{量价特征}}</td><td>{{归因指向}}</td></tr>
+        <tr style="background:#f7f9fc;"><td><b>合计</b></td><td class="c"><b>{{累计+/-x.x%}}</b></td><td>{{区间特征/偏离值}}</td><td>{{交易所认定/定性}}</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 当日分时异动表：分钟级，必做。催化晚于启动的消息只解释放大段，不解释启动。
+         无法获取分时数据时删除本表，并在模块九局限中声明"时间轴仅到日级" -->
+    <h3 style="margin-top:18px;">当日分时异动还原（分钟级）<span style="font-size:11.5px;color:var(--ink-3);">TICK-LEVEL TIMELINE</span></h3>
+    <table>
+      <thead><tr><th style="width:13%">时间</th><th class="c" style="width:11%">涨跌幅</th><th class="c" style="width:12%">量能</th><th>盘面解读与事件对照</th></tr></thead>
+      <tbody>
+        <!-- 按需增删行：至少覆盖 集合竞价、首个异动时点、放量/加速时点、消息发布时点、尾盘 -->
+        <tr><td>09:25</td><td class="c">{{竞价+/-x.xx%}}</td><td class="c">{{竞价量}}</td><td>{{隔夜信息定价 or 无信息}}</td></tr>
+        <tr><td>{{09:35}}</td><td class="c">{{+x.xx%}}</td><td class="c">{{放量/缩量}}</td><td>{{首个异动时点——此时点之前无新消息则启动不能用后发消息解释}}</td></tr>
+        <tr><td>{{HH:MM}}</td><td class="c">{{+x.xx%}}</td><td class="c">{{量能}}</td><td>{{加速段；对照催化发布时点（如媒体 12:53 确认 → 只解释此后放大段）}}</td></tr>
+        <tr><td>15:00</td><td class="c">{{收盘+/-x.xx%}}</td><td class="c">{{全天量}}</td><td>{{尾盘承接/兑现；与指数同步性（个股独涨 vs 随指数）}}</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 双图要求（单日分析场景必做，规范见 report-framework 模块二 / playbook 第 6 节）：
+         ① 近期走势图：近 5–10 日收盘价折线（或日K）+ 成交量，定位本次异动日的位置（突破/冲高回落/趋势延续）
+         ② 日内分时图：当日分时价格线 + 成交量（双轴），用 markLine 标注催化发布时点
+         实现：ECharts（CDN 引入 <head>），option 优先套用已验证骨架；交付前 JS 语法自检（node --check）通过才允许交付；
+         每图下方紧跟图注解读（读什么、说明什么、对归因的支持/削弱），禁止裸图；
+         无法获取分时数据时删除图②并保留上方分时表，在模块九局限中声明"时间轴仅到日级" -->
+    <h3 style="margin:18px 0 8px;font-size:14px;">近期走势（近 5–10 日）<span style="font-size:11.5px;color:var(--ink-3);">RECENT TREND</span></h3>
+    <div id="chart-recent" style="height:260px;border:1px dashed #d5dbe6;border-radius:8px;"></div>
+    <p style="margin:6px 0 0;font-size:12px;color:var(--ink-3);">图注：{{读什么——近期趋势形态与本次异动日的位置；说明什么——突破/冲高回落/趋势延续；对归因的支持/削弱}}</p>
+
+    <h3 style="margin:18px 0 8px;font-size:14px;">当日分时<span style="font-size:11.5px;color:var(--ink-3);">INTRADAY TICK</span></h3>
+    <div id="chart-intraday" style="height:260px;border:1px dashed #d5dbe6;border-radius:8px;"></div>
+    <p style="margin:6px 0 0;font-size:12px;color:var(--ink-3);">图注：{{读什么——启动时点、放量段、催化发布时点对照；说明什么；对归因的支持/削弱}}</p>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">{{最新收盘价/现价}}</div><div class="v">{{xx.xx 元}}</div><div class="n">{{较区间起点 xx.xx 元}}</div></div>
+      <div class="kpi"><div class="k">总市值</div><div class="v">{{≈xxx 亿}}</div><div class="n">{{所属板块}}</div></div>
+      <div class="kpi"><div class="k">估值（PE/PB）</div><div class="v">{{x.x 倍}}</div><div class="n">{{历史分位/同业对比}}</div></div>
+      <div class="kpi"><div class="k">区间换手率</div><div class="v">{{xx.x%}}</div><div class="n">{{筹码状态定性}}</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 模块三：归因拆解（分层式） ========== -->
+<section>
+  <h2>三、归因拆解：主因 / 辅因 / 背景<span class="en">ATTRIBUTION BREAKDOWN</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr><th style="width:11%">层级</th><th style="width:20%">因子</th><th class="c" style="width:13%">证据等级</th><th>传导链条与角色说明</th></tr></thead>
+      <tbody>
+        <!-- 主因：剔除后当日异动难以发生（必要且充分），须有 A/B 级证据并用反事实数据佐证 -->
+        <tr><td><span class="tag t-high">主因</span></td><td><b>{{因子1（必要且充分）}}</b></td><td class="c"><span class="tag t-a">{{A（直接）/ B+（媒体可证）}}</span></td><td>{{事件 → 传导路径 → 股价影响机制；为何必要且充分：同期板块/可比公司数据佐证}}</td></tr>
+        <!-- 辅因：放大幅度与速度，不构成独立原因，逐条说明放大什么 -->
+        <tr><td><span class="tag t-mid">辅因</span></td><td><b>{{因子2}}</b></td><td class="c"><span class="tag t-mid">{{B / C}}</span></td><td>{{放大的是振幅/速度/持续性；如主题情绪、大单净买入、指数被动买盘、技术突破}}</td></tr>
+        <tr><td><span class="tag t-mid">辅因</span></td><td><b>{{因子3}}</b></td><td class="c"><span class="tag t-mid">{{等级}}</span></td><td>{{传导链条}}</td></tr>
+        <!-- 背景：不是当日涨跌的原因，明确写出防止误读为因果 -->
+        <tr><td><span class="tag t-low">背景</span></td><td>{{β环境 / 板块底色 / 估值基数}}</td><td class="c"><span class="tag t-low">{{等级}}</span></td><td><b>不是当日上涨/下跌的原因</b>——仅构成发生的环境条件</td></tr>
+      </tbody>
+    </table>
+    <div class="callout blue">
+      <div class="h">归因判定</div>
+      {{主因为何必要且充分（反事实：剔除后异动难以发生的证据）；辅因各自放大了什么；背景为何不构成原因。}}<br>
+      <b>注：</b>贡献度百分比为可选的排序参考，属研究判断值、非计量模型输出；若需严格量化，应采用事件窗口 CAR（T-1/T+0/T+1 累计超额收益）+ 板块/可比公司对照 + 分钟级成交集中度，而非整数百分比。
+    </div>
+  </div>
+</section>
+
+<!-- ========== 模块四：证据矩阵（含反证） ========== -->
+<section>
+  <h2>四、证据矩阵<span class="en">EVIDENCE MATRIX</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr><th style="width:14%">渠道</th><th style="width:30%">关键事实</th><th style="width:12%" class="c">可信度</th><th>对归因的支持</th></tr></thead>
+      <tbody>
+        <!-- 按需增删行：至少覆盖公司公告、行情数据、研报、社媒；海外原始信源须标"需逐条核验" -->
+        <tr><td><b>公司公告</b></td><td>{{公告名 + 关键内容 + 日期}}</td><td class="c"><span class="tag t-high">高</span></td><td>{{支持/排除哪个假说}}</td></tr>
+        <tr><td><b>互动平台/年报</b></td><td>{{关键确认事项}}</td><td class="c"><span class="tag t-high">高</span></td><td>{{解释"为何是它"}}</td></tr>
+        <tr><td><b>定期报告</b></td><td>{{最新财报关键数据}}</td><td class="c"><span class="tag t-high">高</span></td><td>{{基本面底色}}</td></tr>
+        <tr><td><b>MQL / 妙想 MCP - 行情数据</b></td><td>{{涨跌幅偏离值、换手率、振幅}}</td><td class="c"><span class="tag t-high">高</span></td><td>量化异动强度</td></tr>
+        <tr><td><b>券商研报</b></td><td>{{评级/目标价/核心观点 + 发布时间}}</td><td class="c"><span class="tag t-mid">中</span></td><td>{{叙事素材 or 行情触发源}}</td></tr>
+        <tr><td><b>公众号/社群</b></td><td>{{热文标题样本 + 集中出现时段}}</td><td class="c"><span class="tag t-mid">中低</span></td><td><b>放大器</b>：证实传播路径，不作因果证据</td></tr>
+        <tr><td><b>海外原始信源</b></td><td>{{原始平台事件描述}}</td><td class="c"><span class="tag t-a">需逐条核验</span></td><td>{{须核对发布时间戳与股价启动时点先后}}</td></tr>
+        <!-- 反证与反例：必做，不能只列正面/中性证据 -->
+        <tr style="background:#fdf7f4;"><td><b>反证与反例</b></td><td>{{可能证伪本次归因的信号 / 与归因矛盾的数据（口径冲突、同期同题材未涨的标的、数据缺失项）}}</td><td class="c"><span class="tag t-high">—</span></td><td><b>证伪条件</b>：出现即说明归因失效或需修正</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 模块五：基本面—估值—股价三角错位（股价与基本面背离时必做） ========== -->
+<section>
+  <h2>五、基本面—估值—股价三角错位<span class="en">FUNDAMENTAL-VALUATION MISALIGNMENT</span></h2>
+  <div class="card">
+    <!-- 股价与基本面显著背离时必须单列本模块，不得塞进风险附注；同向且无背离时可简要说明后并入结论先行 -->
+    <table>
+      <thead><tr><th style="width:14%">维度</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td><b>已验证</b></td><td>{{市场定价中已有数据/事实支撑的部分：业务能落地、有客户/传播量、有法定披露佐证等}}</td></tr>
+        <tr><td><b>未验证</b></td><td>{{关键假设尚无口径的部分：收入占比、单价、利润率改善、拐点时点等}}</td></tr>
+        <tr><td><b>结论</b></td><td>{{定性：利润表未验证的商业模式重定价/预期差行情 vs 业绩驱动行情；股价是否跑在财报前面；下一份财报（时点）是证伪/确认点}}</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <div class="h">核心矛盾</div>
+      {{一句话点出基本面数据（如最新财报关键数字）与市场定价逻辑（如商业模式期权价值）的错位本质。}}
+    </div>
+  </div>
+</section>
+
+<!-- ========== 模块六：多空博弈 ========== -->
+<section>
+  <h2>六、博弈结构：多头逻辑 vs 空头逻辑<span class="en">BULL VS BEAR</span></h2>
+  <div class="two">
+    <div class="card">
+      <h3 style="margin:0 0 8px;color:var(--ok);font-size:15px;">▲ 多头可验证的支点</h3>
+      <ul>
+        <li>{{支点1：技术/基本面/资金面上有数据支撑的逻辑}}</li>
+        <li>{{支点2}}</li>
+        <li>{{支点3}}</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 8px;color:var(--up);font-size:15px;">▼ 空头未计价的风险</h3>
+      <ul>
+        <li><b>{{风险类型1}}：</b>{{具体内容}}</li>
+        <li><b>{{风险类型2}}：</b>{{具体内容}}</li>
+        <li><b>{{风险类型3}}：</b>{{具体内容}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- 资金面与价格背离信号（如融资净流出但股价上涨）正面呈现，不得删除或弱化 -->
+  <div class="callout warn" style="margin-top:14px;">
+    <div class="h">资金流与价格的背离信号</div>
+    {{若有背离（如融资净流出但股价上涨、散户净流出但股价大涨），正面列出并解读为短线情绪驱动证据；无背离则说明已检查、未见背离。资金面表述纪律：主力/大单为算法分类，本报告"资金推动"指大单主导的边际定价，不等同于机构共识形成。}}
+  </div>
+</section>
+
+<!-- ========== 模块七：后续跟踪清单 + 失效条件 ========== -->
+<section>
+  <h2>七、后续跟踪清单与归因失效条件（T+1 至 T+20）<span class="en">MONITORING CHECKLIST</span></h2>
+  <div class="card">
+    <!-- 失效条件：必做，置于情景推演之前——比主观情景概率更有用 -->
+    <div class="callout red">
+      <div class="h">归因失效条件（出现即说明本次归因错误或需修正）</div>
+      ① {{核心产品/业务数据低于预期 → 主题溢价回撤}}；<br>
+      ② {{下份财报仍无相关收入口径 → 市场从"商业化"退回"概念"定价}}；<br>
+      ③ {{板块继续走弱但个股靠资金硬拉 → 拥挤度风险上升}}；<br>
+      ④ {{龙虎榜出现纯游资席位且次日无承接 → 高位派发}}。
+    </div>
+    <table>
+      <thead><tr><th style="width:16%">维度</th><th style="width:34%">验证信号</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td><b>{{主线维度}}</b></td><td>{{可盯的具体信号}}</td><td>{{决定什么}}</td></tr>
+        <tr><td><b>{{公司维度}}</b></td><td>{{管线/业务/公告类信号}}</td><td>{{含义}}</td></tr>
+        <tr><td><b>资金面</b></td><td>龙虎榜席位性质、融资余额增速、换手率是否回落</td><td>判断是接力还是派发</td></tr>
+        <tr><td><b>基本面</b></td><td>{{下一份财报时点与关键指标}}</td><td>决定估值能否被承接</td></tr>
+        <tr><td><b>交易信号</b></td><td>{{典型见顶/见底形态}}</td><td>{{含义}}</td></tr>
+      </tbody>
+    </table>
+    <div class="callout blue">
+      <div class="h">情景推演（主观判断，非预测，仅作排序参考）</div>
+      <b>乐观：</b>{{触发条件 → 走势含义}}<br>
+      <b>中性：</b>{{触发条件 → 走势含义}}<br>
+      <b>悲观：</b>{{触发条件 → 走势含义}}
+    </div>
+  </div>
+</section>
+
+<!-- ========== 模块八：买方视角结论 ========== -->
+<section>
+  <h2>八、买方视角结论<span class="en">PM TAKEAWAY</span></h2>
+  <div class="card">
+    <table>
+      <thead><tr><th style="width:14%">持有状态</th><th>操作含义</th></tr></thead>
+      <tbody>
+        <tr><td><b>已持仓</b></td><td>{{趋势/仓位管理建议：关键位得失、加减仓触发条件，"不追高"式表述}}</td></tr>
+        <tr><td><b>未持仓</b></td><td>{{验证点等待建议：先看什么数据落地，再判断"商业模式切换 vs 主题脉冲"}}</td></tr>
+        <tr><td><b>做空/对冲</b></td><td>{{是否适合裸空、对冲结构建议（如个股拥挤但板块 β 弱时用 ETF 多空配对）}}</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:10px 0 0;font-size:13px;color:var(--ink-2);"><b>定位声明：</b>本研究结论是对本次异动的<b>解释性归因</b>，不是对该股的看多/看空建议。</p>
+  </div>
+</section>
+
+<!-- ========== 模块九：方法说明与局限（不含通道审计表——审计只留工作记忆） ========== -->
+<section>
+  <h2>九、方法说明与局限<span class="en">METHODOLOGY &amp; LIMITATIONS</span></h2>
+  <div class="card">
+    <ul>
+      <li><b>归因方法：</b>分钟级时间轴对齐（催化时点 vs 启动时点，晚于启动的消息只解释放大段）+ 反事实检验（同期板块涨幅对比）+ 证据分级（公告 &gt; 研报 &gt; 自媒体）+ 主因/辅因/背景分层。</li>
+      <li><b>数据口径：</b>{{数据来源口径标注（如"Choice数据，数据日期 XXXX-XX-XX"）；时间轴粒度：分钟级 / 仅日级（无法获取分时数据时声明降级及原因）；口径限制对结论的影响}}</li>
+      <li><b>资金面口径：</b>主力/游资/散户为资金流算法分类，非真实账户身份；本报告的"资金推动"指大单主导的边际定价，不等同于机构共识形成。</li>
+      <li><b>局限：</b>① 无法获取逐笔资金与完整机构持仓；② 海外原始信源发布时间需以公司 IR 口径二次核对；③ 公众号内容属情绪指标，不构成因果证据；④ 本报告为<b>事后分析</b>，不预测短期股价；⑤ {{本次特有的数据缺口}}。</li>
+      <!-- 若归因证据不足，此处必须注明"原因未完全确认"并列出缺失的证据类型 -->
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 尾部：核心结论 + 信源 + 免责 ========== -->
+<div class="foot">
+  <p style="margin:0 0 6px;"><b>核心结论：</b>{{一句话总结：主因 + 关键辅因的分层表述，点明"预期差行情 vs 业绩驱动行情"式本质定性}}。</p>
+  <p style="margin:0 0 10px;">主要信源：{{信源1}}、{{信源2}}、{{信源3}}…（逐项列示，含日期）<br>
+  信息截止：{{信息截止时间}}。本报告为研究交流用途，不构成任何投资建议或收益承诺。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+// @pattern   连续财务报告期长表（每个报告期一行，取报表多期明细）
+// @block     ReportBlock + SetReportFilter(报告期区间) + REPORT_FIELD
+// @replace   报表path ← searchIndicator(type=报表) | 报告期加载列与区间 ← 元数据 | 返回列中文名
+// @must      SetReportFilter 只用 reportFilterColumns 加载列；REPORT_FIELD 只读 reportFields 中文名；ReportBlock 不是 TimeSeriesBlock，不能用时序函数
+// @verified  2026-09-30 ok=true（1 次报表请求返回 8 行）
+// @note      reportStandardCodeSupported=true 才可 SetCodes；注释可原样提交
+
+ReportBlock(#1, {Choice报表\报表指标\服务端\妙想服务\API查数\基本面\F10_财务分析_利润表_通用|444127832548491});
+SetCodes(["600519.SH"]);                              // ✅ reportStandardCodeSupported=true 才写
+// ❌ reportStandardCodeSupported=false 时写 SetCodes/GetSectors  → 该开关为 false 时禁止证券范围，只能过滤列过滤
+SetReportFilter(
+    {报告期} >= "2024-01-01"                          // ✅ 只引用 reportFilterColumns 加载列
+    AND {报告期} <= "2025-12-31"
+);
+// ❌ SetReportFilter({报告期类型}=="年报");  → 报告期类型不是加载列就不能用于 SetReportFilter，取回后用本地 FILTER_ROWS
+{证券代码}: REPORT_FIELD("证券代码");
+{报告期}: REPORT_FIELD("报告期");
+{报告期类型}: REPORT_FIELD("报告期类型");
+{归属于母公司股东的净利润}: REPORT_FIELD("归属于母公司股东的净利润");  // ✅ REPORT_FIELD 只认返回列中文名
+// ❌ 对 ReportBlock 用 MA/DELAY 等时序函数  → ReportBlock 无 EM_DATE 时序轴，不是 TimeSeriesBlock
+Sort({报告期}, "ASC");
+OutputBlock();
