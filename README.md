@@ -86,8 +86,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
 npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
-**已知发布问题：** `sellside-research-refresh-with-excel` 缺少 `bundle/review`、`bundle/drafting` 和 `bundle_manifest.json`，且 `SKILL.md` 与运行清单的版本不一致；自带 `check_bundle.py` 返回 `BLOCKED`，当前发布包不能完成完整研报复现。GitHub 来源的 CLI 发现检查因克隆网络错误未完成，本地目录发现已通过。
-
 运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
 
 ## 🎯 从问题选 Skill
