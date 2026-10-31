@@ -310,6 +310,11 @@ Official entry points: [Miaoxiang Skills website](https://ai.eastmoney.com/skill
 
 Visit the [Eastmoney Miaoxiang Skills website](https://ai.eastmoney.com/skills) and follow the page instructions to obtain an API key. Set it as the `EM_API_KEY` environment variable before running scripts that require it.
 
+1. Sign in and click the key icon in the upper-right corner to open the API key dialog.
+2. Click “复制” (Copy) to copy your API key and configure it locally.
+
+![EM_API_KEY guide: open the key dialog and copy the key; the key is redacted](./docs/images/em-api-key-guide.png)
+
 Keep keys in your local environment or the service's designated credential storage. Do not commit them to GitHub or include them in Issues.
 
 For skills supporting QR authorization, follow the built-in process. Scripts requiring `EM_API_KEY` need that environment variable set before execution. This repository does not include usable keys; do not insert personal keys into scripts, examples, or reference documents.
