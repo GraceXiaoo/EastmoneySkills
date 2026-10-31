@@ -90,8 +90,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
 npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
-**Known release issue:** `sellside-research-refresh-with-excel` is missing `bundle/review`, `bundle/drafting`, and `bundle_manifest.json`, and its skill and runtime manifest versions differ. Its built-in `check_bundle.py` returns `BLOCKED`; the current package cannot complete the full reconstruction workflow. CLI discovery from GitHub could not be completed because cloning failed with a network error; local directory discovery passed.
-
 Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
 
 ## 🎯 Choose a skill
