@@ -86,10 +86,6 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
 npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
-**当前验证范围：** 本地 Skills CLI 已识别全部 47 个 Skill；Python 脚本已通过语法检查，部分凭据处理已通过离线检查。尚未逐一完成上述客户端的在线数据调用、MCP 连接和报告生成测试。
-
-**文档核验（2026-10-31）：** 中英文目录描述已与各 Skill 的说明对照；140 个 Python 文件通过语法检查；安装参数和 Node.js 要求已与 Skills CLI 官方文档核对。目录功能表示 Skill 定义的工作流，不代表已完成在线验收。当前没有 SkillCheck 验证报告。
-
 **已知发布问题：** `sellside-research-refresh-with-excel` 缺少 `bundle/review`、`bundle/drafting` 和 `bundle_manifest.json`，且 `SKILL.md` 与运行清单的版本不一致；自带 `check_bundle.py` 返回 `BLOCKED`，当前发布包不能完成完整研报复现。GitHub 来源的 CLI 发现检查因克隆网络错误未完成，本地目录发现已通过。
 
 运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
