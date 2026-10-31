@@ -107,7 +107,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 ### 基础金融工具
 
-查询是“查已知标的”，筛选是“按条件找标的”，自选管理是“操作自己的列表”。MQL 主要为研究流程提供底层取数能力。
+查询是“查已知标的”，筛选是“按条件找标的”，自选管理是“操作自己的自选列表”。MQL 主要为研究流程提供底层取数能力。
 
 | Skill | 用途 |
 | --- | --- |
