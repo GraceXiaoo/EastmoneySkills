@@ -296,6 +296,10 @@ npx skills add . --skill stock-diagnosis
 
 官方入口：[妙想 Skills 官网](https://ai.eastmoney.com/skills) · [东方财富·妙想对话](https://ai.eastmoney.com/chat)。具体授权流程、环境变量、工具名称和依赖版本请阅读所选 Skill。不同服务的凭据和数据权限可能分别管理。
 
+### 获取 EM_API_KEY
+
+访问 [东方财富·妙想 Skills 官网](https://ai.eastmoney.com/skills)，按页面指引获取 API Key。运行需要密钥的脚本前，将其设置为 `EM_API_KEY` 环境变量。
+
 密钥应保存在本地环境或服务指定的凭据位置，不提交到 GitHub，也不填写在 Issue 中。
 
 支持扫码授权的 Skill 按内置流程完成授权；要求 `EM_API_KEY` 的脚本需要在运行前设置环境变量。仓库不内置可用密钥，个人密钥不应写回脚本、示例或参考文档。
