@@ -14,6 +14,8 @@
 
 🌐 **官网：[东方财富·妙想 Skills](https://ai.eastmoney.com/skills)**
 
+🔌 **妙想 MCP：[能力介绍与一键接入](https://github.com/GraceXiaoo/EastmoneyMCP)**
+
 
 ## 🧭 项目概览
 
