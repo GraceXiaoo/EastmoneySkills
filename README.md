@@ -30,6 +30,8 @@ Skill 负责组织任务；MCP 提供连接到客户端的工具；API/SDK 提�
 
 ## 🚀 快速开始
 
+### 1. npx 下载与安装
+
 准备支持 Skill 加载的 AI 客户端，以及 Node.js 22.20 或更高版本与 npm，先安装与你的任务相关的能力：
 
 ```bash
@@ -49,6 +51,18 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
 安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。本地能力发现已验证能识别全部 47 个 Skill；具体客户端的加载、MCP 连接及在线执行需在相应环境中验证。
+
+### 2. 一键开始：让 Agent 帮你安装
+
+在支持安装技能、执行命令或下载文件的 Agent 中，直接发送：
+
+```text
+帮我一键安装技能：https://github.com/GraceXiaoo/EastmoneySkills/tree/main
+```
+
+Agent 可根据当前客户端环境协助下载和安装。只需要部分能力时，可补充技能名称，例如 `mx-finance-data` 和 `stock-diagnosis`。
+
+此方式仍需 Agent 能访问仓库；遇到 GitHub 或 npm 网络问题时，可让 Agent 从已下载的本地完整目录安装。安装后仍需按所选 Skill 配置数据服务与授权。
 
 ## 🤖 支持的 Agent
 
