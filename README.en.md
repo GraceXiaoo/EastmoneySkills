@@ -53,7 +53,7 @@ To browse available skills first:
 npx skills add GraceXiaoo/EastmoneySkills --list
 ```
 
-These commands use [Skills CLI](https://github.com/vercel-labs/skills). Local discovery has identified all 47 skills. Client loading, MCP connections, and online execution require validation in the target environment.
+These commands use [Skills CLI](https://github.com/vercel-labs/skills).
 
 ### 2. Get started with your agent
 
