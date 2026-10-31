@@ -14,6 +14,8 @@ Choose a skill for your task, describe the request in natural language, and prod
 
 🌐 **Official website: [Eastmoney Miaoxiang Skills](https://ai.eastmoney.com/skills)**
 
+🔌 **Miaoxiang MCP: [Capabilities and connection guide](https://github.com/GraceXiaoo/EastmoneyMCP)**
+
 
 ## 🧭 Overview
 
