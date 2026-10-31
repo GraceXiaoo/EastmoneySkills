@@ -312,19 +312,6 @@ For skills supporting QR authorization, follow the built-in process. Scripts req
 
 ## 💬 FAQ
 
-### How do I choose between similar research skills?
-
-| Need | Selection |
-| --- | --- |
-| Quick overall stock or fund assessment | `stock-diagnosis` or `fund-diagnosis` |
-| One analytical dimension, such as technicals or capital flows | The corresponding specialized equity analysis skill |
-| A one-page company, off-exchange fund, or ETF report | The relevant `*-deep-research` skill |
-| An API-generated initiation, industry, or fund report | `initiation-of-coverage-or-deep-dive`, `industry-research-report`, or `fund-research` |
-| Extract and verify an existing report | `research-report-review` |
-| Generate a new report using an existing report's framework | Defined by `sellside-research-refresh-with-excel`, but the current package requires its missing bundles to be restored first |
-
-Trigger scopes may overlap. Specify the skill or output format to help the client select the intended workflow.
-
 ### Are all markets and output formats supported?
 
 No. Some diagnosis skills support only A-shares; one-page research typically covers a single instrument. Output formats vary between Markdown, HTML, Excel, Word, and PDF. Check each skill's supported scope.
