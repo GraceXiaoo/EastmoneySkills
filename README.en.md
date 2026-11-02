@@ -4,7 +4,7 @@
 
 [![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#-skill-catalog)
 [![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#-skill-catalog)
-[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/ai-eastmoney/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/ai-eastmoney/EastmoneySkills/stargazers)
 
 **Financial data access and professional research workflows for AI agents.**
 
@@ -14,7 +14,7 @@ Choose a skill for your task, describe the request in natural language, and prod
 
 🌐 **Official website: [Eastmoney Miaoxiang Skills](https://ai.eastmoney.com/skills)**
 
-🔌 **Miaoxiang MCP: [Capabilities and connection guide](https://github.com/GraceXiaoo/EastmoneyMCP)**
+🔌 **Miaoxiang MCP: [Capabilities and connection guide](https://github.com/ai-eastmoney/EastmoneyMCP)**
 
 
 ## 🧭 Overview
@@ -38,7 +38,7 @@ This README is available in English. Skill instructions and source materials may
 Use an AI client that supports skills, with Node.js **22.20 or later** and npm. Install the capabilities relevant to your task:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill mx-finance-data stock-diagnosis
 ```
 
 Follow the installer's prompts to select a client and installation scope. Read each skill's authorization and dependency instructions, then connect the required services. For example:
@@ -51,7 +51,7 @@ Include the reporting period and return a data table.
 To browse available skills first:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --list
+npx skills add ai-eastmoney/EastmoneySkills --list
 ```
 
 These commands use [Skills CLI](https://github.com/vercel-labs/skills).
@@ -62,7 +62,7 @@ Send this request to an agent that can install skills, execute commands, or down
 
 ```text
 Install the skills for me from:
-https://github.com/GraceXiaoo/EastmoneySkills
+https://github.com/ai-eastmoney/EastmoneySkills
 ```
 
 The agent can help download and install skills for your client environment. To install only selected capabilities, include their names, such as `mx-finance-data` and `stock-diagnosis`.
@@ -87,8 +87,8 @@ Skills CLI supports installation to the following clients, according to its [age
 For example, target Claude Code or Codex explicitly:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -a claude-code
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
 Full workflows require a client that can read supporting resources, run the required scripts or call the specified tools, and access the necessary data. Tool names, service setup, and available outputs depend on the selected skill and client environment.
@@ -237,25 +237,25 @@ The following commands use [Skills CLI](https://github.com/vercel-labs/skills), 
 List available skills:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --list
+npx skills add ai-eastmoney/EastmoneySkills --list
 ```
 
 Install one skill in the current project:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis
 ```
 
 Install several skills together:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
 ```
 
 Installation defaults to project scope. Add `-g` for global reuse across projects:
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -g
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -g
 ```
 
 Select installation targets when prompted. Full workflow compatibility depends on the client's skill loading, script runtime, and tool connections; successful installation alone does not verify execution.
@@ -263,7 +263,7 @@ Select installation targets when prompted. Full workflow compatibility depends o
 ### Install from a local checkout
 
 ```bash
-git clone https://github.com/GraceXiaoo/EastmoneySkills.git
+git clone https://github.com/ai-eastmoney/EastmoneySkills.git
 cd EastmoneySkills
 npx skills add . --list
 npx skills add . --skill stock-diagnosis
@@ -353,7 +353,7 @@ Each skill contains `SKILL.md` and may include `scripts/`, `references/`, `refer
 
 ## 🤝 Maintenance and feedback
 
-Report problems or request capabilities through [Issues](https://github.com/GraceXiaoo/EastmoneySkills/issues). Include:
+Report problems or request capabilities through [Issues](https://github.com/ai-eastmoney/EastmoneySkills/issues). Include:
 
 - Skill name and version.
 - Client, operating system, and relevant runtime details.
