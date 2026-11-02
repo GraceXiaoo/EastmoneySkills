@@ -4,7 +4,7 @@
 
 [![Skills](https://img.shields.io/badge/Skills-47-2563eb)](#-能力目录)
 [![Categories](https://img.shields.io/badge/Categories-10-0f766e)](#-能力目录)
-[![GitHub Stars](https://img.shields.io/github/stars/GraceXiaoo/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/GraceXiaoo/EastmoneySkills/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/ai-eastmoney/EastmoneySkills?style=flat&cacheSeconds=300&v=20261031)](https://github.com/ai-eastmoney/EastmoneySkills/stargazers)
 
 **面向 AI Agent 的金融数据查询与专业研究工作流。**
 
@@ -14,7 +14,7 @@
 
 🌐 **官网：[东方财富·妙想 Skills](https://ai.eastmoney.com/skills)**
 
-🔌 **妙想 MCP：[能力介绍与一键接入](https://github.com/GraceXiaoo/EastmoneyMCP)**
+🔌 **妙想 MCP：[能力介绍与一键接入](https://github.com/ai-eastmoney/EastmoneyMCP)**
 
 
 ## 🧭 项目概览
@@ -36,7 +36,7 @@ Skill 负责组织任务；MCP 提供连接到客户端的工具；API/SDK 提�
 准备支持 Skill 加载的 AI 客户端，以及 Node.js 22.20 或更高版本与 npm，先安装与你的任务相关的能力：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill mx-finance-data stock-diagnosis
 ```
 
 按安装工具提示选择客户端和安装范围，再阅读对应 Skill 的授权与依赖说明。完成服务连接后，可以直接提问：
@@ -48,7 +48,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data stock-diagnosi
 想先浏览可安装能力：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --list
+npx skills add ai-eastmoney/EastmoneySkills --list
 ```
 
 安装示例使用 [Skills CLI](https://github.com/vercel-labs/skills)。
@@ -58,7 +58,7 @@ npx skills add GraceXiaoo/EastmoneySkills --list
 在支持安装技能、执行命令或下载文件的 Agent 中，直接发送：
 
 ```text
-帮我一键安装技能：https://github.com/GraceXiaoo/EastmoneySkills
+帮我一键安装技能：https://github.com/ai-eastmoney/EastmoneySkills
 ```
 
 Agent 可根据当前客户端环境协助下载和安装。只需要部分能力时，可补充技能名称，例如 `mx-finance-data` 和 `stock-diagnosis`。
@@ -83,8 +83,8 @@ Agent 可根据当前客户端环境协助下载和安装。只需要部分能�
 例如，指定安装到 Claude Code 或 Codex：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a claude-code
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -a claude-code
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -a codex
 ```
 
 运行完整工作流时，客户端需能读取配套资源、执行所需脚本或调用指定工具，并具备相应数据权限。工具名、服务配置和交付能力以所选 Skill 与客户端当前环境为准。
@@ -228,30 +228,30 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -a codex
 
 ### 选择安装范围
 
-以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 22.20 或更高版本与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `GraceXiaoo/EastmoneySkills`。
+以下命令使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 22.20 或更高版本与 npm；首次运行 `npx` 可能提示下载工具。安装源为本仓库 `ai-eastmoney/EastmoneySkills`。
 
 列出可安装的 Skill：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --list
+npx skills add ai-eastmoney/EastmoneySkills --list
 ```
 
 安装一个 Skill 到当前项目：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis
 ```
 
 一次选择多个 Skill：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
+npx skills add ai-eastmoney/EastmoneySkills --skill mx-finance-data mx-finance-search stock-diagnosis
 ```
 
 默认使用项目级安装；需要跨项目复用时，增加 `-g` 选择全局安装：
 
 ```bash
-npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -g
+npx skills add ai-eastmoney/EastmoneySkills --skill stock-diagnosis -g
 ```
 
 安装目标按工具提示选择。客户端兼容性取决于其 Skill 加载方式、脚本运行环境及所需工具连接，不能仅凭安装成功判断完整流程可用。
@@ -261,7 +261,7 @@ npx skills add GraceXiaoo/EastmoneySkills --skill stock-diagnosis -g
 下载完整仓库后，也可以从本地发现和安装：
 
 ```bash
-git clone https://github.com/GraceXiaoo/EastmoneySkills.git
+git clone https://github.com/ai-eastmoney/EastmoneySkills.git
 cd EastmoneySkills
 npx skills add . --list
 npx skills add . --skill stock-diagnosis
@@ -343,7 +343,7 @@ EastmoneySkills/
 
 ## 🤝 维护与反馈
 
-发现问题或希望补充能力，可以通过 [Issues](https://github.com/GraceXiaoo/EastmoneySkills/issues) 反馈。为便于定位，请提供：
+发现问题或希望补充能力，可以通过 [Issues](https://github.com/ai-eastmoney/EastmoneySkills/issues) 反馈。为便于定位，请提供：
 
 - Skill 名称及使用版本；
 - 客户端、操作系统与相关运行环境；
