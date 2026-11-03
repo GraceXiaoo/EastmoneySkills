@@ -292,7 +292,7 @@ OutputBlock()
 ## 交付要求
 
 - 最终产物：**一个自包含 HTML 文件**（命名与 `<h1>` 标题一致：`{活跃券名称}({活跃券代码})活跃券研究.html`，如 `10年期国债活跃券(10YGB.IB)活跃券研究.html`）。
-- 相关数据它文件可临时置于工作临时目录，但**交付物与最终成果放到用户工作区**（`C:\Users\Administrator\AppData\Roaming\TRAE SOLO CN\ModularData\ai-agent\work-mode-projects\6aba049081fb4318aec323e2`）。
+- 相关数据文件可放在任务临时目录；交付物与最终成果应保存到用户指定的工作区。
 - 交给用户时提供 `computer://` 链接与简短中文摘要。
 
 ## 维护

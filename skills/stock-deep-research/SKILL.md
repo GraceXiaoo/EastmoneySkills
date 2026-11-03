@@ -65,7 +65,7 @@ agent_created: true
 | `scripts/validate_report.py` | 交付前 P0 校验（章节齐全性、禁用词、占位符、伪空状态、评级/目标价、8.1 指标行齐全） |
 
 ```bash
-PY=C:/Users/Administrator/.workbuddy/binaries/python/versions/3.13.12/python.exe
+PY=python
 
 # 0) Agent 侧（检索）：分 3 批并发调用 mx_finance_search（每批 3–4 个场景，禁止逐个串行），
 #    把返回条目结构化为 raw/1.json、raw/2.json、raw/3.1.json … raw/9.json
